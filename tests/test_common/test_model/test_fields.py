@@ -20,7 +20,6 @@ from tests.modelClasses import User
 
 
 class TestModelField(unittest.TestCase):
-
     def test_name(self):
         field = ModelField("test", int, 3)
         self.assertEqual("test", field.name)
@@ -47,22 +46,29 @@ class TestModelField(unittest.TestCase):
 
     def test_avro_schema_int(self):
         field = ModelField("test", int, 1)
-        expected = {'name': 'test', 'type': "long"}
+        expected = {"name": "test", "type": "long"}
         self.assertEqual(expected, field.avro_schema)
 
     def test_avro_schema_string(self):
         field = ModelField("test", str, "foo")
-        expected = {'name': 'test', 'type': "string"}
+        expected = {"name": "test", "type": "string"}
         self.assertEqual(expected, field.avro_schema)
 
     def test_avro_schema_list_model_ref(self):
-        field = ModelField("test", list[Optional[ModelRef[User]]], [User(123), User(456)])
-        expected = {'name': 'test', 'type': {'default': [], 'items': ['User', 'null'], 'type': 'array'}}
+        field = ModelField(
+            "test", list[Optional[ModelRef[User]]], [User(123), User(456)]
+        )
+        expected = {
+            "name": "test",
+            "type": {"default": [], "items": ["User", "null"], "type": "array"},
+        }
         self.assertEqual(expected, field.avro_schema)
 
     def test_avro_data_list_model_ref(self):
-        field = ModelField("test", list[Optional[ModelRef[User]]], [User(123), User(456)])
-        expected = [{'id': 123, 'username': 'null'}, {'id': 456, 'username': 'null'}]
+        field = ModelField(
+            "test", list[Optional[ModelRef[User]]], [User(123), User(456)]
+        )
+        expected = [{"id": 123, "username": "null"}, {"id": 456, "username": "null"}]
         self.assertEqual(expected, field.avro_data)
 
     def test_value_list_optional(self):
@@ -100,7 +106,7 @@ class TestModelField(unittest.TestCase):
 
     def test_value_unsupported(self):
         with self.assertRaises(MinosTypeAttributeException):
-            ModelField("test", set[int], {3, })
+            ModelField("test", set[int], {3,})
 
     def test_value_setter(self):
         field = ModelField("test", int, 3)
@@ -151,7 +157,9 @@ class TestModelField(unittest.TestCase):
         self.assertEqual(None, field.value)
 
     def test_empty_field_equality(self):
-        self.assertEqual(ModelField("test", Optional[int], None), ModelField("test", Optional[int]))
+        self.assertEqual(
+            ModelField("test", Optional[int], None), ModelField("test", Optional[int])
+        )
 
     def test_value_setter_optional_int(self):
         field = ModelField("test", Optional[int], 3)
@@ -191,25 +199,44 @@ class TestModelField(unittest.TestCase):
         self.assertEqual(None, field.value)
 
     def test_equal(self):
-        self.assertEqual(ModelField("id", Optional[int], 3), ModelField("id", Optional[int], 3))
-        self.assertNotEqual(ModelField("id", Optional[int], 3), ModelField("id", Optional[int], None))
-        self.assertNotEqual(ModelField("id", Optional[int], 3), ModelField("foo", Optional[int], 3))
-        self.assertNotEqual(ModelField("id", Optional[int], 3), ModelField("id", int, 3))
+        self.assertEqual(
+            ModelField("id", Optional[int], 3), ModelField("id", Optional[int], 3)
+        )
+        self.assertNotEqual(
+            ModelField("id", Optional[int], 3), ModelField("id", Optional[int], None)
+        )
+        self.assertNotEqual(
+            ModelField("id", Optional[int], 3), ModelField("foo", Optional[int], 3)
+        )
+        self.assertNotEqual(
+            ModelField("id", Optional[int], 3), ModelField("id", int, 3)
+        )
 
     def test_iter(self):
-        self.assertEqual(("id", Optional[int], 3, None), tuple(ModelField("id", Optional[int], 3)))
+        self.assertEqual(
+            ("id", Optional[int], 3, None), tuple(ModelField("id", Optional[int], 3))
+        )
 
     def test_hash(self):
-        self.assertEqual(hash(("id", Optional[int], 3, None)), hash(ModelField("id", Optional[int], 3)))
+        self.assertEqual(
+            hash(("id", Optional[int], 3, None)),
+            hash(ModelField("id", Optional[int], 3)),
+        )
 
     def test_repr(self):
         field = ModelField("test", Optional[int], 1, validator=lambda x: x > 0)
-        self.assertEqual("ModelField(name='test', type=typing.Optional[int], value=1, validator=<lambda>)", repr(field))
+        self.assertEqual(
+            "ModelField(name='test', type=typing.Optional[int], value=1, validator=<lambda>)",
+            repr(field),
+        )
 
     def test_repr_empty_parser(self):
         field = ModelField("test", Optional[int], 1)
-        self.assertEqual("ModelField(name='test', type=typing.Optional[int], value=1, validator=None)", repr(field))
+        self.assertEqual(
+            "ModelField(name='test', type=typing.Optional[int], value=1, validator=None)",
+            repr(field),
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

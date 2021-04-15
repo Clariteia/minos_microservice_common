@@ -87,6 +87,7 @@ PYTHON_ARRAY_TYPES = (dict,)
 #
 #     return wrap(cls)
 
+
 class MinosModel(object):
     """Base class for ``minos`` model entities."""
 
@@ -125,17 +126,25 @@ class MinosModel(object):
         fields: dict[str, t.Any] = t.get_type_hints(self)
         fields = self._update_from_inherited_class(fields)
 
-        empty = MissingSentinel  # artificial value to discriminate between None and empty.
-        for (name, type_val), value in zip_longest(fields.items(), args, fillvalue=empty):
+        empty = (
+            MissingSentinel  # artificial value to discriminate between None and empty.
+        )
+        for (name, type_val), value in zip_longest(
+            fields.items(), args, fillvalue=empty
+        ):
             if name in kwargs and value is not empty:
                 raise TypeError(f"got multiple values for argument {repr(name)}")
 
             if value is empty:
                 value = kwargs.get(name, MissingSentinel)
 
-            self._fields[name] = ModelField(name, type_val, value, getattr(self, f"validate_{name}", None))
+            self._fields[name] = ModelField(
+                name, type_val, value, getattr(self, f"validate_{name}", None)
+            )
 
-    def _update_from_inherited_class(self, fields: dict[str, t.Any]) -> dict[str, t.Any]:
+    def _update_from_inherited_class(
+        self, fields: dict[str, t.Any]
+    ) -> dict[str, t.Any]:
         """
         get all the child class __annotations__ and update the FIELD base attribute
         """
@@ -159,7 +168,12 @@ class MinosModel(object):
         :return: A dictionary object.
         """
         fields = [field.avro_schema for field in self.fields.values()]
-        return {"name": type(self).__name__, "namespace": __name__, "type": "record", "fields": fields}
+        return {
+            "name": type(self).__name__,
+            "namespace": __name__,
+            "type": "record",
+            "fields": fields,
+        }
 
     @property
     def avro_data(self) -> t.Any:

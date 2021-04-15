@@ -18,13 +18,19 @@ from minos.common import (
     MinosMalformedAttributeException,
     MinosAttributeValidationException,
 )
-from tests.modelClasses import Customer, CustomerFailList, CustomerFailDict, ShoppingList, User, Analytics
+from tests.modelClasses import (
+    Customer,
+    CustomerFailList,
+    CustomerFailDict,
+    ShoppingList,
+    User,
+    Analytics,
+)
 
 import unittest
 
 
 class TestMinosModel(unittest.TestCase):
-
     def test_constructor_args(self):
         model = Customer(1234, "johndoe", "John", "Doe")
         self.assertEqual(1234, model.id)
@@ -113,40 +119,49 @@ class TestMinosModel(unittest.TestCase):
 
     def test_avro_schema(self):
         shopping_list = ShoppingList(User(1234))
-        expected = {'fields': [{'name': 'user', 'type': ['User', 'null']}],
-                    'name': 'ShoppingList',
-                    'namespace': 'minos.common.model.model',
-                    'type': 'record'}
+        expected = {
+            "fields": [{"name": "user", "type": ["User", "null"]}],
+            "name": "ShoppingList",
+            "namespace": "minos.common.model.model",
+            "type": "record",
+        }
         self.assertEqual(expected, shopping_list.avro_schema)
 
     def test_avro_data(self):
         shopping_list = ShoppingList(User(1234))
-        expected = {'user': {'id': 1234, 'username': 'null'}}
+        expected = {"user": {"id": 1234, "username": "null"}}
         self.assertEqual(expected, shopping_list.avro_data)
 
     def test_avro_schema_simple(self):
         customer = Customer(1234)
-        expected = {'fields': [{'name': 'id', 'type': 'long'},
-                               {'name': 'username', 'type': ['string', 'null']},
-                               {'name': 'name', 'type': ['string', 'null']},
-                               {'name': 'surname', 'type': ['string', 'null']},
-                               {'name': 'is_admin', 'type': ['boolean', 'null']},
-                               {'name': 'lists',
-                                'type': [{'default': [], 'items': 'long', 'type': 'array'},
-                                         'null']}],
-                    'name': 'Customer',
-                    'namespace': 'minos.common.model.model',
-                    'type': 'record'}
+        expected = {
+            "fields": [
+                {"name": "id", "type": "long"},
+                {"name": "username", "type": ["string", "null"]},
+                {"name": "name", "type": ["string", "null"]},
+                {"name": "surname", "type": ["string", "null"]},
+                {"name": "is_admin", "type": ["boolean", "null"]},
+                {
+                    "name": "lists",
+                    "type": [{"default": [], "items": "long", "type": "array"}, "null"],
+                },
+            ],
+            "name": "Customer",
+            "namespace": "minos.common.model.model",
+            "type": "record",
+        }
         self.assertEqual(expected, customer.avro_schema)
 
     def test_avro_data_simple(self):
         customer = Customer(1234)
-        expected = {'id': 1234,
-                    'is_admin': 'null',
-                    'lists': 'null',
-                    'name': 'null',
-                    'surname': 'null',
-                    'username': 'null'}
+        expected = {
+            "id": 1234,
+            "is_admin": "null",
+            "lists": "null",
+            "name": "null",
+            "surname": "null",
+            "username": "null",
+        }
         self.assertEqual(expected, customer.avro_data)
 
     def test_model_ref_raises(self):
@@ -157,7 +172,7 @@ class TestMinosModel(unittest.TestCase):
     def test_recursive_type_composition(self):
         orders = {
             User(1): [ShoppingList(User(1)), ShoppingList(User(1))],
-            User(2): [ShoppingList(User(2)), ShoppingList(User(2))]
+            User(2): [ShoppingList(User(2)), ShoppingList(User(2))],
         }
 
         analytics = Analytics(1, orders)
@@ -186,8 +201,10 @@ class TestMinosModel(unittest.TestCase):
     def test_fields(self):
         user = User(123)
         fields = {
-            'id': ModelField("id", int, 123,  validator=user.validate_id),
-            'username': ModelField("username", Optional[str],  validator=user.validate_username)
+            "id": ModelField("id", int, 123, validator=user.validate_id),
+            "username": ModelField(
+                "username", Optional[str], validator=user.validate_username
+            ),
         }
         self.assertEqual(fields, user.fields)
 
@@ -202,8 +219,10 @@ class TestMinosModel(unittest.TestCase):
     def test_iter(self):
         user = User(123)
         expected = {
-            'id': ModelField("id", int, 123, validator=user.validate_id),
-            'username': ModelField("username", Optional[str], validator=user.validate_username)
+            "id": ModelField("id", int, 123, validator=user.validate_id),
+            "username": ModelField(
+                "username", Optional[str], validator=user.validate_username
+            ),
         }
         self.assertEqual(expected, dict(user))
 
@@ -212,12 +231,17 @@ class TestMinosModel(unittest.TestCase):
 
         expected = hash(
             (
-                ('id', ModelField("id", int, 123, user.validate_id)),
-                ('username', ModelField("username", Optional[str], validator=user.validate_username)),
+                ("id", ModelField("id", int, 123, user.validate_id)),
+                (
+                    "username",
+                    ModelField(
+                        "username", Optional[str], validator=user.validate_username
+                    ),
+                ),
             )
         )
         self.assertEqual(expected, hash(user))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

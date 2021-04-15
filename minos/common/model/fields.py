@@ -20,7 +20,7 @@ from .types import ModelRef, MissingSentinel
 PYTHON_INMUTABLE_TYPES = (str, int, bool, float, bytes)
 PYTHON_LIST_TYPES = (list, tuple)
 PYTHON_ARRAY_TYPES = (dict,)
-PYTHON_NULL_TYPE = (type(None))
+PYTHON_NULL_TYPE = type(None)
 
 T = t.TypeVar("T")
 
@@ -32,9 +32,10 @@ class ModelField:
 
     def __init__(
         self,
-        name: str, type_val: t.Type[T],
+        name: str,
+        type_val: t.Type[T],
         value: T = MissingSentinel,
-        validator: t.Optional[t.Callable[[t.Any], bool]] = None
+        validator: t.Optional[t.Callable[[t.Any], bool]] = None,
     ):
         self._name = name
         self._type = type_val
@@ -85,7 +86,11 @@ class ModelField:
         value = self._cast_value(self._type, data)
 
         # Validation call will be here!
-        if self.validator is not None and value is not None and not self.validator(value):
+        if (
+            self.validator is not None
+            and value is not None
+            and not self.validator(value)
+        ):
             raise MinosAttributeValidationException(self.name, value)
 
         self._value = value
@@ -186,7 +191,9 @@ class ModelField:
     def _cast_composed_value(self, type_field: t.Type, data: t.Any) -> t.Any:
         origin_type = t.get_origin(type_field)
         if origin_type is None:
-            raise MinosMalformedAttributeException(f"'{self.name}' field is malformed. Type: '{type_field}'.")
+            raise MinosMalformedAttributeException(
+                f"'{self.name}' field is malformed. Type: '{type_field}'."
+            )
 
         if data is None:
             raise MinosReqAttributeException(f"'{self.name}' field is 'None'.")
@@ -203,7 +210,9 @@ class ModelField:
             return converted_data
 
         if origin_type is dict:
-            converted_data = self._convert_dict(data, t.get_args(type_field)[0], t.get_args(type_field)[1])
+            converted_data = self._convert_dict(
+                data, t.get_args(type_field)[0], t.get_args(type_field)[1]
+            )
             if isinstance(converted_data, bool) and not converted_data:
                 raise MinosTypeAttributeException(
                     f"{type(data)} could not be converted into {type_field} key, value types"
@@ -222,7 +231,9 @@ class ModelField:
             f"The '{type_field}' type does not match with the given data type: {type(data)}"
         )
 
-    def _convert_list(self, data: list, type_values: t.Any) -> t.Union[bool, list[t.Any]]:
+    def _convert_list(
+        self, data: list, type_values: t.Any
+    ) -> t.Union[bool, list[t.Any]]:
         if not isinstance(data, list):
             return False
 
@@ -233,7 +244,9 @@ class ModelField:
 
         return data_converted
 
-    def _convert_dict(self, data: list, type_keys: t.Type, type_values: t.Type) -> t.Union[bool, dict[t.Any, t.Any]]:
+    def _convert_dict(
+        self, data: list, type_keys: t.Type, type_values: t.Type
+    ) -> t.Union[bool, dict[t.Any, t.Any]]:
         if not isinstance(data, dict):
             return False
 
@@ -263,7 +276,9 @@ class ModelField:
             return False
         return data
 
-    def _convert_list_params(self, data: t.Iterable, type_params: t.Type) -> t.Union[bool, t.Any]:
+    def _convert_list_params(
+        self, data: t.Iterable, type_params: t.Type
+    ) -> t.Union[bool, t.Any]:
         """
         check if the parameters list are equal to @type_params type
         """
@@ -327,7 +342,9 @@ class ModelField:
     def _build_composed_schema(self, type_field: t.Type) -> t.Any:
         origin_type = t.get_origin(type_field)
         if origin_type is None:
-            raise MinosMalformedAttributeException(f"'{self.name}' field is malformed. Type: '{type_field}'.")
+            raise MinosMalformedAttributeException(
+                f"'{self.name}' field is malformed. Type: '{type_field}'."
+            )
 
         if origin_type is list:
             return self._build_list_schema(type_field)
@@ -344,14 +361,14 @@ class ModelField:
         return {
             "type": "array",
             "items": self._build_schema(t.get_args(type_field)[0]),
-            "default": []
+            "default": [],
         }
 
     def _build_dict_schema(self, type_field: t.Type) -> dict[str, t.Any]:
         return {
             "type": "map",
             "values": self._build_schema(t.get_args(type_field)[1]),
-            "default": {}
+            "default": {},
         }
 
     @staticmethod
@@ -424,10 +441,10 @@ class ModelField:
 
     def __iter__(self) -> t.Iterable:
         # noinspection PyRedundantParentheses
-        yield from (
-            self.name, self.type, self.value, self._validator_function
-        )
+        yield from (self.name, self.type, self.value, self._validator_function)
 
     def __repr__(self):
-        return f"ModelField(name={repr(self.name)}, type={repr(self.type)}, " \
-               f"value={repr(self.value)}, validator={self._validator_name})"
+        return (
+            f"ModelField(name={repr(self.name)}, type={repr(self.type)}, "
+            f"value={repr(self.value)}, validator={self._validator_name})"
+        )
