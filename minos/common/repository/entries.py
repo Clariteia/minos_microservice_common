@@ -5,23 +5,13 @@ This file is part of minos framework.
 
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
-from enum import (
-    Enum,
-)
-from typing import (
-    Iterable,
-    Optional,
-    TYPE_CHECKING
-)
+from enum import Enum
+from typing import Iterable, Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from ..model import (
-        Aggregate,
-    )
+    from ..model import Aggregate
 
 
 class MinosRepositoryAction(Enum):
