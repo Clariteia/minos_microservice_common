@@ -33,14 +33,16 @@ from .exceptions import (
     MinosModelException,
     MinosParseAttributeException,
     MinosProtocolException,
-    MinosRepositoryDeletedAggregateException,
     MinosRepositoryAggregateNotFoundException,
+    MinosRepositoryDeletedAggregateException,
     MinosRepositoryException,
     MinosReqAttributeException,
     MinosTypeAttributeException,
     MultiTypeMinosModelSequenceException,
 )
-from .importlib import import_module
+from .importlib import (
+    import_module,
+)
 from .messages import (
     MinosBaseRequest,
     MinosBaseResponse,
