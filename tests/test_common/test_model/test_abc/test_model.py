@@ -6,9 +6,7 @@ This file is part of minos framework.
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
 import unittest
-from typing import (
-    Optional,
-)
+from typing import Optional
 
 import pytest
 from minos.common import (
@@ -33,7 +31,6 @@ from tests.modelClasses import (
 
 
 class TestMinosModel(unittest.TestCase):
-
     def test_constructor_args(self):
         model = Customer(1234, "johndoe", "John", "Doe")
         self.assertEqual(1234, model.id)
