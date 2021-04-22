@@ -32,8 +32,8 @@ class TestAggregate(unittest.IsolatedAsyncioTestCase):
             with self.assertRaises(MinosRepositoryManuallySetAggregateVersionException):
                 await Car.create(version=1, doors=3, color="blue", _repository=repository)
 
-    async def test_get_namespace(self):
-        self.assertEqual("tests.aggregate_classes.Car", Car.get_namespace())
+    def test_get_full_class_name(self):
+        self.assertEqual("tests.aggregate_classes.Car", Car.classname())
 
     async def test_get(self):
         async with MinosInMemoryRepository() as repository:

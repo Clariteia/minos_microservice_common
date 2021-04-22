@@ -33,6 +33,7 @@ from tests.modelClasses import (
 
 
 class TestMinosModel(unittest.TestCase):
+
     def test_constructor_args(self):
         model = Customer(1234, "johndoe", "John", "Doe")
         self.assertEqual(1234, model.id)
@@ -292,6 +293,13 @@ class TestMinosModel(unittest.TestCase):
             "'cost', type=<class 'float'>, value=1234.56, parser=parse_cost, validator=None)])"
         )
         self.assertEqual(expected, repr(shopping_list))
+
+    def test_get_full_class_name_cls(self):
+        self.assertEqual("tests.modelClasses.Customer", Customer.classname())
+
+    def test_get_full_class_name_instance(self):
+        model = Customer(1234, "johndoe", "John", "Doe")
+        self.assertEqual("tests.modelClasses.Customer", model.classname())
 
 
 if __name__ == "__main__":
