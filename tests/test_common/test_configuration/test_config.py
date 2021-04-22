@@ -26,61 +26,61 @@ class TestMinosConfig(unittest.TestCase):
     def test_config_service(self):
         config = MinosConfig(path=self.config_file_path)
         service = config.service
-        assert service.name == "Order"
+        self.assertEqual("Order", service.name)
 
     def test_config_rest(self):
         config = MinosConfig(path=self.config_file_path)
         rest = config.rest
 
         broker = rest.broker
-        assert broker.host == "localhost"
-        assert broker.port == 8900
+        self.assertEqual("localhost", broker.host)
+        self.assertEqual(8900, broker.port)
 
         endpoints = rest.endpoints
-        assert endpoints[0].name == "AddOrder"
+        self.assertEqual("AddOrder", endpoints[0].name)
 
     def test_config_events(self):
         config = MinosConfig(path=self.config_file_path)
         events = config.events
         broker = events.broker
-        assert broker.host == "localhost"
-        assert broker.port == 9092
+        self.assertEqual("localhost", broker.host)
+        self.assertEqual(9092, broker.port)
 
     def test_config_events_database(self):
         config = MinosConfig(path=self.config_file_path)
         events = config.events
         database = events.database
-        assert database.path == "./tests/local_db.lmdb"
-        assert database.name == "database_events_test"
+        self.assertEqual("./tests/local_db.lmdb", database.path)
+        self.assertEqual("database_events_test", database.name)
 
     def test_config_events_queue_database(self):
         config = MinosConfig(path=self.config_file_path)
         events = config.events
         queue = events.queue
-        assert queue.database == "broker_db"
-        assert queue.user == "broker"
-        assert queue.password == "br0k3r"
-        assert queue.host == "localhost"
-        assert queue.port == 5432
-        assert queue.records == 10
+        self.assertEqual("broker_db", queue.database)
+        self.assertEqual("broker", queue.user)
+        self.assertEqual("br0k3r", queue.password)
+        self.assertEqual("localhost", queue.host)
+        self.assertEqual(5432, queue.port)
+        self.assertEqual(10, queue.records)
 
     def test_config_commands_database(self):
         config = MinosConfig(path=self.config_file_path)
         commands = config.commands
         database = commands.database
-        assert database.path == "./tests/local_db.lmdb"
-        assert database.name == "database_commands_test"
+        self.assertEqual("./tests/local_db.lmdb", database.path)
+        self.assertEqual("database_commands_test", database.name)
 
     def test_config_commands_queue_database(self):
         config = MinosConfig(path=self.config_file_path)
         commands = config.commands
         queue = commands.queue
-        assert queue.database == "broker_db"
-        assert queue.user == "broker"
-        assert queue.password == "br0k3r"
-        assert queue.host == "localhost"
-        assert queue.port == 5432
-        assert queue.records == 10
+        self.assertEqual("broker_db", queue.database)
+        self.assertEqual("broker", queue.user)
+        self.assertEqual("br0k3r", queue.password)
+        self.assertEqual("localhost", queue.host)
+        self.assertEqual(5432, queue.port)
+        self.assertEqual(10, queue.records)
 
 
 if __name__ == "__main__":
