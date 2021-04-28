@@ -10,12 +10,8 @@ import unittest
 
 import aiopg
 
-from minos.common import (
-    MinosConfig,
-)
-from tests.utils import (
-    BASE_PATH,
-)
+from minos.common import MinosConfig
+from tests.utils import BASE_PATH
 
 
 class PostgresAsyncTestCase(unittest.IsolatedAsyncioTestCase):
