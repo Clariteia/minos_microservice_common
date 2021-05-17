@@ -1,0 +1,21 @@
+common.configuration package
+============================
+
+Submodules
+----------
+
+common.configuration.config module
+----------------------------------
+
+.. automodule:: common.configuration.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: common.configuration
+   :members:
+   :undoc-members:
+   :show-inheritance:

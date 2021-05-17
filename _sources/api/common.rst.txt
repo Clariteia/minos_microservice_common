@@ -1,0 +1,90 @@
+common package
+==============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   common.configuration
+   common.messages
+   common.model
+   common.protocol
+   common.repository
+   common.storage
+
+Submodules
+----------
+
+common.broker module
+--------------------
+
+.. automodule:: common.broker
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.database module
+----------------------
+
+.. automodule:: common.database
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.exceptions module
+------------------------
+
+.. automodule:: common.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.importlib module
+-----------------------
+
+.. automodule:: common.importlib
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.logs module
+------------------
+
+.. automodule:: common.logs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.meta module
+------------------
+
+.. automodule:: common.meta
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.setup module
+-------------------
+
+.. automodule:: common.setup
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.testing module
+---------------------
+
+.. automodule:: common.testing
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: common
+   :members:
+   :undoc-members:
+   :show-inheritance:

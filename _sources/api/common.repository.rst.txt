@@ -1,0 +1,45 @@
+common.repository package
+=========================
+
+Submodules
+----------
+
+common.repository.abc module
+----------------------------
+
+.. automodule:: common.repository.abc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.repository.entries module
+--------------------------------
+
+.. automodule:: common.repository.entries
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.repository.memory module
+-------------------------------
+
+.. automodule:: common.repository.memory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.repository.pg module
+---------------------------
+
+.. automodule:: common.repository.pg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: common.repository
+   :members:
+   :undoc-members:
+   :show-inheritance:

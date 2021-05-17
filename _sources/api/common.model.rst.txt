@@ -1,0 +1,53 @@
+common.model package
+====================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   common.model.abc
+
+Submodules
+----------
+
+common.model.aggregate module
+-----------------------------
+
+.. automodule:: common.model.aggregate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.model.command module
+---------------------------
+
+.. automodule:: common.model.command
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.model.command\_reply module
+----------------------------------
+
+.. automodule:: common.model.command_reply
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+common.model.event module
+-------------------------
+
+.. automodule:: common.model.event
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: common.model
+   :members:
+   :undoc-members:
+   :show-inheritance:
