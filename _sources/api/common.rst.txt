@@ -65,6 +65,14 @@ common.meta module
    :undoc-members:
    :show-inheritance:
 
+common.saga module
+------------------
+
+.. automodule:: common.saga
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 common.setup module
 -------------------
 
