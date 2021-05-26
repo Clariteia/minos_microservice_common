@@ -1,0 +1,7 @@
+minos.common.database module
+============================
+
+.. automodule:: minos.common.database
+   :members:
+   :undoc-members:
+   :show-inheritance:

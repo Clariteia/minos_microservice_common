@@ -1,0 +1,7 @@
+minos.common.logs module
+========================
+
+.. automodule:: minos.common.logs
+   :members:
+   :undoc-members:
+   :show-inheritance:

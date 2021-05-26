@@ -1,0 +1,7 @@
+minos.common.model.command module
+=================================
+
+.. automodule:: minos.common.model.command
+   :members:
+   :undoc-members:
+   :show-inheritance:

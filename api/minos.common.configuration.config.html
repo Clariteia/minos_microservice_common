@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>minos.common.configuration.config module &#8212; Minos Microservice Common 0.0.15 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="minos.common.messages package" href="minos.common.messages.html" />
+    <link rel="prev" title="minos.common.configuration package" href="minos.common.configuration.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-minos.common.configuration.config">
+<span id="minos-common-configuration-config-module"></span><h1>minos.common.configuration.config module<a class="headerlink" href="#module-minos.common.configuration.config" title="Permalink to this headline">¶</a></h1>
+<p>Copyright (C) 2021 Clariteia SL</p>
+<p>This file is part of minos framework.</p>
+<p>Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.BROKER">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">BROKER</span></span><a class="headerlink" href="#minos.common.configuration.config.BROKER" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Broker</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.COMMANDS">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">COMMANDS</span></span><a class="headerlink" href="#minos.common.configuration.config.COMMANDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Commands</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.CONTROLLER">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">CONTROLLER</span></span><a class="headerlink" href="#minos.common.configuration.config.CONTROLLER" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Controller</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.ENDPOINT">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">ENDPOINT</span></span><a class="headerlink" href="#minos.common.configuration.config.ENDPOINT" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Endpoint</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.EVENTS">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">EVENTS</span></span><a class="headerlink" href="#minos.common.configuration.config.EVENTS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Events</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">MinosConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_environment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/configuration/config.html#MinosConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.configuration.config.MinosConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.configuration.config.MinosConfigAbstract" title="minos.common.configuration.config.MinosConfigAbstract"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfigAbstract</span></code></a></p>
+<p>Minos config class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_environment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/configuration/config.html#MinosConfig.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.commands">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">commands</span></span><em class="property"><span class="pre">:</span> <span class="pre">minos.common.configuration.config.Commands</span></em><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the commands config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Commands</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">COMMAND</span></code> NamedTuple instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.events">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">events</span></span><em class="property"><span class="pre">:</span> <span class="pre">minos.common.configuration.config.Events</span></em><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the events config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Events</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">EVENTS</span></code> NamedTuple instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.get_default">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">get_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.get_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get default config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#minos.common.configuration.config.MinosConfigAbstract" title="minos.common.configuration.config.MinosConfigAbstract"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfigAbstract</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">MinosConfigAbstract</span></code> instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.repository">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">repository</span></span><em class="property"><span class="pre">:</span> <span class="pre">minos.common.configuration.config.Repository</span></em><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.repository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the repository config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Repository</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">REPOSITORY</span></code> NamedTuple instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.rest">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">rest</span></span><em class="property"><span class="pre">:</span> <span class="pre">minos.common.configuration.config.Rest</span></em><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.rest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the rest config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Rest</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">REST</span></code> NamedTuple instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.saga">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">saga</span></span><em class="property"><span class="pre">:</span> <span class="pre">minos.common.configuration.config.Saga</span></em><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.saga" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the sagas config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Saga</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">SAGAS</span></code> NamedTuple instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.service">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">service</span></span><em class="property"><span class="pre">:</span> <span class="pre">minos.common.configuration.config.Service</span></em><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the service config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Service</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">SERVICE</span></code> NamedTuple instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.set_default">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">set_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.set_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set default config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#minos.common.configuration.config.MinosConfigAbstract" title="minos.common.configuration.config.MinosConfigAbstract"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfigAbstract</span></code></a>) – Default config.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.NoReturn</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This method does not return anything.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.snapshot">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">snapshot</span></span><em class="property"><span class="pre">:</span> <span class="pre">minos.common.configuration.config.Snapshot</span></em><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.snapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the snapshot config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Snapshot</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">SNAPSHOT</span></code> NamedTuple instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.unset_default">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">unset_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.unset_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unset the default config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.NoReturn</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>This method does not return anything.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfigAbstract">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">MinosConfigAbstract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/configuration/config.html#MinosConfigAbstract"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.configuration.config.MinosConfigAbstract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Minos abstract config class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfigAbstract.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/configuration/config.html#MinosConfigAbstract.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.configuration.config.MinosConfigAbstract.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfigAbstract.get_default">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">get_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/configuration/config.html#MinosConfigAbstract.get_default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.configuration.config.MinosConfigAbstract.get_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get default config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#minos.common.configuration.config.MinosConfigAbstract" title="minos.common.configuration.config.MinosConfigAbstract"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfigAbstract</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">MinosConfigAbstract</span></code> instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfigAbstract.set_default">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">set_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/configuration/config.html#MinosConfigAbstract.set_default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.configuration.config.MinosConfigAbstract.set_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set default config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#minos.common.configuration.config.MinosConfigAbstract" title="minos.common.configuration.config.MinosConfigAbstract"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfigAbstract</span></code></a>) – Default config.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.NoReturn</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This method does not return anything.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfigAbstract.unset_default">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">unset_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/configuration/config.html#MinosConfigAbstract.unset_default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.configuration.config.MinosConfigAbstract.unset_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unset the default config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.NoReturn</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>This method does not return anything.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.QUEUE">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">QUEUE</span></span><a class="headerlink" href="#minos.common.configuration.config.QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Queue</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.REPOSITORY">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">REPOSITORY</span></span><a class="headerlink" href="#minos.common.configuration.config.REPOSITORY" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Repository</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.REST">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">REST</span></span><a class="headerlink" href="#minos.common.configuration.config.REST" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Rest</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.SAGA">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">SAGA</span></span><a class="headerlink" href="#minos.common.configuration.config.SAGA" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Saga</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.SERVICE">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">SERVICE</span></span><a class="headerlink" href="#minos.common.configuration.config.SERVICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Service</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.SNAPSHOT">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">SNAPSHOT</span></span><a class="headerlink" href="#minos.common.configuration.config.SNAPSHOT" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Snapshot</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.configuration.config.STORAGE">
+<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">STORAGE</span></span><a class="headerlink" href="#minos.common.configuration.config.STORAGE" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Storage</span></code></p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Minos Microservice Common</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Minos Microservice Common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="minos.html">minos namespace</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="minos.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="minos.html">minos namespace</a><ul>
+  <li><a href="minos.common.html">minos.common package</a><ul>
+  <li><a href="minos.common.configuration.html">minos.common.configuration package</a><ul>
+      <li>Previous: <a href="minos.common.configuration.html" title="previous chapter">minos.common.configuration package</a></li>
+      <li>Next: <a href="minos.common.messages.html" title="next chapter">minos.common.messages package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Clariteia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/minos.common.configuration.config.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

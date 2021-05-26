@@ -1,0 +1,7 @@
+minos.common.model.event module
+===============================
+
+.. automodule:: minos.common.model.event
+   :members:
+   :undoc-members:
+   :show-inheritance:

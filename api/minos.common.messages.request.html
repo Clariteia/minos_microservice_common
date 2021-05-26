@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>minos.common.messages.request module &#8212; Minos Microservice Common 0.0.15 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="minos.common.messages.response module" href="minos.common.messages.response.html" />
+    <link rel="prev" title="minos.common.messages package" href="minos.common.messages.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-minos.common.messages.request">
+<span id="minos-common-messages-request-module"></span><h1>minos.common.messages.request module<a class="headerlink" href="#module-minos.common.messages.request" title="Permalink to this headline">¶</a></h1>
+<p>Copyright (C) 2021 Clariteia SL</p>
+<p>This file is part of minos framework.</p>
+<p>Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.messages.request.</span></span><span class="sig-name descname"><span class="pre">MinosBaseRequest</span></span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosBaseRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.addBody">
+<span class="sig-name descname"><span class="pre">addBody</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosBaseRequest.addBody"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.addBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.addHeader">
+<span class="sig-name descname"><span class="pre">addHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosBaseRequest.addHeader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.addHeader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.addMethod">
+<span class="sig-name descname"><span class="pre">addMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosBaseRequest.addMethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.addMethod" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.addPath">
+<span class="sig-name descname"><span class="pre">addPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosBaseRequest.addPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.addPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.binary">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">binary</span></span><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.binary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.binary_class">
+<span class="sig-name descname"><span class="pre">binary_class</span></span><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.binary_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.body">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">body</span></span><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosBaseRequest.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>build the instance with all the default informations</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.headers">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">headers</span></span><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.headers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.id">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosBaseRequest.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>import the bytes code and obtain the Request</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosBaseRequest.sub_build">
+<span class="sig-name descname"><span class="pre">sub_build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosBaseRequest.sub_build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosBaseRequest.sub_build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.messages.request.</span></span><span class="sig-name descname"><span class="pre">MinosRPCBodyRequest</span></span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCBodyRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.messages.request.MinosBaseRequest" title="minos.common.messages.request.MinosBaseRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.messages.request.MinosBaseRequest</span></code></a></p>
+<p>Minos RPC Body Class</p>
+<p>The body are sent after the Headers.
+The Body have as Headers an ID, that correspond of the ID of the Headers call.
+and a set of atttributes that must be passed to the command function.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.addBody">
+<span class="sig-name descname"><span class="pre">addBody</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.addBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.addHeader">
+<span class="sig-name descname"><span class="pre">addHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.addHeader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.addId">
+<span class="sig-name descname"><span class="pre">addId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCBodyRequest.addId"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.addId" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.addMethod">
+<span class="sig-name descname"><span class="pre">addMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCBodyRequest.addMethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.addMethod" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.addPath">
+<span class="sig-name descname"><span class="pre">addPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCBodyRequest.addPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.addPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.binary">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">binary</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.binary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.binary_class">
+<span class="sig-name descname"><span class="pre">binary_class</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.binary_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.body">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">body</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>build the instance with all the default informations</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.headers">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">headers</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.headers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.id">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>import the bytes code and obtain the Request</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCBodyRequest.sub_build">
+<span class="sig-name descname"><span class="pre">sub_build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCBodyRequest.sub_build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCBodyRequest.sub_build" title="Permalink to this definition">¶</a></dt>
+<dd><p>instance more variables for this specific Message class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.messages.request.</span></span><span class="sig-name descname"><span class="pre">MinosRPCHeadersRequest</span></span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCHeadersRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.messages.request.MinosBaseRequest" title="minos.common.messages.request.MinosBaseRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.messages.request.MinosBaseRequest</span></code></a></p>
+<p>Minos RPC Headers Request Class</p>
+<p>In the Minos RPC protocol the Headers are sent in a separete call.
+The Headers get the ID and the Action
+in the future more parameters are take in count</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.action">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">action</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.addAction">
+<span class="sig-name descname"><span class="pre">addAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCHeadersRequest.addAction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.addAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>RPC support the action header parameter
+the action correspond to the RPC command</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.addBody">
+<span class="sig-name descname"><span class="pre">addBody</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.addBody" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.addHeader">
+<span class="sig-name descname"><span class="pre">addHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.addHeader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.addMethod">
+<span class="sig-name descname"><span class="pre">addMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCHeadersRequest.addMethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.addMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>the RPC does not support the classic method call</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.addPath">
+<span class="sig-name descname"><span class="pre">addPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCHeadersRequest.addPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.addPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>the RPC does not support the path</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.binary">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">binary</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.binary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.binary_class">
+<span class="sig-name descname"><span class="pre">binary_class</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.binary_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.body">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">body</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>build the instance with all the default informations</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.headers">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">headers</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.headers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.id">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>import the bytes code and obtain the Request</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRPCHeadersRequest.sub_build">
+<span class="sig-name descname"><span class="pre">sub_build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRPCHeadersRequest.sub_build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRPCHeadersRequest.sub_build" title="Permalink to this definition">¶</a></dt>
+<dd><p>instance more variables for this specific Message class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRequest">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.messages.request.</span></span><span class="sig-name descname"><span class="pre">MinosRequest</span></span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRequest.build">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">request_clas</span></em>, <em class="sig-param"><span class="pre">binary=&lt;class</span> <span class="pre">'minos.common.protocol.avro.MinosAvroProtocol'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRequest.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRequest.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>this is the Builder that create specific Requests Objects</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.messages.request.MinosRequest.load">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data</span></em>, <em class="sig-param"><span class="pre">request_class</span></em>, <em class="sig-param"><span class="pre">binary=&lt;class</span> <span class="pre">'minos.common.protocol.avro.MinosAvroProtocol'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/messages/request.html#MinosRequest.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.messages.request.MinosRequest.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>load binary data and convert in the Message Request Instance given</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Minos Microservice Common</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Minos Microservice Common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="minos.html">minos namespace</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="minos.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="minos.html">minos namespace</a><ul>
+  <li><a href="minos.common.html">minos.common package</a><ul>
+  <li><a href="minos.common.messages.html">minos.common.messages package</a><ul>
+      <li>Previous: <a href="minos.common.messages.html" title="previous chapter">minos.common.messages package</a></li>
+      <li>Next: <a href="minos.common.messages.response.html" title="next chapter">minos.common.messages.response module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Clariteia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/minos.common.messages.request.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

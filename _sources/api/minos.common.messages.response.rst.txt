@@ -1,0 +1,7 @@
+minos.common.messages.response module
+=====================================
+
+.. automodule:: minos.common.messages.response
+   :members:
+   :undoc-members:
+   :show-inheritance:

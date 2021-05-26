@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>minos.common.model.abc.fields module &#8212; Minos Microservice Common 0.0.15 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="minos.common.model.abc.model module" href="minos.common.model.abc.model.html" />
+    <link rel="prev" title="minos.common.model.abc package" href="minos.common.model.abc.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-minos.common.model.abc.fields">
+<span id="minos-common-model-abc-fields-module"></span><h1>minos.common.model.abc.fields module<a class="headerlink" href="#module-minos.common.model.abc.fields" title="Permalink to this headline">¶</a></h1>
+<p>Copyright (C) 2021 Clariteia SL</p>
+<p>This file is part of minos framework.</p>
+<p>Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.model.abc.fields.ModelField">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.model.abc.fields.</span></span><span class="sig-name descname"><span class="pre">ModelField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">type_val</span></em>, <em class="sig-param"><span class="pre">value=&lt;class</span> <span class="pre">'minos.common.model.abc.types.MissingSentinel'&gt;</span></em>, <em class="sig-param"><span class="pre">parser=None</span></em>, <em class="sig-param"><span class="pre">validator=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/abc/fields.html#ModelField"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.abc.fields.ModelField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a model field.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.abc.fields.ModelField.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">type_val</span></em>, <em class="sig-param"><span class="pre">value=&lt;class</span> <span class="pre">'minos.common.model.abc.types.MissingSentinel'&gt;</span></em>, <em class="sig-param"><span class="pre">parser=None</span></em>, <em class="sig-param"><span class="pre">validator=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/abc/fields.html#ModelField.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.abc.fields.ModelField.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.abc.fields.ModelField.avro_data">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_data</span></span><a class="headerlink" href="#minos.common.model.abc.fields.ModelField.avro_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the avro data of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.abc.fields.ModelField.avro_schema">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_schema</span></span><em class="property"><span class="pre">:</span> <span class="pre">dict</span></em><a class="headerlink" href="#minos.common.model.abc.fields.ModelField.avro_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the avro schema of the field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.abc.fields.ModelField.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#minos.common.model.abc.fields.ModelField.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name getter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.abc.fields.ModelField.parser">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">parser</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[Callable[[Any],</span> <span class="pre">minos.common.model.abc.fields.T]]</span></em><a class="headerlink" href="#minos.common.model.abc.fields.ModelField.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser getter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], ~T]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.abc.fields.ModelField.type">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> <span class="pre">Type</span></em><a class="headerlink" href="#minos.common.model.abc.fields.ModelField.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type getter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Type</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.abc.fields.ModelField.validator">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">validator</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[Callable[[Any],</span> <span class="pre">minos.common.model.abc.fields.T]]</span></em><a class="headerlink" href="#minos.common.model.abc.fields.ModelField.validator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parser getter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], ~T]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.abc.fields.ModelField.value">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#minos.common.model.abc.fields.ModelField.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value getter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Minos Microservice Common</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Minos Microservice Common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="minos.html">minos namespace</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="minos.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="minos.html">minos namespace</a><ul>
+  <li><a href="minos.common.html">minos.common package</a><ul>
+  <li><a href="minos.common.model.html">minos.common.model package</a><ul>
+  <li><a href="minos.common.model.abc.html">minos.common.model.abc package</a><ul>
+      <li>Previous: <a href="minos.common.model.abc.html" title="previous chapter">minos.common.model.abc package</a></li>
+      <li>Next: <a href="minos.common.model.abc.model.html" title="next chapter">minos.common.model.abc.model module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Clariteia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/minos.common.model.abc.fields.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

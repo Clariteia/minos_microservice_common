@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>minos.common.messages.request &#8212; Minos Microservice Common 0.0.15 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for minos.common.messages.request</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Copyright (C) 2021 Clariteia SL</span>
+
+<span class="sd">This file is part of minos framework.</span>
+
+<span class="sd">Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">t</span>
+
+<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">MinosMessageException</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..logs</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">log</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..protocol</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">MinosAvroProtocol</span><span class="p">,</span>
+    <span class="n">MinosBinaryProtocol</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="MinosBaseRequest"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosBaseRequest">[docs]</a><span class="k">class</span> <span class="nc">MinosBaseRequest</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="s2">&quot;binary_class&quot;</span><span class="p">,</span> <span class="s2">&quot;_encoder&quot;</span><span class="p">,</span> <span class="s2">&quot;_decoder&quot;</span><span class="p">,</span> <span class="s2">&quot;_headers&quot;</span><span class="p">,</span> <span class="s2">&quot;_body&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">body</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_body</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">headers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">binary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_body</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;imported with body&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encoder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_body</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encoder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MinosBaseRequest.addHeader"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosBaseRequest.addHeader">[docs]</a>    <span class="k">def</span> <span class="nf">addHeader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MinosBaseRequest.addBody"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosBaseRequest.addBody">[docs]</a>    <span class="k">def</span> <span class="nf">addBody</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body_val</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">body_val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_body</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">body_val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_body</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_body</span> <span class="o">=</span> <span class="n">body_val</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MinosBaseRequest.addMethod"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosBaseRequest.addMethod">[docs]</a>    <span class="k">def</span> <span class="nf">addMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="s2">&quot;method&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MinosBaseRequest.addPath"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosBaseRequest.addPath">[docs]</a>    <span class="k">def</span> <span class="nf">addPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MinosBaseRequest.sub_build"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosBaseRequest.sub_build">[docs]</a>    <span class="k">def</span> <span class="nf">sub_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span></div>
+
+    <span class="k">def</span> <span class="nf">_prepare_binary_encoder_decoder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        configure the Encoder and the Decoder methods from the Binary Class Instance passed from the Builder</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_encoder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_class</span><span class="o">.</span><span class="n">encode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_decoder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary_class</span><span class="o">.</span><span class="n">decode</span>
+
+    <span class="k">def</span> <span class="nf">_prepare_default_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        instanciate the default class attributes like headers dict, body as None and the headers id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_body</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MinosBaseRequest.build"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosBaseRequest.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        build the instance with all the default informations</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_binary_encoder_decoder</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_default_attributes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sub_build</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MinosBaseRequest.load"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosBaseRequest.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        import the bytes code and obtain the Request</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_binary_encoder_decoder</span><span class="p">()</span>
+        <span class="n">decoded_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decoder</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="n">decoded_dict</span><span class="p">[</span><span class="s2">&quot;headers&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">&quot;body&quot;</span> <span class="ow">in</span> <span class="n">decoded_dict</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_body</span> <span class="o">=</span> <span class="n">decoded_dict</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="MinosRPCHeadersRequest"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCHeadersRequest">[docs]</a><span class="k">class</span> <span class="nc">MinosRPCHeadersRequest</span><span class="p">(</span><span class="n">MinosBaseRequest</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Minos RPC Headers Request Class</span>
+
+<span class="sd">    In the Minos RPC protocol the Headers are sent in a separete call.</span>
+<span class="sd">    The Headers get the ID and the Action</span>
+<span class="sd">    in the future more parameters are take in count</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="MinosRPCHeadersRequest.addMethod"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCHeadersRequest.addMethod">[docs]</a>    <span class="k">def</span> <span class="nf">addMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        the RPC does not support the classic method call</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;this method not exist&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MinosRPCHeadersRequest.addPath"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCHeadersRequest.addPath">[docs]</a>    <span class="k">def</span> <span class="nf">addPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        the RPC does not support the path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;this method not exist&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MinosRPCHeadersRequest.addAction"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCHeadersRequest.addAction">[docs]</a>    <span class="k">def</span> <span class="nf">addAction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        RPC support the action header parameter</span>
+<span class="sd">        the action correspond to the RPC command</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">action</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MinosRPCHeadersRequest.sub_build"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCHeadersRequest.sub_build">[docs]</a>    <span class="k">def</span> <span class="nf">sub_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        instance more variables for this specific Message class</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;headers&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="MinosRPCBodyRequest"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCBodyRequest">[docs]</a><span class="k">class</span> <span class="nc">MinosRPCBodyRequest</span><span class="p">(</span><span class="n">MinosBaseRequest</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Minos RPC Body Class</span>
+
+<span class="sd">    The body are sent after the Headers.</span>
+<span class="sd">    The Body have as Headers an ID, that correspond of the ID of the Headers call.</span>
+<span class="sd">    and a set of atttributes that must be passed to the command function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="MinosRPCBodyRequest.addId"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCBodyRequest.addId">[docs]</a>    <span class="k">def</span> <span class="nf">addId</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MinosRPCBodyRequest.addMethod"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCBodyRequest.addMethod">[docs]</a>    <span class="k">def</span> <span class="nf">addMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+<div class="viewcode-block" id="MinosRPCBodyRequest.addPath"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCBodyRequest.addPath">[docs]</a>    <span class="k">def</span> <span class="nf">addPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+<div class="viewcode-block" id="MinosRPCBodyRequest.sub_build"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRPCBodyRequest.sub_build">[docs]</a>    <span class="k">def</span> <span class="nf">sub_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        instance more variables for this specific Message class</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;body&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="MinosRequest"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRequest">[docs]</a><span class="k">class</span> <span class="nc">MinosRequest</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="MinosRequest.build"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRequest.build">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">request_clas</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">MinosBaseRequest</span><span class="p">],</span> <span class="n">binary</span><span class="p">:</span> <span class="n">MinosBinaryProtocol</span> <span class="o">=</span> <span class="n">MinosAvroProtocol</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        this is the Builder that create specific Requests Objects</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">request_instance</span> <span class="o">=</span> <span class="n">request_clas</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request_instance</span><span class="p">,</span> <span class="n">MinosBaseRequest</span><span class="p">):</span>
+            <span class="n">request_instance</span><span class="o">.</span><span class="n">binary_class</span> <span class="o">=</span> <span class="n">binary</span>
+            <span class="n">request_instance</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">request_instance</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MinosMessageException</span><span class="p">(</span><span class="s2">&quot;The request class must extend MinosBaseRequest&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MinosRequest.load"><a class="viewcode-back" href="../../../../api/minos.common.messages.request.html#minos.common.messages.request.MinosRequest.load">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">request_class</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">MinosBaseRequest</span><span class="p">],</span> <span class="n">binary</span><span class="p">:</span> <span class="n">MinosBinaryProtocol</span> <span class="o">=</span> <span class="n">MinosAvroProtocol</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        load binary data and convert in the Message Request Instance given</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">request_instance</span> <span class="o">=</span> <span class="n">request_class</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request_instance</span><span class="p">,</span> <span class="n">MinosBaseRequest</span><span class="p">):</span>
+            <span class="n">request_instance</span><span class="o">.</span><span class="n">binary_class</span> <span class="o">=</span> <span class="n">binary</span>
+            <span class="n">request_instance</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">request_instance</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">Minos Microservice Common</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Minos Microservice Common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/minos.html">minos namespace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Clariteia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

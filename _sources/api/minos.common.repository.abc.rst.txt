@@ -1,0 +1,7 @@
+minos.common.repository.abc module
+==================================
+
+.. automodule:: minos.common.repository.abc
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+minos.common.repository.pg module
+=================================
+
+.. automodule:: minos.common.repository.pg
+   :members:
+   :undoc-members:
+   :show-inheritance:

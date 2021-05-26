@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>minos.common.model.aggregate module &#8212; Minos Microservice Common 0.0.15 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="minos.common.model.command module" href="minos.common.model.command.html" />
+    <link rel="prev" title="minos.common.model.abc.types module" href="minos.common.model.abc.types.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-minos.common.model.aggregate">
+<span id="minos-common-model-aggregate-module"></span><h1>minos.common.model.aggregate module<a class="headerlink" href="#module-minos.common.model.aggregate" title="Permalink to this headline">¶</a></h1>
+<p>Copyright (C) 2021 Clariteia SL</p>
+<p>This file is part of minos framework.</p>
+<p>Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.model.aggregate.</span></span><span class="sig-name descname"><span class="pre">Aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_broker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_repository</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/aggregate.html#Aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.aggregate.Aggregate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="minos.common.model.abc.model.html#minos.common.model.abc.model.MinosModel" title="minos.common.model.abc.model.MinosModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.abc.model.MinosModel</span></code></a></p>
+<p>Base aggregate class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_broker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_repository</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/aggregate.html#Aggregate.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Named arguments to be set as model attributes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.avro_bytes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_bytes</span></span><em class="property"><span class="pre">:</span> <span class="pre">bytes</span></em><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.avro_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate bytes representation of the current instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A bytes object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.avro_data">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.avro_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the avro data of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.avro_schema">
+<span class="sig-name descname"><span class="pre">avro_schema</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'fields':</span> <span class="pre">[{'name':</span> <span class="pre">'id',</span> <span class="pre">'type':</span> <span class="pre">'int'},</span> <span class="pre">{'name':</span> <span class="pre">'version',</span> <span class="pre">'type':</span> <span class="pre">'int'}],</span> <span class="pre">'name':</span> <span class="pre">'Aggregate',</span> <span class="pre">'namespace':</span> <span class="pre">'minos.common.model.aggregate',</span> <span class="pre">'type':</span> <span class="pre">'record'}</span></em><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.avro_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.avro_str">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_str</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.avro_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate bytes representation of the current instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A bytes object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.classname">
+<span class="sig-name descname"><span class="pre">classname</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'minos.common.model.aggregate.Aggregate'</span></em><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.classname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.create">
+<em class="property"><span class="pre">async</span> <span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_broker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_repository</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/aggregate.html#Aggregate.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <code class="docutils literal notranslate"><span class="pre">Aggregate</span></code> instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> – Additional positional arguments.</p></li>
+<li><p><strong>_config</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig" title="minos.common.configuration.config.MinosConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfig</span></code></a>]) – Current minos config.</p></li>
+<li><p><strong>_broker</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.networks.html#minos.common.networks.MinosBroker" title="minos.common.networks.MinosBroker"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.networks.MinosBroker</span></code></a>]) – Broker to be set to the aggregates.</p></li>
+<li><p><strong>_repository</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository" title="minos.common.repository.abc.MinosRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.repository.abc.MinosRepository</span></code></a>]) – Repository to be set to the aggregate.</p></li>
+<li><p><strong>kwargs</strong> – Additional named arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.aggregate.Aggregate</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A new <code class="docutils literal notranslate"><span class="pre">Aggregate</span></code> instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.delete">
+<em class="property"><span class="pre">async</span> <span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_broker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_repository</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/aggregate.html#Aggregate.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the given aggregate instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – If the method call is performed from an instance the identifier is ignored, otherwise it is used to
+identify the target instance.</p></li>
+<li><p><strong>_config</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig" title="minos.common.configuration.config.MinosConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfig</span></code></a>]) – Current minos config.</p></li>
+<li><p><strong>_broker</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.networks.html#minos.common.networks.MinosBroker" title="minos.common.networks.MinosBroker"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.networks.MinosBroker</span></code></a>]) – Broker to be set to the aggregates.</p></li>
+<li><p><strong>_repository</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository" title="minos.common.repository.abc.MinosRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.repository.abc.MinosRepository</span></code></a>]) – Repository to be set to the aggregate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>This method does not return anything.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.fields">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="pre">:</span> <span class="pre">dict</span></em><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fields getter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="minos.common.model.abc.fields.html#minos.common.model.abc.fields.ModelField" title="minos.common.model.abc.fields.ModelField"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.abc.fields.ModelField</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.from_avro_bytes">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_avro_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.from_avro_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a single instance or a sequence of instances from bytes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – A bytes data.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[<a class="reference internal" href="minos.common.model.abc.model.html#minos.common.model.abc.model.MinosModel" title="minos.common.model.abc.model.MinosModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.abc.model.MinosModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="minos.common.model.abc.model.html#minos.common.model.abc.model.MinosModel" title="minos.common.model.abc.model.MinosModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.abc.model.MinosModel</span></code></a>]]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A single instance or a sequence of instances.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.from_avro_str">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_avro_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.from_avro_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a single instance or a sequence of instances from bytes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A bytes data.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[<a class="reference internal" href="minos.common.model.abc.model.html#minos.common.model.abc.model.MinosModel" title="minos.common.model.abc.model.MinosModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.abc.model.MinosModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="minos.common.model.abc.model.html#minos.common.model.abc.model.MinosModel" title="minos.common.model.abc.model.MinosModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.abc.model.MinosModel</span></code></a>]]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A single instance or a sequence of instances.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.from_dict">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a new instance from a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>d</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>]) – A dictionary object.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="minos.common.model.abc.model.html#minos.common.model.abc.model.MinosModel" title="minos.common.model.abc.model.MinosModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.abc.model.MinosModel</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A new <code class="docutils literal notranslate"><span class="pre">MinosModel</span></code> instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.get">
+<em class="property"><span class="pre">async</span> <span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_broker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_repository</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/aggregate.html#Aggregate.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a sequence of aggregates based on a list of identifiers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ids</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – list of identifiers.</p></li>
+<li><p><strong>_config</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig" title="minos.common.configuration.config.MinosConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfig</span></code></a>]) – Current minos config.</p></li>
+<li><p><strong>_broker</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.networks.html#minos.common.networks.MinosBroker" title="minos.common.networks.MinosBroker"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.networks.MinosBroker</span></code></a>]) – Broker to be set to the aggregates.</p></li>
+<li><p><strong>_repository</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository" title="minos.common.repository.abc.MinosRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.repository.abc.MinosRepository</span></code></a>]) – Repository to be set to the aggregate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.aggregate.Aggregate</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of aggregate instances.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.get_one">
+<em class="property"><span class="pre">async</span> <span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">get_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_broker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_repository</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/aggregate.html#Aggregate.get_one"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.get_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get one aggregate based on an identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – aggregate identifier.</p></li>
+<li><p><strong>_config</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig" title="minos.common.configuration.config.MinosConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfig</span></code></a>]) – Current minos config.</p></li>
+<li><p><strong>_broker</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.networks.html#minos.common.networks.MinosBroker" title="minos.common.networks.MinosBroker"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.networks.MinosBroker</span></code></a>]) – Broker to be set to the aggregates.</p></li>
+<li><p><strong>_repository</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository" title="minos.common.repository.abc.MinosRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.repository.abc.MinosRepository</span></code></a>]) – Repository to be set to the aggregate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of aggregate instances.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.aggregate.Aggregate</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An aggregate instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.refresh">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/aggregate.html#Aggregate.refresh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refresh the state of the given instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.NoReturn</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>This method does not return anything.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.to_avro_bytes">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">to_avro_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.to_avro_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a bytes representation of the given object instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>models</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="minos.common.model.abc.model.html#minos.common.model.abc.model.MinosModel" title="minos.common.model.abc.model.MinosModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.abc.model.MinosModel</span></code></a>]) – A sequence of minos models.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A bytes object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.to_avro_str">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">to_avro_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.to_avro_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a bytes representation of the given object instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>models</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="minos.common.model.abc.model.html#minos.common.model.abc.model.MinosModel" title="minos.common.model.abc.model.MinosModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.abc.model.MinosModel</span></code></a>]) – A sequence of minos models.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A bytes object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.update">
+<em class="property"><span class="pre">async</span> <span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_broker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_repository</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/aggregate.html#Aggregate.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update an existing <code class="docutils literal notranslate"><span class="pre">Aggregate</span></code> instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – If the method call is performed from an instance the identifier is ignored, otherwise it is used to
+identify the target instance.</p></li>
+<li><p><strong>_config</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig" title="minos.common.configuration.config.MinosConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.MinosConfig</span></code></a>]) – Current minos config.</p></li>
+<li><p><strong>_broker</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.networks.html#minos.common.networks.MinosBroker" title="minos.common.networks.MinosBroker"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.networks.MinosBroker</span></code></a>]) – Broker to be set to the aggregates.</p></li>
+<li><p><strong>_repository</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<a class="reference internal" href="minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository" title="minos.common.repository.abc.MinosRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.repository.abc.MinosRepository</span></code></a>]) – Repository to be set to the aggregate.</p></li>
+<li><p><strong>kwargs</strong> – Additional named arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.aggregate.Aggregate</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An updated <code class="docutils literal notranslate"><span class="pre">Aggregate</span></code>  instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.model.aggregate.Aggregate.version">
+<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#minos.common.model.aggregate.Aggregate.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Minos Microservice Common</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Minos Microservice Common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="minos.html">minos namespace</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="minos.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="minos.html">minos namespace</a><ul>
+  <li><a href="minos.common.html">minos.common package</a><ul>
+  <li><a href="minos.common.model.html">minos.common.model package</a><ul>
+      <li>Previous: <a href="minos.common.model.abc.types.html" title="previous chapter">minos.common.model.abc.types module</a></li>
+      <li>Next: <a href="minos.common.model.command.html" title="next chapter">minos.common.model.command module</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Clariteia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/minos.common.model.aggregate.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

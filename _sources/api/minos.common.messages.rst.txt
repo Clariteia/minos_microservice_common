@@ -1,0 +1,16 @@
+minos.common.messages package
+=============================
+
+.. automodule:: minos.common.messages
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   minos.common.messages.request
+   minos.common.messages.response
