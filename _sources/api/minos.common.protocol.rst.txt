@@ -6,6 +6,14 @@ minos.common.protocol package
    :undoc-members:
    :show-inheritance:
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   minos.common.protocol.avro
+
 Submodules
 ----------
 
@@ -13,5 +21,4 @@ Submodules
    :maxdepth: 4
 
    minos.common.protocol.abc
-   minos.common.protocol.avro
    minos.common.protocol.json
