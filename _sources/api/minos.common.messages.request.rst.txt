@@ -1,7 +1,0 @@
-minos.common.messages.request module
-====================================
-
-.. automodule:: minos.common.messages.request
-   :members:
-   :undoc-members:
-   :show-inheritance:

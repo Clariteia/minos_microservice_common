@@ -13,7 +13,6 @@ Subpackages
    :maxdepth: 4
 
    minos.common.configuration
-   minos.common.messages
    minos.common.model
    minos.common.protocol
    minos.common.repository
@@ -28,8 +27,7 @@ Submodules
    minos.common.database
    minos.common.exceptions
    minos.common.importlib
-   minos.common.injectors
-   minos.common.logs
+   minos.common.messages
    minos.common.meta
    minos.common.networks
    minos.common.saga
