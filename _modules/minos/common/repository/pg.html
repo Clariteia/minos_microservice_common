@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.repository.pg &mdash; Minos Microservice Common 0.0.17 documentation</title>
+  <title>minos.common.repository.pg &mdash; Minos Microservice Common 0.1.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.17
+                0.1.0
               </div>
             
           
@@ -180,11 +180,11 @@
     <span class="n">MinosRepository</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">.entries</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">MinosRepositoryEntry</span><span class="p">,</span>
+    <span class="n">RepositoryEntry</span><span class="p">,</span>
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="PostgreSqlMinosRepository"><a class="viewcode-back" href="../../../../api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlMinosRepository">[docs]</a><span class="k">class</span> <span class="nc">PostgreSqlMinosRepository</span><span class="p">(</span><span class="n">MinosRepository</span><span class="p">,</span> <span class="n">PostgreSqlMinosDatabase</span><span class="p">):</span>
+<div class="viewcode-block" id="PostgreSqlRepository"><a class="viewcode-back" href="../../../../api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlRepository">[docs]</a><span class="k">class</span> <span class="nc">PostgreSqlRepository</span><span class="p">(</span><span class="n">MinosRepository</span><span class="p">,</span> <span class="n">PostgreSqlMinosDatabase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;PostgreSQL-based implementation of the repository class in ``Minos``.&quot;&quot;&quot;</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -200,7 +200,7 @@
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query</span><span class="p">(</span><span class="n">_CREATE_ACTION_ENUM_QUERY</span><span class="p">)</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query</span><span class="p">(</span><span class="n">_CREATE_TABLE_QUERY</span><span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">MinosRepositoryEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MinosRepositoryEntry</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">RepositoryEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RepositoryEntry</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
             <span class="s2">&quot;aggregate_id&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_id</span><span class="p">,</span>
@@ -211,10 +211,10 @@
         <span class="n">entry</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_id</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">created_at</span> <span class="o">=</span> <span class="n">response</span>
         <span class="k">return</span> <span class="n">entry</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">MinosRepositoryEntry</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">RepositoryEntry</span><span class="p">]:</span>
         <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_select_query</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">async</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_iter</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">MinosRepositoryEntry</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">RepositoryEntry</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="p">)</span>
 
     <span class="c1"># noinspection PyUnusedLocal</span>
     <span class="nd">@staticmethod</span>
@@ -276,7 +276,7 @@
 <span class="s2">                                          ON nsp.oid = typ.typnamespace</span>
 <span class="s2">                      WHERE nsp.nspname = current_schema()</span>
 <span class="s2">                        AND typ.typname = &#39;action_type&#39;) THEN</span>
-<span class="s2">            CREATE TYPE action_type AS ENUM (&#39;insert&#39;, &#39;update&#39;, &#39;delete&#39;);</span>
+<span class="s2">            CREATE TYPE action_type AS ENUM (&#39;create&#39;, &#39;update&#39;, &#39;delete&#39;);</span>
 <span class="s2">        END IF;</span>
 <span class="s2">    END;</span>
 <span class="s2">$$</span>

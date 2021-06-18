@@ -1,0 +1,25 @@
+minos.common.snapshot package
+=============================
+
+.. automodule:: minos.common.snapshot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   minos.common.snapshot.pg
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   minos.common.snapshot.abc
+   minos.common.snapshot.entries
+   minos.common.snapshot.memory

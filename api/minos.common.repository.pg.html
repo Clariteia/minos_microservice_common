@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.repository.pg module &mdash; Minos Microservice Common 0.0.17 documentation</title>
+  <title>minos.common.repository.pg module &mdash; Minos Microservice Common 0.1.0 documentation</title>
   
 
   
@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="minos.common.storage package" href="minos.common.storage.html" />
+    <link rel="next" title="minos.common.snapshot package" href="minos.common.snapshot.html" />
     <link rel="prev" title="minos.common.repository.memory module" href="minos.common.repository.memory.html" /> 
 </head>
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.0.17
+                0.1.0
               </div>
             
           
@@ -186,26 +186,26 @@
 <p>This file is part of minos framework.</p>
 <p>Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.repository.pg.</span></span><span class="sig-name descname"><span class="pre">PostgreSqlMinosRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/repository/pg.html#PostgreSqlMinosRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.repository.pg.</span></span><span class="sig-name descname"><span class="pre">PostgreSqlRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/repository/pg.html#PostgreSqlRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">minos.common.setup.T</span></code>]</p>
 <p>PostgreSQL-based implementation of the repository class in <code class="docutils literal notranslate"><span class="pre">Minos</span></code>.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.delete">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Store new deletion entry into de repository.</p>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.create">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store new creation entry into de repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.aggregate.html#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><em>Aggregate</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry"><em>MinosRepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
+<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><em>AggregateDiff</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry"><em>RepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry">MinosRepositoryEntry</a></p>
+<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry">RepositoryEntry</a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>This method does not return anything.</p>
@@ -214,8 +214,25 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.destroy">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.destroy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.delete">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store new deletion entry into de repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><em>AggregateDiff</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry"><em>RepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry">RepositoryEntry</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This method does not return anything.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.destroy">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.destroy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroy miscellaneous repository things.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -228,8 +245,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.from_config">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*args</span></em>, <em class="sig-param"><span class="pre">config=&lt;dependency_injector.wiring.Provide</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.from_config" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.from_config">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*args</span></em>, <em class="sig-param"><span class="pre">config=&lt;dependency_injector.wiring.Provide</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.from_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a new instance from config.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -248,26 +265,9 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.insert">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.insert" title="Permalink to this definition">¶</a></dt>
-<dd><p>Store new insertion entry into de repository.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.aggregate.html#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><em>Aggregate</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry"><em>MinosRepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry">MinosRepositoryEntry</a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>This method does not return anything.</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.pool">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">pool</span></span><em class="property"><span class="pre">:</span> <span class="pre">aiopg.pool.Pool</span></em><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.pool" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.pool">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">pool</span></span><em class="property"><span class="pre">:</span> <span class="pre">aiopg.pool.Pool</span></em><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.pool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the connections pool.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -280,8 +280,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.select">
-<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregate_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_lt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_le</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_ge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_lt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_le</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_ge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.select" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregate_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_lt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_le</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_ge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_lt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_le</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_ge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.select" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a selection query of entries stored in to the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -301,7 +301,7 @@
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.AsyncIterator</span></code>[<a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.repository.entries.MinosRepositoryEntry</span></code></a>]</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.AsyncIterator</span></code>[<a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.repository.entries.RepositoryEntry</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A list of entries.</p>
@@ -310,8 +310,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.setup">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.setup">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup miscellaneous repository things.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -324,8 +324,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.submit_query">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">submit_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.submit_query" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.submit_query">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">submit_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.submit_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Submit a SQL query.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -344,8 +344,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.submit_query_and_fetchone">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">submit_query_and_fetchone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.submit_query_and_fetchone" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.submit_query_and_fetchone">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">submit_query_and_fetchone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.submit_query_and_fetchone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Submit a SQL query and gets the first response.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -364,8 +364,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.submit_query_and_iter">
-<span class="sig-name descname"><span class="pre">submit_query_and_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.submit_query_and_iter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.submit_query_and_iter">
+<span class="sig-name descname"><span class="pre">submit_query_and_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.submit_query_and_iter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Submit a SQL query and return an asynchronous iterator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -384,15 +384,15 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlMinosRepository.update">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlMinosRepository.update" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.update">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store new update entry into de repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.aggregate.html#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><em>Aggregate</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry"><em>MinosRepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
+<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><em>AggregateDiff</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry"><em>RepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry">MinosRepositoryEntry</a></p>
+<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry">RepositoryEntry</a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>This method does not return anything.</p>
@@ -410,7 +410,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="minos.common.storage.html" class="btn btn-neutral float-right" title="minos.common.storage package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="minos.common.snapshot.html" class="btn btn-neutral float-right" title="minos.common.snapshot package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="minos.common.repository.memory.html" class="btn btn-neutral float-left" title="minos.common.repository.memory module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

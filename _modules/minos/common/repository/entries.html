@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.repository.entries &mdash; Minos Microservice Common 0.0.17 documentation</title>
+  <title>minos.common.repository.entries &mdash; Minos Microservice Common 0.1.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.17
+                0.1.0
               </div>
             
           
@@ -182,28 +182,33 @@
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Iterable</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Type</span><span class="p">,</span>
     <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosRepositoryUnknownActionException</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..importlib</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">import_module</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">..model</span> <span class="kn">import</span> <span class="p">(</span>
         <span class="n">Aggregate</span><span class="p">,</span>
+        <span class="n">AggregateDiff</span><span class="p">,</span>
     <span class="p">)</span>
 
 
-<div class="viewcode-block" id="MinosRepositoryAction"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryAction">[docs]</a><span class="k">class</span> <span class="nc">MinosRepositoryAction</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryAction"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction">[docs]</a><span class="k">class</span> <span class="nc">RepositoryAction</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Enum class that describes the available repository actions.&quot;&quot;&quot;</span>
 
-    <span class="n">INSERT</span> <span class="o">=</span> <span class="s2">&quot;insert&quot;</span>
+    <span class="n">CREATE</span> <span class="o">=</span> <span class="s2">&quot;create&quot;</span>
     <span class="n">UPDATE</span> <span class="o">=</span> <span class="s2">&quot;update&quot;</span>
     <span class="n">DELETE</span> <span class="o">=</span> <span class="s2">&quot;delete&quot;</span>
 
-<div class="viewcode-block" id="MinosRepositoryAction.value_of"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryAction.value_of">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">value_of</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MinosRepositoryAction</span><span class="p">]:</span>
+<div class="viewcode-block" id="RepositoryAction.value_of"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction.value_of">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">value_of</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RepositoryAction</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Get the action based on its text representation.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
@@ -213,26 +218,26 @@
         <span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="MinosRepositoryEntry"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry">[docs]</a><span class="k">class</span> <span class="nc">MinosRepositoryEntry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="RepositoryEntry"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry">[docs]</a><span class="k">class</span> <span class="nc">RepositoryEntry</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Class that represents an entry (or row) on the events repository database which stores the aggregate changes.&quot;&quot;&quot;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="s2">&quot;aggregate_id&quot;</span><span class="p">,</span> <span class="s2">&quot;aggregate_name&quot;</span><span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">,</span> <span class="s2">&quot;created_at&quot;</span>
 
     <span class="c1"># noinspection PyShadowingBuiltins</span>
-<div class="viewcode-block" id="MinosRepositoryEntry.__init__"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<div class="viewcode-block" id="RepositoryEntry.__init__"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">aggregate_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">version</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">memoryview</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(),</span>
         <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">action</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MinosRepositoryAction</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">action</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">RepositoryAction</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">created_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">memoryview</span><span class="p">):</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">action</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">action</span> <span class="o">=</span> <span class="n">MinosRepositoryAction</span><span class="o">.</span><span class="n">value_of</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+            <span class="n">action</span> <span class="o">=</span> <span class="n">RepositoryAction</span><span class="o">.</span><span class="n">value_of</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_id</span> <span class="o">=</span> <span class="n">aggregate_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_name</span> <span class="o">=</span> <span class="n">aggregate_name</span>
@@ -243,17 +248,43 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">action</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">created_at</span> <span class="o">=</span> <span class="n">created_at</span></div>
 
-<div class="viewcode-block" id="MinosRepositoryEntry.from_aggregate"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry.from_aggregate">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_aggregate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">aggregate</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MinosRepositoryEntry</span><span class="p">:</span>
+<div class="viewcode-block" id="RepositoryEntry.from_aggregate_diff"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry.from_aggregate_diff">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_aggregate_diff</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">aggregate_diff</span><span class="p">:</span> <span class="n">AggregateDiff</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RepositoryEntry</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Build a new instance from an ``Aggregate``.</span>
 
-<span class="sd">        :param aggregate: The aggregate instance.</span>
-<span class="sd">        :return: A new ``MinosRepositoryEntry`` instance.</span>
+<span class="sd">        :param aggregate_diff: The aggregate instance.</span>
+<span class="sd">        :return: A new ``RepositoryEntry`` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># noinspection PyTypeChecker</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">aggregate</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">classname</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">avro_bytes</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">fields_diff</span><span class="o">.</span><span class="n">avro_bytes</span>
+        <span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;MinosRepositoryEntry&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">aggregate_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Load the concrete ``Aggregate`` class.</span>
+
+<span class="sd">        :return: A ``Type`` object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># noinspection PyTypeChecker</span>
+        <span class="k">return</span> <span class="n">import_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aggregate_name</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">aggregate_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateDiff</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the stored ``AggregateDiff`` instance.</span>
+
+<span class="sd">        :return: An ``AggregateDiff`` instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">..model</span> <span class="kn">import</span> <span class="p">(</span>
+            <span class="n">AggregateDiff</span><span class="p">,</span>
+            <span class="n">FieldsDiff</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">AggregateDiff</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">FieldsDiff</span><span class="o">.</span><span class="n">from_avro_bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;RepositoryEntry&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>

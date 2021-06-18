@@ -1,0 +1,7 @@
+minos.common.snapshot.entries module
+====================================
+
+.. automodule:: minos.common.snapshot.entries
+   :members:
+   :undoc-members:
+   :show-inheritance:

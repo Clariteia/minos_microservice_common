@@ -12,7 +12,9 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   minos.common.model.abc
+   minos.common.model.declarative
+   minos.common.model.dynamic
+   minos.common.model.fields
 
 Submodules
 ----------
@@ -20,7 +22,5 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
-   minos.common.model.aggregate
-   minos.common.model.command
-   minos.common.model.command_reply
-   minos.common.model.event
+   minos.common.model.abc
+   minos.common.model.types

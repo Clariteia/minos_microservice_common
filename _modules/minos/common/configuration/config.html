@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.0.17 documentation</title>
+  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.1.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.17
+                0.1.0
               </div>
             
           
@@ -200,6 +200,9 @@
 <span class="n">REST</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Rest&quot;</span><span class="p">,</span> <span class="s2">&quot;broker endpoints&quot;</span><span class="p">)</span>
 <span class="n">REPOSITORY</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Repository&quot;</span><span class="p">,</span> <span class="s2">&quot;database user password host port&quot;</span><span class="p">)</span>
 <span class="n">SNAPSHOT</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Snapshot&quot;</span><span class="p">,</span> <span class="s2">&quot;database user password host port&quot;</span><span class="p">)</span>
+<span class="n">DISCOVERY_ENDPOINT</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;DiscoveryEndpoint&quot;</span><span class="p">,</span> <span class="s2">&quot;path method&quot;</span><span class="p">)</span>
+<span class="n">DISCOVERY_ENDPOINTS</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;DiscoveryEndpoints&quot;</span><span class="p">,</span> <span class="s2">&quot;subscribe unsubscribe discover&quot;</span><span class="p">)</span>
+<span class="n">DISCOVERY</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Discovery&quot;</span><span class="p">,</span> <span class="s2">&quot;host port endpoints&quot;</span><span class="p">)</span>
 
 <span class="n">_ENVIRONMENT_MAPPER</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;commands.queue.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_QUEUE_HOST&quot;</span><span class="p">,</span>
@@ -233,6 +236,14 @@
     <span class="s2">&quot;snapshot.database&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SNAPSHOT_DATABASE&quot;</span><span class="p">,</span>
     <span class="s2">&quot;snapshot.user&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SNAPSHOT_USER&quot;</span><span class="p">,</span>
     <span class="s2">&quot;snapshot.password&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SNAPSHOT_PASSWORD&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_HOST&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_PORT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.subscribe.path&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_SUBSCRIBE_PATH&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.subscribe.method&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_SUBSCRIBE_METHOD&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.unsubscribe.path&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_UNSUBSCRIBE_PATH&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.unsubscribe.method&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_UNSUBSCRIBE_METHOD&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.discover.path&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_DISCOVER_PATH&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.discover.method&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_DISCOVER_METHOD&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">_PARAMETERIZED_MAPPER</span> <span class="o">=</span> <span class="p">{</span>
@@ -267,6 +278,14 @@
     <span class="s2">&quot;snapshot.database&quot;</span><span class="p">:</span> <span class="s2">&quot;snapshot_database&quot;</span><span class="p">,</span>
     <span class="s2">&quot;snapshot.user&quot;</span><span class="p">:</span> <span class="s2">&quot;snapshot_user&quot;</span><span class="p">,</span>
     <span class="s2">&quot;snapshot.password&quot;</span><span class="p">:</span> <span class="s2">&quot;snapshot_password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.host&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_host&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.port&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_port&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.subscribe.path&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_subscribe_path&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.subscribe.method&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_subscribe_method&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.unsubscribe.path&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_unsubscribe_path&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.unsubscribe.method&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_unsubscribe_method&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.discover.path&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_discover_path&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;discovery.endpoints.discover.method&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_discover_method&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">_default</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">MinosConfigAbstract</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -564,7 +583,50 @@
             <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;snapshot.password&quot;</span><span class="p">),</span>
             <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;snapshot.host&quot;</span><span class="p">),</span>
             <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;snapshot.port&quot;</span><span class="p">)),</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">discovery</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DISCOVERY</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the sagas config.</span>
+
+<span class="sd">        :return: A ``DISCOVERY`` NamedTuple instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.host&quot;</span><span class="p">)</span>
+        <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.port&quot;</span><span class="p">)</span>
+        <span class="n">endpoints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovery_endpoints</span>
+        <span class="k">return</span> <span class="n">DISCOVERY</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="n">endpoints</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_discovery_endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DISCOVERY_ENDPOINTS</span><span class="p">:</span>
+        <span class="n">subscribe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovery_subscribe</span>
+        <span class="n">unsubscribe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovery_unsubscribe</span>
+        <span class="n">discover</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovery_discover</span>
+
+        <span class="k">return</span> <span class="n">DISCOVERY_ENDPOINTS</span><span class="p">(</span><span class="n">subscribe</span><span class="o">=</span><span class="n">subscribe</span><span class="p">,</span> <span class="n">unsubscribe</span><span class="o">=</span><span class="n">unsubscribe</span><span class="p">,</span> <span class="n">discover</span><span class="o">=</span><span class="n">discover</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_discovery_subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">:</span>
+        <span class="n">endpoint</span> <span class="o">=</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">(</span>
+            <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.subscribe.path&quot;</span><span class="p">),</span>
+            <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.subscribe.method&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">endpoint</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_discovery_unsubscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">:</span>
+        <span class="n">endpoint</span> <span class="o">=</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">(</span>
+            <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.unsubscribe.path&quot;</span><span class="p">),</span>
+            <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.unsubscribe.method&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">endpoint</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_discovery_discover</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">:</span>
+        <span class="n">endpoint</span> <span class="o">=</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">(</span>
+            <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.discover.path&quot;</span><span class="p">),</span>
+            <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.discover.method&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">endpoint</span></div>
 </pre></div>
 
            </div>

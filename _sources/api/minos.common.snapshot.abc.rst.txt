@@ -1,0 +1,7 @@
+minos.common.snapshot.abc module
+================================
+
+.. automodule:: minos.common.snapshot.abc
+   :members:
+   :undoc-members:
+   :show-inheritance:

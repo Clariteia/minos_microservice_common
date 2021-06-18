@@ -1,0 +1,17 @@
+minos.common.snapshot.pg package
+================================
+
+.. automodule:: minos.common.snapshot.pg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   minos.common.snapshot.pg.abc
+   minos.common.snapshot.pg.builders
+   minos.common.snapshot.pg.snapshot

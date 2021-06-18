@@ -1,17 +1,7 @@
-minos.common.model.abc package
-==============================
+minos.common.model.abc module
+=============================
 
 .. automodule:: minos.common.model.abc
    :members:
    :undoc-members:
    :show-inheritance:
-
-Submodules
-----------
-
-.. toctree::
-   :maxdepth: 4
-
-   minos.common.model.abc.fields
-   minos.common.model.abc.model
-   minos.common.model.abc.types

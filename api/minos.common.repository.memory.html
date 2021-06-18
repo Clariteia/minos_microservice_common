@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.repository.memory module &mdash; Minos Microservice Common 0.0.17 documentation</title>
+  <title>minos.common.repository.memory module &mdash; Minos Microservice Common 0.1.0 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.0.17
+                0.1.0
               </div>
             
           
@@ -186,26 +186,26 @@
 <p>This file is part of minos framework.</p>
 <p>Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="minos.common.repository.memory.MinosInMemoryRepository">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.repository.memory.</span></span><span class="sig-name descname"><span class="pre">MinosInMemoryRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/repository/memory.html#MinosInMemoryRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.repository.memory.MinosInMemoryRepository" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.memory.InMemoryRepository">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.repository.memory.</span></span><span class="sig-name descname"><span class="pre">InMemoryRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/repository/memory.html#InMemoryRepository"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.repository.memory.InMemoryRepository" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">minos.common.setup.T</span></code>]</p>
 <p>Memory-based implementation of the repository class in <code class="docutils literal notranslate"><span class="pre">minos</span></code>.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.memory.MinosInMemoryRepository.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/repository/memory.html#MinosInMemoryRepository.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.repository.memory.MinosInMemoryRepository.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.memory.InMemoryRepository.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/repository/memory.html#InMemoryRepository.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.repository.memory.InMemoryRepository.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.memory.MinosInMemoryRepository.delete">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.MinosInMemoryRepository.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Store new deletion entry into de repository.</p>
+<dt class="sig sig-object py" id="minos.common.repository.memory.InMemoryRepository.create">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.InMemoryRepository.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store new creation entry into de repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.aggregate.html#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><em>Aggregate</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry"><em>MinosRepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
+<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><em>AggregateDiff</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry"><em>RepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry">MinosRepositoryEntry</a></p>
+<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry">RepositoryEntry</a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>This method does not return anything.</p>
@@ -214,8 +214,25 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.memory.MinosInMemoryRepository.destroy">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.MinosInMemoryRepository.destroy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.memory.InMemoryRepository.delete">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.InMemoryRepository.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store new deletion entry into de repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><em>AggregateDiff</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry"><em>RepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry">RepositoryEntry</a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This method does not return anything.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.repository.memory.InMemoryRepository.destroy">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.InMemoryRepository.destroy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Destroy miscellaneous repository things.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -228,8 +245,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.memory.MinosInMemoryRepository.from_config">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*args</span></em>, <em class="sig-param"><span class="pre">config=&lt;dependency_injector.wiring.Provide</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.MinosInMemoryRepository.from_config" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.memory.InMemoryRepository.from_config">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*args</span></em>, <em class="sig-param"><span class="pre">config=&lt;dependency_injector.wiring.Provide</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.InMemoryRepository.from_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a new instance from config.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -249,25 +266,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.memory.MinosInMemoryRepository.insert">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.MinosInMemoryRepository.insert" title="Permalink to this definition">¶</a></dt>
-<dd><p>Store new insertion entry into de repository.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.aggregate.html#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><em>Aggregate</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry"><em>MinosRepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry">MinosRepositoryEntry</a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>This method does not return anything.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.memory.MinosInMemoryRepository.select">
-<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregate_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_lt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_le</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_ge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_lt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_le</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_ge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.MinosInMemoryRepository.select" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.memory.InMemoryRepository.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregate_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_lt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_le</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_ge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_lt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_gt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_le</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_ge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.InMemoryRepository.select" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a selection query of entries stored in to the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -287,7 +287,7 @@
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.AsyncIterator</span></code>[<a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.repository.entries.MinosRepositoryEntry</span></code></a>]</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.AsyncIterator</span></code>[<a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.repository.entries.RepositoryEntry</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A list of entries.</p>
@@ -296,8 +296,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.memory.MinosInMemoryRepository.setup">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.MinosInMemoryRepository.setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.memory.InMemoryRepository.setup">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.InMemoryRepository.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup miscellaneous repository things.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -310,15 +310,15 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.repository.memory.MinosInMemoryRepository.update">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.MinosInMemoryRepository.update" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.repository.memory.InMemoryRepository.update">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.memory.InMemoryRepository.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store new update entry into de repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.aggregate.html#minos.common.model.aggregate.Aggregate" title="minos.common.model.aggregate.Aggregate"><em>Aggregate</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry"><em>MinosRepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
+<dd class="field-odd"><p><strong>entry</strong> (<em>Union</em><em>[</em><a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><em>AggregateDiff</em></a><em>, </em><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry"><em>RepositoryEntry</em></a><em>]</em>) – Entry to be stored.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.MinosRepositoryEntry" title="minos.common.repository.entries.MinosRepositoryEntry">MinosRepositoryEntry</a></p>
+<dd class="field-even"><p><a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry">RepositoryEntry</a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>This method does not return anything.</p>

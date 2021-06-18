@@ -1,0 +1,7 @@
+minos.common.model.fields.avro\_data\_encoder module
+====================================================
+
+.. automodule:: minos.common.model.fields.avro_data_encoder
+   :members:
+   :undoc-members:
+   :show-inheritance:

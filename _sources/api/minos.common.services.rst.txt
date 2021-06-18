@@ -1,0 +1,7 @@
+minos.common.services module
+============================
+
+.. automodule:: minos.common.services
+   :members:
+   :undoc-members:
+   :show-inheritance:

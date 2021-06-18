@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.networks &mdash; Minos Microservice Common 0.0.17 documentation</title>
+  <title>minos.common.networks &mdash; Minos Microservice Common 0.1.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.17
+                0.1.0
               </div>
             
           
@@ -187,14 +187,14 @@
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">.model</span> <span class="kn">import</span> <span class="p">(</span>
-        <span class="n">MinosModel</span><span class="p">,</span>
+        <span class="n">Model</span><span class="p">,</span>
     <span class="p">)</span>
 
 
 <div class="viewcode-block" id="MinosBroker"><a class="viewcode-back" href="../../../api/minos.common.networks.html#minos.common.networks.MinosBroker">[docs]</a><span class="k">class</span> <span class="nc">MinosBroker</span><span class="p">(</span><span class="n">ABC</span><span class="p">,</span> <span class="n">MinosSetup</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base Broker class.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="MinosBroker.send_one"><a class="viewcode-back" href="../../../api/minos.common.networks.html#minos.common.networks.MinosBroker.send_one">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">send_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">MinosModel</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+<div class="viewcode-block" id="MinosBroker.send_one"><a class="viewcode-back" href="../../../api/minos.common.networks.html#minos.common.networks.MinosBroker.send_one">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">send_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Send one ``Aggregate`` instance.</span>
 
 <span class="sd">        :param item: The instance to be send.</span>
@@ -204,7 +204,7 @@
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="n">item</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MinosBroker.send"><a class="viewcode-back" href="../../../api/minos.common.networks.html#minos.common.networks.MinosBroker.send">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MinosModel</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Send a list of ``Aggregate`` instances.</span>
 
 <span class="sd">        :param items: A list of aggregates.</span>

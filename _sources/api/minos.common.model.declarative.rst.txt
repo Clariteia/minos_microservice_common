@@ -1,0 +1,26 @@
+minos.common.model.declarative package
+======================================
+
+.. automodule:: minos.common.model.declarative
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   minos.common.model.declarative.aggregate
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   minos.common.model.declarative.abc
+   minos.common.model.declarative.command
+   minos.common.model.declarative.command_reply
+   minos.common.model.declarative.event

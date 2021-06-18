@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model package &mdash; Minos Microservice Common 0.0.17 documentation</title>
+  <title>minos.common.model package &mdash; Minos Microservice Common 0.1.0 documentation</title>
   
 
   
@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="minos.common.model.abc package" href="minos.common.model.abc.html" />
+    <link rel="next" title="minos.common.model.declarative package" href="minos.common.model.declarative.html" />
     <link rel="prev" title="minos.common.configuration.config module" href="minos.common.configuration.config.html" /> 
 </head>
 
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.0.17
+                0.1.0
               </div>
             
           
@@ -187,11 +187,43 @@
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.abc.html">minos.common.model.abc package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="minos.common.model.abc.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="minos.common.model.abc.fields.html">minos.common.model.abc.fields module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="minos.common.model.abc.model.html">minos.common.model.abc.model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="minos.common.model.abc.types.html">minos.common.model.abc.types module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minos.common.model.declarative.html">minos.common.model.declarative package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="minos.common.model.declarative.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.declarative.aggregate.html">minos.common.model.declarative.aggregate package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="minos.common.model.declarative.aggregate.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="minos.common.model.declarative.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.declarative.abc.html">minos.common.model.declarative.abc module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.declarative.command.html">minos.common.model.declarative.command module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.declarative.command_reply.html">minos.common.model.declarative.command_reply module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.declarative.event.html">minos.common.model.declarative.event module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="minos.common.model.dynamic.html">minos.common.model.dynamic package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="minos.common.model.dynamic.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.dynamic.abc.html">minos.common.model.dynamic.abc module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.dynamic.bucket.html">minos.common.model.dynamic.bucket module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.dynamic.diff.html">minos.common.model.dynamic.diff module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.dynamic.dto.html">minos.common.model.dynamic.dto module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="minos.common.model.fields.html">minos.common.model.fields package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="minos.common.model.fields.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.fields.avro_data_decoder.html">minos.common.model.fields.avro_data_decoder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.fields.avro_data_encoder.html">minos.common.model.fields.avro_data_encoder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.fields.avro_schema_decoder.html">minos.common.model.fields.avro_schema_decoder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.fields.avro_schema_encoder.html">minos.common.model.fields.avro_schema_encoder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.fields.fields.html">minos.common.model.fields.fields module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.fields.type_hint_builder.html">minos.common.model.fields.type_hint_builder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.fields.type_hint_comparator.html">minos.common.model.fields.type_hint_comparator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="minos.common.model.fields.utils.html">minos.common.model.fields.utils module</a></li>
 </ul>
 </li>
 </ul>
@@ -203,10 +235,8 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.aggregate.html">minos.common.model.aggregate module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.command.html">minos.common.model.command module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.command_reply.html">minos.common.model.command_reply module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.event.html">minos.common.model.event module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minos.common.model.abc.html">minos.common.model.abc module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minos.common.model.types.html">minos.common.model.types module</a></li>
 </ul>
 </div>
 </div>
@@ -218,7 +248,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="minos.common.model.abc.html" class="btn btn-neutral float-right" title="minos.common.model.abc package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="minos.common.model.declarative.html" class="btn btn-neutral float-right" title="minos.common.model.declarative package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="minos.common.configuration.config.html" class="btn btn-neutral float-left" title="minos.common.configuration.config module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

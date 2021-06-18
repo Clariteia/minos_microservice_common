@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.exceptions &mdash; Minos Microservice Common 0.0.17 documentation</title>
+  <title>minos.common.exceptions &mdash; Minos Microservice Common 0.1.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.17
+                0.1.0
               </div>
             
           
@@ -168,10 +168,21 @@
 
 <span class="sd">Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">annotations</span><span class="p">,</span>
+<span class="p">)</span>
+
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
     <span class="n">Type</span><span class="p">,</span>
 <span class="p">)</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.model</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">Aggregate</span><span class="p">,</span>
+        <span class="n">AggregateDiff</span><span class="p">,</span>
+    <span class="p">)</span>
 
 
 <div class="viewcode-block" id="MinosException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosException">[docs]</a><span class="k">class</span> <span class="nc">MinosException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
@@ -210,6 +221,14 @@
     <span class="sd">&quot;&quot;&quot;Exception to be raised when some config is already set as default.&quot;&quot;&quot;</span></div>
 
 
+<div class="viewcode-block" id="MinosBrokerException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosBrokerException">[docs]</a><span class="k">class</span> <span class="nc">MinosBrokerException</span><span class="p">(</span><span class="n">MinosException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base broker exception&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="MinosBrokerNotProvidedException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosBrokerNotProvidedException">[docs]</a><span class="k">class</span> <span class="nc">MinosBrokerNotProvidedException</span><span class="p">(</span><span class="n">MinosBrokerException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception to be raised when a broker is needed but none is set.&quot;&quot;&quot;</span></div>
+
+
 <div class="viewcode-block" id="MinosRepositoryException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryException">[docs]</a><span class="k">class</span> <span class="nc">MinosRepositoryException</span><span class="p">(</span><span class="n">MinosException</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base repository exception.&quot;&quot;&quot;</span></div>
 
@@ -234,8 +253,28 @@
     <span class="sd">&quot;&quot;&quot;Exception to be raised when some entry tries to perform an unknown action.&quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="MinosRepositoryNonProvidedException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryNonProvidedException">[docs]</a><span class="k">class</span> <span class="nc">MinosRepositoryNonProvidedException</span><span class="p">(</span><span class="n">MinosRepositoryException</span><span class="p">):</span>
+<div class="viewcode-block" id="MinosRepositoryNotProvidedException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryNotProvidedException">[docs]</a><span class="k">class</span> <span class="nc">MinosRepositoryNotProvidedException</span><span class="p">(</span><span class="n">MinosRepositoryException</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Exception to be raised when a repository is needed but none is set.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="MinosSnapshotException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosSnapshotException">[docs]</a><span class="k">class</span> <span class="nc">MinosSnapshotException</span><span class="p">(</span><span class="n">MinosException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base snapshot exception.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="MinosSnapshotNotProvidedException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosSnapshotNotProvidedException">[docs]</a><span class="k">class</span> <span class="nc">MinosSnapshotNotProvidedException</span><span class="p">(</span><span class="n">MinosSnapshotException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception to be raised when a snapshot is needed but none is set.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="MinosPreviousVersionSnapshotException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosPreviousVersionSnapshotException">[docs]</a><span class="k">class</span> <span class="nc">MinosPreviousVersionSnapshotException</span><span class="p">(</span><span class="n">MinosSnapshotException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception to be raised when current version is newer than the one to be processed.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="MinosPreviousVersionSnapshotException.__init__"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosPreviousVersionSnapshotException.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">previous</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">,</span> <span class="n">diff</span><span class="p">:</span> <span class="n">AggregateDiff</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">previous</span> <span class="o">=</span> <span class="n">previous</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diff</span> <span class="o">=</span> <span class="n">diff</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Version for </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">previous</span><span class="o">.</span><span class="n">classname</span><span class="p">)</span><span class="si">}</span><span class="s2"> aggregate must be &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;greater than </span><span class="si">{</span><span class="n">previous</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">. Obtained: </span><span class="si">{</span><span class="n">diff</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="MinosModelException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosModelException">[docs]</a><span class="k">class</span> <span class="nc">MinosModelException</span><span class="p">(</span><span class="n">MinosException</span><span class="p">):</span>

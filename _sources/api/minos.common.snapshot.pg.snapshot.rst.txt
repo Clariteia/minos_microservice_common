@@ -1,0 +1,7 @@
+minos.common.snapshot.pg.snapshot module
+========================================
+
+.. automodule:: minos.common.snapshot.pg.snapshot
+   :members:
+   :undoc-members:
+   :show-inheritance:
