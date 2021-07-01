@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.storage.lmdb &mdash; Minos Microservice Common 0.1.0 documentation</title>
+  <title>minos.common.storage.lmdb &mdash; Minos Microservice Common 0.1.1 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -194,7 +194,10 @@
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="s2">&quot;_env&quot;</span><span class="p">,</span> <span class="s2">&quot;_protocol&quot;</span><span class="p">,</span> <span class="s2">&quot;_tables&quot;</span>
 
-<div class="viewcode-block" id="MinosStorageLmdb.__init__"><a class="viewcode-back" href="../../../../api/minos.common.storage.lmdb.html#minos.common.storage.lmdb.MinosStorageLmdb.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">Environment</span><span class="p">,</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">MinosBinaryProtocol</span><span class="p">]</span> <span class="o">=</span> <span class="n">MinosAvroDatabaseProtocol</span><span class="p">):</span>
+    <span class="c1"># noinspection PyUnusedLocal</span>
+<div class="viewcode-block" id="MinosStorageLmdb.__init__"><a class="viewcode-back" href="../../../../api/minos.common.storage.lmdb.html#minos.common.storage.lmdb.MinosStorageLmdb.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">Environment</span><span class="p">,</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">MinosBinaryProtocol</span><span class="p">]</span> <span class="o">=</span> <span class="n">MinosAvroDatabaseProtocol</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_env</span><span class="p">:</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">Environment</span> <span class="o">=</span> <span class="n">env</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_protocol</span> <span class="o">=</span> <span class="n">protocol</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tables</span> <span class="o">=</span> <span class="p">{}</span></div>

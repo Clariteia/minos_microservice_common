@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.types &mdash; Minos Microservice Common 0.1.0 documentation</title>
+  <title>minos.common.model.types &mdash; Minos Microservice Common 0.1.1 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -419,12 +419,14 @@
 <span class="n">DATE</span> <span class="o">=</span> <span class="s2">&quot;date&quot;</span>
 <span class="n">TIME_MILLIS</span> <span class="o">=</span> <span class="s2">&quot;time-millis&quot;</span>
 <span class="n">TIMESTAMP_MILLIS</span> <span class="o">=</span> <span class="s2">&quot;timestamp-millis&quot;</span>
+<span class="n">TIME_MICROS</span> <span class="o">=</span> <span class="s2">&quot;time-micros&quot;</span>
+<span class="n">TIMESTAMP_MICROS</span> <span class="o">=</span> <span class="s2">&quot;timestamp-micros&quot;</span>
 <span class="n">UUID</span> <span class="o">=</span> <span class="s2">&quot;uuid&quot;</span>
 <span class="n">DECIMAL</span> <span class="o">=</span> <span class="s2">&quot;decimal&quot;</span>
 
 <span class="n">DATE_TYPE</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">INT</span><span class="p">,</span> <span class="s2">&quot;logicalType&quot;</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}</span>
-<span class="n">TIME_TYPE</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">INT</span><span class="p">,</span> <span class="s2">&quot;logicalType&quot;</span><span class="p">:</span> <span class="n">TIME_MILLIS</span><span class="p">}</span>
-<span class="n">DATETIME_TYPE</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">LONG</span><span class="p">,</span> <span class="s2">&quot;logicalType&quot;</span><span class="p">:</span> <span class="n">TIMESTAMP_MILLIS</span><span class="p">}</span>
+<span class="n">TIME_TYPE</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">INT</span><span class="p">,</span> <span class="s2">&quot;logicalType&quot;</span><span class="p">:</span> <span class="n">TIME_MICROS</span><span class="p">}</span>
+<span class="n">DATETIME_TYPE</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">LONG</span><span class="p">,</span> <span class="s2">&quot;logicalType&quot;</span><span class="p">:</span> <span class="n">TIMESTAMP_MICROS</span><span class="p">}</span>
 <span class="n">UUID_TYPE</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">STRING</span><span class="p">,</span> <span class="s2">&quot;logicalType&quot;</span><span class="p">:</span> <span class="n">UUID</span><span class="p">}</span>
 
 <span class="n">PYTHON_TYPE_TO_AVRO</span> <span class="o">=</span> <span class="p">{</span>
@@ -446,7 +448,7 @@
 <span class="p">}</span>
 
 <span class="n">PYTHON_IMMUTABLE_TYPES</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span>
-<span class="n">PYTHON_IMMUTABLE_TYPES_STR</span> <span class="o">=</span> <span class="p">(</span><span class="n">STRING</span><span class="p">,</span> <span class="n">INT</span><span class="p">,</span> <span class="n">BOOLEAN</span><span class="p">,</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">BYTES</span><span class="p">)</span>
+<span class="n">PYTHON_IMMUTABLE_TYPES_STR</span> <span class="o">=</span> <span class="p">(</span><span class="n">STRING</span><span class="p">,</span> <span class="n">INT</span><span class="p">,</span> <span class="n">BOOLEAN</span><span class="p">,</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">DOUBLE</span><span class="p">,</span> <span class="n">BYTES</span><span class="p">)</span>
 <span class="n">PYTHON_LIST_TYPES</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
 <span class="n">PYTHON_ARRAY_TYPES</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,)</span>
 <span class="n">PYTHON_NULL_TYPE</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.fields.avro_data_decoder &mdash; Minos Microservice Common 0.1.0 documentation</title>
+  <title>minos.common.model.fields.avro_data_decoder &mdash; Minos Microservice Common 0.1.1 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -247,10 +247,10 @@
 
         <span class="k">if</span> <span class="n">type_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">):</span>  <span class="c1"># noqa: E721</span>
             <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">&#39; field is &#39;None&#39;.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">!r}</span><span class="s2"> field is </span><span class="si">{</span><span class="kc">None</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">MissingSentinel</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">&#39; field is missing.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">!r}</span><span class="s2"> field is missing.&quot;</span><span class="p">)</span>
 
         <span class="k">raise</span> <span class="n">MinosTypeAttributeException</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">type_field</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
@@ -289,10 +289,10 @@
 
     <span class="k">def</span> <span class="nf">_cast_simple_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_field</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">&#39; field is &#39;None&#39;.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">!r}</span><span class="s2"> field is &#39;</span><span class="si">{</span><span class="kc">None</span><span class="si">!r}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">MissingSentinel</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">&#39; field is missing.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">!r}</span><span class="s2"> field is missing.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">type_field</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cast_int</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -349,14 +349,14 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">data</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">milliseconds</span><span class="o">=</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">microseconds</span><span class="o">=</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="k">raise</span> <span class="n">MinosTypeAttributeException</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_cast_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">data</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span> <span class="o">*</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">milliseconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span> <span class="o">*</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">microseconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">raise</span> <span class="n">MinosTypeAttributeException</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_cast_uuid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UUID</span><span class="p">:</span>
@@ -392,13 +392,13 @@
     <span class="k">def</span> <span class="nf">_cast_composed_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_field</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
         <span class="n">origin_type</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">get_origin</span><span class="p">(</span><span class="n">type_field</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">origin_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosMalformedAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">&#39; field is malformed. Type: &#39;</span><span class="si">{</span><span class="n">type_field</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MinosMalformedAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">!r}</span><span class="s2"> field is malformed. Type: &#39;</span><span class="si">{</span><span class="n">type_field</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">&#39; field is &#39;None&#39;.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">!r}</span><span class="s2"> field is &#39;None&#39;.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">MissingSentinel</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">&#39; field is missing.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MinosReqAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">!r}</span><span class="s2"> field is missing.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">origin_type</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_list</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">type_field</span><span class="p">)</span>
@@ -424,7 +424,7 @@
             <span class="k">raise</span> <span class="n">MinosTypeAttributeException</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">type_keys</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosMalformedAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;dictionary keys must be </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="si">}</span><span class="s2">. Obtained: </span><span class="si">{</span><span class="n">type_keys</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MinosMalformedAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;dictionary keys must be </span><span class="si">{</span><span class="nb">str</span><span class="si">!r}</span><span class="s2">. Obtained: </span><span class="si">{</span><span class="n">type_keys</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_dict_params</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">type_keys</span><span class="p">,</span> <span class="n">type_values</span><span class="p">)</span>
 
@@ -437,7 +437,7 @@
         <span class="n">inner_type</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">get_args</span><span class="p">(</span><span class="n">type_field</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_aggregate_cls</span><span class="p">(</span><span class="n">inner_type</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">MinosMalformedAttributeException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;&#39;ModelRef[T]&#39; T type must be a descendant of &#39;Aggregate&#39;. Obtained: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">inner_type</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;&#39;ModelRef[T]&#39; T type must be a descendant of &#39;Aggregate&#39;. Obtained: </span><span class="si">{</span><span class="n">inner_type</span><span class="si">!r}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cast_value</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">inner_type</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">data</span><span class="p">)</span>

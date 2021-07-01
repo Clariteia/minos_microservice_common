@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.importlib &mdash; Minos Microservice Common 0.1.0 documentation</title>
+  <title>minos.common.importlib &mdash; Minos Microservice Common 0.1.1 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -190,7 +190,7 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">kallable</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">MinosImportException</span><span class="p">(</span><span class="s2">&quot;Error importing </span><span class="si">{module_name!r}</span><span class="s2">: the module does not exist&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">MinosImportException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error importing </span><span class="si">{</span><span class="n">module_name</span><span class="si">!r}</span><span class="s2">: the module does not exist&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
