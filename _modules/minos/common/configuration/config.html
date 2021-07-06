@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.1.1 documentation</title>
+  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.1.2 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -175,15 +175,18 @@
 <span class="kn">import</span> <span class="nn">abc</span>
 <span class="kn">import</span> <span class="nn">collections</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">t</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Path</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">NoReturn</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">yaml</span>
 
 <span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">MinosConfigDefaultAlreadySetException</span><span class="p">,</span>
     <span class="n">MinosConfigException</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -288,15 +291,13 @@
     <span class="s2">&quot;discovery.endpoints.discover.method&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_discover_method&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">_default</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">MinosConfigAbstract</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-
 
 <div class="viewcode-block" id="MinosConfigAbstract"><a class="viewcode-back" href="../../../../api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfigAbstract">[docs]</a><span class="k">class</span> <span class="nc">MinosConfigAbstract</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Minos abstract config class.&quot;&quot;&quot;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="s2">&quot;_services&quot;</span><span class="p">,</span> <span class="s2">&quot;_path&quot;</span>
 
-<div class="viewcode-block" id="MinosConfigAbstract.__init__"><a class="viewcode-back" href="../../../../api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfigAbstract.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
+<div class="viewcode-block" id="MinosConfigAbstract.__init__"><a class="viewcode-back" href="../../../../api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfigAbstract.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_services</span> <span class="o">=</span> <span class="p">{}</span>
@@ -308,45 +309,8 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
-    <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-
-    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MinosConfigAbstract</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span>
-
-    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">NoReturn</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unset_default</span><span class="p">()</span>
-
-<div class="viewcode-block" id="MinosConfigAbstract.set_default"><a class="viewcode-back" href="../../../../api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfigAbstract.set_default">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">set_default</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">MinosConfigAbstract</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">NoReturn</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Set default config.</span>
-
-<span class="sd">        :param value: Default config.</span>
-<span class="sd">        :return: This method does not return anything.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">MinosConfigAbstract</span><span class="o">.</span><span class="n">get_default</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosConfigDefaultAlreadySetException</span><span class="p">(</span><span class="s2">&quot;There is already another config set as default.&quot;</span><span class="p">)</span>
-        <span class="k">global</span> <span class="n">_default</span>
-        <span class="n">_default</span> <span class="o">=</span> <span class="n">value</span></div>
-
-<div class="viewcode-block" id="MinosConfigAbstract.get_default"><a class="viewcode-back" href="../../../../api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfigAbstract.get_default">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">get_default</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MinosConfigAbstract</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Get default config.</span>
-
-<span class="sd">        :return: A ``MinosConfigAbstract`` instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">global</span> <span class="n">_default</span>
-        <span class="k">return</span> <span class="n">_default</span></div>
-
-<div class="viewcode-block" id="MinosConfigAbstract.unset_default"><a class="viewcode-back" href="../../../../api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfigAbstract.unset_default">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">unset_default</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">NoReturn</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Unset the default config.</span>
-
-<span class="sd">        :return: This method does not return anything.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">global</span> <span class="n">_default</span>
-        <span class="n">_default</span> <span class="o">=</span> <span class="kc">None</span></div></div>
+    <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
 
 <div class="viewcode-block" id="MinosConfig"><a class="viewcode-back" href="../../../../api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig">[docs]</a><span class="k">class</span> <span class="nc">MinosConfig</span><span class="p">(</span><span class="n">MinosConfigAbstract</span><span class="p">):</span>
@@ -370,21 +334,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_with_environment</span> <span class="o">=</span> <span class="n">with_environment</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parameterized</span> <span class="o">=</span> <span class="n">kwargs</span></div>
 
-    <span class="k">def</span> <span class="nf">_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">NoReturn</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
             <span class="k">raise</span> <span class="n">MinosConfigException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Check if this path: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> is correct&quot;</span><span class="p">)</span>
 
         <span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">_PARAMETERIZED_MAPPER</span> <span class="ow">and</span> <span class="n">_PARAMETERIZED_MAPPER</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameterized</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameterized</span><span class="p">[</span><span class="n">_PARAMETERIZED_MAPPER</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_with_environment</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">_ENVIRONMENT_MAPPER</span> <span class="ow">and</span> <span class="n">_ENVIRONMENT_MAPPER</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">_ENVIRONMENT_MAPPER</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span>
 
-        <span class="k">def</span> <span class="nf">_fn</span><span class="p">(</span><span class="n">k</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">_fn</span><span class="p">(</span><span class="n">k</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
             <span class="n">current</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">following</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 
             <span class="n">part</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">current</span><span class="p">]</span>
@@ -441,7 +405,7 @@
         <span class="k">return</span> <span class="n">endpoints</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_rest_endpoints_entry</span><span class="p">(</span><span class="n">endpoint</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ENDPOINT</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_rest_endpoints_entry</span><span class="p">(</span><span class="n">endpoint</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ENDPOINT</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ENDPOINT</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="n">endpoint</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
             <span class="n">route</span><span class="o">=</span><span class="n">endpoint</span><span class="p">[</span><span class="s2">&quot;route&quot;</span><span class="p">],</span>
@@ -484,7 +448,7 @@
         <span class="k">return</span> <span class="n">events</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_events_items_entry</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CONTROLLER</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_events_items_entry</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CONTROLLER</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">CONTROLLER</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">event</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">controller</span><span class="o">=</span><span class="n">event</span><span class="p">[</span><span class="s2">&quot;controller&quot;</span><span class="p">],</span> <span class="n">action</span><span class="o">=</span><span class="n">event</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">])</span>
 
     <span class="nd">@property</span>
@@ -535,7 +499,7 @@
         <span class="k">return</span> <span class="n">commands</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_commands_items_entry</span><span class="p">(</span><span class="n">command</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CONTROLLER</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_commands_items_entry</span><span class="p">(</span><span class="n">command</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CONTROLLER</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">CONTROLLER</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">command</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">controller</span><span class="o">=</span><span class="n">command</span><span class="p">[</span><span class="s2">&quot;controller&quot;</span><span class="p">],</span> <span class="n">action</span><span class="o">=</span><span class="n">command</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">])</span>
 
     <span class="nd">@property</span>
@@ -570,7 +534,7 @@
         <span class="k">return</span> <span class="n">sagas</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_sagas_items_entry</span><span class="p">(</span><span class="n">saga</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CONTROLLER</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_sagas_items_entry</span><span class="p">(</span><span class="n">saga</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">CONTROLLER</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">CONTROLLER</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">saga</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">controller</span><span class="o">=</span><span class="n">saga</span><span class="p">[</span><span class="s2">&quot;controller&quot;</span><span class="p">],</span> <span class="n">action</span><span class="o">=</span><span class="n">saga</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">])</span>
 
     <span class="nd">@property</span>

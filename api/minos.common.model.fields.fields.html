@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.fields.fields module &mdash; Minos Microservice Common 0.1.1 documentation</title>
+  <title>minos.common.model.fields.fields module &mdash; Minos Microservice Common 0.1.2 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -188,19 +188,19 @@
 <p>This file is part of minos framework.</p>
 <p>Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.model.fields.fields.</span></span><span class="sig-name descname"><span class="pre">ModelField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">type_val</span></em>, <em class="sig-param"><span class="pre">value=&lt;class</span> <span class="pre">'minos.common.model.types.MissingSentinel'&gt;</span></em>, <em class="sig-param"><span class="pre">parser=None</span></em>, <em class="sig-param"><span class="pre">validator=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/fields/fields.html#ModelField"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.fields.fields.ModelField" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.model.fields.fields.</span></span><span class="sig-name descname"><span class="pre">Field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">type_val</span></em>, <em class="sig-param"><span class="pre">value=&lt;class</span> <span class="pre">'minos.common.model.types.MissingSentinel'&gt;</span></em>, <em class="sig-param"><span class="pre">parser=None</span></em>, <em class="sig-param"><span class="pre">validator=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/fields/fields.html#Field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.fields.fields.Field" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Represents a model field.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">type_val</span></em>, <em class="sig-param"><span class="pre">value=&lt;class</span> <span class="pre">'minos.common.model.types.MissingSentinel'&gt;</span></em>, <em class="sig-param"><span class="pre">parser=None</span></em>, <em class="sig-param"><span class="pre">validator=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/fields/fields.html#ModelField.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">type_val</span></em>, <em class="sig-param"><span class="pre">value=&lt;class</span> <span class="pre">'minos.common.model.types.MissingSentinel'&gt;</span></em>, <em class="sig-param"><span class="pre">parser=None</span></em>, <em class="sig-param"><span class="pre">validator=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/fields/fields.html#Field.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.fields.fields.Field.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.avro_data">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_data</span></span><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.avro_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.avro_data">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_data</span></span><a class="headerlink" href="#minos.common.model.fields.fields.Field.avro_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the avro data of the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -210,8 +210,8 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.avro_schema">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_schema</span></span><em class="property"><span class="pre">:</span> <span class="pre">dict</span></em><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.avro_schema" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.avro_schema">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_schema</span></span><em class="property"><span class="pre">:</span> <span class="pre">dict</span></em><a class="headerlink" href="#minos.common.model.fields.fields.Field.avro_schema" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the avro schema of the field.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -224,9 +224,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.from_avro">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_avro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/fields/fields.html#ModelField.from_avro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.from_avro" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build a <code class="docutils literal notranslate"><span class="pre">ModelField</span></code> instance from the avro information.</p>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.from_avro">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_avro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/fields/fields.html#Field.from_avro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.fields.fields.Field.from_avro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a <code class="docutils literal notranslate"><span class="pre">Field</span></code> instance from the avro information.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -235,17 +235,17 @@
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#minos.common.model.fields.fields.ModelField" title="minos.common.model.fields.fields.ModelField"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.fields.ModelField</span></code></a></p>
+<dd class="field-even"><p><a class="reference internal" href="#minos.common.model.fields.fields.Field" title="minos.common.model.fields.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.fields.Field</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A <code class="docutils literal notranslate"><span class="pre">ModelField</span></code> instance.</p>
+<dd class="field-odd"><p>A <code class="docutils literal notranslate"><span class="pre">Field</span></code> instance.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.name">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#minos.common.model.fields.fields.Field.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name getter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -255,8 +255,8 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.parser">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">parser</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[Callable[[Any],</span> <span class="pre">minos.common.model.fields.fields.T]]</span></em><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.parser" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.parser">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">parser</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[Callable[[Any],</span> <span class="pre">minos.common.model.fields.fields.T]]</span></em><a class="headerlink" href="#minos.common.model.fields.fields.Field.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser getter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -266,14 +266,14 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.real_type">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">real_type</span></span><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.real_type" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.real_type">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">real_type</span></span><a class="headerlink" href="#minos.common.model.fields.fields.Field.real_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Real Type getter.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.type">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> <span class="pre">Type[minos.common.model.fields.fields.T]</span></em><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.type" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.type">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> <span class="pre">Type[minos.common.model.fields.fields.T]</span></em><a class="headerlink" href="#minos.common.model.fields.fields.Field.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Type getter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -283,8 +283,8 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.validator">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">validator</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[Callable[[Any],</span> <span class="pre">minos.common.model.fields.fields.T]]</span></em><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.validator" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.validator">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">validator</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[Callable[[Any],</span> <span class="pre">minos.common.model.fields.fields.T]]</span></em><a class="headerlink" href="#minos.common.model.fields.fields.Field.validator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parser getter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -294,8 +294,8 @@
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField.value">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#minos.common.model.fields.fields.ModelField.value" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.Field.value">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#minos.common.model.fields.fields.Field.value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Value getter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -304,6 +304,12 @@
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.model.fields.fields.ModelField">
+<span class="sig-prename descclassname"><span class="pre">minos.common.model.fields.fields.</span></span><span class="sig-name descname"><span class="pre">ModelField</span></span><a class="headerlink" href="#minos.common.model.fields.fields.ModelField" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#minos.common.model.fields.fields.Field" title="minos.common.model.fields.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.fields.Field</span></code></a></p>
 </dd></dl>
 
 </div>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.pg.abc &mdash; Minos Microservice Common 0.1.1 documentation</title>
+  <title>minos.common.snapshot.pg.abc &mdash; Minos Microservice Common 0.1.2 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -181,8 +181,8 @@
     <span class="sd">&quot;&quot;&quot;Minos Snapshot Setup Class&quot;&quot;&quot;</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query</span><span class="p">(</span><span class="n">_CREATE_TABLE_QUERY</span><span class="p">)</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query</span><span class="p">(</span><span class="n">_CREATE_OFFSET_TABLE_QUERY</span><span class="p">)</span></div>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query</span><span class="p">(</span><span class="n">_CREATE_TABLE_QUERY</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="nb">hash</span><span class="p">(</span><span class="s2">&quot;snapshot&quot;</span><span class="p">))</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query</span><span class="p">(</span><span class="n">_CREATE_OFFSET_TABLE_QUERY</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="nb">hash</span><span class="p">(</span><span class="s2">&quot;snapshot&quot;</span><span class="p">))</span></div>
 
 
 <span class="n">_CREATE_TABLE_QUERY</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>

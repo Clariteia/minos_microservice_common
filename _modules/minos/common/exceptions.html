@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.exceptions &mdash; Minos Microservice Common 0.1.1 documentation</title>
+  <title>minos.common.exceptions &mdash; Minos Microservice Common 0.1.2 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -217,10 +217,6 @@
     <span class="sd">&quot;&quot;&quot;Base config exception.&quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="MinosConfigDefaultAlreadySetException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosConfigDefaultAlreadySetException">[docs]</a><span class="k">class</span> <span class="nc">MinosConfigDefaultAlreadySetException</span><span class="p">(</span><span class="n">MinosConfigException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Exception to be raised when some config is already set as default.&quot;&quot;&quot;</span></div>
-
-
 <div class="viewcode-block" id="MinosBrokerException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosBrokerException">[docs]</a><span class="k">class</span> <span class="nc">MinosBrokerException</span><span class="p">(</span><span class="n">MinosException</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base broker exception&quot;&quot;&quot;</span></div>
 
@@ -231,14 +227,6 @@
 
 <div class="viewcode-block" id="MinosRepositoryException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryException">[docs]</a><span class="k">class</span> <span class="nc">MinosRepositoryException</span><span class="p">(</span><span class="n">MinosException</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base repository exception.&quot;&quot;&quot;</span></div>
-
-
-<div class="viewcode-block" id="MinosRepositoryAggregateNotFoundException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryAggregateNotFoundException">[docs]</a><span class="k">class</span> <span class="nc">MinosRepositoryAggregateNotFoundException</span><span class="p">(</span><span class="n">MinosRepositoryException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Exception to be raised when some aggregate is not found on the repository.&quot;&quot;&quot;</span></div>
-
-
-<div class="viewcode-block" id="MinosRepositoryDeletedAggregateException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryDeletedAggregateException">[docs]</a><span class="k">class</span> <span class="nc">MinosRepositoryDeletedAggregateException</span><span class="p">(</span><span class="n">MinosRepositoryException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Exception to be raised when some aggregate is already deleted from the repository.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="MinosRepositoryManuallySetAggregateIdException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryManuallySetAggregateIdException">[docs]</a><span class="k">class</span> <span class="nc">MinosRepositoryManuallySetAggregateIdException</span><span class="p">(</span><span class="n">MinosRepositoryException</span><span class="p">):</span>
@@ -275,6 +263,14 @@
             <span class="sa">f</span><span class="s2">&quot;Version for </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">previous</span><span class="o">.</span><span class="n">classname</span><span class="p">)</span><span class="si">}</span><span class="s2"> aggregate must be &quot;</span>
             <span class="sa">f</span><span class="s2">&quot;greater than </span><span class="si">{</span><span class="n">previous</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">. Obtained: </span><span class="si">{</span><span class="n">diff</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="MinosSnapshotAggregateNotFoundException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosSnapshotAggregateNotFoundException">[docs]</a><span class="k">class</span> <span class="nc">MinosSnapshotAggregateNotFoundException</span><span class="p">(</span><span class="n">MinosSnapshotException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception to be raised when some aggregate is not found on the repository.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="MinosSnapshotDeletedAggregateException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosSnapshotDeletedAggregateException">[docs]</a><span class="k">class</span> <span class="nc">MinosSnapshotDeletedAggregateException</span><span class="p">(</span><span class="n">MinosSnapshotException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception to be raised when some aggregate is already deleted from the repository.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="MinosModelException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosModelException">[docs]</a><span class="k">class</span> <span class="nc">MinosModelException</span><span class="p">(</span><span class="n">MinosException</span><span class="p">):</span>
@@ -315,8 +311,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">target_type</span> <span class="o">=</span> <span class="n">target_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">target_type</span><span class="p">)</span><span class="si">}</span><span class="s2"> expected type for </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s2"> does not match with &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;the given data type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">target_type</span><span class="si">!r}</span><span class="s2"> expected type for </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> does not match with &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;the given data type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">!r}</span><span class="s2"> (</span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2">)&quot;</span>
         <span class="p">)</span></div></div>
 
 

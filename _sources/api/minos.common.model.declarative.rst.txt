@@ -21,6 +21,4 @@ Submodules
    :maxdepth: 4
 
    minos.common.model.declarative.abc
-   minos.common.model.declarative.command
-   minos.common.model.declarative.command_reply
-   minos.common.model.declarative.event
+   minos.common.model.declarative.networks

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.dynamic.diff module &mdash; Minos Microservice Common 0.1.1 documentation</title>
+  <title>minos.common.model.dynamic.diff module &mdash; Minos Microservice Common 0.1.2 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -198,7 +198,7 @@
 <dd><p>Class constructor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fields</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Iterable</span></code>[<a class="reference internal" href="minos.common.model.fields.fields.html#minos.common.model.fields.fields.ModelField" title="minos.common.model.fields.fields.ModelField"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.fields.ModelField</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="minos.common.model.fields.fields.html#minos.common.model.fields.fields.ModelField" title="minos.common.model.fields.fields.ModelField"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.fields.ModelField</span></code></a>]]) – Dictionary that contains the <code class="docutils literal notranslate"><span class="pre">ModelField</span></code> instances of the model indexed by name.</p>
+<dd class="field-odd"><p><strong>fields</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Iterable</span></code>[<a class="reference internal" href="minos.common.model.fields.fields.html#minos.common.model.fields.fields.Field" title="minos.common.model.fields.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.fields.Field</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="minos.common.model.fields.fields.html#minos.common.model.fields.fields.Field" title="minos.common.model.fields.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.fields.Field</span></code></a>]]) – Dictionary that contains the <code class="docutils literal notranslate"><span class="pre">Field</span></code> instances of the model indexed by name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -275,7 +275,7 @@
 <dd><p>Fields getter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="minos.common.model.fields.fields.html#minos.common.model.fields.fields.ModelField" title="minos.common.model.fields.fields.ModelField"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.fields.ModelField</span></code></a>]</p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="minos.common.model.fields.fields.html#minos.common.model.fields.fields.Field" title="minos.common.model.fields.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.fields.Field</span></code></a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -391,6 +391,20 @@
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A new <code class="docutils literal notranslate"><span class="pre">DynamicModel</span></code> instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.dynamic.diff.FieldsDiff.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.dynamic.diff.FieldsDiff.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the field names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An iterable of string values.</p>
 </dd>
 </dl>
 </dd></dl>

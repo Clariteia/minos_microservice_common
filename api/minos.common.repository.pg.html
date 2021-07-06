@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.repository.pg module &mdash; Minos Microservice Common 0.1.1 documentation</title>
+  <title>minos.common.repository.pg module &mdash; Minos Microservice Common 0.1.2 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -214,6 +214,26 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.cursor">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">cursor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a connection cursor from the pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> – Additional positional arguments.</p></li>
+<li><p><strong>kwargs</strong> – Additional named arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.ContextManager</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">aiopg.connection.Cursor</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A <code class="docutils literal notranslate"><span class="pre">Cursor</span></code> instance wrapped inside a context manager.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.delete">
 <em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Store new deletion entry into de repository.</p>
@@ -325,12 +345,14 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.repository.pg.PostgreSqlRepository.submit_query">
-<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">submit_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.submit_query" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">submit_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.repository.pg.PostgreSqlRepository.submit_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Submit a SQL query.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>args</strong> – Additional positional arguments.</p></li>
+<li><p><strong>lock</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Optional key to perform the query with locking. If not set, the query is performed without any
+lock.</p></li>
 <li><p><strong>kwargs</strong> – Additional named arguments.</p></li>
 </ul>
 </dd>

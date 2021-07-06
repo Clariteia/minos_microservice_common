@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.types &mdash; Minos Microservice Common 0.1.1 documentation</title>
+  <title>minos.common.model.types &mdash; Minos Microservice Common 0.1.2 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -188,7 +188,6 @@
 
 <span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosImportException</span><span class="p">,</span>
-    <span class="n">MinosModelException</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..importlib</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">import_module</span><span class="p">,</span>
@@ -313,12 +312,7 @@
         <span class="k">return</span> <span class="n">mcs</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">typed_dict</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">typed_dict</span><span class="o">.</span><span class="vm">__annotations__</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span><span class="p">:</span>
-        <span class="n">model_cls</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">model_cls</span>
-
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model_cls</span><span class="p">,</span> <span class="s2">&quot;model_type&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">cls</span> <span class="o">!=</span> <span class="n">model_cls</span><span class="o">.</span><span class="n">model_type</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosModelException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The typed dict fields do not match with the </span><span class="si">{</span><span class="n">model_cls</span><span class="si">!r}</span><span class="s2"> fields&quot;</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">model_cls</span><span class="o">.</span><span class="n">from_model_type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">model_cls</span><span class="o">.</span><span class="n">from_model_type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model_cls</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">Model</span><span class="p">]:</span>

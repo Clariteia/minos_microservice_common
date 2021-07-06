@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.fields.type_hint_comparator &mdash; Minos Microservice Common 0.1.1 documentation</title>
+  <title>minos.common.model.fields.type_hint_comparator &mdash; Minos Microservice Common 0.1.2 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.1.2
               </div>
             
           
@@ -187,6 +187,7 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">_is_model_cls</span><span class="p">,</span>
+    <span class="n">_is_type</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -217,10 +218,10 @@
         <span class="k">if</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">second</span><span class="p">)</span> <span class="ow">is</span> <span class="n">ModelRef</span><span class="p">:</span>
             <span class="n">second</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[(</span><span class="o">*</span><span class="n">get_args</span><span class="p">(</span><span class="n">second</span><span class="p">),</span> <span class="nb">int</span><span class="p">)]</span>
 
-        <span class="k">if</span> <span class="n">_is_model_cls</span><span class="p">(</span><span class="n">first</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">_is_type</span><span class="p">(</span><span class="n">first</span><span class="p">)</span> <span class="ow">and</span> <span class="n">_is_model_cls</span><span class="p">(</span><span class="n">first</span><span class="p">):</span>
             <span class="n">first</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">model_type</span>
 
-        <span class="k">if</span> <span class="n">_is_model_cls</span><span class="p">(</span><span class="n">second</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">_is_type</span><span class="p">(</span><span class="n">second</span><span class="p">)</span> <span class="ow">and</span> <span class="n">_is_model_cls</span><span class="p">(</span><span class="n">second</span><span class="p">):</span>
             <span class="n">second</span> <span class="o">=</span> <span class="n">second</span><span class="o">.</span><span class="n">model_type</span>
 
         <span class="k">if</span> <span class="n">first</span> <span class="o">==</span> <span class="n">second</span><span class="p">:</span>

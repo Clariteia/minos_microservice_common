@@ -1,7 +1,0 @@
-minos.common.model.declarative.command\_reply module
-====================================================
-
-.. automodule:: minos.common.model.declarative.command_reply
-   :members:
-   :undoc-members:
-   :show-inheritance:
