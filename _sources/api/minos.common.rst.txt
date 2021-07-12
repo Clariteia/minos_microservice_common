@@ -25,6 +25,7 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
+   minos.common.constants
    minos.common.database
    minos.common.exceptions
    minos.common.importlib

@@ -14,3 +14,4 @@ Submodules
 
    minos.common.model.declarative.aggregate.diff
    minos.common.model.declarative.aggregate.model
+   minos.common.model.declarative.aggregate.ref

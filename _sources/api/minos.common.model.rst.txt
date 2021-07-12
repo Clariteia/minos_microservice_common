@@ -14,7 +14,8 @@ Subpackages
 
    minos.common.model.declarative
    minos.common.model.dynamic
-   minos.common.model.fields
+   minos.common.model.serializers
+   minos.common.model.types
 
 Submodules
 ----------
@@ -23,4 +24,4 @@ Submodules
    :maxdepth: 4
 
    minos.common.model.abc
-   minos.common.model.types
+   minos.common.model.fields

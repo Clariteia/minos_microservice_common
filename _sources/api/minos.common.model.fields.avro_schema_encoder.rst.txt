@@ -1,7 +1,0 @@
-minos.common.model.fields.avro\_schema\_encoder module
-======================================================
-
-.. automodule:: minos.common.model.fields.avro_schema_encoder
-   :members:
-   :undoc-members:
-   :show-inheritance:

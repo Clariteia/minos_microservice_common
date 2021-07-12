@@ -1,7 +1,0 @@
-minos.common.model.fields.fields module
-=======================================
-
-.. automodule:: minos.common.model.fields.fields
-   :members:
-   :undoc-members:
-   :show-inheritance:

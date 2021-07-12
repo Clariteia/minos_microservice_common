@@ -1,7 +1,18 @@
-minos.common.model.types module
-===============================
+minos.common.model.types package
+================================
 
 .. automodule:: minos.common.model.types
    :members:
    :undoc-members:
    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   minos.common.model.types.builders
+   minos.common.model.types.comparators
+   minos.common.model.types.data_types
+   minos.common.model.types.model_types

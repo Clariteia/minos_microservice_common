@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.memory &mdash; Minos Microservice Common 0.1.2 documentation</title>
+  <title>minos.common.snapshot.memory &mdash; Minos Microservice Common 0.1.3 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.2
+                0.1.3
               </div>
             
           
@@ -176,6 +176,9 @@
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">AsyncIterator</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">UUID</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosSnapshotAggregateNotFoundException</span><span class="p">,</span>
@@ -198,34 +201,34 @@
 <div class="viewcode-block" id="InMemorySnapshot"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot">[docs]</a><span class="k">class</span> <span class="nc">InMemorySnapshot</span><span class="p">(</span><span class="n">MinosSnapshot</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;In Memory Snapshot class.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="InMemorySnapshot.get"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.get">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]:</span>
+<div class="viewcode-block" id="InMemorySnapshot.get"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.get">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UUID</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Retrieve an asynchronous iterator that provides the requested ``Aggregate`` instances.</span>
 
 <span class="sd">        :param aggregate_name: Class name of the ``Aggregate`` to be retrieved.</span>
-<span class="sd">        :param ids: List of identifiers to be retrieved.</span>
+<span class="sd">        :param uuids: List of identifiers to be retrieved.</span>
 <span class="sd">        :param kwargs: Additional named arguments.</span>
 <span class="sd">        :return: An asynchronous iterator that provides the requested ``Aggregate`` instances.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">iterable</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">aggregate_id</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_one</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">aggregate_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">ids</span><span class="p">)</span>
+        <span class="n">iterable</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">uuid</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_one</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">uuid</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">uuids</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
             <span class="k">yield</span> <span class="k">await</span> <span class="n">item</span></div>
 
     <span class="c1"># noinspection PyShadowingBuiltins</span>
     <span class="nd">@staticmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_get_one</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">_repository</span><span class="p">:</span> <span class="n">MinosRepository</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_get_one</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">_repository</span><span class="p">:</span> <span class="n">MinosRepository</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="p">(</span>
             <span class="n">attrgetter</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="c1"># noinspection PyTypeChecker</span>
-        <span class="n">entries</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">async</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_repository</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">aggregate_name</span><span class="o">=</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">aggregate_id</span><span class="o">=</span><span class="nb">id</span><span class="p">)]</span>
+        <span class="n">entries</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">async</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_repository</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">aggregate_name</span><span class="o">=</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">)]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">entries</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">MinosSnapshotAggregateNotFoundException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not found any entries for the </span><span class="si">{</span><span class="nb">id</span><span class="si">!r}</span><span class="s2"> id.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MinosSnapshotAggregateNotFoundException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not found any entries for the </span><span class="si">{</span><span class="n">uuid</span><span class="si">!r}</span><span class="s2"> id.&quot;</span><span class="p">)</span>
 
         <span class="n">entries</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">attrgetter</span><span class="p">(</span><span class="s2">&quot;version&quot;</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">entries</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="n">RepositoryAction</span><span class="o">.</span><span class="n">DELETE</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosSnapshotDeletedAggregateException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="nb">id</span><span class="si">!r}</span><span class="s2"> id points to an already deleted aggregate.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MinosSnapshotDeletedAggregateException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">uuid</span><span class="si">!r}</span><span class="s2"> id points to an already deleted aggregate.&quot;</span><span class="p">)</span>
 
         <span class="bp">cls</span> <span class="o">=</span> <span class="n">entries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">aggregate_cls</span>
         <span class="n">instance</span><span class="p">:</span> <span class="n">Aggregate</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_diff</span><span class="p">(</span><span class="n">entries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">aggregate_diff</span><span class="p">,</span> <span class="n">_repository</span><span class="o">=</span><span class="n">_repository</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

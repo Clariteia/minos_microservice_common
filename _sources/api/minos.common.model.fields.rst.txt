@@ -1,22 +1,7 @@
-minos.common.model.fields package
-=================================
+minos.common.model.fields module
+================================
 
 .. automodule:: minos.common.model.fields
    :members:
    :undoc-members:
    :show-inheritance:
-
-Submodules
-----------
-
-.. toctree::
-   :maxdepth: 4
-
-   minos.common.model.fields.avro_data_decoder
-   minos.common.model.fields.avro_data_encoder
-   minos.common.model.fields.avro_schema_decoder
-   minos.common.model.fields.avro_schema_encoder
-   minos.common.model.fields.fields
-   minos.common.model.fields.type_hint_builder
-   minos.common.model.fields.type_hint_comparator
-   minos.common.model.fields.utils

@@ -1,0 +1,7 @@
+minos.common.model.declarative.value\_object module
+===================================================
+
+.. automodule:: minos.common.model.declarative.value_object
+   :members:
+   :undoc-members:
+   :show-inheritance:

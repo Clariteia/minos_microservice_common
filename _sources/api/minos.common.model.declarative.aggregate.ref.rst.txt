@@ -1,0 +1,7 @@
+minos.common.model.declarative.aggregate.ref module
+===================================================
+
+.. automodule:: minos.common.model.declarative.aggregate.ref
+   :members:
+   :undoc-members:
+   :show-inheritance:

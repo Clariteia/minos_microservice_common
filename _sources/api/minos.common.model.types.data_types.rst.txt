@@ -1,0 +1,7 @@
+minos.common.model.types.data\_types module
+===========================================
+
+.. automodule:: minos.common.model.types.data_types
+   :members:
+   :undoc-members:
+   :show-inheritance:

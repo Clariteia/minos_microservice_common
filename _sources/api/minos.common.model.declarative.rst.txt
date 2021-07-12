@@ -22,3 +22,4 @@ Submodules
 
    minos.common.model.declarative.abc
    minos.common.model.declarative.networks
+   minos.common.model.declarative.value_object

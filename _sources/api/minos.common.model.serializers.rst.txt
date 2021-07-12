@@ -1,0 +1,19 @@
+minos.common.model.serializers package
+======================================
+
+.. automodule:: minos.common.model.serializers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   minos.common.model.serializers.avro_data_decoder
+   minos.common.model.serializers.avro_data_encoder
+   minos.common.model.serializers.avro_schema_decoder
+   minos.common.model.serializers.avro_schema_encoder
+   minos.common.model.serializers.constants
