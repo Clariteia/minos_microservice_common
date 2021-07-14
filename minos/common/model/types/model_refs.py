@@ -5,9 +5,13 @@ This file is part of minos framework.
 
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
-from __future__ import annotations
+from __future__ import (
+    annotations,
+)
 
-from collections import defaultdict
+from collections import (
+    defaultdict,
+)
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -20,7 +24,9 @@ from typing import (
     get_args,
     get_origin,
 )
-from uuid import UUID
+from uuid import (
+    UUID,
+)
 
 T = TypeVar("T")
 
@@ -30,7 +36,9 @@ class ModelRef(Generic[T]):
 
 
 if TYPE_CHECKING:
-    from ..abc import Model
+    from ..abc import (
+        Model,
+    )
 
 
 class ModelRefExtractor:
@@ -38,7 +46,9 @@ class ModelRefExtractor:
 
     def __init__(self, value: Any, kind: Optional[Type] = None):
         if kind is None:
-            from .builders import TypeHintBuilder
+            from .builders import (
+                TypeHintBuilder,
+            )
 
             kind = TypeHintBuilder(value).build()
         self.value = value
@@ -54,7 +64,9 @@ class ModelRefExtractor:
         return ans
 
     def _build(self, value: Any, kind: Type, ans: dict[str, set[UUID]]) -> NoReturn:
-        from ..abc import Model
+        from ..abc import (
+            Model,
+        )
 
         if isinstance(value, (tuple, list, set)):
             self._build_iterable(value, get_args(kind)[0], ans)
@@ -92,7 +104,9 @@ class ModelRefInjector:
         return self._build(self.value)
 
     def _build(self, value: Any) -> NoReturn:
-        from ..abc import Model
+        from ..abc import (
+            Model,
+        )
 
         if isinstance(value, (tuple, list, set)):
             return type(value)(self._build(v) for v in value)

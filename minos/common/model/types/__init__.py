@@ -27,4 +27,6 @@ from .model_refs import (
     ModelRefExtractor,
     ModelRefInjector,
 )
-from .model_types import ModelType
+from .model_types import (
+    ModelType,
+)

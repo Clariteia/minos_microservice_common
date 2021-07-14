@@ -24,8 +24,12 @@ from .configuration import (
     MinosConfig,
     MinosConfigAbstract,
 )
-from .constants import NULL_UUID
-from .database import PostgreSqlMinosDatabase
+from .constants import (
+    NULL_UUID,
+)
+from .database import (
+    PostgreSqlMinosDatabase,
+)
 from .exceptions import (
     EmptyMinosModelSequenceException,
     MinosAttributeValidationException,
@@ -59,8 +63,12 @@ from .importlib import (
     classname,
     import_module,
 )
-from .injectors import DependencyInjector
-from .launchers import EntrypointLauncher
+from .injectors import (
+    DependencyInjector,
+)
+from .launchers import (
+    EntrypointLauncher,
+)
 from .messages import (
     Request,
     Response,
@@ -105,7 +113,9 @@ from .model import (
     TypeHintComparator,
     ValueObject,
 )
-from .networks import MinosBroker
+from .networks import (
+    MinosBroker,
+)
 from .protocol import (
     MinosAvroDatabaseProtocol,
     MinosAvroMessageProtocol,
@@ -120,8 +130,12 @@ from .repository import (
     RepositoryAction,
     RepositoryEntry,
 )
-from .saga import MinosSagaManager
-from .setup import MinosSetup
+from .saga import (
+    MinosSagaManager,
+)
+from .setup import (
+    MinosSetup,
+)
 from .snapshot import (
     InMemorySnapshot,
     MinosSnapshot,
