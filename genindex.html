@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Index &mdash; Minos Microservice Common 0.1.3 documentation</title>
+  <title>Index &mdash; Minos Microservice Common 0.1.4 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.3
+                0.1.4
               </div>
             
           
@@ -239,6 +239,10 @@
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosReqAttributeException.__init__">(minos.common.exceptions.MinosReqAttributeException method)</a>
 </li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSagaManagerException.__init__">(minos.common.exceptions.MinosSagaManagerException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSagaManagerNotProvidedException.__init__">(minos.common.exceptions.MinosSagaManagerNotProvidedException method)</a>
+</li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSnapshotAggregateNotFoundException.__init__">(minos.common.exceptions.MinosSnapshotAggregateNotFoundException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSnapshotDeletedAggregateException.__init__">(minos.common.exceptions.MinosSnapshotDeletedAggregateException method)</a>
@@ -307,7 +311,9 @@
 </li>
         <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.Fixed.__init__">(minos.common.model.types.data_types.Fixed method)</a>
 </li>
-        <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.ModelRef.__init__">(minos.common.model.types.data_types.ModelRef method)</a>
+        <li><a href="api/minos.common.model.types.model_refs.html#minos.common.model.types.model_refs.ModelRefExtractor.__init__">(minos.common.model.types.model_refs.ModelRefExtractor method)</a>
+</li>
+        <li><a href="api/minos.common.model.types.model_refs.html#minos.common.model.types.model_refs.ModelRefInjector.__init__">(minos.common.model.types.model_refs.ModelRefInjector method)</a>
 </li>
         <li><a href="api/minos.common.model.types.model_types.html#minos.common.model.types.model_types.ModelType.__init__">(minos.common.model.types.model_types.ModelType method)</a>
 </li>
@@ -389,8 +395,6 @@
 </li>
         <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.Fixed.aliases">(minos.common.model.types.data_types.Fixed attribute)</a>
 </li>
-        <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.ModelRef.aliases">(minos.common.model.types.data_types.ModelRef attribute)</a>
-</li>
       </ul></li>
       <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.apply_diff">apply_diff() (minos.common.model.declarative.aggregate.model.Aggregate method)</a>
 </li>
@@ -438,6 +442,10 @@
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryUnknownActionException.args">(minos.common.exceptions.MinosRepositoryUnknownActionException attribute)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosReqAttributeException.args">(minos.common.exceptions.MinosReqAttributeException attribute)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSagaManagerException.args">(minos.common.exceptions.MinosSagaManagerException attribute)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSagaManagerNotProvidedException.args">(minos.common.exceptions.MinosSagaManagerNotProvidedException attribute)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSnapshotAggregateNotFoundException.args">(minos.common.exceptions.MinosSnapshotAggregateNotFoundException attribute)</a>
 </li>
@@ -597,6 +605,10 @@
 </li>
         <li><a href="api/minos.common.model.types.builders.html#minos.common.model.types.builders.TypeHintBuilder.build">(minos.common.model.types.builders.TypeHintBuilder method)</a>
 </li>
+        <li><a href="api/minos.common.model.types.model_refs.html#minos.common.model.types.model_refs.ModelRefExtractor.build">(minos.common.model.types.model_refs.ModelRefExtractor method)</a>
+</li>
+        <li><a href="api/minos.common.model.types.model_refs.html#minos.common.model.types.model_refs.ModelRefInjector.build">(minos.common.model.types.model_refs.ModelRefInjector method)</a>
+</li>
         <li><a href="api/minos.common.model.types.model_types.html#minos.common.model.types.model_types.ModelType.build">(minos.common.model.types.model_types.ModelType class method)</a>
 </li>
         <li><a href="api/minos.common.storage.abc.html#minos.common.storage.abc.MinosStorage.build">(minos.common.storage.abc.MinosStorage class method)</a>
@@ -606,6 +618,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.model.types.builders.html#minos.common.model.types.builders.build_union">build_union() (in module minos.common.model.types.builders)</a>
+</li>
       <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.builder">builder (minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot attribute)</a>
 </li>
   </ul></td>
@@ -652,15 +666,13 @@
 </li>
       <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.CommandReply">CommandReply (class in minos.common.model.declarative.networks)</a>
 </li>
-      <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.COMMANDS">COMMANDS (in module minos.common.configuration.config)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.COMMANDS">COMMANDS (in module minos.common.configuration.config)</a>
+</li>
       <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig.commands">commands (minos.common.configuration.config.MinosConfig property)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.CommandStatus">CommandStatus (class in minos.common.model.declarative.networks)</a>
-</li>
-      <li><a href="api/minos.common.services.html#minos.common.services.Service.config">config (minos.common.services.Service attribute)</a>
 </li>
       <li><a href="api/minos.common.injectors.html#minos.common.injectors.DependencyInjector.container">container (minos.common.injectors.DependencyInjector attribute)</a>
 </li>
@@ -752,8 +764,6 @@
         <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.Enum.default">(minos.common.model.types.data_types.Enum attribute)</a>
 </li>
         <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.Fixed.default">(minos.common.model.types.data_types.Fixed attribute)</a>
-</li>
-        <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.ModelRef.default">(minos.common.model.types.data_types.ModelRef attribute)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction.DELETE">DELETE (minos.common.repository.entries.RepositoryAction attribute)</a>
@@ -1128,9 +1138,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot">InMemorySnapshot (class in minos.common.snapshot.memory)</a>
 </li>
-      <li><a href="api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_aggregate_subclass">is_aggregate_subclass() (in module minos.common.model.types.comparators)</a>
-</li>
-      <li><a href="api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_aggregateref_subclass">is_aggregateref_subclass() (in module minos.common.model.types.comparators)</a>
+      <li><a href="api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_aggregate_type">is_aggregate_type() (in module minos.common.model.types.comparators)</a>
 </li>
       <li><a href="api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_model_subclass">is_model_subclass() (in module minos.common.model.types.comparators)</a>
 </li>
@@ -1452,6 +1460,13 @@
 </li>
       </ul></li>
       <li>
+    minos.common.model.types.model_refs
+
+      <ul>
+        <li><a href="api/minos.common.model.types.model_refs.html#module-minos.common.model.types.model_refs">module</a>
+</li>
+      </ul></li>
+      <li>
     minos.common.model.types.model_types
 
       <ul>
@@ -1557,13 +1572,6 @@
 </li>
       </ul></li>
       <li>
-    minos.common.services
-
-      <ul>
-        <li><a href="api/minos.common.services.html#module-minos.common.services">module</a>
-</li>
-      </ul></li>
-      <li>
     minos.common.setup
 
       <ul>
@@ -1626,8 +1634,6 @@
         <li><a href="api/minos.common.snapshot.pg.snapshot.html#module-minos.common.snapshot.pg.snapshot">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     minos.common.storage
 
@@ -1635,6 +1641,8 @@
         <li><a href="api/minos.common.storage.html#module-minos.common.storage">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     minos.common.storage.abc
 
@@ -1711,6 +1719,10 @@
 </li>
       <li><a href="api/minos.common.saga.html#minos.common.saga.MinosSagaManager">MinosSagaManager (class in minos.common.saga)</a>
 </li>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSagaManagerException">MinosSagaManagerException</a>
+</li>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSagaManagerNotProvidedException">MinosSagaManagerNotProvidedException</a>
+</li>
       <li><a href="api/minos.common.setup.html#minos.common.setup.MinosSetup">MinosSetup (class in minos.common.setup)</a>
 </li>
       <li><a href="api/minos.common.snapshot.abc.html#minos.common.snapshot.abc.MinosSnapshot">MinosSnapshot (class in minos.common.snapshot.abc)</a>
@@ -1749,7 +1761,11 @@
       </ul></li>
       <li><a href="api/minos.common.model.fields.html#minos.common.model.fields.ModelField">ModelField (in module minos.common.model.fields)</a>
 </li>
-      <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.ModelRef">ModelRef (class in minos.common.model.types.data_types)</a>
+      <li><a href="api/minos.common.model.types.model_refs.html#minos.common.model.types.model_refs.ModelRef">ModelRef (class in minos.common.model.types.model_refs)</a>
+</li>
+      <li><a href="api/minos.common.model.types.model_refs.html#minos.common.model.types.model_refs.ModelRefExtractor">ModelRefExtractor (class in minos.common.model.types.model_refs)</a>
+</li>
+      <li><a href="api/minos.common.model.types.model_refs.html#minos.common.model.types.model_refs.ModelRefInjector">ModelRefInjector (class in minos.common.model.types.model_refs)</a>
 </li>
       <li><a href="api/minos.common.model.types.model_types.html#minos.common.model.types.model_types.ModelType">ModelType (class in minos.common.model.types.model_types)</a>
 </li>
@@ -1831,6 +1847,8 @@
 </li>
         <li><a href="api/minos.common.model.types.data_types.html#module-minos.common.model.types.data_types">minos.common.model.types.data_types</a>
 </li>
+        <li><a href="api/minos.common.model.types.model_refs.html#module-minos.common.model.types.model_refs">minos.common.model.types.model_refs</a>
+</li>
         <li><a href="api/minos.common.model.types.model_types.html#module-minos.common.model.types.model_types">minos.common.model.types.model_types</a>
 </li>
         <li><a href="api/minos.common.networks.html#module-minos.common.networks">minos.common.networks</a>
@@ -1860,8 +1878,6 @@
         <li><a href="api/minos.common.repository.pg.html#module-minos.common.repository.pg">minos.common.repository.pg</a>
 </li>
         <li><a href="api/minos.common.saga.html#module-minos.common.saga">minos.common.saga</a>
-</li>
-        <li><a href="api/minos.common.services.html#module-minos.common.services">minos.common.services</a>
 </li>
         <li><a href="api/minos.common.setup.html#module-minos.common.setup">minos.common.setup</a>
 </li>
@@ -1912,8 +1928,6 @@
 
       <ul>
         <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.Fixed.namespace">(minos.common.model.types.data_types.Fixed attribute)</a>
-</li>
-        <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.ModelRef.namespace">(minos.common.model.types.data_types.ModelRef attribute)</a>
 </li>
         <li><a href="api/minos.common.model.types.model_types.html#minos.common.model.types.model_types.ModelType.namespace">(minos.common.model.types.model_types.ModelType attribute)</a>
 </li>
@@ -2014,8 +2028,6 @@
         <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.CommandReply.saga">(minos.common.model.declarative.networks.CommandReply attribute)</a>
 </li>
       </ul></li>
-      <li><a href="api/minos.common.services.html#minos.common.services.Service.saga_manager">saga_manager (minos.common.services.Service attribute)</a>
-</li>
       <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.save">save() (minos.common.model.declarative.aggregate.model.Aggregate method)</a>
 </li>
       <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.Decimal.scale">scale (minos.common.model.types.data_types.Decimal attribute)</a>
@@ -2033,8 +2045,6 @@
       <li><a href="api/minos.common.meta.html#minos.common.meta.self_or_classmethod">self_or_classmethod (class in minos.common.meta)</a>
 </li>
       <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.send">send() (minos.common.networks.MinosBroker method)</a>
-</li>
-      <li><a href="api/minos.common.services.html#minos.common.services.Service">Service (class in minos.common.services)</a>
 </li>
       <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.SERVICE">SERVICE (in module minos.common.configuration.config)</a>
 </li>
@@ -2354,6 +2364,10 @@
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryUnknownActionException.with_traceback">(minos.common.exceptions.MinosRepositoryUnknownActionException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosReqAttributeException.with_traceback">(minos.common.exceptions.MinosReqAttributeException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSagaManagerException.with_traceback">(minos.common.exceptions.MinosSagaManagerException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSagaManagerNotProvidedException.with_traceback">(minos.common.exceptions.MinosSagaManagerNotProvidedException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosSnapshotAggregateNotFoundException.with_traceback">(minos.common.exceptions.MinosSnapshotAggregateNotFoundException method)</a>
 </li>

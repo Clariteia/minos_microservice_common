@@ -35,5 +35,4 @@ Submodules
    minos.common.meta
    minos.common.networks
    minos.common.saga
-   minos.common.services
    minos.common.setup

@@ -15,4 +15,5 @@ Submodules
    minos.common.model.types.builders
    minos.common.model.types.comparators
    minos.common.model.types.data_types
+   minos.common.model.types.model_refs
    minos.common.model.types.model_types
