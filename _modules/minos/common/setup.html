@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.setup &mdash; Minos Microservice Common 0.1.4 documentation</title>
+  <title>minos.common.setup &mdash; Minos Microservice Common 0.1.5 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.4
+                0.1.5
               </div>
             
           
@@ -186,7 +186,7 @@
     <span class="n">MinosConfig</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">MinosConfigException</span><span class="p">,</span>
+    <span class="n">MinosConfigNotProvidedException</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
@@ -213,7 +213,7 @@
         <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">config</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_config</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">Provide</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="n">MinosConfigException</span><span class="p">(</span><span class="s2">&quot;The config object must be setup.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">MinosConfigNotProvidedException</span><span class="p">(</span><span class="s2">&quot;The config object must be provided.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_from_config</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
     <span class="nd">@classmethod</span>

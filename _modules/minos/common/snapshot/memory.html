@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.memory &mdash; Minos Microservice Common 0.1.4 documentation</title>
+  <title>minos.common.snapshot.memory &mdash; Minos Microservice Common 0.1.5 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.4
+                0.1.5
               </div>
             
           
@@ -201,11 +201,11 @@
 <div class="viewcode-block" id="InMemorySnapshot"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot">[docs]</a><span class="k">class</span> <span class="nc">InMemorySnapshot</span><span class="p">(</span><span class="n">MinosSnapshot</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;In Memory Snapshot class.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="InMemorySnapshot.get"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.get">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UUID</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]:</span>
+<div class="viewcode-block" id="InMemorySnapshot.get"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.get">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">UUID</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Retrieve an asynchronous iterator that provides the requested ``Aggregate`` instances.</span>
 
 <span class="sd">        :param aggregate_name: Class name of the ``Aggregate`` to be retrieved.</span>
-<span class="sd">        :param uuids: List of identifiers to be retrieved.</span>
+<span class="sd">        :param uuids: Set of identifiers to be retrieved.</span>
 <span class="sd">        :param kwargs: Additional named arguments.</span>
 <span class="sd">        :return: An asynchronous iterator that provides the requested ``Aggregate`` instances.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

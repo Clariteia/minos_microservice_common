@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.exceptions module &mdash; Minos Microservice Common 0.1.4 documentation</title>
+  <title>minos.common.exceptions module &mdash; Minos Microservice Common 0.1.5 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.4
+                0.1.5
               </div>
             
           
@@ -304,6 +304,30 @@ set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 <dl class="py exception">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosConfigNotProvidedException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.exceptions.</span></span><span class="sig-name descname"><span class="pre">MinosConfigNotProvidedException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#MinosConfigNotProvidedException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.MinosConfigNotProvidedException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.exceptions.MinosConfigException" title="minos.common.exceptions.MinosConfigException"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.exceptions.MinosConfigException</span></code></a></p>
+<p>Exception to be raised when a config is needed but none is set.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosConfigNotProvidedException.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.MinosConfigNotProvidedException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosConfigNotProvidedException.args">
+<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#minos.common.exceptions.MinosConfigNotProvidedException.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosConfigNotProvidedException.with_traceback">
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.MinosConfigNotProvidedException.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
 <dt class="sig sig-object py" id="minos.common.exceptions.MinosException">
 <em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.exceptions.</span></span><span class="sig-name descname"><span class="pre">MinosException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#MinosException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.MinosException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
@@ -321,6 +345,54 @@ set self.__traceback__ to tb and return self.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.exceptions.MinosException.with_traceback">
 <span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.MinosException.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosHandlerException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.exceptions.</span></span><span class="sig-name descname"><span class="pre">MinosHandlerException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#MinosHandlerException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.MinosHandlerException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.exceptions.MinosException" title="minos.common.exceptions.MinosException"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.exceptions.MinosException</span></code></a></p>
+<p>Base handler exception</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosHandlerException.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.MinosHandlerException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosHandlerException.args">
+<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#minos.common.exceptions.MinosHandlerException.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosHandlerException.with_traceback">
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.MinosHandlerException.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosHandlerNotProvidedException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.exceptions.</span></span><span class="sig-name descname"><span class="pre">MinosHandlerNotProvidedException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#MinosHandlerNotProvidedException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.MinosHandlerNotProvidedException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.exceptions.MinosHandlerException" title="minos.common.exceptions.MinosHandlerException"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.exceptions.MinosHandlerException</span></code></a></p>
+<p>Exception to be raised when a handler is needed but none is set.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosHandlerNotProvidedException.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.MinosHandlerNotProvidedException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosHandlerNotProvidedException.args">
+<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#minos.common.exceptions.MinosHandlerNotProvidedException.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.MinosHandlerNotProvidedException.with_traceback">
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.MinosHandlerNotProvidedException.with_traceback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exception.with_traceback(tb) –
 set self.__traceback__ to tb and return self.</p>
 </dd></dl>

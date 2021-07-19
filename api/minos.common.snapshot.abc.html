@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.abc module &mdash; Minos Microservice Common 0.1.4 documentation</title>
+  <title>minos.common.snapshot.abc module &mdash; Minos Microservice Common 0.1.5 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.4
+                0.1.5
               </div>
             
           
@@ -232,13 +232,13 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.snapshot.abc.MinosSnapshot.get">
-<em class="property"><span class="pre">abstract</span> <span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregate_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/snapshot/abc.html#MinosSnapshot.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.snapshot.abc.MinosSnapshot.get" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span> <span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregate_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuids</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/snapshot/abc.html#MinosSnapshot.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.snapshot.abc.MinosSnapshot.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve an asynchronous iterator that provides the requested <code class="docutils literal notranslate"><span class="pre">Aggregate</span></code> instances.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>aggregate_name</strong> (<em>str</em>) – Class name of the <code class="docutils literal notranslate"><span class="pre">Aggregate</span></code> to be retrieved.</p></li>
-<li><p><strong>ids</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – List of identifiers to be retrieved.</p></li>
+<li><p><strong>uuids</strong> (<em>set</em><em>[</em><em>UUID</em><em>]</em>) – Set of identifiers to be retrieved.</p></li>
 <li><p><strong>kwargs</strong> – Additional named arguments.</p></li>
 </ul>
 </dd>

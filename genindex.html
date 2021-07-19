@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Index &mdash; Minos Microservice Common 0.1.4 documentation</title>
+  <title>Index &mdash; Minos Microservice Common 0.1.5 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.4
+                0.1.5
               </div>
             
           
@@ -207,7 +207,13 @@
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosConfigException.__init__">(minos.common.exceptions.MinosConfigException method)</a>
 </li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosConfigNotProvidedException.__init__">(minos.common.exceptions.MinosConfigNotProvidedException method)</a>
+</li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosException.__init__">(minos.common.exceptions.MinosException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosHandlerException.__init__">(minos.common.exceptions.MinosHandlerException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosHandlerNotProvidedException.__init__">(minos.common.exceptions.MinosHandlerNotProvidedException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosImmutableClassException.__init__">(minos.common.exceptions.MinosImmutableClassException method)</a>
 </li>
@@ -319,6 +325,8 @@
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.__init__">(minos.common.networks.MinosBroker method)</a>
 </li>
+        <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.__init__">(minos.common.networks.MinosHandler method)</a>
+</li>
         <li><a href="api/minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository.__init__">(minos.common.repository.abc.MinosRepository method)</a>
 </li>
         <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry.__init__">(minos.common.repository.entries.RepositoryEntry method)</a>
@@ -411,7 +419,13 @@
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosConfigException.args">(minos.common.exceptions.MinosConfigException attribute)</a>
 </li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosConfigNotProvidedException.args">(minos.common.exceptions.MinosConfigNotProvidedException attribute)</a>
+</li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosException.args">(minos.common.exceptions.MinosException attribute)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosHandlerException.args">(minos.common.exceptions.MinosHandlerException attribute)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosHandlerNotProvidedException.args">(minos.common.exceptions.MinosHandlerNotProvidedException attribute)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosImmutableClassException.args">(minos.common.exceptions.MinosImmutableClassException attribute)</a>
 </li>
@@ -793,6 +807,8 @@
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.destroy">(minos.common.networks.MinosBroker method)</a>
 </li>
+        <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.destroy">(minos.common.networks.MinosHandler method)</a>
+</li>
         <li><a href="api/minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository.destroy">(minos.common.repository.abc.MinosRepository method)</a>
 </li>
         <li><a href="api/minos.common.repository.memory.html#minos.common.repository.memory.InMemoryRepository.destroy">(minos.common.repository.memory.InMemoryRepository method)</a>
@@ -982,8 +998,6 @@
         <li><a href="api/minos.common.model.dynamic.dto.html#minos.common.model.dynamic.dto.DataTransferObject.from_avro_bytes">(minos.common.model.dynamic.dto.DataTransferObject class method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.model.abc.html#minos.common.model.abc.Model.from_avro_str">from_avro_str() (minos.common.model.abc.Model class method)</a>
 
       <ul>
@@ -1012,12 +1026,16 @@
         <li><a href="api/minos.common.model.dynamic.dto.html#minos.common.model.dynamic.dto.DataTransferObject.from_avro_str">(minos.common.model.dynamic.dto.DataTransferObject class method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.from_config">from_config() (minos.common.database.PostgreSqlMinosDatabase class method)</a>
 
       <ul>
         <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.from_config">(minos.common.launchers.EntrypointLauncher class method)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.from_config">(minos.common.networks.MinosBroker class method)</a>
+</li>
+        <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.from_config">(minos.common.networks.MinosHandler class method)</a>
 </li>
         <li><a href="api/minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository.from_config">(minos.common.repository.abc.MinosRepository class method)</a>
 </li>
@@ -1114,8 +1132,14 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.get_one">get_one() (minos.common.model.declarative.aggregate.model.Aggregate class method)</a>
+      <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.get_many">get_many() (minos.common.networks.MinosHandler method)</a>
 </li>
+      <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.get_one">get_one() (minos.common.model.declarative.aggregate.model.Aggregate class method)</a>
+
+      <ul>
+        <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.get_one">(minos.common.networks.MinosHandler method)</a>
+</li>
+      </ul></li>
       <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.graceful_shutdown">graceful_shutdown() (minos.common.launchers.EntrypointLauncher method)</a>
 </li>
   </ul></td>
@@ -1641,8 +1665,6 @@
         <li><a href="api/minos.common.storage.html#module-minos.common.storage">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     minos.common.storage.abc
 
@@ -1650,6 +1672,8 @@
         <li><a href="api/minos.common.storage.abc.html#module-minos.common.storage.abc">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     minos.common.storage.lmdb
 
@@ -1679,7 +1703,15 @@
 </li>
       <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosConfigException">MinosConfigException</a>
 </li>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosConfigNotProvidedException">MinosConfigNotProvidedException</a>
+</li>
       <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosException">MinosException</a>
+</li>
+      <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler">MinosHandler (class in minos.common.networks)</a>
+</li>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosHandlerException">MinosHandlerException</a>
+</li>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosHandlerNotProvidedException">MinosHandlerNotProvidedException</a>
 </li>
       <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosImmutableClassException">MinosImmutableClassException</a>
 </li>
@@ -2059,6 +2091,8 @@
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.setup">(minos.common.networks.MinosBroker method)</a>
 </li>
+        <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.setup">(minos.common.networks.MinosHandler method)</a>
+</li>
         <li><a href="api/minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository.setup">(minos.common.repository.abc.MinosRepository method)</a>
 </li>
         <li><a href="api/minos.common.repository.memory.html#minos.common.repository.memory.InMemoryRepository.setup">(minos.common.repository.memory.InMemoryRepository method)</a>
@@ -2333,7 +2367,13 @@
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosConfigException.with_traceback">(minos.common.exceptions.MinosConfigException method)</a>
 </li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosConfigNotProvidedException.with_traceback">(minos.common.exceptions.MinosConfigNotProvidedException method)</a>
+</li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosException.with_traceback">(minos.common.exceptions.MinosException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosHandlerException.with_traceback">(minos.common.exceptions.MinosHandlerException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosHandlerNotProvidedException.with_traceback">(minos.common.exceptions.MinosHandlerNotProvidedException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosImmutableClassException.with_traceback">(minos.common.exceptions.MinosImmutableClassException method)</a>
 </li>
