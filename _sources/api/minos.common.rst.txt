@@ -34,5 +34,6 @@ Submodules
    minos.common.messages
    minos.common.meta
    minos.common.networks
+   minos.common.pools
    minos.common.saga
    minos.common.setup

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Index &mdash; Minos Microservice Common 0.1.5 documentation</title>
+  <title>Index &mdash; Minos Microservice Common 0.1.6 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.5
+                0.1.6
               </div>
             
           
@@ -327,6 +327,8 @@
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.__init__">(minos.common.networks.MinosHandler method)</a>
 </li>
+        <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.__init__">(minos.common.pools.MinosPool method)</a>
+</li>
         <li><a href="api/minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository.__init__">(minos.common.repository.abc.MinosRepository method)</a>
 </li>
         <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry.__init__">(minos.common.repository.entries.RepositoryEntry method)</a>
@@ -360,6 +362,8 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.acquire">acquire() (minos.common.pools.MinosPool method)</a>
+</li>
       <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry.action">action (minos.common.repository.entries.RepositoryEntry attribute)</a>
 </li>
       <li><a href="api/minos.common.storage.abc.html#minos.common.storage.abc.MinosStorage.add">add() (minos.common.storage.abc.MinosStorage method)</a>
@@ -676,6 +680,8 @@
 </li>
       <li><a href="api/minos.common.meta.html#minos.common.meta.classproperty">classproperty() (in module minos.common.meta)</a>
 </li>
+      <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.close">close() (minos.common.pools.MinosPool method)</a>
+</li>
       <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.Command">Command (class in minos.common.model.declarative.networks)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.CommandReply">CommandReply (class in minos.common.model.declarative.networks)</a>
@@ -808,6 +814,8 @@
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.destroy">(minos.common.networks.MinosBroker method)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.destroy">(minos.common.networks.MinosHandler method)</a>
+</li>
+        <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.destroy">(minos.common.pools.MinosPool method)</a>
 </li>
         <li><a href="api/minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository.destroy">(minos.common.repository.abc.MinosRepository method)</a>
 </li>
@@ -1036,6 +1044,8 @@
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.from_config">(minos.common.networks.MinosBroker class method)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.from_config">(minos.common.networks.MinosHandler class method)</a>
+</li>
+        <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.from_config">(minos.common.pools.MinosPool class method)</a>
 </li>
         <li><a href="api/minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository.from_config">(minos.common.repository.abc.MinosRepository class method)</a>
 </li>
@@ -1505,6 +1515,13 @@
 </li>
       </ul></li>
       <li>
+    minos.common.pools
+
+      <ul>
+        <li><a href="api/minos.common.pools.html#module-minos.common.pools">module</a>
+</li>
+      </ul></li>
+      <li>
     minos.common.protocol
 
       <ul>
@@ -1731,6 +1748,8 @@
 </li>
       <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosParseAttributeException">MinosParseAttributeException</a>
 </li>
+      <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool">MinosPool (class in minos.common.pools)</a>
+</li>
       <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosPreviousVersionSnapshotException">MinosPreviousVersionSnapshotException</a>
 </li>
       <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosProtocolException">MinosProtocolException</a>
@@ -1885,6 +1904,8 @@
 </li>
         <li><a href="api/minos.common.networks.html#module-minos.common.networks">minos.common.networks</a>
 </li>
+        <li><a href="api/minos.common.pools.html#module-minos.common.pools">minos.common.pools</a>
+</li>
         <li><a href="api/minos.common.protocol.html#module-minos.common.protocol">minos.common.protocol</a>
 </li>
         <li><a href="api/minos.common.protocol.abc.html#module-minos.common.protocol.abc">minos.common.protocol.abc</a>
@@ -2006,6 +2027,12 @@
 <h2 id="Q">Q</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.QUERIES">QUERIES (in module minos.common.configuration.config)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig.queries">queries (minos.common.configuration.config.MinosConfig property)</a>
+</li>
       <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.QUEUE">QUEUE (in module minos.common.configuration.config)</a>
 </li>
   </ul></td>
@@ -2092,6 +2119,8 @@
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.setup">(minos.common.networks.MinosBroker method)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.setup">(minos.common.networks.MinosHandler method)</a>
+</li>
+        <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.setup">(minos.common.pools.MinosPool method)</a>
 </li>
         <li><a href="api/minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository.setup">(minos.common.repository.abc.MinosRepository method)</a>
 </li>
