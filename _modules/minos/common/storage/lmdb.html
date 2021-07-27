@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.storage.lmdb &mdash; Minos Microservice Common 0.1.6 documentation</title>
+  <title>minos.common.storage.lmdb &mdash; Minos Microservice Common 0.1.7 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.6
+                0.1.7
               </div>
             
           
@@ -269,16 +269,17 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tables</span><span class="p">[</span><span class="n">table</span><span class="p">]</span>
 
 <div class="viewcode-block" id="MinosStorageLmdb.build"><a class="viewcode-back" href="../../../../api/minos.common.storage.lmdb.html#minos.common.storage.lmdb.MinosStorageLmdb.build">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">max_db</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MinosStorageLmdb</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">max_db</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">map_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e9</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MinosStorageLmdb</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Build a new instance.</span>
 
 <span class="sd">        :param path: Path in which the database is stored.</span>
 <span class="sd">        :param max_db: Maximum number of available databases.</span>
+<span class="sd">        :param map_size: Maximum number of entries to be stored on the database. Default set to 1GB</span>
 <span class="sd">        :param kwargs: Additional named arguments.</span>
 <span class="sd">        :return: A ``MinosStorageLmdb`` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">env</span><span class="p">:</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">Environment</span> <span class="o">=</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">max_dbs</span><span class="o">=</span><span class="n">max_db</span><span class="p">)</span>
+        <span class="n">env</span><span class="p">:</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">Environment</span> <span class="o">=</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">max_dbs</span><span class="o">=</span><span class="n">max_db</span><span class="p">,</span> <span class="n">map_size</span><span class="o">=</span><span class="n">map_size</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 </pre></div>
 

@@ -31,7 +31,6 @@ Submodules
    minos.common.importlib
    minos.common.injectors
    minos.common.launchers
-   minos.common.messages
    minos.common.meta
    minos.common.networks
    minos.common.pools

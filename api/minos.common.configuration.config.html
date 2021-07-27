@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.configuration.config module &mdash; Minos Microservice Common 0.1.6 documentation</title>
+  <title>minos.common.configuration.config module &mdash; Minos Microservice Common 0.1.7 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.6
+                0.1.7
               </div>
             
           
@@ -210,24 +210,6 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="minos.common.configuration.config.DISCOVERY_ENDPOINT">
-<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">DISCOVERY_ENDPOINT</span></span><a class="headerlink" href="#minos.common.configuration.config.DISCOVERY_ENDPOINT" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.DiscoveryEndpoint</span></code></p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="minos.common.configuration.config.DISCOVERY_ENDPOINTS">
-<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">DISCOVERY_ENDPOINTS</span></span><a class="headerlink" href="#minos.common.configuration.config.DISCOVERY_ENDPOINTS" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.DiscoveryEndpoints</span></code></p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="minos.common.configuration.config.ENDPOINT">
-<span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">ENDPOINT</span></span><a class="headerlink" href="#minos.common.configuration.config.ENDPOINT" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Endpoint</span></code></p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="minos.common.configuration.config.EVENTS">
 <span class="sig-prename descclassname"><span class="pre">minos.common.configuration.config.</span></span><span class="sig-name descname"><span class="pre">EVENTS</span></span><a class="headerlink" href="#minos.common.configuration.config.EVENTS" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Events</span></code></p>
@@ -252,6 +234,20 @@ It consists of the following parts:</p>
 <dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_environment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/configuration/config.html#MinosConfig.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.broker">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">broker</span></span><em class="property"><span class="pre">:</span> <span class="pre">minos.common.configuration.config.Broker</span></em><a class="headerlink" href="#minos.common.configuration.config.MinosConfig.broker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the events config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.configuration.config.Broker</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">EVENTS</span></code> NamedTuple instance.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="minos.common.configuration.config.MinosConfig.commands">

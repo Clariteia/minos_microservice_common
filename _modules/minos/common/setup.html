@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.setup &mdash; Minos Microservice Common 0.1.6 documentation</title>
+  <title>minos.common.setup &mdash; Minos Microservice Common 0.1.7 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.6
+                0.1.7
               </div>
             
           
@@ -198,8 +198,23 @@
     <span class="n">_config</span><span class="p">:</span> <span class="n">MinosConfig</span> <span class="o">=</span> <span class="n">Provide</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="MinosSetup.__init__"><a class="viewcode-back" href="../../../api/minos.common.setup.html#minos.common.setup.MinosSetup.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">already_setup</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">already_setup</span> <span class="o">=</span> <span class="n">already_setup</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">already_destroyed</span> <span class="o">=</span> <span class="kc">False</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_already_setup</span> <span class="o">=</span> <span class="n">already_setup</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">already_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Already Setup getter.</span>
+
+<span class="sd">        :return: A boolean value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_already_setup</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">already_destroyed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Already Destroy getter.</span>
+
+<span class="sd">        :return: A boolean value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_already_setup</span>
 
 <div class="viewcode-block" id="MinosSetup.from_config"><a class="viewcode-back" href="../../../api/minos.common.setup.html#minos.common.setup.MinosSetup.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">MinosConfig</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
@@ -229,10 +244,9 @@
 
 <span class="sd">        :return: This method does not return anything.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">already_setup</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_already_setup</span><span class="p">:</span>
             <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setup</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">already_setup</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">already_destroyed</span> <span class="o">=</span> <span class="kc">False</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_already_setup</span> <span class="o">=</span> <span class="kc">True</span></div>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
         <span class="k">return</span>
@@ -245,10 +259,9 @@
 
 <span class="sd">        :return: This method does not return anything.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">already_destroyed</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_already_setup</span><span class="p">:</span>
             <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_destroy</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">already_destroyed</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">already_setup</span> <span class="o">=</span> <span class="kc">False</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_already_setup</span> <span class="o">=</span> <span class="kc">False</span></div>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Destroy miscellaneous repository things.&quot;&quot;&quot;</span></div>

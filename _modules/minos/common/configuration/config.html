@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.1.6 documentation</title>
+  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.1.7 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.6
+                0.1.7
               </div>
             
           
@@ -190,49 +190,35 @@
     <span class="n">MinosConfigException</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">BROKER</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Broker&quot;</span><span class="p">,</span> <span class="s2">&quot;host port&quot;</span><span class="p">)</span>
+<span class="n">BROKER</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Broker&quot;</span><span class="p">,</span> <span class="s2">&quot;host port queue&quot;</span><span class="p">)</span>
 <span class="n">QUEUE</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Queue&quot;</span><span class="p">,</span> <span class="s2">&quot;database user password host port records retry&quot;</span><span class="p">)</span>
-<span class="n">ENDPOINT</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Endpoint&quot;</span><span class="p">,</span> <span class="s2">&quot;name route method controller action&quot;</span><span class="p">)</span>
 <span class="n">SERVICE</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Service&quot;</span><span class="p">,</span> <span class="s2">&quot;name injections services&quot;</span><span class="p">)</span>
 <span class="n">CONTROLLER</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Controller&quot;</span><span class="p">,</span> <span class="s2">&quot;name controller action&quot;</span><span class="p">)</span>
 <span class="n">STORAGE</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Storage&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">)</span>
 
-<span class="n">EVENTS</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Events&quot;</span><span class="p">,</span> <span class="s2">&quot;broker service queue&quot;</span><span class="p">)</span>
-<span class="n">COMMANDS</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Commands&quot;</span><span class="p">,</span> <span class="s2">&quot;broker service queue&quot;</span><span class="p">)</span>
+<span class="n">EVENTS</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Events&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">)</span>
+<span class="n">COMMANDS</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Commands&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">)</span>
 <span class="n">QUERIES</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Queries&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">)</span>
-<span class="n">SAGA</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Saga&quot;</span><span class="p">,</span> <span class="s2">&quot;items queue storage broker&quot;</span><span class="p">)</span>
-<span class="n">REST</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Rest&quot;</span><span class="p">,</span> <span class="s2">&quot;broker endpoints&quot;</span><span class="p">)</span>
+<span class="n">SAGA</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Saga&quot;</span><span class="p">,</span> <span class="s2">&quot;items storage&quot;</span><span class="p">)</span>
+<span class="n">REST</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Rest&quot;</span><span class="p">,</span> <span class="s2">&quot;host port&quot;</span><span class="p">)</span>
 <span class="n">REPOSITORY</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Repository&quot;</span><span class="p">,</span> <span class="s2">&quot;database user password host port&quot;</span><span class="p">)</span>
 <span class="n">SNAPSHOT</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Snapshot&quot;</span><span class="p">,</span> <span class="s2">&quot;database user password host port&quot;</span><span class="p">)</span>
-<span class="n">DISCOVERY_ENDPOINT</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;DiscoveryEndpoint&quot;</span><span class="p">,</span> <span class="s2">&quot;path method&quot;</span><span class="p">)</span>
-<span class="n">DISCOVERY_ENDPOINTS</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;DiscoveryEndpoints&quot;</span><span class="p">,</span> <span class="s2">&quot;subscribe unsubscribe discover&quot;</span><span class="p">)</span>
-<span class="n">DISCOVERY</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Discovery&quot;</span><span class="p">,</span> <span class="s2">&quot;host port endpoints&quot;</span><span class="p">)</span>
+<span class="n">DISCOVERY</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Discovery&quot;</span><span class="p">,</span> <span class="s2">&quot;host port&quot;</span><span class="p">)</span>
 
 <span class="n">_ENVIRONMENT_MAPPER</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;commands.queue.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_QUEUE_HOST&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.queue.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_QUEUE_PORT&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.queue.database&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_QUEUE_DATABASE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.queue.user&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_QUEUE_USER&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.queue.password&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_QUEUE_PASSWORD&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;service.name&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SERVICE_NAME&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rest.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_REST_HOST&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rest.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_REST_PORT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_BROKER_HOST&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_BROKER_PORT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_BROKER_QUEUE_HOST&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_BROKER_QUEUE_PORT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.database&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_BROKER_QUEUE_DATABASE&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.user&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_BROKER_QUEUE_USER&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.password&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_BROKER_QUEUE_PASSWORD&quot;</span><span class="p">,</span>
     <span class="s2">&quot;commands.service&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_SERVICE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.broker&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_BROKER&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_PORT&quot;</span><span class="p">,</span>
     <span class="s2">&quot;queries.service&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_QUERIES_SERVICE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.broker&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SAGA_BROKER&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SAGA_PORT&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SAGA_QUEUE_HOST&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SAGA_QUEUE_PORT&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.database&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SAGA_QUEUE_DATABASE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.user&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SAGA_QUEUE_USER&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.password&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SAGA_QUEUE_PASSWORD&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_EVENTS_QUEUE_HOST&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_EVENTS_QUEUE_PORT&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.database&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_EVENTS_QUEUE_DATABASE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.user&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_EVENTS_QUEUE_USER&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.password&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_EVENTS_QUEUE_PASSWORD&quot;</span><span class="p">,</span>
     <span class="s2">&quot;events.service&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_EVENTS_SERVICE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.broker&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_EVENTS_BROKER&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_EVENTS_PORT&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_REPOSITORY_HOST&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_REPOSITORY_PORT&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.database&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_REPOSITORY_DATABASE&quot;</span><span class="p">,</span>
@@ -245,39 +231,24 @@
     <span class="s2">&quot;snapshot.password&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_SNAPSHOT_PASSWORD&quot;</span><span class="p">,</span>
     <span class="s2">&quot;discovery.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_HOST&quot;</span><span class="p">,</span>
     <span class="s2">&quot;discovery.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_PORT&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.subscribe.path&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_SUBSCRIBE_PATH&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.subscribe.method&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_SUBSCRIBE_METHOD&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.unsubscribe.path&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_UNSUBSCRIBE_PATH&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.unsubscribe.method&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_UNSUBSCRIBE_METHOD&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.discover.path&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_DISCOVER_PATH&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.discover.method&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_DISCOVERY_ENDPOINTS_DISCOVER_METHOD&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">_PARAMETERIZED_MAPPER</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;commands.queue.host&quot;</span><span class="p">:</span> <span class="s2">&quot;commands_queue_host&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.queue.port&quot;</span><span class="p">:</span> <span class="s2">&quot;commands_queue_port&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.queue.database&quot;</span><span class="p">:</span> <span class="s2">&quot;commands_queue_database&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.queue.user&quot;</span><span class="p">:</span> <span class="s2">&quot;commands_queue_user&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.queue.password&quot;</span><span class="p">:</span> <span class="s2">&quot;commands_queue_password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;service.name&quot;</span><span class="p">:</span> <span class="s2">&quot;service_name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rest.host&quot;</span><span class="p">:</span> <span class="s2">&quot;rest_host&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rest.port&quot;</span><span class="p">:</span> <span class="s2">&quot;rest_port&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.host&quot;</span><span class="p">:</span> <span class="s2">&quot;broker_host&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.port&quot;</span><span class="p">:</span> <span class="s2">&quot;broker_port&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.host&quot;</span><span class="p">:</span> <span class="s2">&quot;broker_queue_host&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.port&quot;</span><span class="p">:</span> <span class="s2">&quot;broker_queue_port&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.database&quot;</span><span class="p">:</span> <span class="s2">&quot;broker_queue_database&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.user&quot;</span><span class="p">:</span> <span class="s2">&quot;broker_queue_user&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;broker.queue.password&quot;</span><span class="p">:</span> <span class="s2">&quot;broker_queue_password&quot;</span><span class="p">,</span>
     <span class="s2">&quot;commands.service&quot;</span><span class="p">:</span> <span class="s2">&quot;commands_service&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.broker&quot;</span><span class="p">:</span> <span class="s2">&quot;commands_broker&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;commands.port&quot;</span><span class="p">:</span> <span class="s2">&quot;commands_port&quot;</span><span class="p">,</span>
     <span class="s2">&quot;queries.service&quot;</span><span class="p">:</span> <span class="s2">&quot;queries_service&quot;</span><span class="p">,</span>
     <span class="s2">&quot;saga.broker&quot;</span><span class="p">:</span> <span class="s2">&quot;saga_broker&quot;</span><span class="p">,</span>
     <span class="s2">&quot;saga.port&quot;</span><span class="p">:</span> <span class="s2">&quot;saga_port&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.host&quot;</span><span class="p">:</span> <span class="s2">&quot;saga_queue_host&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.port&quot;</span><span class="p">:</span> <span class="s2">&quot;saga_queue_port&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.database&quot;</span><span class="p">:</span> <span class="s2">&quot;saga_queue_database&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.user&quot;</span><span class="p">:</span> <span class="s2">&quot;saga_queue_user&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;saga.queue.password&quot;</span><span class="p">:</span> <span class="s2">&quot;saga_queue_password&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.host&quot;</span><span class="p">:</span> <span class="s2">&quot;events_queue_host&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.port&quot;</span><span class="p">:</span> <span class="s2">&quot;events_queue_port&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.database&quot;</span><span class="p">:</span> <span class="s2">&quot;events_queue_database&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.user&quot;</span><span class="p">:</span> <span class="s2">&quot;events_queue_user&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.queue.password&quot;</span><span class="p">:</span> <span class="s2">&quot;events_queue_password&quot;</span><span class="p">,</span>
     <span class="s2">&quot;events.service&quot;</span><span class="p">:</span> <span class="s2">&quot;events_service&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.broker&quot;</span><span class="p">:</span> <span class="s2">&quot;events_broker&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.port&quot;</span><span class="p">:</span> <span class="s2">&quot;events_port&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.host&quot;</span><span class="p">:</span> <span class="s2">&quot;repository_host&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.port&quot;</span><span class="p">:</span> <span class="s2">&quot;repository_port&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.database&quot;</span><span class="p">:</span> <span class="s2">&quot;repository_database&quot;</span><span class="p">,</span>
@@ -290,12 +261,6 @@
     <span class="s2">&quot;snapshot.password&quot;</span><span class="p">:</span> <span class="s2">&quot;snapshot_password&quot;</span><span class="p">,</span>
     <span class="s2">&quot;discovery.host&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_host&quot;</span><span class="p">,</span>
     <span class="s2">&quot;discovery.port&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_port&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.subscribe.path&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_subscribe_path&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.subscribe.method&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_subscribe_method&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.unsubscribe.path&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_unsubscribe_path&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.unsubscribe.method&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_unsubscribe_method&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.discover.path&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_discover_path&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;discovery.endpoints.discover.method&quot;</span><span class="p">:</span> <span class="s2">&quot;minos_discovery_endpoints_discover_method&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
 
@@ -396,30 +361,16 @@
 
 <span class="sd">        :return: A ``REST`` NamedTuple instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">broker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rest_broker</span>
-        <span class="n">endpoints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rest_endpoints</span>
-        <span class="k">return</span> <span class="n">REST</span><span class="p">(</span><span class="n">broker</span><span class="o">=</span><span class="n">broker</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="n">endpoints</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">REST</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;rest.host&quot;</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;rest.port&quot;</span><span class="p">)))</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_rest_broker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">broker</span> <span class="o">=</span> <span class="n">BROKER</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;rest.host&quot;</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;rest.port&quot;</span><span class="p">)))</span>
-        <span class="k">return</span> <span class="n">broker</span>
+    <span class="k">def</span> <span class="nf">broker</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BROKER</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the events config.</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_rest_endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ENDPOINT</span><span class="p">]:</span>
-        <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;rest.endpoints&quot;</span><span class="p">)</span>
-        <span class="n">endpoints</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_rest_endpoints_entry</span><span class="p">(</span><span class="n">endpoint</span><span class="p">)</span> <span class="k">for</span> <span class="n">endpoint</span> <span class="ow">in</span> <span class="n">info</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">endpoints</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_rest_endpoints_entry</span><span class="p">(</span><span class="n">endpoint</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ENDPOINT</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">ENDPOINT</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="n">endpoint</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-            <span class="n">route</span><span class="o">=</span><span class="n">endpoint</span><span class="p">[</span><span class="s2">&quot;route&quot;</span><span class="p">],</span>
-            <span class="n">method</span><span class="o">=</span><span class="n">endpoint</span><span class="p">[</span><span class="s2">&quot;method&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
-            <span class="n">controller</span><span class="o">=</span><span class="n">endpoint</span><span class="p">[</span><span class="s2">&quot;controller&quot;</span><span class="p">],</span>
-            <span class="n">action</span><span class="o">=</span><span class="n">endpoint</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">],</span>
-        <span class="p">)</span>
+<span class="sd">        :return: A ``EVENTS`` NamedTuple instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_broker_queue</span>
+        <span class="k">return</span> <span class="n">BROKER</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.host&quot;</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.port&quot;</span><span class="p">),</span> <span class="n">queue</span><span class="o">=</span><span class="n">queue</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">events</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EVENTS</span><span class="p">:</span>
@@ -427,25 +378,19 @@
 
 <span class="sd">        :return: A ``EVENTS`` NamedTuple instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">broker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events_broker</span>
-        <span class="n">queue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events_queue</span>
         <span class="n">service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.service&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EVENTS</span><span class="p">(</span><span class="n">broker</span><span class="o">=</span><span class="n">broker</span><span class="p">,</span> <span class="n">service</span><span class="o">=</span><span class="n">service</span><span class="p">,</span> <span class="n">queue</span><span class="o">=</span><span class="n">queue</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">EVENTS</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">service</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_events_broker</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BROKER</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">BROKER</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.broker&quot;</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.port&quot;</span><span class="p">)))</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_events_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QUEUE</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_broker_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QUEUE</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">QUEUE</span><span class="p">(</span>
-            <span class="n">database</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.queue.database&quot;</span><span class="p">),</span>
-            <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.queue.user&quot;</span><span class="p">),</span>
-            <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.queue.password&quot;</span><span class="p">),</span>
-            <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.queue.host&quot;</span><span class="p">),</span>
-            <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.queue.port&quot;</span><span class="p">)),</span>
-            <span class="n">records</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.queue.records&quot;</span><span class="p">)),</span>
-            <span class="n">retry</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.queue.retry&quot;</span><span class="p">)),</span>
+            <span class="n">database</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.queue.database&quot;</span><span class="p">),</span>
+            <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.queue.user&quot;</span><span class="p">),</span>
+            <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.queue.password&quot;</span><span class="p">),</span>
+            <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.queue.host&quot;</span><span class="p">),</span>
+            <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.queue.port&quot;</span><span class="p">)),</span>
+            <span class="n">records</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.queue.records&quot;</span><span class="p">)),</span>
+            <span class="n">retry</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.queue.retry&quot;</span><span class="p">)),</span>
         <span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -454,10 +399,8 @@
 
 <span class="sd">        :return: A ``COMMAND`` NamedTuple instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">broker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_commands_broker</span>
-        <span class="n">queue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_commands_queue</span>
         <span class="n">service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.service&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">COMMANDS</span><span class="p">(</span><span class="n">broker</span><span class="o">=</span><span class="n">broker</span><span class="p">,</span> <span class="n">service</span><span class="o">=</span><span class="n">service</span><span class="p">,</span> <span class="n">queue</span><span class="o">=</span><span class="n">queue</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">COMMANDS</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">service</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">queries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QUERIES</span><span class="p">:</span>
@@ -473,29 +416,10 @@
 
 <span class="sd">        :return: A ``SAGAS`` NamedTuple instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">queue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sagas_queue</span>
+
         <span class="n">sagas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saga_items</span>
         <span class="n">storage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saga_storage</span>
-        <span class="n">broker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saga_broker</span>
-        <span class="k">return</span> <span class="n">SAGA</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">sagas</span><span class="p">,</span> <span class="n">queue</span><span class="o">=</span><span class="n">queue</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="n">broker</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_commands_broker</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BROKER</span><span class="p">:</span>
-        <span class="n">broker</span> <span class="o">=</span> <span class="n">BROKER</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.broker&quot;</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.port&quot;</span><span class="p">)))</span>
-        <span class="k">return</span> <span class="n">broker</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_commands_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QUEUE</span><span class="p">:</span>
-        <span class="n">queue</span> <span class="o">=</span> <span class="n">QUEUE</span><span class="p">(</span>
-            <span class="n">database</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.queue.database&quot;</span><span class="p">),</span>
-            <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.queue.user&quot;</span><span class="p">),</span>
-            <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.queue.password&quot;</span><span class="p">),</span>
-            <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.queue.host&quot;</span><span class="p">),</span>
-            <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.queue.port&quot;</span><span class="p">)),</span>
-            <span class="n">records</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.queue.records&quot;</span><span class="p">)),</span>
-            <span class="n">retry</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.queue.retry&quot;</span><span class="p">)),</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">queue</span>
+        <span class="k">return</span> <span class="n">SAGA</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">sagas</span><span class="p">,</span> <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_saga_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">STORAGE</span><span class="p">:</span>
@@ -503,23 +427,6 @@
         <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="k">if</span> <span class="n">raw</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">raw</span>
 
         <span class="n">queue</span> <span class="o">=</span> <span class="n">STORAGE</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">queue</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_saga_broker</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BROKER</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">BROKER</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;saga.broker&quot;</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;saga.port&quot;</span><span class="p">)))</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_sagas_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QUEUE</span><span class="p">:</span>
-        <span class="n">queue</span> <span class="o">=</span> <span class="n">QUEUE</span><span class="p">(</span>
-            <span class="n">database</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;saga.queue.database&quot;</span><span class="p">),</span>
-            <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;saga.queue.user&quot;</span><span class="p">),</span>
-            <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;saga.queue.password&quot;</span><span class="p">),</span>
-            <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;saga.queue.host&quot;</span><span class="p">),</span>
-            <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;saga.queue.port&quot;</span><span class="p">)),</span>
-            <span class="n">records</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;saga.queue.records&quot;</span><span class="p">)),</span>
-            <span class="n">retry</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;saga.queue.retry&quot;</span><span class="p">)),</span>
-        <span class="p">)</span>
         <span class="k">return</span> <span class="n">queue</span>
 
     <span class="nd">@property</span>
@@ -568,40 +475,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.host&quot;</span><span class="p">)</span>
         <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.port&quot;</span><span class="p">)</span>
-        <span class="n">endpoints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovery_endpoints</span>
-        <span class="k">return</span> <span class="n">DISCOVERY</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="n">endpoints</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_discovery_endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DISCOVERY_ENDPOINTS</span><span class="p">:</span>
-        <span class="n">subscribe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovery_subscribe</span>
-        <span class="n">unsubscribe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovery_unsubscribe</span>
-        <span class="n">discover</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discovery_discover</span>
-
-        <span class="k">return</span> <span class="n">DISCOVERY_ENDPOINTS</span><span class="p">(</span><span class="n">subscribe</span><span class="o">=</span><span class="n">subscribe</span><span class="p">,</span> <span class="n">unsubscribe</span><span class="o">=</span><span class="n">unsubscribe</span><span class="p">,</span> <span class="n">discover</span><span class="o">=</span><span class="n">discover</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_discovery_subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">:</span>
-        <span class="n">endpoint</span> <span class="o">=</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">(</span>
-            <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.subscribe.path&quot;</span><span class="p">),</span>
-            <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.subscribe.method&quot;</span><span class="p">),</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">endpoint</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_discovery_unsubscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">:</span>
-        <span class="n">endpoint</span> <span class="o">=</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">(</span>
-            <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.unsubscribe.path&quot;</span><span class="p">),</span>
-            <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.unsubscribe.method&quot;</span><span class="p">),</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">endpoint</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_discovery_discover</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">:</span>
-        <span class="n">endpoint</span> <span class="o">=</span> <span class="n">DISCOVERY_ENDPOINT</span><span class="p">(</span>
-            <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.discover.path&quot;</span><span class="p">),</span>
-            <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;discovery.endpoints.discover.method&quot;</span><span class="p">),</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">endpoint</span></div>
+        <span class="k">return</span> <span class="n">DISCOVERY</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
