@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Index &mdash; Minos Microservice Common 0.1.7 documentation</title>
+  <title>Index &mdash; Minos Microservice Common 0.1.8 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.7
+                0.1.8
               </div>
             
           
@@ -195,7 +195,9 @@
       <ul>
         <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfigAbstract.__init__">(minos.common.configuration.config.MinosConfigAbstract method)</a>
 </li>
-        <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.__init__">(minos.common.database.PostgreSqlMinosDatabase method)</a>
+        <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.__init__">(minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
+</li>
+        <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.__init__">(minos.common.database.pool.PostgreSqlPool method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.EmptyMinosModelSequenceException.__init__">(minos.common.exceptions.EmptyMinosModelSequenceException method)</a>
 </li>
@@ -240,8 +242,6 @@
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryManuallySetAggregateVersionException.__init__">(minos.common.exceptions.MinosRepositoryManuallySetAggregateVersionException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryNotProvidedException.__init__">(minos.common.exceptions.MinosRepositoryNotProvidedException method)</a>
-</li>
-        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryUnknownActionException.__init__">(minos.common.exceptions.MinosRepositoryUnknownActionException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosReqAttributeException.__init__">(minos.common.exceptions.MinosReqAttributeException method)</a>
 </li>
@@ -358,10 +358,18 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.acquire">acquire() (minos.common.pools.MinosPool method)</a>
+      <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.acquire">acquire() (minos.common.database.pool.PostgreSqlPool method)</a>
+
+      <ul>
+        <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.acquire">(minos.common.pools.MinosPool method)</a>
 </li>
-      <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry.action">action (minos.common.repository.entries.RepositoryEntry attribute)</a>
+      </ul></li>
+      <li><a href="api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff.action">action (minos.common.model.declarative.aggregate.diff.AggregateDiff attribute)</a>
+
+      <ul>
+        <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry.action">(minos.common.repository.entries.RepositoryEntry attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api/minos.common.storage.abc.html#minos.common.storage.abc.MinosStorage.add">add() (minos.common.storage.abc.MinosStorage method)</a>
 
       <ul>
@@ -392,6 +400,8 @@
         <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.aggregate_uuid">(minos.common.snapshot.entries.SnapshotEntry attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/minos.common.model.declarative.aggregate.actions.html#minos.common.model.declarative.aggregate.actions.AggregateAction">AggregateAction (class in minos.common.model.declarative.aggregate.actions)</a>
+</li>
       <li><a href="api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff">AggregateDiff (class in minos.common.model.declarative.aggregate.diff)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.aggregate.ref.html#minos.common.model.declarative.aggregate.ref.AggregateRef">AggregateRef (class in minos.common.model.declarative.aggregate.ref)</a>
@@ -404,9 +414,11 @@
         <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.Fixed.aliases">(minos.common.model.types.data_types.Fixed attribute)</a>
 </li>
       </ul></li>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.already_destroyed">already_destroyed (minos.common.database.PostgreSqlMinosDatabase property)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.already_destroyed">already_destroyed (minos.common.database.abc.PostgreSqlMinosDatabase property)</a>
 
       <ul>
+        <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.already_destroyed">(minos.common.database.pool.PostgreSqlPool property)</a>
+</li>
         <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.already_destroyed">(minos.common.launchers.EntrypointLauncher property)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.already_destroyed">(minos.common.networks.MinosBroker property)</a>
@@ -436,9 +448,11 @@
         <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.already_destroyed">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot property)</a>
 </li>
       </ul></li>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.already_setup">already_setup (minos.common.database.PostgreSqlMinosDatabase property)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.already_setup">already_setup (minos.common.database.abc.PostgreSqlMinosDatabase property)</a>
 
       <ul>
+        <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.already_setup">(minos.common.database.pool.PostgreSqlPool property)</a>
+</li>
         <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.already_setup">(minos.common.launchers.EntrypointLauncher property)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.already_setup">(minos.common.networks.MinosBroker property)</a>
@@ -516,8 +530,6 @@
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryManuallySetAggregateVersionException.args">(minos.common.exceptions.MinosRepositoryManuallySetAggregateVersionException attribute)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryNotProvidedException.args">(minos.common.exceptions.MinosRepositoryNotProvidedException attribute)</a>
-</li>
-        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryUnknownActionException.args">(minos.common.exceptions.MinosRepositoryUnknownActionException attribute)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosReqAttributeException.args">(minos.common.exceptions.MinosReqAttributeException attribute)</a>
 </li>
@@ -740,8 +752,12 @@
 </li>
       <li><a href="api/minos.common.meta.html#minos.common.meta.classproperty">classproperty() (in module minos.common.meta)</a>
 </li>
-      <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.close">close() (minos.common.pools.MinosPool method)</a>
+      <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.close">close() (minos.common.database.pool.PostgreSqlPool method)</a>
+
+      <ul>
+        <li><a href="api/minos.common.pools.html#minos.common.pools.MinosPool.close">(minos.common.pools.MinosPool method)</a>
 </li>
+      </ul></li>
       <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.Command">Command (class in minos.common.model.declarative.networks)</a>
 </li>
   </ul></td>
@@ -758,7 +774,7 @@
 </li>
       <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.CONTROLLER">CONTROLLER (in module minos.common.configuration.config)</a>
 </li>
-      <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction.CREATE">CREATE (minos.common.repository.entries.RepositoryAction attribute)</a>
+      <li><a href="api/minos.common.model.declarative.aggregate.actions.html#minos.common.model.declarative.aggregate.actions.AggregateAction.CREATE">CREATE (minos.common.model.declarative.aggregate.actions.AggregateAction attribute)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.create">create() (minos.common.model.declarative.aggregate.model.Aggregate class method)</a>
 
@@ -776,9 +792,11 @@
         <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.created_at">(minos.common.snapshot.entries.SnapshotEntry attribute)</a>
 </li>
       </ul></li>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.cursor">cursor() (minos.common.database.PostgreSqlMinosDatabase method)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.cursor">cursor() (minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
 
       <ul>
+        <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.cursor">(minos.common.database.pool.PostgreSqlPool method)</a>
+</li>
         <li><a href="api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlRepository.cursor">(minos.common.repository.pg.PostgreSqlRepository method)</a>
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.cursor">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup method)</a>
@@ -840,7 +858,7 @@
         <li><a href="api/minos.common.model.types.data_types.html#minos.common.model.types.data_types.Fixed.default">(minos.common.model.types.data_types.Fixed attribute)</a>
 </li>
       </ul></li>
-      <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction.DELETE">DELETE (minos.common.repository.entries.RepositoryAction attribute)</a>
+      <li><a href="api/minos.common.model.declarative.aggregate.actions.html#minos.common.model.declarative.aggregate.actions.AggregateAction.DELETE">DELETE (minos.common.model.declarative.aggregate.actions.AggregateAction attribute)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.delete">delete() (minos.common.model.declarative.aggregate.model.Aggregate method)</a>
 
@@ -860,9 +878,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.injectors.html#minos.common.injectors.DependencyInjector">DependencyInjector (class in minos.common.injectors)</a>
 </li>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.destroy">destroy() (minos.common.database.PostgreSqlMinosDatabase method)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.destroy">destroy() (minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
 
       <ul>
+        <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.destroy">(minos.common.database.pool.PostgreSqlPool method)</a>
+</li>
         <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.destroy">(minos.common.launchers.EntrypointLauncher method)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.destroy">(minos.common.networks.MinosBroker method)</a>
@@ -1084,9 +1104,11 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.from_config">from_config() (minos.common.database.PostgreSqlMinosDatabase class method)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.from_config">from_config() (minos.common.database.abc.PostgreSqlMinosDatabase class method)</a>
 
       <ul>
+        <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.from_config">(minos.common.database.pool.PostgreSqlPool class method)</a>
+</li>
         <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.from_config">(minos.common.launchers.EntrypointLauncher class method)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.from_config">(minos.common.networks.MinosBroker class method)</a>
@@ -1216,17 +1238,23 @@
 </li>
       <li><a href="api/minos.common.repository.memory.html#minos.common.repository.memory.InMemoryRepository">InMemoryRepository (class in minos.common.repository.memory)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot">InMemorySnapshot (class in minos.common.snapshot.memory)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_aggregate_type">is_aggregate_type() (in module minos.common.model.types.comparators)</a>
+</li>
+      <li><a href="api/minos.common.model.declarative.aggregate.actions.html#minos.common.model.declarative.aggregate.actions.AggregateAction.is_create">is_create (minos.common.model.declarative.aggregate.actions.AggregateAction property)</a>
+</li>
+      <li><a href="api/minos.common.model.declarative.aggregate.actions.html#minos.common.model.declarative.aggregate.actions.AggregateAction.is_delete">is_delete (minos.common.model.declarative.aggregate.actions.AggregateAction property)</a>
 </li>
       <li><a href="api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_model_subclass">is_model_subclass() (in module minos.common.model.types.comparators)</a>
 </li>
       <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.is_synced">is_synced() (minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
 </li>
       <li><a href="api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_type_subclass">is_type_subclass() (in module minos.common.model.types.comparators)</a>
+</li>
+      <li><a href="api/minos.common.model.declarative.aggregate.actions.html#minos.common.model.declarative.aggregate.actions.AggregateAction.is_update">is_update (minos.common.model.declarative.aggregate.actions.AggregateAction property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1318,6 +1346,20 @@
 </li>
       </ul></li>
       <li>
+    minos.common.database.abc
+
+      <ul>
+        <li><a href="api/minos.common.database.abc.html#module-minos.common.database.abc">module</a>
+</li>
+      </ul></li>
+      <li>
+    minos.common.database.pool
+
+      <ul>
+        <li><a href="api/minos.common.database.pool.html#module-minos.common.database.pool">module</a>
+</li>
+      </ul></li>
+      <li>
     minos.common.exceptions
 
       <ul>
@@ -1385,6 +1427,13 @@
 
       <ul>
         <li><a href="api/minos.common.model.declarative.aggregate.html#module-minos.common.model.declarative.aggregate">module</a>
+</li>
+      </ul></li>
+      <li>
+    minos.common.model.declarative.aggregate.actions
+
+      <ul>
+        <li><a href="api/minos.common.model.declarative.aggregate.actions.html#module-minos.common.model.declarative.aggregate.actions">module</a>
 </li>
       </ul></li>
       <li>
@@ -1723,6 +1772,8 @@
         <li><a href="api/minos.common.storage.html#module-minos.common.storage">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     minos.common.storage.abc
 
@@ -1730,8 +1781,6 @@
         <li><a href="api/minos.common.storage.abc.html#module-minos.common.storage.abc">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     minos.common.storage.lmdb
 
@@ -1805,8 +1854,6 @@
 </li>
       <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryNotProvidedException">MinosRepositoryNotProvidedException</a>
 </li>
-      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryUnknownActionException">MinosRepositoryUnknownActionException</a>
-</li>
       <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosReqAttributeException">MinosReqAttributeException</a>
 </li>
       <li><a href="api/minos.common.saga.html#minos.common.saga.MinosSagaManager">MinosSagaManager (class in minos.common.saga)</a>
@@ -1875,6 +1922,10 @@
 </li>
         <li><a href="api/minos.common.database.html#module-minos.common.database">minos.common.database</a>
 </li>
+        <li><a href="api/minos.common.database.abc.html#module-minos.common.database.abc">minos.common.database.abc</a>
+</li>
+        <li><a href="api/minos.common.database.pool.html#module-minos.common.database.pool">minos.common.database.pool</a>
+</li>
         <li><a href="api/minos.common.exceptions.html#module-minos.common.exceptions">minos.common.exceptions</a>
 </li>
         <li><a href="api/minos.common.importlib.html#module-minos.common.importlib">minos.common.importlib</a>
@@ -1894,6 +1945,8 @@
         <li><a href="api/minos.common.model.declarative.abc.html#module-minos.common.model.declarative.abc">minos.common.model.declarative.abc</a>
 </li>
         <li><a href="api/minos.common.model.declarative.aggregate.html#module-minos.common.model.declarative.aggregate">minos.common.model.declarative.aggregate</a>
+</li>
+        <li><a href="api/minos.common.model.declarative.aggregate.actions.html#module-minos.common.model.declarative.aggregate.actions">minos.common.model.declarative.aggregate.actions</a>
 </li>
         <li><a href="api/minos.common.model.declarative.aggregate.diff.html#module-minos.common.model.declarative.aggregate.diff">minos.common.model.declarative.aggregate.diff</a>
 </li>
@@ -2032,7 +2085,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.model.fields.html#minos.common.model.fields.Field.parser">parser (minos.common.model.fields.Field property)</a>
 </li>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.pool">pool (minos.common.database.PostgreSqlMinosDatabase property)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.pool">pool (minos.common.database.abc.PostgreSqlMinosDatabase property)</a>
 
       <ul>
         <li><a href="api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlRepository.pool">(minos.common.repository.pg.PostgreSqlRepository property)</a>
@@ -2044,9 +2097,11 @@
         <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.pool">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot property)</a>
 </li>
       </ul></li>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase">PostgreSqlMinosDatabase (class in minos.common.database.abc)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase">PostgreSqlMinosDatabase (class in minos.common.database)</a>
+      <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool">PostgreSqlPool (class in minos.common.database.pool)</a>
 </li>
       <li><a href="api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlRepository">PostgreSqlRepository (class in minos.common.repository.pg)</a>
 </li>
@@ -2088,11 +2143,9 @@
 </li>
       <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.REPOSITORY">REPOSITORY (in module minos.common.configuration.config)</a>
 </li>
-      <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig.repository">repository (minos.common.configuration.config.MinosConfig property)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction">RepositoryAction (class in minos.common.repository.entries)</a>
+      <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig.repository">repository (minos.common.configuration.config.MinosConfig property)</a>
 </li>
       <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry">RepositoryEntry (class in minos.common.repository.entries)</a>
 </li>
@@ -2142,9 +2195,11 @@
 </li>
       <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.services">services (minos.common.launchers.EntrypointLauncher attribute)</a>
 </li>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.setup">setup() (minos.common.database.PostgreSqlMinosDatabase method)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.setup">setup() (minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
 
       <ul>
+        <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.setup">(minos.common.database.pool.PostgreSqlPool method)</a>
+</li>
         <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.setup">(minos.common.launchers.EntrypointLauncher method)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosBroker.setup">(minos.common.networks.MinosBroker method)</a>
@@ -2194,7 +2249,7 @@
 </li>
       <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.STORAGE">STORAGE (in module minos.common.configuration.config)</a>
 </li>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.submit_query">submit_query() (minos.common.database.PostgreSqlMinosDatabase method)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.submit_query">submit_query() (minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
 
       <ul>
         <li><a href="api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlRepository.submit_query">(minos.common.repository.pg.PostgreSqlRepository method)</a>
@@ -2206,7 +2261,7 @@
         <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.submit_query">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
 </li>
       </ul></li>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.submit_query_and_fetchone">submit_query_and_fetchone() (minos.common.database.PostgreSqlMinosDatabase method)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.submit_query_and_fetchone">submit_query_and_fetchone() (minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
 
       <ul>
         <li><a href="api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlRepository.submit_query_and_fetchone">(minos.common.repository.pg.PostgreSqlRepository method)</a>
@@ -2218,7 +2273,7 @@
         <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.submit_query_and_fetchone">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
 </li>
       </ul></li>
-      <li><a href="api/minos.common.database.html#minos.common.database.PostgreSqlMinosDatabase.submit_query_and_iter">submit_query_and_iter() (minos.common.database.PostgreSqlMinosDatabase method)</a>
+      <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.submit_query_and_iter">submit_query_and_iter() (minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
 
       <ul>
         <li><a href="api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlRepository.submit_query_and_iter">(minos.common.repository.pg.PostgreSqlRepository method)</a>
@@ -2352,7 +2407,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.injectors.html#minos.common.injectors.DependencyInjector.unwire">unwire() (minos.common.injectors.DependencyInjector method)</a>
 </li>
-      <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction.UPDATE">UPDATE (minos.common.repository.entries.RepositoryAction attribute)</a>
+      <li><a href="api/minos.common.model.declarative.aggregate.actions.html#minos.common.model.declarative.aggregate.actions.AggregateAction.UPDATE">UPDATE (minos.common.model.declarative.aggregate.actions.AggregateAction attribute)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.update">update() (minos.common.model.declarative.aggregate.model.Aggregate method)</a>
 
@@ -2372,6 +2427,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.updated_at">updated_at (minos.common.snapshot.entries.SnapshotEntry attribute)</a>
 </li>
+      <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.Command.user">user (minos.common.model.declarative.networks.Command attribute)</a>
+</li>
       <li><a href="api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff.uuid">uuid (minos.common.model.declarative.aggregate.diff.AggregateDiff attribute)</a>
 
       <ul>
@@ -2390,7 +2447,7 @@
 </li>
       <li><a href="api/minos.common.model.fields.html#minos.common.model.fields.Field.value">value (minos.common.model.fields.Field property)</a>
 </li>
-      <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction.value_of">value_of() (minos.common.repository.entries.RepositoryAction class method)</a>
+      <li><a href="api/minos.common.model.declarative.aggregate.actions.html#minos.common.model.declarative.aggregate.actions.AggregateAction.value_of">value_of() (minos.common.model.declarative.aggregate.actions.AggregateAction class method)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.value_object.html#minos.common.model.declarative.value_object.ValueObject">ValueObject (class in minos.common.model.declarative.value_object)</a>
 </li>
@@ -2460,8 +2517,6 @@
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryManuallySetAggregateVersionException.with_traceback">(minos.common.exceptions.MinosRepositoryManuallySetAggregateVersionException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryNotProvidedException.with_traceback">(minos.common.exceptions.MinosRepositoryNotProvidedException method)</a>
-</li>
-        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosRepositoryUnknownActionException.with_traceback">(minos.common.exceptions.MinosRepositoryUnknownActionException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosReqAttributeException.with_traceback">(minos.common.exceptions.MinosReqAttributeException method)</a>
 </li>

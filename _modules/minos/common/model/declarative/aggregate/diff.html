@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.declarative.aggregate.diff &mdash; Minos Microservice Common 0.1.7 documentation</title>
+  <title>minos.common.model.declarative.aggregate.diff &mdash; Minos Microservice Common 0.1.8 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.7
+                0.1.8
               </div>
             
           
@@ -189,6 +189,9 @@
 <span class="kn">from</span> <span class="nn">..abc</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">DeclarativeModel</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.actions</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AggregateAction</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">.model</span> <span class="kn">import</span> <span class="p">(</span>
@@ -204,14 +207,18 @@
     <span class="n">uuid</span><span class="p">:</span> <span class="n">UUID</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">version</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">action</span><span class="p">:</span> <span class="n">AggregateAction</span>
     <span class="n">fields_diff</span><span class="p">:</span> <span class="n">FieldsDiff</span>
 
 <div class="viewcode-block" id="AggregateDiff.from_difference"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff.from_difference">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_difference</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateDiff</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">from_difference</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">AggregateAction</span> <span class="o">=</span> <span class="n">AggregateAction</span><span class="o">.</span><span class="n">UPDATE</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateDiff</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Build an ``AggregateDiff`` instance from the difference of two aggregates.</span>
 
 <span class="sd">        :param a: One ``Aggregate`` instance.</span>
 <span class="sd">        :param b: Another ``Aggregate`` instance.</span>
+<span class="sd">        :param action: The action to that generates the aggregate difference.</span>
 <span class="sd">        :return: An ``AggregateDiff`` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computing the </span><span class="si">{</span><span class="bp">cls</span><span class="si">!r}</span><span class="s2"> between </span><span class="si">{</span><span class="n">a</span><span class="si">!r}</span><span class="s2"> and </span><span class="si">{</span><span class="n">b</span><span class="si">!r}</span><span class="s2">...&quot;</span><span class="p">)</span>
@@ -226,27 +233,31 @@
 
         <span class="n">fields_diff</span> <span class="o">=</span> <span class="n">FieldsDiff</span><span class="o">.</span><span class="n">from_difference</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="p">])</span>
 
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">new</span><span class="o">.</span><span class="n">classname</span><span class="p">,</span> <span class="n">new</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">fields_diff</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">new</span><span class="o">.</span><span class="n">classname</span><span class="p">,</span> <span class="n">new</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">fields_diff</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="AggregateDiff.from_aggregate"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff.from_aggregate">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_aggregate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">aggregate</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateDiff</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">from_aggregate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">aggregate</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">AggregateAction</span> <span class="o">=</span> <span class="n">AggregateAction</span><span class="o">.</span><span class="n">CREATE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateDiff</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Build an ``AggregateDiff`` from an ``Aggregate`` (considering all fields as differences).</span>
 
 <span class="sd">        :param aggregate: An ``Aggregate`` instance.</span>
+<span class="sd">        :param action: The action to that generates the aggregate difference.</span>
 <span class="sd">        :return: An ``AggregateDiff`` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">fields_diff</span> <span class="o">=</span> <span class="n">FieldsDiff</span><span class="o">.</span><span class="n">from_model</span><span class="p">(</span><span class="n">aggregate</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">aggregate</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">classname</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">fields_diff</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">aggregate</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">classname</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">fields_diff</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="AggregateDiff.from_deleted_aggregate"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff.from_deleted_aggregate">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_deleted_aggregate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">aggregate</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateDiff</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">from_deleted_aggregate</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">aggregate</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">AggregateAction</span> <span class="o">=</span> <span class="n">AggregateAction</span><span class="o">.</span><span class="n">DELETE</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateDiff</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Build an ``AggregateDiff`` from an ``Aggregate`` (considering all fields as differences).</span>
 
 <span class="sd">        :param aggregate: An ``Aggregate`` instance.</span>
+<span class="sd">        :param action: The action to that generates the aggregate difference.</span>
 <span class="sd">        :return: An ``AggregateDiff`` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">aggregate</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">classname</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">FieldsDiff</span><span class="o">.</span><span class="n">empty</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">aggregate</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">classname</span><span class="p">,</span> <span class="n">aggregate</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">FieldsDiff</span><span class="o">.</span><span class="n">empty</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="AggregateDiff.simplify"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff.simplify">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">simplify</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">AggregateDiff</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateDiff</span><span class="p">:</span>
@@ -262,7 +273,7 @@
             <span class="c1"># noinspection PyUnresolvedReferences</span>
             <span class="n">current</span> <span class="o">|=</span> <span class="n">another</span><span class="o">.</span><span class="n">fields</span>
 
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">FieldsDiff</span><span class="p">(</span><span class="n">current</span><span class="p">))</span></div></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">action</span><span class="p">,</span> <span class="n">FieldsDiff</span><span class="p">(</span><span class="n">current</span><span class="p">))</span></div></div>
 </pre></div>
 
            </div>

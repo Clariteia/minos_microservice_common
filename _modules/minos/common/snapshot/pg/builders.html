@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.pg.builders &mdash; Minos Microservice Common 0.1.7 documentation</title>
+  <title>minos.common.snapshot.pg.builders &mdash; Minos Microservice Common 0.1.8 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.7
+                0.1.8
               </div>
             
           
@@ -198,7 +198,6 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">...repository</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosRepository</span><span class="p">,</span>
-    <span class="n">RepositoryAction</span><span class="p">,</span>
     <span class="n">RepositoryEntry</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..entries</span> <span class="kn">import</span> <span class="p">(</span>
@@ -296,7 +295,7 @@
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query</span><span class="p">(</span><span class="n">_INSERT_OFFSET_QUERY</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">offset</span><span class="p">})</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_dispatch_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_entry</span><span class="p">:</span> <span class="n">RepositoryEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SnapshotEntry</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="n">event_entry</span><span class="o">.</span><span class="n">action</span> <span class="ow">is</span> <span class="n">RepositoryAction</span><span class="o">.</span><span class="n">DELETE</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">event_entry</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">is_delete</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submit_delete</span><span class="p">(</span><span class="n">event_entry</span><span class="p">)</span>
 
         <span class="n">instance</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_instance</span><span class="p">(</span><span class="n">event_entry</span><span class="p">)</span>

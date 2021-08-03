@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.repository.entries &mdash; Minos Microservice Common 0.1.7 documentation</title>
+  <title>minos.common.repository.entries &mdash; Minos Microservice Common 0.1.8 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.7
+                0.1.8
               </div>
             
           
@@ -175,9 +175,6 @@
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">datetime</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">Enum</span><span class="p">,</span>
-<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Iterable</span><span class="p">,</span>
@@ -189,9 +186,6 @@
     <span class="n">UUID</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">MinosRepositoryUnknownActionException</span><span class="p">,</span>
-<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..importlib</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">import_module</span><span class="p">,</span>
 <span class="p">)</span>
@@ -199,26 +193,9 @@
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">..model</span> <span class="kn">import</span> <span class="p">(</span>
         <span class="n">Aggregate</span><span class="p">,</span>
+        <span class="n">AggregateAction</span><span class="p">,</span>
         <span class="n">AggregateDiff</span><span class="p">,</span>
     <span class="p">)</span>
-
-
-<div class="viewcode-block" id="RepositoryAction"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction">[docs]</a><span class="k">class</span> <span class="nc">RepositoryAction</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Enum class that describes the available repository actions.&quot;&quot;&quot;</span>
-
-    <span class="n">CREATE</span> <span class="o">=</span> <span class="s2">&quot;create&quot;</span>
-    <span class="n">UPDATE</span> <span class="o">=</span> <span class="s2">&quot;update&quot;</span>
-    <span class="n">DELETE</span> <span class="o">=</span> <span class="s2">&quot;delete&quot;</span>
-
-<div class="viewcode-block" id="RepositoryAction.value_of"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryAction.value_of">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">value_of</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RepositoryAction</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Get the action based on its text representation.&quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">item</span>
-        <span class="k">raise</span> <span class="n">MinosRepositoryUnknownActionException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;The given value does not match with any enum items. Obtained </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="RepositoryEntry"><a class="viewcode-back" href="../../../../api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry">[docs]</a><span class="k">class</span> <span class="nc">RepositoryEntry</span><span class="p">:</span>
@@ -234,13 +211,17 @@
         <span class="n">version</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">memoryview</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(),</span>
         <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">action</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">RepositoryAction</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">action</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">AggregateAction</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">created_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">memoryview</span><span class="p">):</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">action</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">action</span> <span class="o">=</span> <span class="n">RepositoryAction</span><span class="o">.</span><span class="n">value_of</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+            <span class="kn">from</span> <span class="nn">..model</span> <span class="kn">import</span> <span class="p">(</span>
+                <span class="n">AggregateAction</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">action</span> <span class="o">=</span> <span class="n">AggregateAction</span><span class="o">.</span><span class="n">value_of</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_uuid</span> <span class="o">=</span> <span class="n">aggregate_uuid</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_name</span> <span class="o">=</span> <span class="n">aggregate_name</span>
@@ -284,7 +265,7 @@
         <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">AggregateDiff</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="n">FieldsDiff</span><span class="o">.</span><span class="n">from_avro_bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">,</span> <span class="n">FieldsDiff</span><span class="o">.</span><span class="n">from_avro_bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;RepositoryEntry&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>

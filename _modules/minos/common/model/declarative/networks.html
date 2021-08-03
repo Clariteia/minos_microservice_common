@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.declarative.networks &mdash; Minos Microservice Common 0.1.7 documentation</title>
+  <title>minos.common.model.declarative.networks &mdash; Minos Microservice Common 0.1.8 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.7
+                0.1.8
               </div>
             
           
@@ -178,6 +178,7 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">UUID</span><span class="p">,</span>
@@ -197,7 +198,8 @@
     <span class="n">topic</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">Any</span>
     <span class="n">saga</span><span class="p">:</span> <span class="n">UUID</span>
-    <span class="n">reply_topic</span><span class="p">:</span> <span class="nb">str</span></div>
+    <span class="n">reply_topic</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UUID</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="CommandReply"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.CommandReply">[docs]</a><span class="k">class</span> <span class="nc">CommandReply</span><span class="p">(</span><span class="n">DeclarativeModel</span><span class="p">):</span>

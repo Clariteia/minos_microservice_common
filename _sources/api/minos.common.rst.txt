@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 4
 
    minos.common.configuration
+   minos.common.database
    minos.common.model
    minos.common.protocol
    minos.common.repository
@@ -26,7 +27,6 @@ Submodules
    :maxdepth: 4
 
    minos.common.constants
-   minos.common.database
    minos.common.exceptions
    minos.common.importlib
    minos.common.injectors

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.launchers &mdash; Minos Microservice Common 0.1.7 documentation</title>
+  <title>minos.common.launchers &mdash; Minos Microservice Common 0.1.8 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.7
+                0.1.8
               </div>
             
           
@@ -179,8 +179,12 @@
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Enum</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ModuleType</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">NoReturn</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
     <span class="n">Type</span><span class="p">,</span>
     <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
@@ -242,9 +246,13 @@
         <span class="n">log_level</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="n">log_format</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">LogFormat</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;color&quot;</span><span class="p">,</span>
         <span class="n">log_date_format</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DateFormat</span><span class="p">]</span> <span class="o">=</span> <span class="n">DateFormat</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span>
+        <span class="n">external_modules</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ModuleType</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span>
     <span class="p">):</span>
+        <span class="k">if</span> <span class="n">external_modules</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">external_modules</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">log_date_format</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
@@ -258,7 +266,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_log_date_format</span> <span class="o">=</span> <span class="n">log_date_format</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_raw_injections</span> <span class="o">=</span> <span class="n">injections</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_raw_services</span> <span class="o">=</span> <span class="n">services</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raw_services</span> <span class="o">=</span> <span class="n">services</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_external_modules</span> <span class="o">=</span> <span class="n">external_modules</span></div>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">MinosConfig</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EntrypointLauncher</span><span class="p">:</span>
@@ -345,10 +354,10 @@
 
 <span class="sd">        :return: This method does not return anything.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">injector</span><span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="n">modules</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_internal_modules</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">injector</span><span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="n">modules</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_external_modules</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_internal_modules</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_internal_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_internal_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ModuleType</span><span class="p">]:</span>
         <span class="kn">from</span> <span class="nn">minos</span> <span class="kn">import</span> <span class="p">(</span>
             <span class="n">common</span><span class="p">,</span>
         <span class="p">)</span>
