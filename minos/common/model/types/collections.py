@@ -26,7 +26,7 @@ class ObservableList(MutableSequence, Generic[T]):
     def __init__(self, values: Iterable[T] = None):
         if values is None:
             values = tuple()
-        self._events = [("add", i, value) for i, value in enumerate(values)]
+        self._modifications = {i: ("add", value) for i, value in enumerate(values)}
         self._data = list(values)
 
     def insert(self, index: int, value: T) -> NoReturn:
@@ -36,31 +36,43 @@ class ObservableList(MutableSequence, Generic[T]):
         :param value: TODO
         :return: TODO
         """
-        self._events.append(("add", index, value))
+        if index < len(self._data):
+            self._modifications[index] = ("update", value)
+            for i in range(index + 1, len(self._data)):
+                self._modifications[i] = ("update", self._data[i - 1])
+            self._modifications[len(self._data)] = ("add", self._data[-1])
+        else:
+            self._modifications[index] = ("add", value)
+
         self._data.insert(index, value)
 
     def __getitem__(self, item: int) -> T:
         return self._data[item]
 
     def __setitem__(self, key: int, value: T):
-        self._events.append(("update", key, value))
+        self._modifications[key] = ("update", value)
         self._data[key] = value
 
     def __delitem__(self, key: int) -> NoReturn:
-        self._events.append(("delete", key % len(self), None))
+        for i in range(key % len(self), len(self._data) - 1):
+            self._modifications[i] = ("update", self._data[i + 1])
+        self._modifications[len(self._data) - 1] = ("delete", None)
         del self._data[key]
 
     def __len__(self) -> int:
         return len(self._data)
-
-    def get_modifications(self):
-        return self._events
 
     def __repr__(self):
         return f"{type(self).__name__}({self._data!r})"
 
     def __eq__(self, other):
         return self._data == other
+
+    def get_modifications(self):
+        return self._modifications
+
+    def flush_modifications(self):
+        self._modifications = dict()
 
 
 K = TypeVar("K")
