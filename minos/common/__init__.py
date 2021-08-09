@@ -111,6 +111,8 @@ from .model import (
     ModelRefInjector,
     ModelType,
     NoneType,
+    ObservableDict,
+    ObservableList,
     TypeHintBuilder,
     TypeHintComparator,
     ValueObject,

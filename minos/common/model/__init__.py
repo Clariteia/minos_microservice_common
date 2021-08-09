@@ -47,6 +47,8 @@ from .types import (
     ModelRefInjector,
     ModelType,
     NoneType,
+    ObservableDict,
+    ObservableList,
     TypeHintBuilder,
     TypeHintComparator,
 )

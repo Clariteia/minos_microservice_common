@@ -9,6 +9,10 @@ from .builders import (
     TypeHintBuilder,
     build_union,
 )
+from .collections import (
+    ObservableDict,
+    ObservableList,
+)
 from .comparators import (
     TypeHintComparator,
     is_aggregate_type,
