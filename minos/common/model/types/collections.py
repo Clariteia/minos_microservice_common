@@ -53,11 +53,14 @@ class ObservableList(MutableSequence, Generic[T]):
     def __len__(self) -> int:
         return len(self._data)
 
-    def events(self):
+    def get_modifications(self):
         return self._events
 
     def __repr__(self):
         return f"{type(self).__name__}({self._data!r})"
+
+    def __eq__(self, other):
+        return self._data == other
 
 
 K = TypeVar("K")

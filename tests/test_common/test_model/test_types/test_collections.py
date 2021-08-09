@@ -19,7 +19,8 @@ class TestObservableList(unittest.TestCase):
         data.pop()
         data[0] = 32
         del data[1]
-        observed = data.events()
+
+        observed = data.get_modifications()
 
         expected = [
             ("add", 0, 1),
@@ -32,7 +33,7 @@ class TestObservableList(unittest.TestCase):
             ("delete", 1, None),
         ]
         self.assertEqual(expected, observed)
-        self.assertEqual([32, 3, 5], list(data))
+        self.assertEqual([32, 3, 5], data)
 
 
 class TestObservableDict(unittest.TestCase):
