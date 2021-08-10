@@ -5,18 +5,12 @@ This file is part of minos framework.
 
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
 import logging
-from uuid import (
-    UUID,
-)
+from uuid import UUID
 
-from ..entities import (
-    Entity,
-)
+from ..entities import Entity
 
 logger = logging.getLogger(__name__)
 

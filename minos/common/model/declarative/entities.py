@@ -5,13 +5,9 @@ This file is part of minos framework.
 
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
-from collections.abc import (
-    MutableSet,
-)
+from collections.abc import MutableSet
 from typing import (
     Generic,
     Iterable,
@@ -26,9 +22,7 @@ from uuid import (
     uuid4,
 )
 
-from .abc import (
-    DeclarativeModel,
-)
+from .abc import DeclarativeModel
 
 T = TypeVar("T")
 
