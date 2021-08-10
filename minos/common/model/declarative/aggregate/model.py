@@ -5,10 +5,14 @@ This file is part of minos framework.
 
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
-from __future__ import annotations
+from __future__ import (
+    annotations,
+)
 
 import logging
-from asyncio import gather
+from asyncio import (
+    gather,
+)
 from typing import (
     AsyncIterator,
     Generic,
@@ -16,11 +20,17 @@ from typing import (
     Optional,
     TypeVar,
 )
-from uuid import UUID
+from uuid import (
+    UUID,
+)
 
-from dependency_injector.wiring import Provide
+from dependency_injector.wiring import (
+    Provide,
+)
 
-from ....constants import NULL_UUID
+from ....constants import (
+    NULL_UUID,
+)
 from ....exceptions import (
     MinosBrokerNotProvidedException,
     MinosRepositoryManuallySetAggregateIdentifierException,
@@ -28,11 +38,21 @@ from ....exceptions import (
     MinosRepositoryNotProvidedException,
     MinosSnapshotNotProvidedException,
 )
-from ....networks import MinosBroker
-from ....repository import MinosRepository
-from ....snapshot import MinosSnapshot
-from ..entities import Entity
-from .diff import AggregateDiff
+from ....networks import (
+    MinosBroker,
+)
+from ....repository import (
+    MinosRepository,
+)
+from ....snapshot import (
+    MinosSnapshot,
+)
+from ..entities import (
+    Entity,
+)
+from .diff import (
+    AggregateDiff,
+)
 
 T = TypeVar("T")
 logger = logging.getLogger(__name__)

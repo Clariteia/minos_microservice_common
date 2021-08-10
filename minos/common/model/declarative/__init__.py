@@ -24,4 +24,6 @@ from .networks import (
     CommandStatus,
     Event,
 )
-from .value_object import ValueObject
+from .value_object import (
+    ValueObject,
+)

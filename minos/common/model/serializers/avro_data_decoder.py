@@ -5,7 +5,9 @@ This file is part of minos framework.
 
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
-from __future__ import annotations
+from __future__ import (
+    annotations,
+)
 
 import logging
 from datetime import (
@@ -25,7 +27,9 @@ from typing import (
     get_args,
     get_origin,
 )
-from uuid import UUID
+from uuid import (
+    UUID,
+)
 
 from ...exceptions import (
     MinosMalformedAttributeException,
@@ -44,7 +48,9 @@ from ..types import (
 )
 
 if TYPE_CHECKING:
-    from ..fields import Field
+    from ..fields import (
+        Field,
+    )
 logger = logging.getLogger(__name__)
 
 T = TypeVar("T")
