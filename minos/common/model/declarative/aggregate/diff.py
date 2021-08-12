@@ -5,22 +5,36 @@ This file is part of minos framework.
 
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
-from __future__ import annotations
+from __future__ import (
+    annotations,
+)
 
 import logging
-from operator import attrgetter
-from typing import (
-    Any,
-    TYPE_CHECKING,
+from operator import (
+    attrgetter,
 )
-from uuid import UUID
+from typing import (
+    TYPE_CHECKING,
+    Any,
+)
+from uuid import (
+    UUID,
+)
 
-from ...actions import Action
-from ...dynamic import FieldsDiff
-from ..abc import DeclarativeModel
+from ...actions import (
+    Action,
+)
+from ...dynamic import (
+    FieldsDiff,
+)
+from ..abc import (
+    DeclarativeModel,
+)
 
 if TYPE_CHECKING:
-    from .model import Aggregate
+    from .model import (
+        Aggregate,
+    )
 
 logger = logging.getLogger(__name__)
 
