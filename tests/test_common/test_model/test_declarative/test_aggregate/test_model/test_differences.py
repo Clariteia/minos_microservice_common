@@ -6,9 +6,7 @@ This file is part of minos framework.
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
 import unittest
-from uuid import (
-    uuid4,
-)
+from uuid import uuid4
 
 from minos.common import (
     Action,
@@ -16,9 +14,7 @@ from minos.common import (
     Field,
     FieldsDiff,
 )
-from tests.aggregate_classes import (
-    Car,
-)
+from tests.aggregate_classes import Car
 from tests.utils import (
     FakeBroker,
     FakeRepository,
@@ -81,11 +77,7 @@ class TestAggregateDiff(unittest.IsolatedAsyncioTestCase):
 
     def test_get_attr_raises(self):
         diff = AggregateDiff(
-            uuid=self.uuid,
-            name=Car.classname,
-            version=3,
-            action=Action.UPDATE,
-            differences=FieldsDiff.empty(),
+            uuid=self.uuid, name=Car.classname, version=3, action=Action.UPDATE, differences=FieldsDiff.empty(),
         )
         with self.assertRaises(AttributeError):
             diff.doors
