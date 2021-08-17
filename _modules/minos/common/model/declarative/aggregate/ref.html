@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.declarative.aggregate.ref &mdash; Minos Microservice Common 0.1.8 documentation</title>
+  <title>minos.common.model.declarative.aggregate.ref &mdash; Minos Microservice Common 0.1.9 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.8
+                0.1.9
               </div>
             
           
@@ -177,18 +177,20 @@
     <span class="n">UUID</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">..abc</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DeclarativeModel</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">..entities</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Entity</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="AggregateRef"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.ref.html#minos.common.model.declarative.aggregate.ref.AggregateRef">[docs]</a><span class="k">class</span> <span class="nc">AggregateRef</span><span class="p">(</span><span class="n">DeclarativeModel</span><span class="p">):</span>
+<div class="viewcode-block" id="AggregateRef"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.ref.html#minos.common.model.declarative.aggregate.ref.AggregateRef">[docs]</a><span class="k">class</span> <span class="nc">AggregateRef</span><span class="p">(</span><span class="n">Entity</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Sub Aggregate class.&quot;&quot;&quot;</span>
 
-    <span class="n">uuid</span><span class="p">:</span> <span class="n">UUID</span>
-    <span class="n">version</span><span class="p">:</span> <span class="nb">int</span></div>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">int</span>
+
+<div class="viewcode-block" id="AggregateRef.__init__"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.ref.html#minos.common.model.declarative.aggregate.ref.AggregateRef.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

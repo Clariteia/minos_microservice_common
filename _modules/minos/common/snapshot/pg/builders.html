@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.pg.builders &mdash; Minos Microservice Common 0.1.8 documentation</title>
+  <title>minos.common.snapshot.pg.builders &mdash; Minos Microservice Common 0.1.9 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.8
+                0.1.9
               </div>
             
           
@@ -231,7 +231,7 @@
     <span class="k">def</span> <span class="nf">_from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">MinosConfig</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PostgreSqlSnapshotBuilder</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="o">.</span><span class="n">snapshot</span><span class="o">.</span><span class="n">_asdict</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PostgreSqlSnapshotBuilder.are_synced"><a class="viewcode-back" href="../../../../../api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.are_synced">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">are_synced</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">aggregate_uuids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">UUID</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="PostgreSqlSnapshotBuilder.are_synced"><a class="viewcode-back" href="../../../../../api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.are_synced">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">are_synced</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">aggregate_uuids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">UUID</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Check if the snapshot has the latest version of a list of aggregates.</span>
 
 <span class="sd">        :param aggregate_name: Class name of the ``Aggregate`` to be checked.</span>
@@ -240,30 +240,33 @@
 <span class="sd">        :return: ``True`` if has the latest version for all the identifiers or ``False`` otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">aggregate_uuid</span> <span class="ow">in</span> <span class="n">aggregate_uuids</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_synced</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_synced</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
                 <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="PostgreSqlSnapshotBuilder.is_synced"><a class="viewcode-back" href="../../../../../api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.is_synced">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">is_synced</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="PostgreSqlSnapshotBuilder.is_synced"><a class="viewcode-back" href="../../../../../api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.is_synced">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">is_synced</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Check if the snapshot has the latest version of an ``Aggregate`` instance.</span>
 
 <span class="sd">        :param aggregate_name: Class name of the ``Aggregate`` to be checked.</span>
 <span class="sd">        :param aggregate_uuid: Identifier of the ``Aggregate`` instance to be checked.</span>
 <span class="sd">        :return: ``True`` if has the latest version for the identifier or ``False`` otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-            <span class="n">id_ge</span><span class="o">=</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_offset</span><span class="p">(),</span> <span class="n">aggregate_name</span><span class="o">=</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="o">=</span><span class="n">aggregate_uuid</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_offset</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">iterable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+            <span class="n">id_ge</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="o">=</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="o">=</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
         <span class="p">)</span>
-        <span class="k">async</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">query</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">iterable</span><span class="o">.</span><span class="fm">__anext__</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">except</span> <span class="ne">StopAsyncIteration</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="PostgreSqlSnapshotBuilder.dispatch"><a class="viewcode-back" href="../../../../../api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.dispatch">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+<div class="viewcode-block" id="PostgreSqlSnapshotBuilder.dispatch"><a class="viewcode-back" href="../../../../../api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.dispatch">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Perform a dispatching step, based on the sequence of non already processed ``RepositoryEntry`` objects.</span>
 
 <span class="sd">        :return: This method does not return anything.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">offset</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_offset</span><span class="p">()</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_offset</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
@@ -274,19 +277,19 @@
                 <span class="n">ids</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">o</span>
 
-        <span class="k">async</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">id_gt</span><span class="o">=</span><span class="n">offset</span><span class="p">):</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">id_gt</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_one</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_one</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="k">except</span> <span class="n">MinosPreviousVersionSnapshotException</span><span class="p">:</span>
                 <span class="k">pass</span>
             <span class="n">offset</span> <span class="o">=</span> <span class="n">_update_offset</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
 
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store_offset</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span></div>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_load_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_load_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="c1"># noinspection PyBroadException</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">raw</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span><span class="n">_SELECT_OFFSET_QUERY</span><span class="p">)</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span><span class="n">_SELECT_OFFSET_QUERY</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
@@ -294,65 +297,67 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_store_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query</span><span class="p">(</span><span class="n">_INSERT_OFFSET_QUERY</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">offset</span><span class="p">})</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_dispatch_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_entry</span><span class="p">:</span> <span class="n">RepositoryEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SnapshotEntry</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_dispatch_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_entry</span><span class="p">:</span> <span class="n">RepositoryEntry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SnapshotEntry</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">event_entry</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">is_delete</span><span class="p">:</span>
-            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submit_delete</span><span class="p">(</span><span class="n">event_entry</span><span class="p">)</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submit_delete</span><span class="p">(</span><span class="n">event_entry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="n">instance</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_instance</span><span class="p">(</span><span class="n">event_entry</span><span class="p">)</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submit_instance</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_instance</span><span class="p">(</span><span class="n">event_entry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submit_instance</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_submit_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">RepositoryEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_submit_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">RepositoryEntry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;aggregate_uuid&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span>
             <span class="s2">&quot;aggregate_name&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_name</span><span class="p">,</span>
             <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
             <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
         <span class="p">}</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span><span class="n">_INSERT_ONE_SNAPSHOT_ENTRY_QUERY</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span><span class="n">_INSERT_ONE_SNAPSHOT_ENTRY_QUERY</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_build_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_entry</span><span class="p">:</span> <span class="n">RepositoryEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_build_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_entry</span><span class="p">:</span> <span class="n">RepositoryEntry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
         <span class="c1"># noinspection PyTypeChecker</span>
         <span class="n">diff</span> <span class="o">=</span> <span class="n">event_entry</span><span class="o">.</span><span class="n">aggregate_diff</span>
-        <span class="n">instance</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_if_exists</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_if_exists</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">instance</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_update_if_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diff</span><span class="p">:</span> <span class="n">AggregateDiff</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_update_if_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_diff</span><span class="p">:</span> <span class="n">AggregateDiff</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
         <span class="c1"># noinspection PyBroadException</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># noinspection PyTypeChecker</span>
-            <span class="n">previous</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_one_aggregate</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">diff</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">previous</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_one_aggregate</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="c1"># noinspection PyTypeChecker</span>
-            <span class="n">aggregate_cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">aggregate_cls</span><span class="o">.</span><span class="n">from_diff</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+            <span class="n">aggregate_cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">aggregate_cls</span><span class="o">.</span><span class="n">from_diff</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">previous</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="n">diff</span><span class="o">.</span><span class="n">version</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosPreviousVersionSnapshotException</span><span class="p">(</span><span class="n">previous</span><span class="p">,</span> <span class="n">diff</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">previous</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">version</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MinosPreviousVersionSnapshotException</span><span class="p">(</span><span class="n">previous</span><span class="p">,</span> <span class="n">aggregate_diff</span><span class="p">)</span>
 
-        <span class="n">previous</span><span class="o">.</span><span class="n">apply_diff</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+        <span class="n">previous</span><span class="o">.</span><span class="n">apply_diff</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">previous</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_select_one_aggregate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
-        <span class="n">snapshot_entry</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_one</span><span class="p">(</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">snapshot_entry</span><span class="o">.</span><span class="n">aggregate</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_select_one_aggregate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
+        <span class="n">snapshot_entry</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_one</span><span class="p">(</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">snapshot_entry</span><span class="o">.</span><span class="n">build_aggregate</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_select_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SnapshotEntry</span><span class="p">:</span>
-        <span class="n">raw</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span><span class="n">_SELECT_ONE_SNAPSHOT_ENTRY_QUERY</span><span class="p">,</span> <span class="p">(</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">))</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_select_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SnapshotEntry</span><span class="p">:</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span>
+            <span class="n">_SELECT_ONE_SNAPSHOT_ENTRY_QUERY</span><span class="p">,</span> <span class="p">(</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
         <span class="k">return</span> <span class="n">SnapshotEntry</span><span class="p">(</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">,</span> <span class="o">*</span><span class="n">raw</span><span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_submit_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SnapshotEntry</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_submit_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SnapshotEntry</span><span class="p">:</span>
         <span class="n">snapshot_entry</span> <span class="o">=</span> <span class="n">SnapshotEntry</span><span class="o">.</span><span class="n">from_aggregate</span><span class="p">(</span><span class="n">aggregate</span><span class="p">)</span>
-        <span class="n">snapshot_entry</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submit_update_or_create</span><span class="p">(</span><span class="n">snapshot_entry</span><span class="p">)</span>
+        <span class="n">snapshot_entry</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submit_update_or_create</span><span class="p">(</span><span class="n">snapshot_entry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">snapshot_entry</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_submit_update_or_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">SnapshotEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SnapshotEntry</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_submit_update_or_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">SnapshotEntry</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SnapshotEntry</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;aggregate_uuid&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span>
             <span class="s2">&quot;aggregate_name&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_name</span><span class="p">,</span>
             <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
             <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
         <span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span><span class="n">_INSERT_ONE_SNAPSHOT_ENTRY_QUERY</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span><span class="n">_INSERT_ONE_SNAPSHOT_ENTRY_QUERY</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">entry</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">updated_at</span> <span class="o">=</span> <span class="n">response</span>
 

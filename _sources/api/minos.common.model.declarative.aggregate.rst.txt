@@ -12,7 +12,6 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
-   minos.common.model.declarative.aggregate.actions
    minos.common.model.declarative.aggregate.diff
    minos.common.model.declarative.aggregate.model
    minos.common.model.declarative.aggregate.ref

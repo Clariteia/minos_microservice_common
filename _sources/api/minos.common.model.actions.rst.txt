@@ -1,0 +1,7 @@
+minos.common.model.actions module
+=================================
+
+.. automodule:: minos.common.model.actions
+   :members:
+   :undoc-members:
+   :show-inheritance:

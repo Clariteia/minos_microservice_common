@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.types.model_types module &mdash; Minos Microservice Common 0.1.8 documentation</title>
+  <title>minos.common.model.types.model_types module &mdash; Minos Microservice Common 0.1.9 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.8
+                0.1.9
               </div>
             
           
@@ -199,18 +199,19 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.types.model_types.ModelType.build">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_hints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/types/model_types.html#ModelType.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.types.model_types.ModelType.build" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_hints_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/types/model_types.html#ModelType.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.types.model_types.ModelType.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a new <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Name of the new type.</p></li>
-<li><p><strong>type_hints</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code>]) – Type hints of the new type.</p></li>
-<li><p><strong>namespace</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – Namespace of the new type.</p></li>
+<li><p><strong>name</strong> – Name of the new type.</p></li>
+<li><p><strong>type_hints</strong> – Type hints of the new type.</p></li>
+<li><p><strong>namespace</strong> – Namespace of the new type.</p></li>
+<li><p><strong>kwargs</strong> – Type hints of the new type as named parameters.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Type</span></code>[~T]</p>
+<dd class="field-even"><p><a class="reference internal" href="#minos.common.model.types.model_types.ModelType" title="minos.common.model.types.model_types.ModelType"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.types.model_types.ModelType</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> instance.</p>
@@ -233,6 +234,23 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.types.model_types.ModelType.from_model">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/types/model_types.html#ModelType.from_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.types.model_types.ModelType.from_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a new instance from model class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> – The model class.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#minos.common.model.types.model_types.ModelType" title="minos.common.model.types.model_types.ModelType"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.types.model_types.ModelType</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A new <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.types.model_types.ModelType.from_typed_dict">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_typed_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typed_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/types/model_types.html#ModelType.from_typed_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.types.model_types.ModelType.from_typed_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a new <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> instance from a <code class="docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>.</p>
@@ -241,7 +259,7 @@
 <dd class="field-odd"><p><strong>typed_dict</strong> – Typed dict to be used as base.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Type</span></code>[~T]</p>
+<dd class="field-even"><p><a class="reference internal" href="#minos.common.model.types.model_types.ModelType" title="minos.common.model.types.model_types.ModelType"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.types.model_types.ModelType</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> instance.</p>

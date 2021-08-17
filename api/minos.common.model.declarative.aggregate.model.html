@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.declarative.aggregate.model module &mdash; Minos Microservice Common 0.1.8 documentation</title>
+  <title>minos.common.model.declarative.aggregate.model module &mdash; Minos Microservice Common 0.1.9 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.8
+                0.1.9
               </div>
             
           
@@ -192,7 +192,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.model.declarative.aggregate.model.</span></span><span class="sig-name descname"><span class="pre">Aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">UUID('00000000-0000-0000-0000-000000000000')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_broker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_repository</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_snapshot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/model.html#Aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="minos.common.model.declarative.abc.html#minos.common.model.declarative.abc.DeclarativeModel" title="minos.common.model.declarative.abc.DeclarativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.abc.DeclarativeModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">minos.common.model.declarative.aggregate.model.T</span></code>]</p>
+<dd><p>Bases: <a class="reference internal" href="minos.common.model.declarative.entities.html#minos.common.model.declarative.entities.Entity" title="minos.common.model.declarative.entities.Entity"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.entities.Entity</span></code></a></p>
 <p>Base aggregate class.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.__init__">
@@ -207,11 +207,11 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.apply_diff">
-<span class="sig-name descname"><span class="pre">apply_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">difference</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/model.html#Aggregate.apply_diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.apply_diff" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">apply_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregate_diff</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/model.html#Aggregate.apply_diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.apply_diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the differences over the instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>difference</strong> (<a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.aggregate.diff.AggregateDiff</span></code></a>) – The <code class="docutils literal notranslate"><span class="pre">FieldsDiff</span></code> containing the values to be set.</p>
+<dd class="field-odd"><p><strong>aggregate_diff</strong> (<a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.aggregate.diff.AggregateDiff</span></code></a>) – The <code class="docutils literal notranslate"><span class="pre">FieldDiffContainer</span></code> containing the values to be set.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.NoReturn</span></code></p>
@@ -323,7 +323,7 @@
 <dd class="field-even"><p><a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.aggregate.diff.AggregateDiff</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>An <code class="docutils literal notranslate"><span class="pre">FieldsDiff</span></code> instance.</p>
+<dd class="field-odd"><p>An <code class="docutils literal notranslate"><span class="pre">FieldDiffContainer</span></code> instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -395,12 +395,12 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.from_diff">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">difference</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/model.html#Aggregate.from_diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.from_diff" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggregate_diff</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/model.html#Aggregate.from_diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.from_diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a new instance from an <code class="docutils literal notranslate"><span class="pre">AggregateDiff</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>difference</strong> (<a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.aggregate.diff.AggregateDiff</span></code></a>) – The difference that contains the data.</p></li>
+<li><p><strong>aggregate_diff</strong> (<a class="reference internal" href="minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff" title="minos.common.model.declarative.aggregate.diff.AggregateDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.aggregate.diff.AggregateDiff</span></code></a>) – The difference that contains the data.</p></li>
 <li><p><strong>args</strong> – Additional positional arguments.</p></li>
 <li><p><strong>kwargs</strong> – Additional named arguments.</p></li>
 </ul>
@@ -416,17 +416,42 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.from_model_type">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_model_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.from_model_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build a <code class="docutils literal notranslate"><span class="pre">DeclarativeModel</span></code> from a <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_model_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.from_model_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a <code class="docutils literal notranslate"><span class="pre">DeclarativeModel</span></code> from a <code class="docutils literal notranslate"><span class="pre">ModelType</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_type</strong> (<a class="reference internal" href="minos.common.model.types.model_types.html#minos.common.model.types.model_types.ModelType" title="minos.common.model.types.model_types.ModelType"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.types.model_types.ModelType</span></code></a>) – <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> object containing the DTO’s structure</p></li>
-<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>]) – A dictionary containing the values to be stored on the DTO.</p></li>
+<li><p><strong>model_type</strong> (<a class="reference internal" href="minos.common.model.types.model_types.html#minos.common.model.types.model_types.ModelType" title="minos.common.model.types.model_types.ModelType"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.types.model_types.ModelType</span></code></a>) – <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> object containing the model structure.</p></li>
+<li><p><strong>args</strong> – Positional arguments to be passed to the model constructor.</p></li>
+<li><p><strong>kwargs</strong> – Named arguments to be passed to the model constructor.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A new <code class="docutils literal notranslate"><span class="pre">DeclarativeModel</span></code> instance.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>~T</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A new <code class="docutils literal notranslate"><span class="pre">DeclarativeModel</span></code> instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.from_typed_dict">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_typed_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typed_dict</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.from_typed_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a <code class="docutils literal notranslate"><span class="pre">Model</span></code> from a <code class="docutils literal notranslate"><span class="pre">TypeDict</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>typed_dict</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>) – <code class="docutils literal notranslate"><span class="pre">TypeDict</span></code> object containing the DTO’s structure</p></li>
+<li><p><strong>args</strong> – Positional arguments to be passed to the model constructor.</p></li>
+<li><p><strong>kwargs</strong> – Named arguments to be passed to the model constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>~T</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A new <code class="docutils literal notranslate"><span class="pre">DataTransferObject</span></code> instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -479,18 +504,14 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D’s</span> <span class="pre">items</span></span></span><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.keys">
-<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the field names.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An iterable of string values.</p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D’s</span> <span class="pre">keys</span></span></span><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.refresh">
@@ -557,6 +578,11 @@
 <span class="sig-name descname"><span class="pre">type_hints</span></span><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.type_hints" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.type_hints_parameters">
+<span class="sig-name descname"><span class="pre">type_hints_parameters</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.type_hints_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.update">
 <em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/model.html#Aggregate.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.update" title="Permalink to this definition">¶</a></dt>
@@ -577,6 +603,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.uuid">
 <span class="sig-name descname"><span class="pre">uuid</span></span><em class="property"><span class="pre">:</span> <span class="pre">UUID</span></em><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.uuid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.model.Aggregate.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">an</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D’s</span> <span class="pre">values</span></span></span><a class="headerlink" href="#minos.common.model.declarative.aggregate.model.Aggregate.values" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">

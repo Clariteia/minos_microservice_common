@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.serializers.avro_data_encoder &mdash; Minos Microservice Common 0.1.8 documentation</title>
+  <title>minos.common.model.serializers.avro_data_encoder &mdash; Minos Microservice Common 0.1.9 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.8
+                0.1.9
               </div>
             
           
@@ -179,10 +179,12 @@
     <span class="n">time</span><span class="p">,</span>
     <span class="n">timedelta</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Decimal</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
-    <span class="n">TypeVar</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">UUID</span><span class="p">,</span>
@@ -193,17 +195,18 @@
 <span class="p">)</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">..fields</span> <span class="kn">import</span> <span class="n">Field</span>  <span class="c1"># pragma: no cover</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">..fields</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">Field</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="AvroDataEncoder"><a class="viewcode-back" href="../../../../../api/minos.common.model.serializers.avro_data_encoder.html#minos.common.model.serializers.avro_data_encoder.AvroDataEncoder">[docs]</a><span class="k">class</span> <span class="nc">AvroDataEncoder</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Avro Data Encoder class.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="AvroDataEncoder.__init__"><a class="viewcode-back" href="../../../../../api/minos.common.model.serializers.avro_data_encoder.html#minos.common.model.serializers.avro_data_encoder.AvroDataEncoder.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span></div>
 
 <div class="viewcode-block" id="AvroDataEncoder.from_field"><a class="viewcode-back" href="../../../../../api/minos.common.model.serializers.avro_data_encoder.html#minos.common.model.serializers.avro_data_encoder.AvroDataEncoder.from_field">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_field</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="n">Field</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AvroDataEncoder</span><span class="p">:</span>
@@ -214,12 +217,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AvroDataEncoder.build"><a class="viewcode-back" href="../../../../../api/minos.common.model.serializers.avro_data_encoder.html#minos.common.model.serializers.avro_data_encoder.AvroDataEncoder.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AvroDataEncoder.build"><a class="viewcode-back" href="../../../../../api/minos.common.model.serializers.avro_data_encoder.html#minos.common.model.serializers.avro_data_encoder.AvroDataEncoder.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Build a avro data representation based on the content of the given field.</span>
 
 <span class="sd">        :return: A `avro`-compatible data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_avro_raw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_avro_raw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_to_avro_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -227,6 +230,12 @@
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
             <span class="k">return</span> <span class="n">value</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">memoryview</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Decimal</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_datetime_to_avro_raw</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>

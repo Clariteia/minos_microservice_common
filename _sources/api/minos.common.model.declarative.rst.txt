@@ -21,5 +21,6 @@ Submodules
    :maxdepth: 4
 
    minos.common.model.declarative.abc
+   minos.common.model.declarative.entities
    minos.common.model.declarative.networks
-   minos.common.model.declarative.value_object
+   minos.common.model.declarative.value_objects

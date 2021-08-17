@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.declarative.value_object &mdash; Minos Microservice Common 0.1.8 documentation</title>
+  <title>minos.common.model.types.constants &mdash; Minos Microservice Common 0.1.9 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.8
+                0.1.9
               </div>
             
           
@@ -145,7 +145,7 @@
         
           <li><a href="../../../../index.html">Module code</a> &raquo;</li>
         
-      <li>minos.common.model.declarative.value_object</li>
+      <li>minos.common.model.types.constants</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -160,7 +160,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for minos.common.model.declarative.value_object</h1><div class="highlight"><pre>
+  <h1>Source code for minos.common.model.types.constants</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Copyright (C) 2021 Clariteia SL</span>
 
@@ -168,26 +168,11 @@
 
 <span class="sd">Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">Any</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">...exceptions</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">MinosImmutableClassException</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">.abc</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DeclarativeModel</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="n">NoneType</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="ValueObject"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.value_object.html#minos.common.model.declarative.value_object.ValueObject">[docs]</a><span class="k">class</span> <span class="nc">ValueObject</span><span class="p">(</span><span class="n">DeclarativeModel</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Value Object class.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
-            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosImmutableClassException</span><span class="p">(</span><span class="s2">&quot;modification of an immutable value object not allowed&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MissingSentinel"><a class="viewcode-back" href="../../../../../api/minos.common.model.types.constants.html#minos.common.model.types.constants.MissingSentinel">[docs]</a><span class="k">class</span> <span class="nc">MissingSentinel</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Class to detect when a field is not initialized.&quot;&quot;&quot;</span></div>
 </pre></div>
 
            </div>

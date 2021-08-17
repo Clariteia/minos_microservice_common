@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>History &mdash; Minos Microservice Common 0.1.8 documentation</title>
+  <title>History &mdash; Minos Microservice Common 0.1.9 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.8
+                0.1.9
               </div>
             
           
@@ -128,6 +128,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id27">0.1.6 (2021-07-21)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id28">0.1.7 (2021-07-27)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id29">0.1.8 (2021-08-03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id30">0.1.9 (2021-08-17)</a></li>
 </ul>
 </li>
 </ul>
@@ -347,6 +348,21 @@
 <ul class="simple">
 <li><p>Connection Pool improvement for async</p></li>
 <li><p>Small inmprovements</p></li>
+<li><p>Bugfixes</p></li>
+</ul>
+</div>
+<div class="section" id="id30">
+<h2>0.1.9 (2021-08-17)<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">minos.common.Entity</span></code>.</p></li>
+<li><p>Refactor <code class="docutils literal notranslate"><span class="pre">minos.common.AggregateDiff.fields_diff</span></code>:</p>
+<ul>
+<li><p>Support incremental field differences over <code class="docutils literal notranslate"><span class="pre">EntitySet</span></code> and <code class="docutils literal notranslate"><span class="pre">ValueObjectSet</span></code>.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">FieldDiff</span></code>, <code class="docutils literal notranslate"><span class="pre">IncrementalFieldDiff</span></code> and <code class="docutils literal notranslate"><span class="pre">FieldDiffContainer</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Now <code class="docutils literal notranslate"><span class="pre">Model</span></code> inherits from <code class="docutils literal notranslate"><span class="pre">collections.abc.Mapping</span></code>.</p></li>
+<li><p>Add support for <code class="docutils literal notranslate"><span class="pre">typing.Generic</span></code> and <code class="docutils literal notranslate"><span class="pre">typing.TypeVar</span></code>.</p></li>
 <li><p>Bugfixes</p></li>
 </ul>
 </div>

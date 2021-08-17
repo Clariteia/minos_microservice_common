@@ -24,4 +24,5 @@ Submodules
    :maxdepth: 4
 
    minos.common.model.abc
+   minos.common.model.actions
    minos.common.model.fields

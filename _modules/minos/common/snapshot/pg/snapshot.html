@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.pg.snapshot &mdash; Minos Microservice Common 0.1.8 documentation</title>
+  <title>minos.common.snapshot.pg.snapshot &mdash; Minos Microservice Common 0.1.9 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.8
+                0.1.9
               </div>
             
           
@@ -242,13 +242,15 @@
 <span class="sd">        :return: An asynchronous iterator that provides the requested ``Aggregate`` instances.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># noinspection PyShadowingBuiltins</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">are_synced</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">uuids</span><span class="p">):</span>
-            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">dispatch</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">are_synced</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">uuids</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="k">async</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">uuids</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">item</span><span class="o">.</span><span class="n">aggregate</span></div>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">uuids</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">item</span><span class="o">.</span><span class="n">build_aggregate</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">UUID</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">SnapshotEntry</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">UUID</span><span class="p">],</span> <span class="n">streaming_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">SnapshotEntry</span><span class="p">]:</span>
         <span class="n">uniques</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">uuids</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniques</span><span class="p">):</span>
@@ -281,9 +283,16 @@
                     <span class="n">missing</span> <span class="o">=</span> <span class="n">uniques</span> <span class="o">-</span> <span class="n">found</span>
                     <span class="k">raise</span> <span class="n">MinosSnapshotDeletedAggregateException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Some aggregates are already deleted: </span><span class="si">{</span><span class="n">missing</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-                <span class="k">async</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
-                    <span class="c1"># noinspection PyArgumentList</span>
-                    <span class="k">yield</span> <span class="n">SnapshotEntry</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">streaming_mode</span><span class="p">:</span>
+                    <span class="k">async</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
+                        <span class="c1"># noinspection PyArgumentList</span>
+                        <span class="k">yield</span> <span class="n">SnapshotEntry</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="p">)</span>
+                    <span class="k">return</span>
+
+                <span class="n">rows</span> <span class="o">=</span> <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">SnapshotEntry</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="p">)</span>
 
     <span class="c1"># noinspection PyUnusedLocal</span>
 <div class="viewcode-block" id="PostgreSqlSnapshot.select"><a class="viewcode-back" href="../../../../../api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.select">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">SnapshotEntry</span><span class="p">]:</span>
@@ -293,7 +302,7 @@
 <span class="sd">        :param kwargs: Additional named arguments.</span>
 <span class="sd">        :return: A sequence of ``MinosSnapshotEntry`` objects.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">async</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_iter</span><span class="p">(</span><span class="n">_SELECT_ALL_ENTRIES_QUERY</span><span class="p">):</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_iter</span><span class="p">(</span><span class="n">_SELECT_ALL_ENTRIES_QUERY</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">SnapshotEntry</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="p">)</span></div></div>
 
 

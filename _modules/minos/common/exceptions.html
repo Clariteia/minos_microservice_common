@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.exceptions &mdash; Minos Microservice Common 0.1.8 documentation</title>
+  <title>minos.common.exceptions &mdash; Minos Microservice Common 0.1.9 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.8
+                0.1.9
               </div>
             
           
@@ -264,12 +264,12 @@
 <div class="viewcode-block" id="MinosPreviousVersionSnapshotException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosPreviousVersionSnapshotException">[docs]</a><span class="k">class</span> <span class="nc">MinosPreviousVersionSnapshotException</span><span class="p">(</span><span class="n">MinosSnapshotException</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Exception to be raised when current version is newer than the one to be processed.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="MinosPreviousVersionSnapshotException.__init__"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosPreviousVersionSnapshotException.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">previous</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">,</span> <span class="n">diff</span><span class="p">:</span> <span class="n">AggregateDiff</span><span class="p">):</span>
+<div class="viewcode-block" id="MinosPreviousVersionSnapshotException.__init__"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.MinosPreviousVersionSnapshotException.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">previous</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">,</span> <span class="n">aggregate_diff</span><span class="p">:</span> <span class="n">AggregateDiff</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">previous</span> <span class="o">=</span> <span class="n">previous</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">diff</span> <span class="o">=</span> <span class="n">diff</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_diff</span> <span class="o">=</span> <span class="n">aggregate_diff</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;Version for </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">previous</span><span class="o">.</span><span class="n">classname</span><span class="p">)</span><span class="si">}</span><span class="s2"> aggregate must be &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;greater than </span><span class="si">{</span><span class="n">previous</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">. Obtained: </span><span class="si">{</span><span class="n">diff</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;greater than </span><span class="si">{</span><span class="n">previous</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">. Obtained: </span><span class="si">{</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span></div></div>
 
 
