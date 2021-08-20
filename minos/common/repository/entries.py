@@ -5,9 +5,13 @@ This file is part of minos framework.
 
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
-from __future__ import annotations
+from __future__ import (
+    annotations,
+)
 
-from datetime import datetime
+from datetime import (
+    datetime,
+)
 from typing import (
     TYPE_CHECKING,
     Iterable,
@@ -15,9 +19,13 @@ from typing import (
     Type,
     Union,
 )
-from uuid import UUID
+from uuid import (
+    UUID,
+)
 
-from ..importlib import import_module
+from ..importlib import (
+    import_module,
+)
 
 if TYPE_CHECKING:
     from ..model import (
@@ -46,7 +54,9 @@ class RepositoryEntry:
         if isinstance(data, memoryview):
             data = data.tobytes()
         if action is not None and isinstance(action, str):
-            from ..model import Action
+            from ..model import (
+                Action,
+            )
 
             action = Action.value_of(action)
 

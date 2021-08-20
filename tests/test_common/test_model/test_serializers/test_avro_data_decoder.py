@@ -36,13 +36,17 @@ from minos.common import (
     ModelType,
     current_datetime,
 )
-from tests.aggregate_classes import Owner
+from tests.aggregate_classes import (
+    Owner,
+)
 from tests.model_classes import (
     Base,
     GenericUser,
     User,
 )
-from tests.subaggregate_classes import CartItem
+from tests.subaggregate_classes import (
+    CartItem,
+)
 from tests.utils import (
     FakeBroker,
     FakeEntity,

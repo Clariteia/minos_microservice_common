@@ -16,16 +16,24 @@ from typing import (
     Any,
     Optional,
 )
-from unittest.mock import MagicMock
-from uuid import UUID
+from unittest.mock import (
+    MagicMock,
+)
+from uuid import (
+    UUID,
+)
 
 from minos.common import (
     AvroSchemaEncoder,
     ModelRef,
     ModelType,
 )
-from tests.aggregate_classes import Owner
-from tests.model_classes import User
+from tests.aggregate_classes import (
+    Owner,
+)
+from tests.model_classes import (
+    User,
+)
 
 
 class TestAvroSchemaEncoder(unittest.TestCase):

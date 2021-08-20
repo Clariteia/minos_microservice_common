@@ -6,8 +6,12 @@ This file is part of minos framework.
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
 import unittest
-from unittest.mock import patch
-from uuid import uuid4
+from unittest.mock import (
+    patch,
+)
+from uuid import (
+    uuid4,
+)
 
 from minos.common import (
     EmptyMinosModelSequenceException,
