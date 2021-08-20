@@ -7,18 +7,10 @@ Minos framework can not be copied and/or distributed without the express permiss
 """
 
 import unittest
-from datetime import (
-    datetime,
-)
-from typing import (
-    Optional,
-)
-from unittest.mock import (
-    patch,
-)
-from uuid import (
-    UUID,
-)
+from datetime import datetime
+from typing import Optional
+from unittest.mock import patch
+from uuid import UUID
 
 from minos.common import (
     NULL_UUID,

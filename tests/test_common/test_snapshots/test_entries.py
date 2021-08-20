@@ -7,24 +7,16 @@ Minos framework can not be copied and/or distributed without the express permiss
 """
 import sys
 import unittest
-from datetime import (
-    datetime,
-)
-from uuid import (
-    uuid4,
-)
+from datetime import datetime
+from uuid import uuid4
 
 from dependency_injector import (
     containers,
     providers,
 )
 
-from minos.common import (
-    SnapshotEntry,
-)
-from tests.aggregate_classes import (
-    Car,
-)
+from minos.common import SnapshotEntry
+from tests.aggregate_classes import Car
 from tests.utils import (
     FakeBroker,
     FakeRepository,

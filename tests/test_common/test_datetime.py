@@ -3,13 +3,10 @@ import unittest
 from datetime import datetime, timezone
 from time import time
 
-from minos.common import (
-    current_datetime,
-)
+from minos.common import current_datetime
 
 
 class TestDatetime(unittest.TestCase):
-
     def test_current_datetime_type(self):
         observed = current_datetime()
         self.assertIsInstance(observed, datetime)
@@ -23,5 +20,5 @@ class TestDatetime(unittest.TestCase):
         self.assertAlmostEqual(time(), observed.timestamp(), delta=5)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

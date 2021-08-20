@@ -5,13 +5,9 @@ This file is part of minos framework.
 
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
-from itertools import (
-    count,
-)
+from itertools import count
 from typing import (
     AsyncIterator,
     Optional,
@@ -21,18 +17,10 @@ from uuid import (
     uuid4,
 )
 
-from ..constants import (
-    NULL_UUID,
-)
-from ..datetime import (
-    current_datetime,
-)
-from .abc import (
-    MinosRepository,
-)
-from .entries import (
-    RepositoryEntry,
-)
+from ..constants import NULL_UUID
+from ..datetime import current_datetime
+from .abc import MinosRepository
+from .entries import RepositoryEntry
 
 
 class InMemoryRepository(MinosRepository):

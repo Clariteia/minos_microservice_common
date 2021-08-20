@@ -6,13 +6,9 @@ This file is part of minos framework.
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
 
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
-from datetime import (
-    datetime,
-)
+from datetime import datetime
 from typing import (
     TYPE_CHECKING,
     Iterable,
@@ -20,21 +16,13 @@ from typing import (
     Type,
     Union,
 )
-from uuid import (
-    UUID,
-)
+from uuid import UUID
 
-from ..exceptions import (
-    MinosSnapshotDeletedAggregateException,
-)
-from ..importlib import (
-    import_module,
-)
+from ..exceptions import MinosSnapshotDeletedAggregateException
+from ..importlib import import_module
 
 if TYPE_CHECKING:
-    from ..model import (
-        Aggregate,
-    )
+    from ..model import Aggregate
 
 
 class SnapshotEntry:

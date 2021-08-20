@@ -6,12 +6,8 @@ This file is part of minos framework.
 Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
 """
 import unittest
-from datetime import (
-    datetime,
-)
-from uuid import (
-    uuid4,
-)
+from datetime import datetime
+from uuid import uuid4
 
 from minos.common import (
     Action,
@@ -21,9 +17,7 @@ from minos.common import (
     RepositoryEntry,
     current_datetime,
 )
-from tests.aggregate_classes import (
-    Car,
-)
+from tests.aggregate_classes import Car
 
 
 class TestRepositoryEntry(unittest.IsolatedAsyncioTestCase):

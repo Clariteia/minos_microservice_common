@@ -32,9 +32,7 @@ from .database import (
     PostgreSqlMinosDatabase,
     PostgreSqlPool,
 )
-from .datetime import (
-    current_datetime,
-)
+from .datetime import current_datetime
 from .exceptions import (
     EmptyMinosModelSequenceException,
     MinosAttributeValidationException,
@@ -72,12 +70,8 @@ from .importlib import (
     classname,
     import_module,
 )
-from .injectors import (
-    DependencyInjector,
-)
-from .launchers import (
-    EntrypointLauncher,
-)
+from .injectors import DependencyInjector
+from .launchers import EntrypointLauncher
 from .meta import (
     classproperty,
     property_or_classproperty,
@@ -129,9 +123,7 @@ from .networks import (
     MinosBroker,
     MinosHandler,
 )
-from .pools import (
-    MinosPool,
-)
+from .pools import MinosPool
 from .protocol import (
     MinosAvroDatabaseProtocol,
     MinosAvroMessageProtocol,
@@ -145,12 +137,8 @@ from .repository import (
     PostgreSqlRepository,
     RepositoryEntry,
 )
-from .saga import (
-    MinosSagaManager,
-)
-from .setup import (
-    MinosSetup,
-)
+from .saga import MinosSagaManager
+from .setup import MinosSetup
 from .snapshot import (
     InMemorySnapshot,
     MinosSnapshot,

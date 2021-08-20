@@ -7,17 +7,13 @@ Minos framework can not be copied and/or distributed without the express permiss
 """
 import sys
 import unittest
-from datetime import (
-    datetime,
-)
+from datetime import datetime
 from unittest.mock import (
     MagicMock,
     call,
     patch,
 )
-from uuid import (
-    uuid4,
-)
+from uuid import uuid4
 
 from dependency_injector import (
     containers,
@@ -39,12 +35,8 @@ from minos.common import (
     SnapshotEntry,
     current_datetime,
 )
-from minos.common.testing import (
-    PostgresAsyncTestCase,
-)
-from tests.aggregate_classes import (
-    Car,
-)
+from minos.common.testing import PostgresAsyncTestCase
+from tests.aggregate_classes import Car
 from tests.utils import (
     BASE_PATH,
     FakeBroker,
