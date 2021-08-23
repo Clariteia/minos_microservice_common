@@ -26,7 +26,7 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
-   minos.common.constants
+   minos.common.datetime
    minos.common.exceptions
    minos.common.importlib
    minos.common.injectors
@@ -36,3 +36,4 @@ Submodules
    minos.common.pools
    minos.common.saga
    minos.common.setup
+   minos.common.uuid

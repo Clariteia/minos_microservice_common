@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.declarative.aggregate.model &mdash; Minos Microservice Common 0.1.9 documentation</title>
+  <title>minos.common.model.declarative.aggregate.model &mdash; Minos Microservice Common 0.1.10 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.9
+                0.1.10
               </div>
             
           
@@ -176,6 +176,9 @@
 <span class="kn">from</span> <span class="nn">asyncio</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">gather</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">datetime</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">AsyncIterator</span><span class="p">,</span>
     <span class="n">NoReturn</span><span class="p">,</span>
@@ -191,13 +194,12 @@
     <span class="n">Provide</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">....constants</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">NULL_UUID</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">....datetime</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NULL_DATETIME</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">....exceptions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosBrokerNotProvidedException</span><span class="p">,</span>
-    <span class="n">MinosRepositoryManuallySetAggregateIdentifierException</span><span class="p">,</span>
-    <span class="n">MinosRepositoryManuallySetAggregateVersionException</span><span class="p">,</span>
+    <span class="n">MinosRepositoryException</span><span class="p">,</span>
     <span class="n">MinosRepositoryNotProvidedException</span><span class="p">,</span>
     <span class="n">MinosSnapshotNotProvidedException</span><span class="p">,</span>
 <span class="p">)</span>
@@ -206,9 +208,13 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">....repository</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosRepository</span><span class="p">,</span>
+    <span class="n">RepositoryEntry</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">....snapshot</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosSnapshot</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">....uuid</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NULL_UUID</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">...dynamic</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">IncrementalFieldDiff</span><span class="p">,</span>
@@ -227,6 +233,8 @@
     <span class="sd">&quot;&quot;&quot;Base aggregate class.&quot;&quot;&quot;</span>
 
     <span class="n">version</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">created_at</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="n">updated_at</span><span class="p">:</span> <span class="n">datetime</span>
 
     <span class="n">_broker</span><span class="p">:</span> <span class="n">MinosBroker</span> <span class="o">=</span> <span class="n">Provide</span><span class="p">[</span><span class="s2">&quot;event_broker&quot;</span><span class="p">]</span>
     <span class="n">_repository</span><span class="p">:</span> <span class="n">MinosRepository</span> <span class="o">=</span> <span class="n">Provide</span><span class="p">[</span><span class="s2">&quot;repository&quot;</span><span class="p">]</span>
@@ -237,13 +245,15 @@
         <span class="o">*</span><span class="n">args</span><span class="p">,</span>
         <span class="n">uuid</span><span class="p">:</span> <span class="n">UUID</span> <span class="o">=</span> <span class="n">NULL_UUID</span><span class="p">,</span>
         <span class="n">version</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">created_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">NULL_DATETIME</span><span class="p">,</span>
+        <span class="n">updated_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">NULL_DATETIME</span><span class="p">,</span>
         <span class="n">_broker</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MinosBroker</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">_repository</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MinosRepository</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">_snapshot</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MinosSnapshot</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">created_at</span><span class="p">,</span> <span class="n">updated_at</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">_broker</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_broker</span> <span class="o">=</span> <span class="n">_broker</span>
@@ -334,24 +344,32 @@
 <span class="sd">        :return: A new ``Aggregate`` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s2">&quot;uuid&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosRepositoryManuallySetAggregateIdentifierException</span><span class="p">(</span>
+            <span class="k">raise</span> <span class="n">MinosRepositoryException</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;The identifier must be computed internally on the repository. Obtained: </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;uuid&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="s2">&quot;version&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosRepositoryManuallySetAggregateVersionException</span><span class="p">(</span>
+            <span class="k">raise</span> <span class="n">MinosRepositoryException</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;The version must be computed internally on the repository. Obtained: </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;created_at&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MinosRepositoryException</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The version must be computed internally on the repository. Obtained: </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;updated_at&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MinosRepositoryException</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The version must be computed internally on the repository. Obtained: </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;updated_at&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
 
         <span class="n">instance</span><span class="p">:</span> <span class="n">T</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">_broker</span><span class="o">=</span><span class="n">_broker</span><span class="p">,</span> <span class="n">_repository</span><span class="o">=</span><span class="n">_repository</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="n">diff</span> <span class="o">=</span> <span class="n">AggregateDiff</span><span class="o">.</span><span class="n">from_aggregate</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
-        <span class="n">entry</span> <span class="o">=</span> <span class="k">await</span> <span class="n">instance</span><span class="o">.</span><span class="n">_repository</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+        <span class="n">aggregate_diff</span> <span class="o">=</span> <span class="n">AggregateDiff</span><span class="o">.</span><span class="n">from_aggregate</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="k">await</span> <span class="n">instance</span><span class="o">.</span><span class="n">_repository</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="p">)</span>
 
-        <span class="n">instance</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span>
-        <span class="n">diff</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">diff</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">_update_from_repository_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+        <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">update_from_repository_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
 
-        <span class="k">await</span> <span class="n">instance</span><span class="o">.</span><span class="n">_broker</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">Created&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">instance</span><span class="o">.</span><span class="n">_broker</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">Created&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">instance</span></div>
 
@@ -364,8 +382,16 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s2">&quot;version&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">MinosRepositoryManuallySetAggregateVersionException</span><span class="p">(</span>
+            <span class="k">raise</span> <span class="n">MinosRepositoryException</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;The version must be computed internally on the repository. Obtained: </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;created_at&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MinosRepositoryException</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The version must be computed internally on the repository. Obtained: </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;updated_at&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MinosRepositoryException</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The version must be computed internally on the repository. Obtained: </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;updated_at&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
 
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -374,11 +400,14 @@
         <span class="n">previous</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_one</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">_broker</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_broker</span><span class="p">,</span> <span class="n">_repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="p">,</span> <span class="n">_snapshot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_snapshot</span>
         <span class="p">)</span>
-        <span class="n">aggregate_diff</span> <span class="o">=</span> <span class="n">AggregateDiff</span><span class="o">.</span><span class="n">from_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">previous</span><span class="p">)</span>
+        <span class="n">aggregate_diff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">previous</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">fields_diff</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
         <span class="n">entry</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span>
-        <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_from_repository_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+        <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">update_from_repository_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
 
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_update_events</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="p">)</span>
 
@@ -388,7 +417,7 @@
         <span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_broker</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">Updated&quot;</span><span class="p">)]</span>
 
         <span class="k">for</span> <span class="n">decomposed_aggregate_diff</span> <span class="ow">in</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">decompose</span><span class="p">():</span>
-            <span class="n">diff</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">decomposed_aggregate_diff</span><span class="o">.</span><span class="n">fields_diff</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">decomposed_aggregate_diff</span><span class="o">.</span><span class="n">fields_diff</span><span class="o">.</span><span class="n">flatten_values</span><span class="p">()))</span>
             <span class="n">topic</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">Updated.</span><span class="si">{</span><span class="n">diff</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">IncrementalFieldDiff</span><span class="p">):</span>
                 <span class="n">topic</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;.</span><span class="si">{</span><span class="n">diff</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -404,28 +433,27 @@
         <span class="n">is_creation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span> <span class="o">==</span> <span class="n">NULL_UUID</span>
         <span class="k">if</span> <span class="n">is_creation</span> <span class="o">!=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">is_creation</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">MinosRepositoryManuallySetAggregateVersionException</span><span class="p">(</span>
+                <span class="k">raise</span> <span class="n">MinosRepositoryException</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;The version must be computed internally on the repository. Obtained: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">MinosRepositoryManuallySetAggregateIdentifierException</span><span class="p">(</span>
+                <span class="k">raise</span> <span class="n">MinosRepositoryException</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;The uuid must be computed internally on the repository. Obtained: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
+        <span class="n">values</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">k</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="p">,</span> <span class="s2">&quot;created_at&quot;</span><span class="p">,</span> <span class="s2">&quot;updated_at&quot;</span><span class="p">}</span>
+        <span class="p">}</span>
         <span class="k">if</span> <span class="n">is_creation</span><span class="p">:</span>
             <span class="n">new</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="p">)},</span>
-                <span class="n">_broker</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_broker</span><span class="p">,</span>
-                <span class="n">_repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="p">,</span>
-                <span class="n">_snapshot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_snapshot</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">values</span><span class="p">,</span> <span class="n">_broker</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_broker</span><span class="p">,</span> <span class="n">_repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="p">,</span> <span class="n">_snapshot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_snapshot</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span> <span class="o">|=</span> <span class="n">new</span><span class="o">.</span><span class="n">fields</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-                <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">field</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="p">)},</span>
-                <span class="n">_broker</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_broker</span><span class="p">,</span>
-                <span class="n">_repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="p">,</span>
-                <span class="n">_snapshot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_snapshot</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">values</span><span class="p">,</span> <span class="n">_broker</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_broker</span><span class="p">,</span> <span class="n">_repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="p">,</span> <span class="n">_snapshot</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_snapshot</span><span class="p">,</span>
             <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Aggregate.refresh"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.refresh">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
@@ -443,13 +471,20 @@
 
 <span class="sd">        :return: This method does not return anything.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">diff</span> <span class="o">=</span> <span class="n">AggregateDiff</span><span class="o">.</span><span class="n">from_deleted_aggregate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">entry</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+        <span class="n">aggregate_diff</span> <span class="o">=</span> <span class="n">AggregateDiff</span><span class="o">.</span><span class="n">from_deleted_aggregate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">entry</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span>
-        <span class="n">diff</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">diff</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_uuid</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_from_repository_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+        <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">update_from_repository_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
 
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_broker</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">Deleted&quot;</span><span class="p">)</span></div>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_broker</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">aggregate_diff</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">Deleted&quot;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_update_from_repository_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="n">RepositoryEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_uuid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span>
+        <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">is_create</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">created_at</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">created_at</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updated_at</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">created_at</span>
 
 <div class="viewcode-block" id="Aggregate.diff"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.diff">[docs]</a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">another</span><span class="p">:</span> <span class="n">Aggregate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateDiff</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Compute the difference with another aggregate.</span>
@@ -474,7 +509,7 @@
             <span class="p">)</span>
 
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Applying </span><span class="si">{</span><span class="n">aggregate_diff</span><span class="si">!r}</span><span class="s2"> to </span><span class="si">{</span><span class="bp">self</span><span class="si">!r}</span><span class="s2">...&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">diff</span> <span class="ow">in</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">fields_diff</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">diff</span> <span class="ow">in</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">fields_diff</span><span class="o">.</span><span class="n">flatten_values</span><span class="p">():</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">IncrementalFieldDiff</span><span class="p">):</span>
                 <span class="n">container</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diff</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">diff</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">is_delete</span><span class="p">:</span>
@@ -483,7 +518,8 @@
                     <span class="n">container</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diff</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">diff</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">version</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updated_at</span> <span class="o">=</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">created_at</span></div>
 
 <div class="viewcode-block" id="Aggregate.from_diff"><a class="viewcode-back" href="../../../../../../api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.from_diff">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_diff</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">aggregate_diff</span><span class="p">:</span> <span class="n">AggregateDiff</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
@@ -494,8 +530,15 @@
 <span class="sd">        :param kwargs: Additional named arguments.</span>
 <span class="sd">        :return: A new ``Aggregate`` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="n">diff</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">diff</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">diff</span> <span class="ow">in</span> <span class="n">aggregate_diff</span><span class="o">.</span><span class="n">fields_diff</span><span class="o">.</span><span class="n">values</span><span class="p">()}</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">uuid</span><span class="o">=</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="o">**</span><span class="n">values</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+            <span class="n">uuid</span><span class="o">=</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
+            <span class="n">version</span><span class="o">=</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+            <span class="n">created_at</span><span class="o">=</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+            <span class="n">updated_at</span><span class="o">=</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">aggregate_diff</span><span class="o">.</span><span class="n">get_all</span><span class="p">(),</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span></div></div>
 
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Aggregate</span><span class="p">)</span>

@@ -1,7 +1,0 @@
-minos.common.constants module
-=============================
-
-.. automodule:: minos.common.constants
-   :members:
-   :undoc-members:
-   :show-inheritance:

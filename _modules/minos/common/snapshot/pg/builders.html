@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.pg.builders &mdash; Minos Microservice Common 0.1.9 documentation</title>
+  <title>minos.common.snapshot.pg.builders &mdash; Minos Microservice Common 0.1.10 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.9
+                0.1.10
               </div>
             
           
@@ -310,6 +310,8 @@
             <span class="s2">&quot;aggregate_name&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_name</span><span class="p">,</span>
             <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
             <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+            <span class="s2">&quot;updated_at&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span><span class="n">_INSERT_ONE_SNAPSHOT_ENTRY_QUERY</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -356,6 +358,8 @@
             <span class="s2">&quot;aggregate_name&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">aggregate_name</span><span class="p">,</span>
             <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
             <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+            <span class="s2">&quot;updated_at&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">updated_at</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_query_and_fetchone</span><span class="p">(</span><span class="n">_INSERT_ONE_SNAPSHOT_ENTRY_QUERY</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -377,12 +381,12 @@
 <span class="s2">    </span><span class="si">%(aggregate_name)s</span><span class="s2">,</span>
 <span class="s2">    </span><span class="si">%(version)s</span><span class="s2">,</span>
 <span class="s2">    </span><span class="si">%(data)s</span><span class="s2">,</span>
-<span class="s2">    default,</span>
-<span class="s2">    default</span>
+<span class="s2">    </span><span class="si">%(created_at)s</span><span class="s2">,</span>
+<span class="s2">    </span><span class="si">%(updated_at)s</span><span class="s2"></span>
 <span class="s2">)</span>
 <span class="s2">ON CONFLICT (aggregate_uuid, aggregate_name)</span>
 <span class="s2">DO</span>
-<span class="s2">   UPDATE SET version = </span><span class="si">%(version)s</span><span class="s2">, data = </span><span class="si">%(data)s</span><span class="s2">, updated_at = NOW()</span>
+<span class="s2">   UPDATE SET version = </span><span class="si">%(version)s</span><span class="s2">, data = </span><span class="si">%(data)s</span><span class="s2">, updated_at = </span><span class="si">%(updated_at)s</span><span class="s2"></span>
 <span class="s2">RETURNING created_at, updated_at;</span>
 <span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 

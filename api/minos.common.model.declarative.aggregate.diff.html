@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.declarative.aggregate.diff module &mdash; Minos Microservice Common 0.1.9 documentation</title>
+  <title>minos.common.model.declarative.aggregate.diff module &mdash; Minos Microservice Common 0.1.10 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.9
+                0.1.10
               </div>
             
           
@@ -262,6 +262,11 @@
 <span class="sig-name descname"><span class="pre">classname</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'minos.common.model.declarative.aggregate.diff.AggregateDiff'</span></em><a class="headerlink" href="#minos.common.model.declarative.aggregate.diff.AggregateDiff.classname" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.diff.AggregateDiff.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="pre">:</span> <span class="pre">datetime</span></em><a class="headerlink" href="#minos.common.model.declarative.aggregate.diff.AggregateDiff.created_at" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.diff.AggregateDiff.decompose">
 <span class="sig-name descname"><span class="pre">decompose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/diff.html#AggregateDiff.decompose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.diff.AggregateDiff.decompose" title="Permalink to this definition">¶</a></dt>
@@ -455,6 +460,45 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.diff.AggregateDiff.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_diff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/diff.html#AggregateDiff.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.diff.AggregateDiff.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all field diffs with given name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>return_diff</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> the result is returned as field diff instances, otherwise the result is
+returned as value instances.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[<a class="reference internal" href="minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiff" title="minos.common.model.dynamic.diff.FieldDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.dynamic.diff.FieldDiff</span></code></a>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiff" title="minos.common.model.dynamic.diff.FieldDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.dynamic.diff.FieldDiff</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>]]]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of <code class="docutils literal notranslate"><span class="pre">FieldDiff</span></code> instances.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.diff.AggregateDiff.get_one">
+<span class="sig-name descname"><span class="pre">get_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_diff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/diff.html#AggregateDiff.get_one"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.diff.AggregateDiff.get_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get first field diff with given name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The name of the field diff.</p></li>
+<li><p><strong>return_diff</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> the result is returned as field diff instances, otherwise the result is
+returned as value instances.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[<a class="reference internal" href="minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiff" title="minos.common.model.dynamic.diff.FieldDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.dynamic.diff.FieldDiff</span></code></a>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiff" title="minos.common.model.dynamic.diff.FieldDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.dynamic.diff.FieldDiff</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>]]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A <code class="docutils literal notranslate"><span class="pre">FieldDiff</span></code> instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.diff.AggregateDiff.items">
 <span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D’s</span> <span class="pre">items</span></span></span><a class="headerlink" href="#minos.common.model.declarative.aggregate.diff.AggregateDiff.items" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -512,6 +556,23 @@
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.diff.AggregateDiff.type_hints_parameters">
 <span class="sig-name descname"><span class="pre">type_hints_parameters</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#minos.common.model.declarative.aggregate.diff.AggregateDiff.type_hints_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.diff.AggregateDiff.update_from_repository_entry">
+<span class="sig-name descname"><span class="pre">update_from_repository_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entry</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/aggregate/diff.html#AggregateDiff.update_from_repository_entry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.aggregate.diff.AggregateDiff.update_from_repository_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update metadata from a repository entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>entry</strong> (<a class="reference internal" href="minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry" title="minos.common.repository.entries.RepositoryEntry"><em>RepositoryEntry</em></a>) – A repository entry.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This method does not return anything.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="minos.common.model.declarative.aggregate.diff.AggregateDiff.uuid">
