@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>History &mdash; Minos Microservice Common 0.1.11 documentation</title>
+  <title>History &mdash; Minos Microservice Common 0.1.12 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.11
+                0.1.12
               </div>
             
           
@@ -131,6 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id30">0.1.9 (2021-08-17)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id31">0.1.10 (2021-08-23)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id32">0.1.11 (2021-08-25)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id33">0.1.12 (2021-09-01)</a></li>
 </ul>
 </li>
 </ul>
@@ -382,6 +383,17 @@
 <ul class="simple">
 <li><p>Fix bug related with <code class="docutils literal notranslate"><span class="pre">datetime</span></code> serialization in <code class="docutils literal notranslate"><span class="pre">Field</span></code>.</p></li>
 <li><p>Fix bug related with the <code class="docutils literal notranslate"><span class="pre">AggregateDiff.__getattr__</span></code> implementation.</p></li>
+</ul>
+</div>
+<div class="section" id="id33">
+<h2>0.1.12 (2021-09-01)<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Add generics to <code class="docutils literal notranslate"><span class="pre">MinosSagaManager</span></code> interface.</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">saga.items</span></code> from <code class="docutils literal notranslate"><span class="pre">MinosConfig</span></code>.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">service.aggregate</span></code> to <code class="docutils literal notranslate"><span class="pre">MinosConfig</span></code>.</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">interval</span></code> from <code class="docutils literal notranslate"><span class="pre">EntrypointLauncher</span></code> (must be setup at service level).</p></li>
+<li><p>Fix bug related with <code class="docutils literal notranslate"><span class="pre">TypeHintBuilder</span></code> and <code class="docutils literal notranslate"><span class="pre">Any</span></code>.</p></li>
+<li><p>Fix bug related with <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> comparisons.</p></li>
 </ul>
 </div>
 </div>
