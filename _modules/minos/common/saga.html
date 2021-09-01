@@ -161,13 +161,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for minos.common.saga</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Copyright (C) 2021 Clariteia SL</span>
-
-<span class="sd">This file is part of minos framework.</span>
-
-<span class="sd">Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">&quot;&quot;&quot;minos.common.saga module.&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">annotations</span><span class="p">,</span>
 <span class="p">)</span>
@@ -177,10 +171,9 @@
     <span class="n">abstractmethod</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Generic</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">UUID</span><span class="p">,</span>
+    <span class="n">TypeVar</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">.model</span> <span class="kn">import</span> <span class="p">(</span>
@@ -190,11 +183,13 @@
     <span class="n">MinosSetup</span><span class="p">,</span>
 <span class="p">)</span>
 
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="MinosSagaManager"><a class="viewcode-back" href="../../../api/minos.common.saga.html#minos.common.saga.MinosSagaManager">[docs]</a><span class="k">class</span> <span class="nc">MinosSagaManager</span><span class="p">(</span><span class="n">ABC</span><span class="p">,</span> <span class="n">MinosSetup</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MinosSagaManager"><a class="viewcode-back" href="../../../api/minos.common.saga.html#minos.common.saga.MinosSagaManager">[docs]</a><span class="k">class</span> <span class="nc">MinosSagaManager</span><span class="p">(</span><span class="n">ABC</span><span class="p">,</span> <span class="n">MinosSetup</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;Base class for saga manager implementations.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="MinosSagaManager.run"><a class="viewcode-back" href="../../../api/minos.common.saga.html#minos.common.saga.MinosSagaManager.run">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">reply</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CommandReply</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UUID</span><span class="p">:</span>
+<div class="viewcode-block" id="MinosSagaManager.run"><a class="viewcode-back" href="../../../api/minos.common.saga.html#minos.common.saga.MinosSagaManager.run">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">reply</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CommandReply</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Perform a run of a ``Saga``.</span>
 
 <span class="sd">        The run can be a new one (if a name is provided) or continue execution a previous one (if a reply is provided).</span>
@@ -210,11 +205,11 @@
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_new</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_run_new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UUID</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_run_new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_load_and_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">reply</span><span class="p">:</span> <span class="n">CommandReply</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UUID</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_load_and_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">reply</span><span class="p">:</span> <span class="n">CommandReply</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 </pre></div>
 

@@ -161,13 +161,8 @@
            <div itemprop="articleBody">
             
   <h1>Source code for minos.common.setup</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Copyright (C) 2021 Clariteia SL</span>
+<span></span><span class="sd">&quot;&quot;&quot;minos.common.setup module.&quot;&quot;&quot;</span>
 
-<span class="sd">This file is part of minos framework.</span>
-
-<span class="sd">Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</span>
-<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">annotations</span><span class="p">,</span>
 <span class="p">)</span>
@@ -178,7 +173,6 @@
     <span class="n">Path</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">NoReturn</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
     <span class="n">Type</span><span class="p">,</span>
     <span class="n">TypeVar</span><span class="p">,</span>
@@ -250,7 +244,7 @@
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span>
 
-<div class="viewcode-block" id="MinosSetup.setup"><a class="viewcode-back" href="../../../api/minos.common.setup.html#minos.common.setup.MinosSetup.setup">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+<div class="viewcode-block" id="MinosSetup.setup"><a class="viewcode-back" href="../../../api/minos.common.setup.html#minos.common.setup.MinosSetup.setup">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Setup miscellaneous repository things.</span>
 
 <span class="sd">        :return: This method does not return anything.</span>
@@ -260,13 +254,13 @@
             <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setup</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_already_setup</span> <span class="o">=</span> <span class="kc">True</span></div>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">exc_traceback</span><span class="p">):</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
 
-<div class="viewcode-block" id="MinosSetup.destroy"><a class="viewcode-back" href="../../../api/minos.common.setup.html#minos.common.setup.MinosSetup.destroy">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+<div class="viewcode-block" id="MinosSetup.destroy"><a class="viewcode-back" href="../../../api/minos.common.setup.html#minos.common.setup.MinosSetup.destroy">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Destroy miscellaneous repository things.</span>
 
 <span class="sd">        :return: This method does not return anything.</span>
@@ -276,7 +270,7 @@
             <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_destroy</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_already_setup</span> <span class="o">=</span> <span class="kc">False</span></div>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Destroy miscellaneous repository things.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
