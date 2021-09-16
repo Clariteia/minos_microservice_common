@@ -34,6 +34,7 @@ Submodules
    minos.common.meta
    minos.common.networks
    minos.common.pools
+   minos.common.queries
    minos.common.saga
    minos.common.setup
    minos.common.uuid

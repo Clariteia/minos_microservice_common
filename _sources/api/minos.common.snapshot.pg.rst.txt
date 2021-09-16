@@ -13,5 +13,7 @@ Submodules
    :maxdepth: 4
 
    minos.common.snapshot.pg.abc
-   minos.common.snapshot.pg.builders
-   minos.common.snapshot.pg.snapshot
+   minos.common.snapshot.pg.api
+   minos.common.snapshot.pg.queries
+   minos.common.snapshot.pg.readers
+   minos.common.snapshot.pg.writers

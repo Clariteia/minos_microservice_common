@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>History &mdash; Minos Microservice Common 0.1.12 documentation</title>
+  <title>History &mdash; Minos Microservice Common 0.1.13 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.12
+                0.1.13
               </div>
             
           
@@ -132,6 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id31">0.1.10 (2021-08-23)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id32">0.1.11 (2021-08-25)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id33">0.1.12 (2021-09-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id34">0.1.13 (2021-09-16)</a></li>
 </ul>
 </li>
 </ul>
@@ -394,6 +395,18 @@
 <li><p>Remove <code class="docutils literal notranslate"><span class="pre">interval</span></code> from <code class="docutils literal notranslate"><span class="pre">EntrypointLauncher</span></code> (must be setup at service level).</p></li>
 <li><p>Fix bug related with <code class="docutils literal notranslate"><span class="pre">TypeHintBuilder</span></code> and <code class="docutils literal notranslate"><span class="pre">Any</span></code>.</p></li>
 <li><p>Fix bug related with <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> comparisons.</p></li>
+</ul>
+</div>
+<div class="section" id="id34">
+<h2>0.1.13 (2021-09-16)<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">discovery.client</span></code> into <code class="docutils literal notranslate"><span class="pre">MinosConfig</span></code> allowing to setup custom Discovery clients.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">minos.common.queries</span></code> module, containing <code class="docutils literal notranslate"><span class="pre">Condition</span></code> and <code class="docutils literal notranslate"><span class="pre">Ordering</span></code> classes.</p></li>
+<li><p>Refactor <code class="docutils literal notranslate"><span class="pre">PostgreSqlSnapshot</span></code> to store <code class="docutils literal notranslate"><span class="pre">Aggregate</span></code>s following a <code class="docutils literal notranslate"><span class="pre">schema</span></code> (bytes) + <code class="docutils literal notranslate"><span class="pre">data</span></code> (json) strategy supporting queries over the <code class="docutils literal notranslate"><span class="pre">data</span></code> column.</p></li>
+<li><p>Fix troubles related with <code class="docutils literal notranslate"><span class="pre">avro</span></code>‘s <code class="docutils literal notranslate"><span class="pre">record</span></code> collisions with full patching by <code class="docutils literal notranslate"><span class="pre">AvroSchemaEncoder</span></code>.</p></li>
+<li><p>Refactor <code class="docutils literal notranslate"><span class="pre">AvroDataEncoder</span></code> to be more consistent with <code class="docutils literal notranslate"><span class="pre">Model</span></code> and <code class="docutils literal notranslate"><span class="pre">Field</span></code> responsibilities.</p></li>
+<li><p>Remove file headers.</p></li>
+<li><p>Stop using <code class="docutils literal notranslate"><span class="pre">NoReturn</span></code> everywhere.</p></li>
 </ul>
 </div>
 </div>

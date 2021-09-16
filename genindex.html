@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Index &mdash; Minos Microservice Common 0.1.12 documentation</title>
+  <title>Index &mdash; Minos Microservice Common 0.1.13 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.12
+                0.1.13
               </div>
             
           
@@ -177,6 +177,7 @@
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
@@ -198,6 +199,14 @@
         <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.__init__">(minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
 </li>
         <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool.__init__">(minos.common.database.pool.PostgreSqlPool method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderException.__init__">(minos.common.exceptions.DataDecoderException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderMalformedTypeException.__init__">(minos.common.exceptions.DataDecoderMalformedTypeException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderRequiredValueException.__init__">(minos.common.exceptions.DataDecoderRequiredValueException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderTypeException.__init__">(minos.common.exceptions.DataDecoderTypeException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.EmptyMinosModelSequenceException.__init__">(minos.common.exceptions.EmptyMinosModelSequenceException method)</a>
 </li>
@@ -351,9 +360,13 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.__init__">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.__init__">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
+        <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.__init__">(minos.common.snapshot.pg.api.PostgreSqlSnapshot method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.__init__">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
+        <li><a href="api/minos.common.snapshot.pg.queries.html#minos.common.snapshot.pg.queries.PostgreSqlSnapshotQueryBuilder.__init__">(minos.common.snapshot.pg.queries.PostgreSqlSnapshotQueryBuilder method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.__init__">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.__init__">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter method)</a>
 </li>
         <li><a href="api/minos.common.storage.lmdb.html#minos.common.storage.lmdb.MinosStorageLmdb.__init__">(minos.common.storage.lmdb.MinosStorageLmdb method)</a>
 </li>
@@ -445,9 +458,11 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.already_destroyed">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup property)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.already_destroyed">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder property)</a>
+        <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.already_destroyed">(minos.common.snapshot.pg.api.PostgreSqlSnapshot property)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.already_destroyed">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot property)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.already_destroyed">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader property)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.already_destroyed">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter property)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.already_setup">already_setup (minos.common.database.abc.PostgreSqlMinosDatabase property)</a>
@@ -479,18 +494,28 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.already_setup">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup property)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.already_setup">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder property)</a>
+        <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.already_setup">(minos.common.snapshot.pg.api.PostgreSqlSnapshot property)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.already_setup">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot property)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.already_setup">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader property)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.already_setup">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter property)</a>
 </li>
       </ul></li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.AND">AND (minos.common.queries.Condition attribute)</a>
+</li>
       <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.apply_diff">apply_diff() (minos.common.model.declarative.aggregate.model.Aggregate method)</a>
 </li>
-      <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.are_synced">are_synced() (minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
-</li>
-      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.EmptyMinosModelSequenceException.args">args (minos.common.exceptions.EmptyMinosModelSequenceException attribute)</a>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderException.args">args (minos.common.exceptions.DataDecoderException attribute)</a>
 
       <ul>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderMalformedTypeException.args">(minos.common.exceptions.DataDecoderMalformedTypeException attribute)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderRequiredValueException.args">(minos.common.exceptions.DataDecoderRequiredValueException attribute)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderTypeException.args">(minos.common.exceptions.DataDecoderTypeException attribute)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.EmptyMinosModelSequenceException.args">(minos.common.exceptions.EmptyMinosModelSequenceException attribute)</a>
+</li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosAttributeValidationException.args">(minos.common.exceptions.MinosAttributeValidationException attribute)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosBrokerException.args">(minos.common.exceptions.MinosBrokerException attribute)</a>
@@ -550,6 +575,10 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.as_raw">as_raw() (minos.common.snapshot.entries.SnapshotEntry method)</a>
+</li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Ordering.ASC">ASC (minos.common.queries.Ordering attribute)</a>
+</li>
       <li><a href="api/minos.common.model.abc.html#minos.common.model.abc.Model.avro_bytes">avro_bytes (minos.common.model.abc.Model property)</a>
 
       <ul>
@@ -753,6 +782,8 @@
 </li>
         <li><a href="api/minos.common.model.types.model_types.html#minos.common.model.types.model_types.ModelType.build">(minos.common.model.types.model_types.ModelType class method)</a>
 </li>
+        <li><a href="api/minos.common.snapshot.pg.queries.html#minos.common.snapshot.pg.queries.PostgreSqlSnapshotQueryBuilder.build">(minos.common.snapshot.pg.queries.PostgreSqlSnapshotQueryBuilder method)</a>
+</li>
         <li><a href="api/minos.common.storage.abc.html#minos.common.storage.abc.MinosStorage.build">(minos.common.storage.abc.MinosStorage class method)</a>
 </li>
         <li><a href="api/minos.common.storage.lmdb.html#minos.common.storage.lmdb.MinosStorageLmdb.build">(minos.common.storage.lmdb.MinosStorageLmdb class method)</a>
@@ -763,8 +794,6 @@
       <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.build_aggregate">build_aggregate() (minos.common.snapshot.entries.SnapshotEntry method)</a>
 </li>
       <li><a href="api/minos.common.model.types.builders.html#minos.common.model.types.builders.build_union">build_union() (in module minos.common.model.types.builders)</a>
-</li>
-      <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.builder">builder (minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -844,6 +873,8 @@
 </li>
       <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.CommandStatus">CommandStatus (class in minos.common.model.declarative.networks)</a>
 </li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition">Condition (class in minos.common.queries)</a>
+</li>
       <li><a href="api/minos.common.injectors.html#minos.common.injectors.DependencyInjector.container">container (minos.common.injectors.DependencyInjector attribute)</a>
 </li>
       <li><a href="api/minos.common.model.actions.html#minos.common.model.actions.Action.CREATE">CREATE (minos.common.model.actions.Action attribute)</a>
@@ -879,9 +910,9 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.cursor">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.cursor">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.cursor">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.cursor">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.cursor">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -906,6 +937,14 @@
         <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.data">(minos.common.snapshot.entries.SnapshotEntry attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderException">DataDecoderException</a>
+</li>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderMalformedTypeException">DataDecoderMalformedTypeException</a>
+</li>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderRequiredValueException">DataDecoderRequiredValueException</a>
+</li>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderTypeException">DataDecoderTypeException</a>
+</li>
       <li><a href="api/minos.common.model.dynamic.dto.html#minos.common.model.dynamic.dto.DataTransferObject">DataTransferObject (class in minos.common.model.dynamic.dto)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.abc.html#minos.common.model.declarative.abc.DeclarativeModel">DeclarativeModel (class in minos.common.model.declarative.abc)</a>
@@ -948,10 +987,12 @@
         <li><a href="api/minos.common.storage.lmdb.html#minos.common.storage.lmdb.MinosStorageLmdb.delete">(minos.common.storage.lmdb.MinosStorageLmdb method)</a>
 </li>
       </ul></li>
-      <li><a href="api/minos.common.injectors.html#minos.common.injectors.DependencyInjector">DependencyInjector (class in minos.common.injectors)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.injectors.html#minos.common.injectors.DependencyInjector">DependencyInjector (class in minos.common.injectors)</a>
+</li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Ordering.DESC">DESC (minos.common.queries.Ordering attribute)</a>
+</li>
       <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.destroy">destroy() (minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
 
       <ul>
@@ -981,9 +1022,11 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.destroy">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.destroy">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
+        <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.destroy">(minos.common.snapshot.pg.api.PostgreSqlSnapshot method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.destroy">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.destroy">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.destroy">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter method)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.diff">diff() (minos.common.model.declarative.aggregate.model.Aggregate method)</a>
@@ -1010,7 +1053,7 @@
 </li>
       <li><a href="api/minos.common.configuration.config.html#minos.common.configuration.config.MinosConfig.discovery">discovery (minos.common.configuration.config.MinosConfig property)</a>
 </li>
-      <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.dispatch">dispatch() (minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
+      <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.dispatch">dispatch() (minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter method)</a>
 </li>
       <li><a href="api/minos.common.model.dynamic.abc.html#minos.common.model.dynamic.abc.DynamicModel">DynamicModel (class in minos.common.model.dynamic.abc)</a>
 </li>
@@ -1040,6 +1083,10 @@
         <li><a href="api/minos.common.protocol.json.html#minos.common.protocol.json.MinosJsonBinaryProtocol.encode">(minos.common.protocol.json.MinosJsonBinaryProtocol class method)</a>
 </li>
       </ul></li>
+      <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.encoded_data">encoded_data (minos.common.snapshot.entries.SnapshotEntry property)</a>
+</li>
+      <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.encoded_schema">encoded_schema (minos.common.snapshot.entries.SnapshotEntry property)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.model.declarative.entities.html#minos.common.model.declarative.entities.Entity">Entity (class in minos.common.model.declarative.entities)</a>
@@ -1051,6 +1098,8 @@
       <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.entrypoint">entrypoint (minos.common.launchers.EntrypointLauncher attribute)</a>
 </li>
       <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher">EntrypointLauncher (class in minos.common.launchers)</a>
+</li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.EQUAL">EQUAL (minos.common.queries.Condition attribute)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.CommandStatus.ERROR">ERROR (minos.common.model.declarative.networks.CommandStatus attribute)</a>
 </li>
@@ -1066,6 +1115,8 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.FALSE">FALSE (minos.common.queries.Condition attribute)</a>
+</li>
       <li><a href="api/minos.common.model.fields.html#minos.common.model.fields.Field">Field (class in minos.common.model.fields)</a>
 </li>
       <li><a href="api/minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiff">FieldDiff (class in minos.common.model.dynamic.diff)</a>
@@ -1115,6 +1166,20 @@
 </li>
       </ul></li>
       <li><a href="api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff.fields_diff">fields_diff (minos.common.model.declarative.aggregate.diff.AggregateDiff attribute)</a>
+</li>
+      <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.find">find() (minos.common.model.declarative.aggregate.model.Aggregate class method)</a>
+
+      <ul>
+        <li><a href="api/minos.common.snapshot.abc.html#minos.common.snapshot.abc.MinosSnapshot.find">(minos.common.snapshot.abc.MinosSnapshot method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.find">(minos.common.snapshot.memory.InMemorySnapshot method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.find">(minos.common.snapshot.pg.api.PostgreSqlSnapshot method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.find">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.find_entries">find_entries() (minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
 </li>
       <li><a href="api/minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiffContainer.flatten_items">flatten_items() (minos.common.model.dynamic.diff.FieldDiffContainer method)</a>
 </li>
@@ -1287,9 +1352,11 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.from_config">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup class method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.from_config">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder class method)</a>
+        <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.from_config">(minos.common.snapshot.pg.api.PostgreSqlSnapshot class method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.from_config">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot class method)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.from_config">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader class method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.from_config">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter class method)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff.from_deleted_aggregate">from_deleted_aggregate() (minos.common.model.declarative.aggregate.diff.AggregateDiff class method)</a>
@@ -1306,14 +1373,8 @@
         <li><a href="api/minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiffContainer.from_difference">(minos.common.model.dynamic.diff.FieldDiffContainer class method)</a>
 </li>
       </ul></li>
-      <li><a href="api/minos.common.model.serializers.avro_data_decoder.html#minos.common.model.serializers.avro_data_decoder.AvroDataDecoder.from_field">from_field() (minos.common.model.serializers.avro_data_decoder.AvroDataDecoder class method)</a>
-
-      <ul>
-        <li><a href="api/minos.common.model.serializers.avro_data_encoder.html#minos.common.model.serializers.avro_data_encoder.AvroDataEncoder.from_field">(minos.common.model.serializers.avro_data_encoder.AvroDataEncoder class method)</a>
+      <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.from_event_entry">from_event_entry() (minos.common.snapshot.entries.SnapshotEntry class method)</a>
 </li>
-        <li><a href="api/minos.common.model.serializers.avro_schema_encoder.html#minos.common.model.serializers.avro_schema_encoder.AvroSchemaEncoder.from_field">(minos.common.model.serializers.avro_schema_encoder.AvroSchemaEncoder class method)</a>
-</li>
-      </ul></li>
       <li><a href="api/minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiffContainer.from_model">from_model() (minos.common.model.dynamic.diff.FieldDiffContainer class method)</a>
 
       <ul>
@@ -1419,6 +1480,8 @@
       <ul>
         <li><a href="api/minos.common.model.serializers.avro_schema_encoder.html#minos.common.model.serializers.avro_schema_encoder.AvroSchemaEncoder.generate_random_str">(minos.common.model.serializers.avro_schema_encoder.AvroSchemaEncoder static method)</a>
 </li>
+        <li><a href="api/minos.common.snapshot.pg.queries.html#minos.common.snapshot.pg.queries.PostgreSqlSnapshotQueryBuilder.generate_random_str">(minos.common.snapshot.pg.queries.PostgreSqlSnapshotQueryBuilder static method)</a>
+</li>
       </ul></li>
       <li><a href="api/minos.common.model.types.generics.html#minos.common.model.types.generics.GenericTypeProjector">GenericTypeProjector (class in minos.common.model.types.generics)</a>
 </li>
@@ -1467,7 +1530,9 @@
 </li>
         <li><a href="api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.get">(minos.common.snapshot.memory.InMemorySnapshot method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.get">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
+        <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.get">(minos.common.snapshot.pg.api.PostgreSqlSnapshot method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.get">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
 </li>
         <li><a href="api/minos.common.storage.abc.html#minos.common.storage.abc.MinosStorage.get">(minos.common.storage.abc.MinosStorage method)</a>
 </li>
@@ -1482,19 +1547,23 @@
         <li><a href="api/minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiffContainer.get_all">(minos.common.model.dynamic.diff.FieldDiffContainer method)</a>
 </li>
       </ul></li>
+      <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.get_entry">get_entry() (minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
+</li>
       <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.get_many">get_many() (minos.common.networks.MinosHandler method)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.aggregate.diff.html#minos.common.model.declarative.aggregate.diff.AggregateDiff.get_one">get_one() (minos.common.model.declarative.aggregate.diff.AggregateDiff method)</a>
 
       <ul>
-        <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.get_one">(minos.common.model.declarative.aggregate.model.Aggregate class method)</a>
-</li>
         <li><a href="api/minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.FieldDiffContainer.get_one">(minos.common.model.dynamic.diff.FieldDiffContainer method)</a>
 </li>
         <li><a href="api/minos.common.networks.html#minos.common.networks.MinosHandler.get_one">(minos.common.networks.MinosHandler method)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.graceful_shutdown">graceful_shutdown() (minos.common.launchers.EntrypointLauncher method)</a>
+</li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.GREATER">GREATER (minos.common.queries.Condition attribute)</a>
+</li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.GREATER_EQUAL">GREATER_EQUAL (minos.common.queries.Condition attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1505,6 +1574,8 @@
       <li><a href="api/minos.common.repository.entries.html#minos.common.repository.entries.RepositoryEntry.id">id (minos.common.repository.entries.RepositoryEntry attribute)</a>
 </li>
       <li><a href="api/minos.common.importlib.html#minos.common.importlib.import_module">import_module() (in module minos.common.importlib)</a>
+</li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.IN">IN (minos.common.queries.Condition attribute)</a>
 </li>
       <li><a href="api/minos.common.model.dynamic.diff.html#minos.common.model.dynamic.diff.IncrementalFieldDiff">IncrementalFieldDiff (class in minos.common.model.dynamic.diff)</a>
 </li>
@@ -1526,7 +1597,7 @@
 </li>
       <li><a href="api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_model_type">is_model_type() (in module minos.common.model.types.comparators)</a>
 </li>
-      <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.is_synced">is_synced() (minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
+      <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.is_synced">is_synced() (minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter method)</a>
 </li>
       <li><a href="api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_type_subclass">is_type_subclass() (in module minos.common.model.types.comparators)</a>
 </li>
@@ -1636,9 +1707,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.launch">launch() (minos.common.launchers.EntrypointLauncher method)</a>
 </li>
+      <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.loop">loop (minos.common.launchers.EntrypointLauncher attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/minos.common.launchers.html#minos.common.launchers.EntrypointLauncher.loop">loop (minos.common.launchers.EntrypointLauncher attribute)</a>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.LOWER">LOWER (minos.common.queries.Condition attribute)</a>
+</li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.LOWER_EQUAL">LOWER_EQUAL (minos.common.queries.Condition attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -2013,6 +2088,13 @@
 </li>
       </ul></li>
       <li>
+    minos.common.queries
+
+      <ul>
+        <li><a href="api/minos.common.queries.html#module-minos.common.queries">module</a>
+</li>
+      </ul></li>
+      <li>
     minos.common.repository
 
       <ul>
@@ -2104,17 +2186,31 @@
 </li>
       </ul></li>
       <li>
-    minos.common.snapshot.pg.builders
+    minos.common.snapshot.pg.api
 
       <ul>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#module-minos.common.snapshot.pg.builders">module</a>
+        <li><a href="api/minos.common.snapshot.pg.api.html#module-minos.common.snapshot.pg.api">module</a>
 </li>
       </ul></li>
       <li>
-    minos.common.snapshot.pg.snapshot
+    minos.common.snapshot.pg.queries
 
       <ul>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#module-minos.common.snapshot.pg.snapshot">module</a>
+        <li><a href="api/minos.common.snapshot.pg.queries.html#module-minos.common.snapshot.pg.queries">module</a>
+</li>
+      </ul></li>
+      <li>
+    minos.common.snapshot.pg.readers
+
+      <ul>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#module-minos.common.snapshot.pg.readers">module</a>
+</li>
+      </ul></li>
+      <li>
+    minos.common.snapshot.pg.writers
+
+      <ul>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#module-minos.common.snapshot.pg.writers">module</a>
 </li>
       </ul></li>
       <li>
@@ -2124,6 +2220,8 @@
         <li><a href="api/minos.common.storage.html#module-minos.common.storage">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     minos.common.storage.abc
 
@@ -2131,8 +2229,6 @@
         <li><a href="api/minos.common.storage.abc.html#module-minos.common.storage.abc">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     minos.common.storage.lmdb
 
@@ -2375,6 +2471,8 @@
 </li>
         <li><a href="api/minos.common.protocol.json.html#module-minos.common.protocol.json">minos.common.protocol.json</a>
 </li>
+        <li><a href="api/minos.common.queries.html#module-minos.common.queries">minos.common.queries</a>
+</li>
         <li><a href="api/minos.common.repository.html#module-minos.common.repository">minos.common.repository</a>
 </li>
         <li><a href="api/minos.common.repository.abc.html#module-minos.common.repository.abc">minos.common.repository.abc</a>
@@ -2401,9 +2499,13 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#module-minos.common.snapshot.pg.abc">minos.common.snapshot.pg.abc</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#module-minos.common.snapshot.pg.builders">minos.common.snapshot.pg.builders</a>
+        <li><a href="api/minos.common.snapshot.pg.api.html#module-minos.common.snapshot.pg.api">minos.common.snapshot.pg.api</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#module-minos.common.snapshot.pg.snapshot">minos.common.snapshot.pg.snapshot</a>
+        <li><a href="api/minos.common.snapshot.pg.queries.html#module-minos.common.snapshot.pg.queries">minos.common.snapshot.pg.queries</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#module-minos.common.snapshot.pg.readers">minos.common.snapshot.pg.readers</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#module-minos.common.snapshot.pg.writers">minos.common.snapshot.pg.writers</a>
 </li>
         <li><a href="api/minos.common.storage.html#module-minos.common.storage">minos.common.storage</a>
 </li>
@@ -2440,6 +2542,22 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.model.types.model_types.html#minos.common.model.types.model_types.ModelType.namespace">namespace (minos.common.model.types.model_types.ModelType attribute)</a>
 </li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.NOT">NOT (minos.common.queries.Condition attribute)</a>
+</li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.NOT_EQUAL">NOT_EQUAL (minos.common.queries.Condition attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.OR">OR (minos.common.queries.Condition attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Ordering">Ordering (class in minos.common.queries)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -2455,9 +2573,9 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.pool">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup property)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.pool">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder property)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.pool">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader property)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.pool">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot property)</a>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.pool">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter property)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.model.declarative.entities.html#minos.common.model.declarative.entities.EntitySet.pop">pop() (minos.common.model.declarative.entities.EntitySet method)</a>
@@ -2466,19 +2584,27 @@
         <li><a href="api/minos.common.model.declarative.value_objects.html#minos.common.model.declarative.value_objects.ValueObjectSet.pop">(minos.common.model.declarative.value_objects.ValueObjectSet method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase">PostgreSqlMinosDatabase (class in minos.common.database.abc)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.database.pool.html#minos.common.database.pool.PostgreSqlPool">PostgreSqlPool (class in minos.common.database.pool)</a>
 </li>
       <li><a href="api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlRepository">PostgreSqlRepository (class in minos.common.repository.pg)</a>
 </li>
-      <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot">PostgreSqlSnapshot (class in minos.common.snapshot.pg.snapshot)</a>
+      <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot">PostgreSqlSnapshot (class in minos.common.snapshot.pg.api)</a>
 </li>
-      <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder">PostgreSqlSnapshotBuilder (class in minos.common.snapshot.pg.builders)</a>
+      <li><a href="api/minos.common.snapshot.pg.queries.html#minos.common.snapshot.pg.queries.PostgreSqlSnapshotQueryBuilder">PostgreSqlSnapshotQueryBuilder (class in minos.common.snapshot.pg.queries)</a>
 </li>
+      <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader">PostgreSqlSnapshotReader (class in minos.common.snapshot.pg.readers)</a>
+
+      <ul>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotReader">(in module minos.common.snapshot.pg.writers)</a>
+</li>
+      </ul></li>
       <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup">PostgreSqlSnapshotSetup (class in minos.common.snapshot.pg.abc)</a>
+</li>
+      <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter">PostgreSqlSnapshotWriter (class in minos.common.snapshot.pg.writers)</a>
 </li>
       <li><a href="api/minos.common.meta.html#minos.common.meta.property_or_classproperty">property_or_classproperty() (in module minos.common.meta)</a>
 </li>
@@ -2502,6 +2628,8 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.reader">reader (minos.common.snapshot.pg.api.PostgreSqlSnapshot attribute)</a>
+</li>
       <li><a href="api/minos.common.model.fields.html#minos.common.model.fields.Field.real_type">real_type (minos.common.model.fields.Field property)</a>
 </li>
       <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.refresh">refresh() (minos.common.model.declarative.aggregate.model.Aggregate method)</a>
@@ -2546,14 +2674,14 @@
       </ul></li>
       <li><a href="api/minos.common.model.declarative.aggregate.model.html#minos.common.model.declarative.aggregate.model.Aggregate.save">save() (minos.common.model.declarative.aggregate.model.Aggregate method)</a>
 </li>
+      <li><a href="api/minos.common.snapshot.entries.html#minos.common.snapshot.entries.SnapshotEntry.schema">schema (minos.common.snapshot.entries.SnapshotEntry attribute)</a>
+</li>
       <li><a href="api/minos.common.repository.abc.html#minos.common.repository.abc.MinosRepository.select">select() (minos.common.repository.abc.MinosRepository method)</a>
 
       <ul>
         <li><a href="api/minos.common.repository.memory.html#minos.common.repository.memory.InMemoryRepository.select">(minos.common.repository.memory.InMemoryRepository method)</a>
 </li>
         <li><a href="api/minos.common.repository.pg.html#minos.common.repository.pg.PostgreSqlRepository.select">(minos.common.repository.pg.PostgreSqlRepository method)</a>
-</li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.select">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.meta.html#minos.common.meta.self_or_classmethod">self_or_classmethod (class in minos.common.meta)</a>
@@ -2595,9 +2723,11 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.setup">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.setup">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
+        <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.setup">(minos.common.snapshot.pg.api.PostgreSqlSnapshot method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.setup">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.setup">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.setup">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -2619,9 +2749,9 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.submit_query">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.submit_query">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.submit_query">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.submit_query">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.submit_query">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter method)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.submit_query_and_fetchone">submit_query_and_fetchone() (minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
@@ -2631,9 +2761,9 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.submit_query_and_fetchone">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.submit_query_and_fetchone">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.submit_query_and_fetchone">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.submit_query_and_fetchone">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.submit_query_and_fetchone">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter method)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.submit_query_and_iter">submit_query_and_iter() (minos.common.database.abc.PostgreSqlMinosDatabase method)</a>
@@ -2643,13 +2773,21 @@
 </li>
         <li><a href="api/minos.common.snapshot.pg.abc.html#minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup.submit_query_and_iter">(minos.common.snapshot.pg.abc.PostgreSqlSnapshotSetup method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.builders.html#minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder.submit_query_and_iter">(minos.common.snapshot.pg.builders.PostgreSqlSnapshotBuilder method)</a>
+        <li><a href="api/minos.common.snapshot.pg.readers.html#minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader.submit_query_and_iter">(minos.common.snapshot.pg.readers.PostgreSqlSnapshotReader method)</a>
 </li>
-        <li><a href="api/minos.common.snapshot.pg.snapshot.html#minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot.submit_query_and_iter">(minos.common.snapshot.pg.snapshot.PostgreSqlSnapshot method)</a>
+        <li><a href="api/minos.common.snapshot.pg.writers.html#minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter.submit_query_and_iter">(minos.common.snapshot.pg.writers.PostgreSqlSnapshotWriter method)</a>
 </li>
       </ul></li>
       <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.CommandStatus.SUCCESS">SUCCESS (minos.common.model.declarative.networks.CommandStatus attribute)</a>
 </li>
+      <li><a href="api/minos.common.snapshot.abc.html#minos.common.snapshot.abc.MinosSnapshot.synchronize">synchronize() (minos.common.snapshot.abc.MinosSnapshot method)</a>
+
+      <ul>
+        <li><a href="api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.synchronize">(minos.common.snapshot.memory.InMemorySnapshot method)</a>
+</li>
+        <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.synchronize">(minos.common.snapshot.pg.api.PostgreSqlSnapshot method)</a>
+</li>
+      </ul></li>
       <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.CommandStatus.SYSTEM_ERROR">SYSTEM_ERROR (minos.common.model.declarative.networks.CommandStatus attribute)</a>
 </li>
   </ul></td>
@@ -2750,6 +2888,8 @@
         <li><a href="api/minos.common.model.declarative.networks.html#minos.common.model.declarative.networks.Event.topic">(minos.common.model.declarative.networks.Event attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/minos.common.queries.html#minos.common.queries.Condition.TRUE">TRUE (minos.common.queries.Condition attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.model.fields.html#minos.common.model.fields.Field.type">type (minos.common.model.fields.Field property)</a>
@@ -2980,9 +3120,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/minos.common.injectors.html#minos.common.injectors.DependencyInjector.wire">wire() (minos.common.injectors.DependencyInjector method)</a>
 </li>
-      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.EmptyMinosModelSequenceException.with_traceback">with_traceback() (minos.common.exceptions.EmptyMinosModelSequenceException method)</a>
+      <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderException.with_traceback">with_traceback() (minos.common.exceptions.DataDecoderException method)</a>
 
       <ul>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderMalformedTypeException.with_traceback">(minos.common.exceptions.DataDecoderMalformedTypeException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderRequiredValueException.with_traceback">(minos.common.exceptions.DataDecoderRequiredValueException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderTypeException.with_traceback">(minos.common.exceptions.DataDecoderTypeException method)</a>
+</li>
+        <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.EmptyMinosModelSequenceException.with_traceback">(minos.common.exceptions.EmptyMinosModelSequenceException method)</a>
+</li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosAttributeValidationException.with_traceback">(minos.common.exceptions.MinosAttributeValidationException method)</a>
 </li>
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MinosBrokerException.with_traceback">(minos.common.exceptions.MinosBrokerException method)</a>
@@ -3040,6 +3188,10 @@
         <li><a href="api/minos.common.exceptions.html#minos.common.exceptions.MultiTypeMinosModelSequenceException.with_traceback">(minos.common.exceptions.MultiTypeMinosModelSequenceException method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/minos.common.snapshot.pg.api.html#minos.common.snapshot.pg.api.PostgreSqlSnapshot.writer">writer (minos.common.snapshot.pg.api.PostgreSqlSnapshot attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 

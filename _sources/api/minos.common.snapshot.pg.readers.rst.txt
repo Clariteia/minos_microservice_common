@@ -1,0 +1,7 @@
+minos.common.snapshot.pg.readers module
+=======================================
+
+.. automodule:: minos.common.snapshot.pg.readers
+   :members:
+   :undoc-members:
+   :show-inheritance:

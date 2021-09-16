@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.memory &mdash; Minos Microservice Common 0.1.12 documentation</title>
+  <title>minos.common.snapshot.memory &mdash; Minos Microservice Common 0.1.13 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.12
+                0.1.13
               </div>
             
           
@@ -161,20 +161,17 @@
            <div itemprop="articleBody">
             
   <h1>Source code for minos.common.snapshot.memory</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Copyright (C) 2021 Clariteia SL</span>
-
-<span class="sd">This file is part of minos framework.</span>
-
-<span class="sd">Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">annotations</span><span class="p">,</span>
 <span class="p">)</span>
 
+<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">attrgetter</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">AsyncIterator</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">UUID</span><span class="p">,</span>
@@ -183,6 +180,10 @@
 <span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosSnapshotAggregateNotFoundException</span><span class="p">,</span>
     <span class="n">MinosSnapshotDeletedAggregateException</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..queries</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">_Condition</span><span class="p">,</span>
+    <span class="n">_Ordering</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..repository</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosRepository</span><span class="p">,</span>
@@ -198,29 +199,63 @@
 
 
 <div class="viewcode-block" id="InMemorySnapshot"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot">[docs]</a><span class="k">class</span> <span class="nc">InMemorySnapshot</span><span class="p">(</span><span class="n">MinosSnapshot</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;In Memory Snapshot class.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;InMemory Snapshot class.</span>
 
-<div class="viewcode-block" id="InMemorySnapshot.get"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.get">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">UUID</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve an asynchronous iterator that provides the requested ``Aggregate`` instances.</span>
+<span class="sd">    The snapshot provides a direct accessor to the aggregate instances stored as events by the event repository class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="sd">        :param aggregate_name: Class name of the ``Aggregate`` to be retrieved.</span>
-<span class="sd">        :param uuids: Set of identifiers to be retrieved.</span>
+    <span class="c1"># noinspection PyMethodOverriding</span>
+<div class="viewcode-block" id="InMemorySnapshot.find"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.find">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">find</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">condition</span><span class="p">:</span> <span class="n">_Condition</span><span class="p">,</span>
+        <span class="n">ordering</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">_Ordering</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">_repository</span><span class="p">:</span> <span class="n">MinosRepository</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Find a collection of ``Aggregate`` instances based on a ``Condition``.</span>
+
+<span class="sd">        :param aggregate_name: Class name of the ``Aggregate``.</span>
+<span class="sd">        :param condition: The condition that must be satisfied by the ``Aggregate`` instances.</span>
+<span class="sd">        :param ordering: Optional argument to return the instance with specific ordering strategy. The default behaviour</span>
+<span class="sd">            is to retrieve them without any order pattern.</span>
+<span class="sd">        :param limit: Optional argument to return only a subset of instances. The default behaviour is to return all the</span>
+<span class="sd">            instances that meet the given condition.</span>
+<span class="sd">        :param _repository: The event&#39;s ``Repository`` instance that provides access to the aggregate events needed to</span>
+<span class="sd">            reconstruct the target aggregates.</span>
 <span class="sd">        :param kwargs: Additional named arguments.</span>
 <span class="sd">        :return: An asynchronous iterator that provides the requested ``Aggregate`` instances.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">iterable</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">uuid</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_one</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">uuid</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">uuids</span><span class="p">)</span>
+        <span class="n">uuids</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="o">.</span><span class="n">aggregate_uuid</span> <span class="k">async</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_repository</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">aggregate_name</span><span class="o">=</span><span class="n">aggregate_name</span><span class="p">)}</span>
 
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="k">await</span> <span class="n">item</span></div>
+        <span class="n">aggregates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">uuid</span> <span class="ow">in</span> <span class="n">uuids</span><span class="p">:</span>
+            <span class="n">aggregate</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">uuid</span><span class="p">,</span> <span class="n">_repository</span><span class="o">=</span><span class="n">_repository</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">condition</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">aggregate</span><span class="p">):</span>
+                <span class="n">aggregates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aggregate</span><span class="p">)</span>
 
-    <span class="c1"># noinspection PyShadowingBuiltins</span>
-    <span class="nd">@staticmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_get_one</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">_repository</span><span class="p">:</span> <span class="n">MinosRepository</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="p">(</span>
-            <span class="n">attrgetter</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">ordering</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">aggregates</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">attrgetter</span><span class="p">(</span><span class="n">ordering</span><span class="o">.</span><span class="n">by</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="n">ordering</span><span class="o">.</span><span class="n">reverse</span><span class="p">)</span>
 
-        <span class="c1"># noinspection PyTypeChecker</span>
+        <span class="k">if</span> <span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">aggregates</span> <span class="o">=</span> <span class="n">aggregates</span><span class="p">[:</span><span class="n">limit</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">aggregate</span> <span class="ow">in</span> <span class="n">aggregates</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">aggregate</span></div>
+
+    <span class="c1"># noinspection PyMethodOverriding</span>
+<div class="viewcode-block" id="InMemorySnapshot.get"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.get">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">_repository</span><span class="p">:</span> <span class="n">MinosRepository</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get an aggregate instance from its identifier.</span>
+
+<span class="sd">        :param aggregate_name: Class name of the ``Aggregate``.</span>
+<span class="sd">        :param uuid: Identifier of the ``Aggregate``.</span>
+<span class="sd">        :param _repository: The event&#39;s ``Repository`` instance that provides access to the aggregate events needed to</span>
+<span class="sd">            reconstruct the target aggregates.</span>
+<span class="sd">        :param kwargs: Additional named arguments.</span>
+<span class="sd">        :return: The ``Aggregate`` instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">entries</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">async</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_repository</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">aggregate_name</span><span class="o">=</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">aggregate_uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">)]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">entries</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">MinosSnapshotAggregateNotFoundException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not found any entries for the </span><span class="si">{</span><span class="n">uuid</span><span class="si">!r}</span><span class="s2"> id.&quot;</span><span class="p">)</span>
@@ -236,6 +271,14 @@
             <span class="n">instance</span><span class="o">.</span><span class="n">apply_diff</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">aggregate_diff</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">instance</span></div>
+
+    <span class="c1"># noinspection PyMethodOverriding</span>
+<div class="viewcode-block" id="InMemorySnapshot.synchronize"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.memory.html#minos.common.snapshot.memory.InMemorySnapshot.synchronize">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">synchronize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Synchronize the snapshot to the latest available version.</span>
+
+<span class="sd">        :param kwargs: Additional named arguments.</span>
+<span class="sd">        :return: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
 </pre></div>
 
            </div>

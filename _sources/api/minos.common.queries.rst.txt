@@ -1,0 +1,7 @@
+minos.common.queries module
+===========================
+
+.. automodule:: minos.common.queries
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,7 +1,0 @@
-minos.common.snapshot.pg.builders module
-========================================
-
-.. automodule:: minos.common.snapshot.pg.builders
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.abc &mdash; Minos Microservice Common 0.1.12 documentation</title>
+  <title>minos.common.snapshot.abc &mdash; Minos Microservice Common 0.1.13 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.12
+                0.1.13
               </div>
             
           
@@ -161,14 +161,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for minos.common.snapshot.abc</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Copyright (C) 2021 Clariteia SL</span>
-
-<span class="sd">This file is part of minos framework.</span>
-
-<span class="sd">Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">annotations</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -179,11 +172,16 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">AsyncIterator</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">UUID</span><span class="p">,</span>
 <span class="p">)</span>
 
+<span class="kn">from</span> <span class="nn">..queries</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">_Condition</span><span class="p">,</span>
+    <span class="n">_Ordering</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..setup</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosSetup</span><span class="p">,</span>
 <span class="p">)</span>
@@ -195,16 +193,48 @@
 
 
 <div class="viewcode-block" id="MinosSnapshot"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.abc.html#minos.common.snapshot.abc.MinosSnapshot">[docs]</a><span class="k">class</span> <span class="nc">MinosSnapshot</span><span class="p">(</span><span class="n">ABC</span><span class="p">,</span> <span class="n">MinosSetup</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base Snapshot class.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Base Snapshot class.</span>
+
+<span class="sd">    The snapshot provides a direct accessor to the aggregate instances stored as events by the event repository class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MinosSnapshot.get"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.abc.html#minos.common.snapshot.abc.MinosSnapshot.get">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuids</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">UUID</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve an asynchronous iterator that provides the requested ``Aggregate`` instances.</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Aggregate</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get an aggregate instance from its identifier.</span>
 
-<span class="sd">        :param aggregate_name: Class name of the ``Aggregate`` to be retrieved.</span>
-<span class="sd">        :param uuids: Set of identifiers to be retrieved.</span>
+<span class="sd">        :param aggregate_name: Class name of the ``Aggregate``.</span>
+<span class="sd">        :param uuid: Identifier of the ``Aggregate``.</span>
 <span class="sd">        :param kwargs: Additional named arguments.</span>
-<span class="sd">        :return: An asynchronous iterator that provides the requested ``Aggregate`` instances.</span>
+<span class="sd">        :return: The ``Aggregate`` instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="MinosSnapshot.find"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.abc.html#minos.common.snapshot.abc.MinosSnapshot.find">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">find</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">aggregate_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">condition</span><span class="p">:</span> <span class="n">_Condition</span><span class="p">,</span>
+        <span class="n">ordering</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">_Ordering</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Aggregate</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Find a collection of ``Aggregate`` instances based on a ``Condition``.</span>
+
+<span class="sd">        :param aggregate_name: Class name of the ``Aggregate``.</span>
+<span class="sd">        :param condition: The condition that must be satisfied by the ``Aggregate`` instances.</span>
+<span class="sd">        :param ordering: Optional argument to return the instance with specific ordering strategy. The default behaviour</span>
+<span class="sd">            is to retrieve them without any order pattern.</span>
+<span class="sd">        :param limit: Optional argument to return only a subset of instances. The default behaviour is to return all the</span>
+<span class="sd">            instances that meet the given condition.</span>
+<span class="sd">        :param kwargs: Additional named arguments.</span>
+<span class="sd">        :return: An asynchronous iterator that containing the ``Aggregate`` instances.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="MinosSnapshot.synchronize"><a class="viewcode-back" href="../../../../api/minos.common.snapshot.abc.html#minos.common.snapshot.abc.MinosSnapshot.synchronize">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">synchronize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Synchronize the snapshot to the latest available version.</span>
+
+<span class="sd">        :param kwargs: Additional named arguments.</span>
+<span class="sd">        :return: This method does not return anything.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div></div>
 </pre></div>
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.exceptions module &mdash; Minos Microservice Common 0.1.12 documentation</title>
+  <title>minos.common.exceptions module &mdash; Minos Microservice Common 0.1.13 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.12
+                0.1.13
               </div>
             
           
@@ -180,9 +180,102 @@
             
   <div class="section" id="module-minos.common.exceptions">
 <span id="minos-common-exceptions-module"></span><h1>minos.common.exceptions module<a class="headerlink" href="#module-minos.common.exceptions" title="Permalink to this headline">¶</a></h1>
-<p>Copyright (C) 2021 Clariteia SL</p>
-<p>This file is part of minos framework.</p>
-<p>Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.exceptions.</span></span><span class="sig-name descname"><span class="pre">DataDecoderException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#DataDecoderException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.DataDecoderException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.exceptions.MinosModelException" title="minos.common.exceptions.MinosModelException"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.exceptions.MinosModelException</span></code></a></p>
+<p>Base data decoder exception.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderException.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.DataDecoderException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderException.args">
+<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#minos.common.exceptions.DataDecoderException.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderException.with_traceback">
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.DataDecoderException.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderMalformedTypeException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.exceptions.</span></span><span class="sig-name descname"><span class="pre">DataDecoderMalformedTypeException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#DataDecoderMalformedTypeException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.DataDecoderMalformedTypeException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.exceptions.DataDecoderException" title="minos.common.exceptions.DataDecoderException"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.exceptions.DataDecoderException</span></code></a></p>
+<p>Exception to be raised when malformed types are provided.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderMalformedTypeException.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.DataDecoderMalformedTypeException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderMalformedTypeException.args">
+<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#minos.common.exceptions.DataDecoderMalformedTypeException.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderMalformedTypeException.with_traceback">
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.DataDecoderMalformedTypeException.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderRequiredValueException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.exceptions.</span></span><span class="sig-name descname"><span class="pre">DataDecoderRequiredValueException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#DataDecoderRequiredValueException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.DataDecoderRequiredValueException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.exceptions.DataDecoderException" title="minos.common.exceptions.DataDecoderException"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.exceptions.DataDecoderException</span></code></a></p>
+<p>Exception to be raised when required values are not provided.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderRequiredValueException.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.DataDecoderRequiredValueException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderRequiredValueException.args">
+<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#minos.common.exceptions.DataDecoderRequiredValueException.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderRequiredValueException.with_traceback">
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.DataDecoderRequiredValueException.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderTypeException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.exceptions.</span></span><span class="sig-name descname"><span class="pre">DataDecoderTypeException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#DataDecoderTypeException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.DataDecoderTypeException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#minos.common.exceptions.DataDecoderException" title="minos.common.exceptions.DataDecoderException"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.exceptions.DataDecoderException</span></code></a></p>
+<p>Exception to be raised when expected and provided types do not match.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderTypeException.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#DataDecoderTypeException.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.DataDecoderTypeException.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderTypeException.args">
+<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#minos.common.exceptions.DataDecoderTypeException.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.exceptions.DataDecoderTypeException.with_traceback">
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.exceptions.DataDecoderTypeException.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py exception">
 <dt class="sig sig-object py" id="minos.common.exceptions.EmptyMinosModelSequenceException">
 <em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.exceptions.</span></span><span class="sig-name descname"><span class="pre">EmptyMinosModelSequenceException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/exceptions.html#EmptyMinosModelSequenceException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.exceptions.EmptyMinosModelSequenceException" title="Permalink to this definition">¶</a></dt>

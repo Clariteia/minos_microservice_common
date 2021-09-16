@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.exceptions &mdash; Minos Microservice Common 0.1.12 documentation</title>
+  <title>minos.common.exceptions &mdash; Minos Microservice Common 0.1.13 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.12
+                0.1.13
               </div>
             
           
@@ -161,14 +161,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for minos.common.exceptions</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Copyright (C) 2021 Clariteia SL</span>
-
-<span class="sd">This file is part of minos framework.</span>
-
-<span class="sd">Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">annotations</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -353,6 +346,29 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2"> value does not pass the </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s2"> field validation.&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="DataDecoderException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderException">[docs]</a><span class="k">class</span> <span class="nc">DataDecoderException</span><span class="p">(</span><span class="n">MinosModelException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base data decoder exception.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="DataDecoderMalformedTypeException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderMalformedTypeException">[docs]</a><span class="k">class</span> <span class="nc">DataDecoderMalformedTypeException</span><span class="p">(</span><span class="n">DataDecoderException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception to be raised when malformed types are provided.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="DataDecoderRequiredValueException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderRequiredValueException">[docs]</a><span class="k">class</span> <span class="nc">DataDecoderRequiredValueException</span><span class="p">(</span><span class="n">DataDecoderException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception to be raised when required values are not provided.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="DataDecoderTypeException"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderTypeException">[docs]</a><span class="k">class</span> <span class="nc">DataDecoderTypeException</span><span class="p">(</span><span class="n">DataDecoderException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception to be raised when expected and provided types do not match.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DataDecoderTypeException.__init__"><a class="viewcode-back" href="../../../api/minos.common.exceptions.html#minos.common.exceptions.DataDecoderTypeException.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_type</span> <span class="o">=</span> <span class="n">target_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">target_type</span><span class="si">!r}</span><span class="s2"> expected type does not match the given data type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">!r}</span><span class="s2"> (</span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2">)&quot;</span>
+        <span class="p">)</span></div></div>
 </pre></div>
 
            </div>
