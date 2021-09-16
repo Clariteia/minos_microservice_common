@@ -9,7 +9,7 @@ asynchronous environment.
 
 ## Documentation
 
-The official documentation as well as the API you can find it under https://clariteia.github.io/minos_microservice_common/. 
+The official documentation as well as the API you can find it under https://clariteia.github.io/minos_microservice_common/.
 Please, submit any issue regarding documentation as well!
 
 ## Set up a development environment
@@ -80,5 +80,5 @@ Please consider these guidelines before you submit any modification.
 
 ## Credits
 
-This package was created with ![Cookiecutter](https://github.com/audreyr/cookiecutter) and the ![Minos Package](https://github.com/Clariteia/minos-pypackage) project template.
+This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [Minos Package](https://github.com/Clariteia/minos-pypackage) project template.
 
