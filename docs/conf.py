@@ -37,7 +37,6 @@ import sphinx_rtd_theme
 extensions = [
     "sphinxcontrib.apidoc",
     'sphinx.ext.autodoc',
-    "sphinx_autodoc_typehints",
     "sphinx.ext.viewcode",
     "sphinx_rtd_theme",
     "m2r2",
@@ -186,6 +185,8 @@ autodoc_default_options = {
     "special-members": "__init__",
     "undoc-members": True,
 }
+autodoc_typehints = "both"
+autodoc_typehints_description_target = "documented"
 
 apidoc_toc_file = False
 apidoc_module_first = True
@@ -196,7 +197,3 @@ apidoc_extra_args = [
 apidoc_excluded_paths = [
     '../minos/common/testing.py'
 ]
-# "autodoc typehints" extension
-
-set_type_checking_flag = True
-typehints_fully_qualified = True
