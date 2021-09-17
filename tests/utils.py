@@ -1,18 +1,9 @@
-"""
-Copyright (C) 2021 Clariteia SL
-
-This file is part of minos framework.
-
-Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
-"""
-
 from pathlib import (
     Path,
 )
 from typing import (
     Any,
     AsyncIterator,
-    NoReturn,
     Optional,
 )
 from uuid import (
@@ -66,7 +57,7 @@ class FakeBroker(MinosBroker):
         self.call_count = 0
         self.calls_kwargs = list()
 
-    async def send(self, data: Any, **kwargs) -> NoReturn:
+    async def send(self, data: Any, **kwargs) -> None:
         """For testing purposes."""
         self.call_count += 1
         self.calls_kwargs.append({"data": data} | kwargs)
@@ -138,8 +129,27 @@ class FakeSnapshot(MinosSnapshot):
     async def find(self, aggregate_name: str, condition: Condition, **kwargs) -> AsyncIterator[Aggregate]:
         """For testing purposes."""
 
+    async def synchronize(self, **kwargs) -> None:
+        """For testing purposes."""
+
 
 class FakeEntity(Entity):
     """For testing purposes."""
 
     name: str
+
+
+class FakeAsyncIterator:
+    """For testing purposes."""
+
+    def __init__(self, seq):
+        self.iter = iter(seq)
+
+    def __aiter__(self):
+        return self
+
+    async def __anext__(self):
+        try:
+            return next(self.iter)
+        except StopIteration:
+            raise StopAsyncIteration

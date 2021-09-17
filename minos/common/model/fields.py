@@ -1,10 +1,3 @@
-"""
-Copyright (C) 2021 Clariteia SL
-
-This file is part of minos framework.
-
-Minos framework can not be copied and/or distributed without the express permission of Clariteia SL.
-"""
 from __future__ import (
     annotations,
 )
@@ -15,7 +8,6 @@ from typing import (
     Any,
     Callable,
     Iterable,
-    NoReturn,
     Optional,
 )
 
@@ -112,7 +104,7 @@ class Field:
         return self._value
 
     @value.setter
-    def value(self, data: Any) -> NoReturn:
+    def value(self, data: Any) -> None:
         """Check if the given value is correct and stores it if ``True``, otherwise raises an exception.
 
         :param data: new value.
