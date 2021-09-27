@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.1.13 documentation</title>
+  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.1.14 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.13
+                0.1.14
               </div>
             
           
@@ -189,7 +189,6 @@
 <span class="n">SERVICE</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Service&quot;</span><span class="p">,</span> <span class="s2">&quot;name aggregate injections services&quot;</span><span class="p">)</span>
 <span class="n">STORAGE</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Storage&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">)</span>
 
-<span class="n">EVENTS</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Events&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">)</span>
 <span class="n">COMMANDS</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Commands&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">)</span>
 <span class="n">QUERIES</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Queries&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">)</span>
 <span class="n">SAGA</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Saga&quot;</span><span class="p">,</span> <span class="s2">&quot;storage&quot;</span><span class="p">)</span>
@@ -211,7 +210,6 @@
     <span class="s2">&quot;broker.queue.password&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_BROKER_QUEUE_PASSWORD&quot;</span><span class="p">,</span>
     <span class="s2">&quot;commands.service&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_COMMANDS_SERVICE&quot;</span><span class="p">,</span>
     <span class="s2">&quot;queries.service&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_QUERIES_SERVICE&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.service&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_EVENTS_SERVICE&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.host&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_REPOSITORY_HOST&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.port&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_REPOSITORY_PORT&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.database&quot;</span><span class="p">:</span> <span class="s2">&quot;MINOS_REPOSITORY_DATABASE&quot;</span><span class="p">,</span>
@@ -242,7 +240,6 @@
     <span class="s2">&quot;queries.service&quot;</span><span class="p">:</span> <span class="s2">&quot;queries_service&quot;</span><span class="p">,</span>
     <span class="s2">&quot;saga.broker&quot;</span><span class="p">:</span> <span class="s2">&quot;saga_broker&quot;</span><span class="p">,</span>
     <span class="s2">&quot;saga.port&quot;</span><span class="p">:</span> <span class="s2">&quot;saga_port&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;events.service&quot;</span><span class="p">:</span> <span class="s2">&quot;events_service&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.host&quot;</span><span class="p">:</span> <span class="s2">&quot;repository_host&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.port&quot;</span><span class="p">:</span> <span class="s2">&quot;repository_port&quot;</span><span class="p">,</span>
     <span class="s2">&quot;repository.database&quot;</span><span class="p">:</span> <span class="s2">&quot;repository_database&quot;</span><span class="p">,</span>
@@ -372,15 +369,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">queue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_broker_queue</span>
         <span class="k">return</span> <span class="n">BROKER</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.host&quot;</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;broker.port&quot;</span><span class="p">),</span> <span class="n">queue</span><span class="o">=</span><span class="n">queue</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">events</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EVENTS</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Get the events config.</span>
-
-<span class="sd">        :return: A ``EVENTS`` NamedTuple instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;events.service&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EVENTS</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">service</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_broker_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QUEUE</span><span class="p">:</span>

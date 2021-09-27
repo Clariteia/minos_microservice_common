@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.injectors &mdash; Minos Microservice Common 0.1.13 documentation</title>
+  <title>minos.common.injectors &mdash; Minos Microservice Common 0.1.14 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.13
+                0.1.14
               </div>
             
           
@@ -234,8 +234,9 @@
 
 <span class="sd">        :return: This method does not return anything.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">unwire</span><span class="p">()</span>
-        <span class="k">await</span> <span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">injection</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span> <span class="k">for</span> <span class="n">injection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">injections</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span></div>
+        <span class="k">await</span> <span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">injection</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span> <span class="k">for</span> <span class="n">injection</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">injections</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">unwire</span><span class="p">()</span></div>
 
     <span class="nd">@cached_property</span>
     <span class="k">def</span> <span class="nf">container</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">containers</span><span class="o">.</span><span class="n">Container</span><span class="p">:</span>
