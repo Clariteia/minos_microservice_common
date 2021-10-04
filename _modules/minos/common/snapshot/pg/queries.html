@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.pg.queries &mdash; Minos Microservice Common 0.1.14 documentation</title>
+  <title>minos.common.snapshot.pg.queries &mdash; Minos Microservice Common 0.1.15 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.14
+                0.1.15
               </div>
             
           
@@ -219,11 +219,13 @@
         <span class="n">condition</span><span class="p">:</span> <span class="n">_Condition</span><span class="p">,</span>
         <span class="n">ordering</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">_Ordering</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">exclude_deleted</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_name</span> <span class="o">=</span> <span class="n">aggregate_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ordering</span> <span class="o">=</span> <span class="n">ordering</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exclude_deleted</span> <span class="o">=</span> <span class="n">exclude_deleted</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="PostgreSqlSnapshotQueryBuilder.build"><a class="viewcode-back" href="../../../../../api/minos.common.snapshot.pg.queries.html#minos.common.snapshot.pg.queries.PostgreSqlSnapshotQueryBuilder.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Composable</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
@@ -245,6 +247,9 @@
         <span class="n">query</span> <span class="o">=</span> <span class="n">SQL</span><span class="p">(</span><span class="s2">&quot; AND &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="p">[</span><span class="n">_SELECT_MULTIPLE_ENTRIES_QUERY</span><span class="p">,</span> <span class="n">SQL</span><span class="p">(</span><span class="s2">&quot;(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_condition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">))]</span>
         <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude_deleted</span><span class="p">:</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">SQL</span><span class="p">(</span><span class="s2">&quot; AND &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">query</span><span class="p">,</span> <span class="n">_EXCLUDE_DELETED_CONDITION</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ordering</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">query</span> <span class="o">=</span> <span class="n">SQL</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">query</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_ordering</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ordering</span><span class="p">)])</span>
@@ -360,6 +365,8 @@
     <span class="s2">&quot;FROM snapshot &quot;</span>
     <span class="s2">&quot;WHERE (aggregate_name = </span><span class="si">%(aggregate_name)s</span><span class="s2">)&quot;</span>
 <span class="p">)</span>
+
+<span class="n">_EXCLUDE_DELETED_CONDITION</span> <span class="o">=</span> <span class="n">SQL</span><span class="p">(</span><span class="s2">&quot;(data IS NOT NULL)&quot;</span><span class="p">)</span>
 </pre></div>
 
            </div>

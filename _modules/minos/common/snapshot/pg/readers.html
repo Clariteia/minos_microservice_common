@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.pg.readers &mdash; Minos Microservice Common 0.1.14 documentation</title>
+  <title>minos.common.snapshot.pg.readers &mdash; Minos Microservice Common 0.1.15 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.14
+                0.1.15
               </div>
             
           
@@ -270,6 +270,7 @@
         <span class="n">ordering</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">_Ordering</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">streaming_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">exclude_deleted</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">SnapshotEntry</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Find a collection of ``SnapshotEntry`` instances based on a ``Condition``.</span>
@@ -282,10 +283,13 @@
 <span class="sd">            instances that meet the given condition.</span>
 <span class="sd">        :param streaming_mode: If ``True`` return the values in streaming directly from the database (keep an open</span>
 <span class="sd">            database connection), otherwise preloads the full set of values on memory and then retrieves them.</span>
+<span class="sd">        :param exclude_deleted: If ``True``, deleted ``Aggregate`` entries are included, otherwise deleted ``Aggregate``</span>
+<span class="sd">            entries are filtered.</span>
 <span class="sd">        :param kwargs: Additional named arguments.</span>
 <span class="sd">        :return: An asynchronous iterator that containing the ``Aggregate`` instances.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">query</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">=</span> <span class="n">PostgreSqlSnapshotQueryBuilder</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">ordering</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">qb</span> <span class="o">=</span> <span class="n">PostgreSqlSnapshotQueryBuilder</span><span class="p">(</span><span class="n">aggregate_name</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">ordering</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">exclude_deleted</span><span class="p">)</span>
+        <span class="n">query</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">=</span> <span class="n">qb</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
 
         <span class="k">async</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
             <span class="c1"># noinspection PyTypeChecker</span>
