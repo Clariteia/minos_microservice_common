@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.serializers.avro_schema_decoder &mdash; Minos Microservice Common 0.1.15 documentation</title>
+  <title>minos.common.model.serializers.avro_schema_decoder &mdash; Minos Microservice Common 0.1.16 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.15
+                0.1.16
               </div>
             
           
@@ -200,6 +200,7 @@
     <span class="n">AVRO_MAP</span><span class="p">,</span>
     <span class="n">AVRO_NULL</span><span class="p">,</span>
     <span class="n">AVRO_RECORD</span><span class="p">,</span>
+    <span class="n">AVRO_SET</span><span class="p">,</span>
     <span class="n">AVRO_STRING</span><span class="p">,</span>
     <span class="n">AVRO_TIME</span><span class="p">,</span>
     <span class="n">AVRO_TIMEDELTA</span><span class="p">,</span>
@@ -237,7 +238,7 @@
 
     <span class="k">def</span> <span class="nf">_build_type_from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
         <span class="k">if</span> <span class="s2">&quot;logicalType&quot;</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_logical_type</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="s2">&quot;logicalType&quot;</span><span class="p">])</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_logical_type</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">schema</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">AVRO_ARRAY</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_list_type</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">])</span>
         <span class="k">elif</span> <span class="n">schema</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">AVRO_MAP</span><span class="p">:</span>
@@ -247,8 +248,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_type</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
 
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_build_logical_type</span><span class="p">(</span><span class="n">type_</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_build_logical_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
+        <span class="n">type_</span> <span class="o">=</span> <span class="n">schema</span><span class="p">[</span><span class="s2">&quot;logicalType&quot;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">type_</span> <span class="o">==</span> <span class="n">AVRO_DATE</span><span class="p">[</span><span class="s2">&quot;logicalType&quot;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="n">date</span>
         <span class="k">if</span> <span class="n">type_</span> <span class="o">==</span> <span class="n">AVRO_TIME</span><span class="p">[</span><span class="s2">&quot;logicalType&quot;</span><span class="p">]:</span>
@@ -259,10 +260,15 @@
             <span class="k">return</span> <span class="n">timedelta</span>
         <span class="k">if</span> <span class="n">type_</span> <span class="o">==</span> <span class="n">AVRO_UUID</span><span class="p">[</span><span class="s2">&quot;logicalType&quot;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="n">UUID</span>
+        <span class="k">if</span> <span class="n">type_</span> <span class="o">==</span> <span class="n">AVRO_SET</span><span class="p">[</span><span class="s2">&quot;logicalType&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_set_type</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">])</span>
         <span class="k">raise</span> <span class="n">MinosMalformedAttributeException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Given logical field type is not supported: </span><span class="si">{</span><span class="n">type_</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_build_list_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_build_list_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_type</span><span class="p">(</span><span class="n">items</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">_build_set_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_type</span><span class="p">(</span><span class="n">items</span><span class="p">)]</span>
 
     <span class="k">def</span> <span class="nf">_build_dict_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_type</span><span class="p">(</span><span class="n">values</span><span class="p">)]</span>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.types.comparators &mdash; Minos Microservice Common 0.1.15 documentation</title>
+  <title>minos.common.model.types.comparators &mdash; Minos Microservice Common 0.1.16 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.15
+                0.1.16
               </div>
             
           
@@ -242,6 +242,12 @@
         <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">second</span> <span class="ow">is</span> <span class="n">Any</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">first</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Union</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_compare</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">get_args</span><span class="p">(</span><span class="n">first</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">second</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Union</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_compare</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">get_args</span><span class="p">(</span><span class="n">second</span><span class="p">)):</span>
             <span class="k">return</span> <span class="kc">True</span>
 
         <span class="k">if</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">first</span><span class="p">)</span> <span class="ow">is</span> <span class="n">ModelRef</span><span class="p">:</span>

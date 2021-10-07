@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.types.builders &mdash; Minos Microservice Common 0.1.15 documentation</title>
+  <title>minos.common.model.types.builders &mdash; Minos Microservice Common 0.1.16 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.15
+                0.1.16
               </div>
             
           
@@ -242,7 +242,7 @@
             <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_from_iterable</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">b1</span><span class="p">)]</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="p">(</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">type_</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">get_args</span><span class="p">(</span><span class="n">type_</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="k">else</span> <span class="n">get_args</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
+            <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">type_</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">get_args</span><span class="p">(</span><span class="n">type_</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="k">else</span> <span class="n">get_args</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
             <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)[</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_build_from_iterable</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">b1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_from_iterable</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">b2</span><span class="p">)</span>
             <span class="p">]</span>
