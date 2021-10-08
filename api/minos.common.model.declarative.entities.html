@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.declarative.entities module &mdash; Minos Microservice Common 0.1.16 documentation</title>
+  <title>minos.common.model.declarative.entities module &mdash; Minos Microservice Common 0.1.17 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="minos.common.model.declarative.networks module" href="minos.common.model.declarative.networks.html" />
-    <link rel="prev" title="minos.common.model.declarative.abc module" href="minos.common.model.declarative.abc.html" /> 
+    <link rel="prev" title="minos.common.model.declarative.collections module" href="minos.common.model.declarative.collections.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.16
+                0.1.17
               </div>
             
           
@@ -230,7 +230,7 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="minos.common.model.declarative.entities.Entity.avro_schema">
-<span class="sig-name descname"><span class="pre">avro_schema</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[{'name':</span> <span class="pre">'Entity',</span> <span class="pre">'namespace':</span> <span class="pre">'minos.common.model.declarative.entities.4c7e3511-24bb-4064-8829-c28a2652d6bb',</span> <span class="pre">'type':</span> <span class="pre">'record',</span> <span class="pre">'fields':</span> <span class="pre">[{'name':</span> <span class="pre">'uuid',</span> <span class="pre">'type':</span> <span class="pre">{'type':</span> <span class="pre">'string',</span> <span class="pre">'logicalType':</span> <span class="pre">'uuid'}}]}]</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.Entity.avro_schema" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">avro_schema</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[{'name':</span> <span class="pre">'Entity',</span> <span class="pre">'namespace':</span> <span class="pre">'minos.common.model.declarative.entities.1f686167-4450-4997-bbb3-4039932590b4',</span> <span class="pre">'type':</span> <span class="pre">'record',</span> <span class="pre">'fields':</span> <span class="pre">[{'name':</span> <span class="pre">'uuid',</span> <span class="pre">'type':</span> <span class="pre">{'type':</span> <span class="pre">'string',</span> <span class="pre">'logicalType':</span> <span class="pre">'uuid'}}]}]</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.Entity.avro_schema" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -433,7 +433,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySet">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.model.declarative.entities.</span></span><span class="sig-name descname"><span class="pre">EntitySet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/entities.html#EntitySet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="minos.common.model.declarative.abc.html#minos.common.model.declarative.abc.DeclarativeModel" title="minos.common.model.declarative.abc.DeclarativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.abc.DeclarativeModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.MutableSet</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">minos.common.model.declarative.entities.T</span></code>]</p>
+<dd><p>Bases: <a class="reference internal" href="minos.common.model.declarative.collections.html#minos.common.model.declarative.collections.IncrementalSet" title="minos.common.model.declarative.collections.IncrementalSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.collections.IncrementalSet</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">minos.common.model.declarative.entities.T</span></code>]</p>
 <p>Entity set class.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySet.__init__">
@@ -491,11 +491,6 @@
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySet.avro_schema">
-<span class="sig-name descname"><span class="pre">avro_schema</span></span><em class="property"> <span class="pre">=</span> <span class="pre">[{'name':</span> <span class="pre">'EntitySet',</span> <span class="pre">'namespace':</span> <span class="pre">'minos.common.model.declarative.entities.4b409b4e-572e-40d4-9ff4-62f7cba8097d',</span> <span class="pre">'type':</span> <span class="pre">'record',</span> <span class="pre">'fields':</span> <span class="pre">[{'name':</span> <span class="pre">'data',</span> <span class="pre">'type':</span> <span class="pre">{'type':</span> <span class="pre">'map',</span> <span class="pre">'values':</span> <span class="pre">[{'name':</span> <span class="pre">'Model',</span> <span class="pre">'namespace':</span> <span class="pre">'minos.common.model.abc.dad1b4b5-7e5b-4639-ab59-24ab0469ce9a',</span> <span class="pre">'type':</span> <span class="pre">'record',</span> <span class="pre">'fields':</span> <span class="pre">[]}]}}]}]</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySet.avro_schema" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySet.avro_str">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_str</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySet.avro_str" title="Permalink to this definition">¶</a></dt>
@@ -535,7 +530,7 @@
 <dd class="field-odd"><p><strong>another</strong> (<a class="reference internal" href="#minos.common.model.declarative.entities.EntitySet" title="minos.common.model.declarative.entities.EntitySet"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.entities.EntitySet</span></code></a>[~T]) – Another entity set instance.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#minos.common.model.declarative.entities.EntitySetDiff" title="minos.common.model.declarative.entities.EntitySetDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.entities.EntitySetDiff</span></code></a></p>
+<dd class="field-even"><p><a class="reference internal" href="minos.common.model.declarative.collections.html#minos.common.model.declarative.collections.IncrementalSetDiff" title="minos.common.model.declarative.collections.IncrementalSetDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.collections.IncrementalSetDiff</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The difference between both entity sets.</p>
@@ -747,11 +742,6 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySet.type_hints">
-<span class="sig-name descname"><span class="pre">type_hints</span></span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySet.type_hints" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySet.type_hints_parameters">
 <span class="sig-name descname"><span class="pre">type_hints_parameters</span></span><em class="property"> <span class="pre">=</span> <span class="pre">(~T,)</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySet.type_hints_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -759,267 +749,6 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySet.values">
 <span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">an</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D’s</span> <span class="pre">values</span></span></span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySet.values" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.model.declarative.entities.</span></span><span class="sig-name descname"><span class="pre">EntitySetDiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/entities.html#EntitySetDiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="minos.common.model.declarative.abc.html#minos.common.model.declarative.abc.DeclarativeModel" title="minos.common.model.declarative.abc.DeclarativeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.abc.DeclarativeModel</span></code></a></p>
-<p>Entity Set Diff class.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class constructor.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kwargs</strong> – Named arguments to be set as model attributes.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.avro_bytes">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_bytes</span></span><em class="property"><span class="pre">:</span> <span class="pre">bytes</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.avro_bytes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate bytes representation of the current instance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A bytes object.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.avro_data">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_data</span></span><em class="property"><span class="pre">:</span> <span class="pre">dict</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.avro_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the avro data of the model.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>]</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A dictionary object.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.avro_str">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">avro_str</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.avro_str" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate bytes representation of the current instance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A bytes object.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.classname">
-<span class="sig-name descname"><span class="pre">classname</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'minos.common.model.declarative.entities.EntitySetDiff'</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.classname" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.diffs">
-<span class="sig-name descname"><span class="pre">diffs</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EntitySetDiffEntry</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.diffs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.fields">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="pre">:</span> <span class="pre">dict</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.fields" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fields getter</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="minos.common.model.fields.html#minos.common.model.fields.Field" title="minos.common.model.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.fields.Field</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.from_avro">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_avro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.from_avro" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build a new instance from the <code class="docutils literal notranslate"><span class="pre">avro</span></code> schema and data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>schema</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>]]]) – The avro schema of the model.</p></li>
-<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>]) – The avro data of the model.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>~T</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A new <code class="docutils literal notranslate"><span class="pre">DynamicModel</span></code> instance.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.from_avro_bytes">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_avro_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.from_avro_bytes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build a single instance or a sequence of instances from bytes</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>raw</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – A bytes data.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[~T, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[~T]]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A single instance or a sequence of instances.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.from_avro_str">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_avro_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.from_avro_str" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build a single instance or a sequence of instances from bytes</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>raw</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A bytes data.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[~T, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[~T]]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A single instance or a sequence of instances.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.from_difference">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/model/declarative/entities.html#EntitySetDiff.from_difference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.from_difference" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build a new instance from two entity sets.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>new</strong> (<a class="reference internal" href="#minos.common.model.declarative.entities.EntitySet" title="minos.common.model.declarative.entities.EntitySet"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.entities.EntitySet</span></code></a>[~T]) – The new entity set.</p></li>
-<li><p><strong>old</strong> (<a class="reference internal" href="#minos.common.model.declarative.entities.EntitySet" title="minos.common.model.declarative.entities.EntitySet"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.entities.EntitySet</span></code></a>[~T]) – The old entity set.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#minos.common.model.declarative.entities.EntitySetDiff" title="minos.common.model.declarative.entities.EntitySetDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.declarative.entities.EntitySetDiff</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The difference between new and old.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.from_model_type">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_model_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.from_model_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build a <code class="docutils literal notranslate"><span class="pre">DeclarativeModel</span></code> from a <code class="docutils literal notranslate"><span class="pre">ModelType</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>model_type</strong> (<a class="reference internal" href="minos.common.model.types.model_types.html#minos.common.model.types.model_types.ModelType" title="minos.common.model.types.model_types.ModelType"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.model.types.model_types.ModelType</span></code></a>) – <code class="docutils literal notranslate"><span class="pre">ModelType</span></code> object containing the model structure.</p></li>
-<li><p><strong>args</strong> – Positional arguments to be passed to the model constructor.</p></li>
-<li><p><strong>kwargs</strong> – Named arguments to be passed to the model constructor.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>~T</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A new <code class="docutils literal notranslate"><span class="pre">DeclarativeModel</span></code> instance.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.from_typed_dict">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_typed_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typed_dict</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.from_typed_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build a <code class="docutils literal notranslate"><span class="pre">Model</span></code> from a <code class="docutils literal notranslate"><span class="pre">TypeDict</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>typed_dict</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>) – <code class="docutils literal notranslate"><span class="pre">TypeDict</span></code> object containing the DTO’s structure</p></li>
-<li><p><strong>args</strong> – Positional arguments to be passed to the model constructor.</p></li>
-<li><p><strong>kwargs</strong> – Named arguments to be passed to the model constructor.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>~T</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A new <code class="docutils literal notranslate"><span class="pre">DataTransferObject</span></code> instance.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">k</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">d</span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">D[k]</span> <span class="pre">if</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">D,</span> <span class="pre">else</span> <span class="pre">d.</span>&#160; <span class="pre">d</span> <span class="pre">defaults</span> <span class="pre">to</span> <span class="pre">None.</span></span></span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.get" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.items">
-<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D’s</span> <span class="pre">items</span></span></span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.items" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.keys">
-<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">a</span> <span class="pre">set-like</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D’s</span> <span class="pre">keys</span></span></span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.keys" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.to_avro_bytes">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">to_avro_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.to_avro_bytes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a bytes representation of the given object instances.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>models</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[~T]) – A sequence of minos models.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A bytes object.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.to_avro_str">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">to_avro_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.to_avro_str" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a bytes representation of the given object instances.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>models</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[~T]) – A sequence of minos models.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A bytes object.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.type_hints">
-<span class="sig-name descname"><span class="pre">type_hints</span></span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.type_hints" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.type_hints_parameters">
-<span class="sig-name descname"><span class="pre">type_hints_parameters</span></span><em class="property"> <span class="pre">=</span> <span class="pre">()</span></em><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.type_hints_parameters" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="minos.common.model.declarative.entities.EntitySetDiff.values">
-<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">an</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D’s</span> <span class="pre">values</span></span></span><a class="headerlink" href="#minos.common.model.declarative.entities.EntitySetDiff.values" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1033,7 +762,7 @@
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="minos.common.model.declarative.networks.html" class="btn btn-neutral float-right" title="minos.common.model.declarative.networks module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="minos.common.model.declarative.abc.html" class="btn btn-neutral float-left" title="minos.common.model.declarative.abc module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="minos.common.model.declarative.collections.html" class="btn btn-neutral float-left" title="minos.common.model.declarative.collections module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

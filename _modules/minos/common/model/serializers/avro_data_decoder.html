@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.serializers.avro_data_decoder &mdash; Minos Microservice Common 0.1.16 documentation</title>
+  <title>minos.common.model.serializers.avro_data_decoder &mdash; Minos Microservice Common 0.1.17 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.16
+                0.1.17
               </div>
             
           
@@ -169,7 +169,6 @@
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Iterable</span><span class="p">,</span>
     <span class="n">Mapping</span><span class="p">,</span>
-    <span class="n">MutableSet</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">date</span><span class="p">,</span>
@@ -400,7 +399,11 @@
             <span class="k">return</span> <span class="n">type_</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;model_type&quot;</span><span class="p">):</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">MutableSet</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">type_</span><span class="o">.</span><span class="n">model_cls</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="kn">from</span> <span class="nn">..declarative</span> <span class="kn">import</span> <span class="p">(</span>
+                <span class="n">IncrementalSet</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">IncrementalSet</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">data</span>
             <span class="k">if</span> <span class="n">ModelType</span><span class="o">.</span><span class="n">from_model</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">type_</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">data</span>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.dynamic.diff &mdash; Minos Microservice Common 0.1.16 documentation</title>
+  <title>minos.common.model.dynamic.diff &mdash; Minos Microservice Common 0.1.17 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.16
+                0.1.17
               </div>
             
           
@@ -334,23 +334,14 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">FieldDiff</span><span class="p">]:</span>
         <span class="kn">from</span> <span class="nn">..declarative</span> <span class="kn">import</span> <span class="p">(</span>
-            <span class="n">EntitySet</span><span class="p">,</span>
-            <span class="n">EntitySetDiff</span><span class="p">,</span>
-            <span class="n">ValueObjectSet</span><span class="p">,</span>
-            <span class="n">ValueObjectSetDiff</span><span class="p">,</span>
+            <span class="n">IncrementalSet</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="n">differences</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">a_name</span><span class="p">,</span> <span class="n">a_field</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">a_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">b</span> <span class="ow">or</span> <span class="n">a_field</span> <span class="o">!=</span> <span class="n">b</span><span class="p">[</span><span class="n">a_name</span><span class="p">]:</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a_field</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">EntitySet</span><span class="p">):</span>
-                    <span class="n">diffs</span> <span class="o">=</span> <span class="n">EntitySetDiff</span><span class="o">.</span><span class="n">from_difference</span><span class="p">(</span><span class="n">a_field</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">a_name</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">diffs</span>
-                    <span class="k">for</span> <span class="n">diff</span> <span class="ow">in</span> <span class="n">diffs</span><span class="p">:</span>
-                        <span class="n">differences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                            <span class="n">IncrementalFieldDiff</span><span class="p">(</span><span class="n">a_name</span><span class="p">,</span> <span class="n">get_args</span><span class="p">(</span><span class="n">a_field</span><span class="o">.</span><span class="n">type</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">diff</span><span class="o">.</span><span class="n">entity</span><span class="p">,</span> <span class="n">diff</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
-                        <span class="p">)</span>
-                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a_field</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">ValueObjectSet</span><span class="p">):</span>
-                    <span class="n">diffs</span> <span class="o">=</span> <span class="n">ValueObjectSetDiff</span><span class="o">.</span><span class="n">from_difference</span><span class="p">(</span><span class="n">a_field</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">a_name</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">diffs</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a_field</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">IncrementalSet</span><span class="p">):</span>
+                    <span class="n">diffs</span> <span class="o">=</span> <span class="n">a_field</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">a_name</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">diffs</span>
                     <span class="k">for</span> <span class="n">diff</span> <span class="ow">in</span> <span class="n">diffs</span><span class="p">:</span>
                         <span class="n">differences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                             <span class="n">IncrementalFieldDiff</span><span class="p">(</span><span class="n">a_name</span><span class="p">,</span> <span class="n">get_args</span><span class="p">(</span><span class="n">a_field</span><span class="o">.</span><span class="n">type</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">diff</span><span class="o">.</span><span class="n">entity</span><span class="p">,</span> <span class="n">diff</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>

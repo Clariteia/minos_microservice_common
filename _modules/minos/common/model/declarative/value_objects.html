@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.declarative.value_objects &mdash; Minos Microservice Common 0.1.16 documentation</title>
+  <title>minos.common.model.declarative.value_objects &mdash; Minos Microservice Common 0.1.17 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.16
+                0.1.17
               </div>
             
           
@@ -165,15 +165,8 @@
     <span class="n">annotations</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">MutableSet</span><span class="p">,</span>
-<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Any</span><span class="p">,</span>
-    <span class="n">Generic</span><span class="p">,</span>
-    <span class="n">Iterable</span><span class="p">,</span>
-    <span class="n">Iterator</span><span class="p">,</span>
-    <span class="n">Optional</span><span class="p">,</span>
     <span class="n">TypeVar</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -183,14 +176,11 @@
 <span class="kn">from</span> <span class="nn">..abc</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Model</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">..actions</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">Action</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">ModelType</span><span class="p">,</span>
-<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">.abc</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">DeclarativeModel</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.collections</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">IncrementalSet</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -207,88 +197,10 @@
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Model</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="ValueObjectSet"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.value_objects.html#minos.common.model.declarative.value_objects.ValueObjectSet">[docs]</a><span class="k">class</span> <span class="nc">ValueObjectSet</span><span class="p">(</span><span class="n">DeclarativeModel</span><span class="p">,</span> <span class="n">MutableSet</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+<div class="viewcode-block" id="ValueObjectSet"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.value_objects.html#minos.common.model.declarative.value_objects.ValueObjectSet">[docs]</a><span class="k">class</span> <span class="nc">ValueObjectSet</span><span class="p">(</span><span class="n">IncrementalSet</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;Value Object Set class.&quot;&quot;&quot;</span>
 
-    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">T</span><span class="p">]</span>
-
-<div class="viewcode-block" id="ValueObjectSet.__init__"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.value_objects.html#minos.common.model.declarative.value_objects.ValueObjectSet.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">value_obj</span><span class="p">)):</span> <span class="n">value_obj</span> <span class="k">for</span> <span class="n">value_obj</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ValueObjectSet.add"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.value_objects.html#minos.common.model.declarative.value_objects.ValueObjectSet.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value_object</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Add an value object.</span>
-<span class="sd">        :param value_object: The value object to be added.</span>
-<span class="sd">        :return: This method does not return anything.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">value_object</span><span class="p">))]</span> <span class="o">=</span> <span class="n">value_object</span></div>
-
-<div class="viewcode-block" id="ValueObjectSet.discard"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.value_objects.html#minos.common.model.declarative.value_objects.ValueObjectSet.discard">[docs]</a>    <span class="k">def</span> <span class="nf">discard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value_object</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Remove an value object.</span>
-<span class="sd">        :param value_object: The value object to be added.</span>
-<span class="sd">        :return: This method does not return anything.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">value_object</span><span class="p">)),</span> <span class="kc">None</span><span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value_object</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value_object</span><span class="p">,</span> <span class="n">ValueObject</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">value_object</span><span class="p">))</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
-
-    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
-        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ValueObjectSet</span><span class="p">):</span>
-            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">other</span>
-        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="n">other</span>
-
-<div class="viewcode-block" id="ValueObjectSet.diff"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.value_objects.html#minos.common.model.declarative.value_objects.ValueObjectSet.diff">[docs]</a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">another</span><span class="p">:</span> <span class="n">ValueObjectSet</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ValueObjectSetDiff</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Compute the difference between self and another entity set.</span>
-<span class="sd">        :param another: Another entity set instance.</span>
-<span class="sd">        :return: The difference between both entity sets.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">ValueObjectSetDiff</span><span class="o">.</span><span class="n">from_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">another</span><span class="p">)</span></div></div>
-
-
-<span class="n">ValueObjectSetDiffEntry</span> <span class="o">=</span> <span class="n">ModelType</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;EntitySetDiffEntry&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="n">Action</span><span class="p">,</span> <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="n">ValueObject</span><span class="p">})</span>
-
-
-<div class="viewcode-block" id="ValueObjectSetDiff"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.value_objects.html#minos.common.model.declarative.value_objects.ValueObjectSetDiff">[docs]</a><span class="k">class</span> <span class="nc">ValueObjectSetDiff</span><span class="p">(</span><span class="n">DeclarativeModel</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Value Object Set Diff class.&quot;&quot;&quot;</span>
-
-    <span class="n">diffs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ValueObjectSetDiffEntry</span><span class="p">]</span>
-
-<div class="viewcode-block" id="ValueObjectSetDiff.from_difference"><a class="viewcode-back" href="../../../../../api/minos.common.model.declarative.value_objects.html#minos.common.model.declarative.value_objects.ValueObjectSetDiff.from_difference">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_difference</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">new</span><span class="p">:</span> <span class="n">ValueObjectSet</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">old</span><span class="p">:</span> <span class="n">ValueObjectSet</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ValueObjectSetDiff</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Build a new instance from two entity sets.</span>
-<span class="sd">        :param new: The new entity set.</span>
-<span class="sd">        :param old: The old entity set.</span>
-<span class="sd">        :return: The diference between new and old.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">differences</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_diff</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">old</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">differences</span><span class="p">)</span></div>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="n">new</span><span class="p">:</span> <span class="n">ValueObjectSet</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">old</span><span class="p">:</span> <span class="n">ValueObjectSet</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ValueObjectSetDiffEntry</span><span class="p">]:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">new</span> <span class="o">-</span> <span class="n">old</span><span class="p">:</span>
-            <span class="n">entry</span> <span class="o">=</span> <span class="n">ValueObjectSetDiffEntry</span><span class="p">(</span><span class="n">Action</span><span class="o">.</span><span class="n">CREATE</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">old</span> <span class="o">-</span> <span class="n">new</span><span class="p">:</span>
-            <span class="n">entry</span> <span class="o">=</span> <span class="n">ValueObjectSetDiffEntry</span><span class="p">(</span><span class="n">Action</span><span class="o">.</span><span class="n">DELETE</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">result</span></div>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">T</span><span class="p">]</span></div>
 </pre></div>
 
            </div>
