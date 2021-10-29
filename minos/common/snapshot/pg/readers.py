@@ -1,4 +1,6 @@
-from __future__ import annotations
+from __future__ import (
+    annotations,
+)
 
 import logging
 from typing import (
@@ -6,21 +8,35 @@ from typing import (
     AsyncIterator,
     Optional,
 )
-from uuid import UUID
+from uuid import (
+    UUID,
+)
 
-from ...exceptions import MinosSnapshotAggregateNotFoundException
+from ...exceptions import (
+    MinosSnapshotAggregateNotFoundException,
+)
 from ...queries import (
+    Condition,
     _Condition,
     _Ordering,
-    Condition,
 )
-from ...uuid import NULL_UUID
-from ..entries import SnapshotEntry
-from .abc import PostgreSqlSnapshotSetup
-from .queries import PostgreSqlSnapshotQueryBuilder
+from ...uuid import (
+    NULL_UUID,
+)
+from ..entries import (
+    SnapshotEntry,
+)
+from .abc import (
+    PostgreSqlSnapshotSetup,
+)
+from .queries import (
+    PostgreSqlSnapshotQueryBuilder,
+)
 
 if TYPE_CHECKING:
-    from ...model import Aggregate
+    from ...model import (
+        Aggregate,
+    )
 
 logger = logging.getLogger(__name__)
 

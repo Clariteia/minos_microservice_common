@@ -1,7 +1,13 @@
-from __future__ import annotations
+from __future__ import (
+    annotations,
+)
 
-from collections import defaultdict
-from itertools import count
+from collections import (
+    defaultdict,
+)
+from itertools import (
+    count,
+)
 from typing import (
     AsyncIterator,
     Optional,
@@ -11,11 +17,21 @@ from uuid import (
     uuid4,
 )
 
-from ...datetime import current_datetime
-from ...exceptions import MinosRepositoryConflictException
-from ...uuid import NULL_UUID
-from ..entries import EventEntry
-from .abc import EventRepository
+from ...datetime import (
+    current_datetime,
+)
+from ...exceptions import (
+    MinosRepositoryConflictException,
+)
+from ...uuid import (
+    NULL_UUID,
+)
+from ..entries import (
+    EventEntry,
+)
+from .abc import (
+    EventRepository,
+)
 
 
 class InMemoryEventRepository(EventRepository):

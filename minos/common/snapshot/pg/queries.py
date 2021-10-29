@@ -1,6 +1,8 @@
 """minos.common.snapshot.pg.queries module."""
 
-from __future__ import annotations
+from __future__ import (
+    annotations,
+)
 
 from typing import (
     Any,
@@ -11,7 +13,9 @@ from uuid import (
     uuid4,
 )
 
-from psycopg2.extras import Json
+from psycopg2.extras import (
+    Json,
+)
 from psycopg2.sql import (
     SQL,
     Composable,
@@ -39,7 +43,9 @@ from ...queries import (
     _SimpleCondition,
     _TrueCondition,
 )
-from ...uuid import NULL_UUID
+from ...uuid import (
+    NULL_UUID,
+)
 
 
 class PostgreSqlSnapshotQueryBuilder:
@@ -133,7 +139,9 @@ class PostgreSqlSnapshotQueryBuilder:
         return SQL("({composed})").format(composed=operator.join(parts))
 
     def _build_condition_simple(self, condition: _SimpleCondition) -> Composable:
-        from ...model import AvroDataEncoder
+        from ...model import (
+            AvroDataEncoder,
+        )
 
         field = condition.field
         # noinspection PyTypeChecker
