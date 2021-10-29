@@ -2,23 +2,13 @@ from typing import (
     AsyncIterator,
     Optional,
 )
-from uuid import (
-    UUID,
-)
+from uuid import UUID
 
-from ...datetime import (
-    current_datetime,
-)
-from ...exceptions import (
-    MinosInvalidTransactionStatusException,
-)
-from ..entries import (
-    TransactionEntry,
-)
+from ...datetime import current_datetime
+from ...exceptions import MinosInvalidTransactionStatusException
+from ..entries import TransactionEntry
 from ..entries import TransactionStatus as s
-from .abc import (
-    TransactionRepository,
-)
+from .abc import TransactionRepository
 
 
 class InMemoryTransactionRepository(TransactionRepository):

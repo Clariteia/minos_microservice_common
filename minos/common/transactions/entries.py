@@ -1,17 +1,9 @@
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
 import logging
-from contextlib import (
-    suppress,
-)
-from datetime import (
-    datetime,
-)
-from enum import (
-    Enum,
-)
+from contextlib import suppress
+from datetime import datetime
+from enum import Enum
 from typing import (
     TYPE_CHECKING,
     Iterable,
@@ -28,23 +20,13 @@ from dependency_injector.wiring import (
     inject,
 )
 
-from ..exceptions import (
-    MinosRepositoryConflictException,
-)
-from ..uuid import (
-    NULL_UUID,
-)
-from .contextvars import (
-    TRANSACTION_CONTEXT_VAR,
-)
+from ..exceptions import MinosRepositoryConflictException
+from ..uuid import NULL_UUID
+from .contextvars import TRANSACTION_CONTEXT_VAR
 
 if TYPE_CHECKING:
-    from ..events import (
-        EventRepository,
-    )
-    from .repositories import (
-        TransactionRepository,
-    )
+    from ..events import EventRepository
+    from .repositories import TransactionRepository
 
 logger = logging.getLogger(__name__)
 
@@ -139,9 +121,7 @@ class TransactionEntry:
             await self.save(event_offset=event_offset, status=TransactionStatus.COMMITTED)
 
     async def _commit(self) -> None:
-        from ..events import (
-            EventEntry,
-        )
+        from ..events import EventEntry
 
         async for entry in self._event_repository.select(transaction_uuid=self.uuid):
             new = EventEntry.from_another(entry, transaction_uuid=self.destination)

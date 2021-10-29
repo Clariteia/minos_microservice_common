@@ -1,30 +1,16 @@
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
 from typing import (
     AsyncIterator,
     Optional,
 )
-from uuid import (
-    UUID,
-)
+from uuid import UUID
 
-from ...configuration import (
-    MinosConfig,
-)
-from ...database import (
-    PostgreSqlMinosDatabase,
-)
-from ...exceptions import (
-    MinosInvalidTransactionStatusException,
-)
-from ..entries import (
-    TransactionEntry,
-)
-from .abc import (
-    TransactionRepository,
-)
+from ...configuration import MinosConfig
+from ...database import PostgreSqlMinosDatabase
+from ...exceptions import MinosInvalidTransactionStatusException
+from ..entries import TransactionEntry
+from .abc import TransactionRepository
 
 
 class PostgreSqlTransactionRepository(PostgreSqlMinosDatabase, TransactionRepository):

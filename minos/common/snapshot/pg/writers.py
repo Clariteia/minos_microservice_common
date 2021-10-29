@@ -1,14 +1,10 @@
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
 from typing import (
     TYPE_CHECKING,
     Type,
 )
-from uuid import (
-    UUID,
-)
+from uuid import UUID
 
 from dependency_injector.wiring import (
     Provide,
@@ -24,28 +20,16 @@ from ...exceptions import (
     MinosRepositoryNotProvidedException,
     MinosTransactionRepositoryNotProvidedException,
 )
-from ...importlib import (
-    import_module,
-)
-from ...queries import (
-    Condition,
-)
+from ...importlib import import_module
+from ...queries import Condition
 from ...transactions import (
     TransactionRepository,
     TransactionStatus,
 )
-from ...uuid import (
-    NULL_UUID,
-)
-from ..entries import (
-    SnapshotEntry,
-)
-from .abc import (
-    PostgreSqlSnapshotSetup,
-)
-from .queries import (
-    PostgreSqlSnapshotQueryBuilder,
-)
+from ...uuid import NULL_UUID
+from ..entries import SnapshotEntry
+from .abc import PostgreSqlSnapshotSetup
+from .queries import PostgreSqlSnapshotQueryBuilder
 
 if TYPE_CHECKING:
     from ...model import (

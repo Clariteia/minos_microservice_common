@@ -1,37 +1,19 @@
-from __future__ import (
-    annotations,
-)
+from __future__ import annotations
 
 from typing import (
     AsyncIterator,
     Optional,
 )
-from uuid import (
-    UUID,
-)
+from uuid import UUID
 
-from psycopg2 import (
-    IntegrityError,
-)
+from psycopg2 import IntegrityError
 
-from ...configuration import (
-    MinosConfig,
-)
-from ...database import (
-    PostgreSqlMinosDatabase,
-)
-from ...exceptions import (
-    MinosRepositoryConflictException,
-)
-from ...uuid import (
-    NULL_UUID,
-)
-from ..entries import (
-    EventEntry,
-)
-from .abc import (
-    EventRepository,
-)
+from ...configuration import MinosConfig
+from ...database import PostgreSqlMinosDatabase
+from ...exceptions import MinosRepositoryConflictException
+from ...uuid import NULL_UUID
+from ..entries import EventEntry
+from .abc import EventRepository
 
 
 class PostgreSqlEventRepository(PostgreSqlMinosDatabase, EventRepository):
@@ -92,7 +74,7 @@ class PostgreSqlEventRepository(PostgreSqlMinosDatabase, EventRepository):
         id_ge: Optional[int] = None,
         transaction_uuid: Optional[UUID] = None,
         transaction_uuid_ne: Optional[UUID] = None,
-        transaction_uuid_in: Optional[tuple[UUID,...]] = None,
+        transaction_uuid_in: Optional[tuple[UUID, ...]] = None,
         **kwargs,
     ) -> str:
         conditions = list()
