@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.serializers.avro_schema_encoder &mdash; Minos Microservice Common 0.1.17 documentation</title>
+  <title>minos.common.model.serializers.avro_schema_encoder &mdash; Minos Microservice Common 0.2.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.17
+                0.2.0
               </div>
             
           
@@ -185,7 +185,6 @@
 <span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">ModelRef</span><span class="p">,</span>
     <span class="n">ModelType</span><span class="p">,</span>
     <span class="n">NoneType</span><span class="p">,</span>
     <span class="n">is_model_subclass</span><span class="p">,</span>
@@ -320,9 +319,6 @@
         <span class="k">if</span> <span class="n">origin_type</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_dict_schema</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">origin_type</span> <span class="ow">is</span> <span class="n">ModelRef</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_model_ref_schema</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
-
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Given field type is not supported: </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># pragma: no cover</span>
 
     <span class="k">def</span> <span class="nf">_build_set_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">:</span> <span class="nb">type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
@@ -334,9 +330,6 @@
 
     <span class="k">def</span> <span class="nf">_build_dict_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">:</span> <span class="nb">type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">AVRO_MAP</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_schema</span><span class="p">(</span><span class="n">get_args</span><span class="p">(</span><span class="n">type_</span><span class="p">)[</span><span class="mi">1</span><span class="p">])}</span>
-
-    <span class="k">def</span> <span class="nf">_build_model_ref_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">:</span> <span class="nb">type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_schema</span><span class="p">(</span><span class="n">Union</span><span class="p">[</span><span class="n">get_args</span><span class="p">(</span><span class="n">type_</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">UUID</span><span class="p">])</span>
 
 <div class="viewcode-block" id="AvroSchemaEncoder.generate_random_str"><a class="viewcode-back" href="../../../../../api/minos.common.model.serializers.avro_schema_encoder.html#minos.common.model.serializers.avro_schema_encoder.AvroSchemaEncoder.generate_random_str">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">generate_random_str</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>

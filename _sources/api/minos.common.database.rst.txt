@@ -13,4 +13,5 @@ Submodules
    :maxdepth: 4
 
    minos.common.database.abc
-   minos.common.database.pool
+   minos.common.database.locks
+   minos.common.database.pools

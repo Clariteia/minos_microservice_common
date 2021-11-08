@@ -1,7 +1,0 @@
-minos.common.model.declarative.collections module
-=================================================
-
-.. automodule:: minos.common.model.declarative.collections
-   :members:
-   :undoc-members:
-   :show-inheritance:

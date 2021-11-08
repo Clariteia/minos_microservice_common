@@ -1,7 +1,0 @@
-minos.common.repository.memory module
-=====================================
-
-.. automodule:: minos.common.repository.memory
-   :members:
-   :undoc-members:
-   :show-inheritance:

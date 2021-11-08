@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.types package &mdash; Minos Microservice Common 0.2.0 documentation</title>
+  <title>minos.common.database.locks module &mdash; Minos Microservice Common 0.2.0 documentation</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="minos.common.model.types.builders module" href="minos.common.model.types.builders.html" />
-    <link rel="prev" title="minos.common.model.serializers.constants module" href="minos.common.model.serializers.constants.html" /> 
+    <link rel="next" title="minos.common.database.pools module" href="minos.common.database.pools.html" />
+    <link rel="prev" title="minos.common.database.abc module" href="minos.common.database.abc.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -159,15 +159,15 @@
         
           <li><a href="minos.common.html">minos.common package</a> &raquo;</li>
         
-          <li><a href="minos.common.model.html">minos.common.model package</a> &raquo;</li>
+          <li><a href="minos.common.database.html">minos.common.database package</a> &raquo;</li>
         
-      <li>minos.common.model.types package</li>
+      <li>minos.common.database.locks module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/api/minos.common.model.types.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/minos.common.database.locks.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -180,20 +180,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-minos.common.model.types">
-<span id="minos-common-model-types-package"></span><h1>minos.common.model.types package<a class="headerlink" href="#module-minos.common.model.types" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.types.builders.html">minos.common.model.types.builders module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.types.comparators.html">minos.common.model.types.comparators module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.types.constants.html">minos.common.model.types.constants module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.types.generics.html">minos.common.model.types.generics module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.model.types.model_types.html">minos.common.model.types.model_types module</a></li>
-</ul>
-</div>
-</div>
+  <div class="section" id="module-minos.common.database.locks">
+<span id="minos-common-database-locks-module"></span><h1>minos.common.database.locks module<a class="headerlink" href="#module-minos.common.database.locks" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.database.locks.PostgreSqlLock">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.database.locks.</span></span><span class="sig-name descname"><span class="pre">PostgreSqlLock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wrapped_connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/database/locks.html#PostgreSqlLock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.database.locks.PostgreSqlLock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="minos.common.locks.html#minos.common.locks.Lock" title="minos.common.locks.Lock"><code class="xref py py-class docutils literal notranslate"><span class="pre">minos.common.locks.Lock</span></code></a></p>
+<p>“PostgreSql Lock class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.database.locks.PostgreSqlLock.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wrapped_connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/database/locks.html#PostgreSqlLock.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.database.locks.PostgreSqlLock.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.database.locks.PostgreSqlLock.cursor">
+<span class="sig-name descname"><span class="pre">cursor</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">aiopg.connection.Cursor</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#minos.common.database.locks.PostgreSqlLock.cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.database.locks.PostgreSqlLock.hashed_key">
+<span class="sig-name descname"><span class="pre">hashed_key</span></span><a class="headerlink" href="#minos.common.database.locks.PostgreSqlLock.hashed_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the hashed key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An integer value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.database.locks.PostgreSqlLock.key">
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="pre">:</span> <span class="pre">collections.abc.Hashable</span></em><a class="headerlink" href="#minos.common.database.locks.PostgreSqlLock.key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -202,8 +223,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="minos.common.model.types.builders.html" class="btn btn-neutral float-right" title="minos.common.model.types.builders module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="minos.common.model.serializers.constants.html" class="btn btn-neutral float-left" title="minos.common.model.serializers.constants module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="minos.common.database.pools.html" class="btn btn-neutral float-right" title="minos.common.database.pools module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="minos.common.database.abc.html" class="btn btn-neutral float-left" title="minos.common.database.abc module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.database.abc &mdash; Minos Microservice Common 0.1.17 documentation</title>
+  <title>minos.common.database.abc &mdash; Minos Microservice Common 0.2.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.17
+                0.2.0
               </div>
             
           
@@ -161,13 +161,19 @@
            <div itemprop="articleBody">
             
   <h1>Source code for minos.common.database.abc</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+<span></span><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Hashable</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Any</span><span class="p">,</span>
     <span class="n">AsyncContextManager</span><span class="p">,</span>
     <span class="n">AsyncIterator</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
 <span class="p">)</span>
 
+<span class="kn">from</span> <span class="nn">aiomisc.pool</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ContextManager</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">aiopg</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Cursor</span><span class="p">,</span>
 <span class="p">)</span>
@@ -179,7 +185,10 @@
 <span class="kn">from</span> <span class="nn">..setup</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">MinosSetup</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">.pool</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">.locks</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">PostgreSqlLock</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.pools</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">PostgreSqlPool</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -237,34 +246,27 @@
 <span class="sd">        :param kwargs: Additional named arguments.</span>
 <span class="sd">        :return: This method does not return anything.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">async</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">lock</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select pg_advisory_lock(</span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">lock</span><span class="p">),))</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lock</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">context_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">context_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked_cursor</span><span class="p">(</span><span class="n">lock</span><span class="p">)</span>
 
-                <span class="k">if</span> <span class="n">streaming_mode</span><span class="p">:</span>
-                    <span class="k">async</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
-                        <span class="k">yield</span> <span class="n">row</span>
-                    <span class="k">return</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">context_manager</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
 
-                <span class="n">rows</span> <span class="o">=</span> <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-            <span class="k">finally</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">lock</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select pg_advisory_unlock(</span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">lock</span><span class="p">),))</span>
+            <span class="k">if</span> <span class="n">streaming_mode</span><span class="p">:</span>
+                <span class="k">async</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">row</span>
+                <span class="k">return</span>
+
+            <span class="n">rows</span> <span class="o">=</span> <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">row</span></div>
 
     <span class="c1"># noinspection PyUnusedLocal</span>
 <div class="viewcode-block" id="PostgreSqlMinosDatabase.submit_query"><a class="viewcode-back" href="../../../../api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.submit_query">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">submit_query</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">operation</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-        <span class="n">parameters</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="o">*</span><span class="p">,</span>
-        <span class="n">timeout</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">lock</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">operation</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">lock</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Submit a SQL query.</span>
 
@@ -276,23 +278,53 @@
 <span class="sd">        :param kwargs: Additional named arguments.</span>
 <span class="sd">        :return: This method does not return anything.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">async</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">lock</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select pg_advisory_lock(</span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">lock</span><span class="p">),))</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-            <span class="k">finally</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">lock</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select pg_advisory_unlock(</span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">lock</span><span class="p">),))</span></div>
+        <span class="k">if</span> <span class="n">lock</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">context_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">context_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">locked_cursor</span><span class="p">(</span><span class="n">lock</span><span class="p">)</span>
+
+        <span class="k">async</span> <span class="k">with</span> <span class="n">context_manager</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">operation</span><span class="o">=</span><span class="n">operation</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PostgreSqlMinosDatabase.locked_cursor"><a class="viewcode-back" href="../../../../api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.locked_cursor">[docs]</a>    <span class="k">def</span> <span class="nf">locked_cursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncContextManager</span><span class="p">[</span><span class="n">Cursor</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Get a new locked cursor.</span>
+
+<span class="sd">        :param key: The key to be used for locking.</span>
+<span class="sd">        :param args: Additional positional arguments.</span>
+<span class="sd">        :param kwargs: Additional named arguments.</span>
+<span class="sd">        :return: A Cursor wrapped into an asynchronous context manager.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lock</span> <span class="o">=</span> <span class="n">PostgreSqlLock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">(),</span> <span class="n">key</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">_fn_enter</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">lock</span><span class="o">.</span><span class="fm">__aenter__</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">lock</span><span class="o">.</span><span class="n">cursor</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">_fn_exit</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
+            <span class="k">await</span> <span class="n">lock</span><span class="o">.</span><span class="fm">__aexit__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ContextManager</span><span class="p">(</span><span class="n">_fn_enter</span><span class="p">,</span> <span class="n">_fn_exit</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PostgreSqlMinosDatabase.cursor"><a class="viewcode-back" href="../../../../api/minos.common.database.abc.html#minos.common.database.abc.PostgreSqlMinosDatabase.cursor">[docs]</a>    <span class="k">def</span> <span class="nf">cursor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncContextManager</span><span class="p">[</span><span class="n">Cursor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Get a connection cursor from the pool.</span>
+        <span class="sd">&quot;&quot;&quot;Get a new cursor.</span>
 
 <span class="sd">        :param args: Additional positional arguments.</span>
 <span class="sd">        :param kwargs: Additional named arguments.</span>
-<span class="sd">        :return: A ``Cursor`` instance wrapped inside a context manager.</span>
+<span class="sd">        :return: A Cursor wrapped into an asynchronous context manager.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">acquired</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">_fn_enter</span><span class="p">():</span>
+            <span class="n">connection</span> <span class="o">=</span> <span class="k">await</span> <span class="n">acquired</span><span class="o">.</span><span class="fm">__aenter__</span><span class="p">()</span>
+            <span class="n">cursor</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="fm">__aenter__</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">cursor</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">_fn_exit</span><span class="p">(</span><span class="n">cursor</span><span class="p">:</span> <span class="n">Cursor</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">cursor</span><span class="o">.</span><span class="n">closed</span><span class="p">:</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">await</span> <span class="n">acquired</span><span class="o">.</span><span class="fm">__aexit__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ContextManager</span><span class="p">(</span><span class="n">_fn_enter</span><span class="p">,</span> <span class="n">_fn_exit</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pool</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PostgreSqlPool</span><span class="p">:</span>

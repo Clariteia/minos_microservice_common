@@ -1,7 +1,0 @@
-minos.common.repository.entries module
-======================================
-
-.. automodule:: minos.common.repository.entries
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -16,8 +16,6 @@ Subpackages
    minos.common.database
    minos.common.model
    minos.common.protocol
-   minos.common.repository
-   minos.common.snapshot
    minos.common.storage
 
 Submodules
@@ -31,10 +29,10 @@ Submodules
    minos.common.importlib
    minos.common.injectors
    minos.common.launchers
+   minos.common.locks
    minos.common.meta
    minos.common.networks
    minos.common.pools
-   minos.common.queries
    minos.common.saga
    minos.common.setup
    minos.common.uuid

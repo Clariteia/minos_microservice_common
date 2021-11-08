@@ -6,14 +6,6 @@ minos.common.model.declarative package
    :undoc-members:
    :show-inheritance:
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   minos.common.model.declarative.aggregate
-
 Submodules
 ----------
 
@@ -21,7 +13,4 @@ Submodules
    :maxdepth: 4
 
    minos.common.model.declarative.abc
-   minos.common.model.declarative.collections
-   minos.common.model.declarative.entities
    minos.common.model.declarative.networks
-   minos.common.model.declarative.value_objects

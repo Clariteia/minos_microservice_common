@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.snapshot.pg package &mdash; Minos Microservice Common 0.1.17 documentation</title>
+  <title>minos.common.locks module &mdash; Minos Microservice Common 0.2.0 documentation</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="minos.common.snapshot.pg.abc module" href="minos.common.snapshot.pg.abc.html" />
-    <link rel="prev" title="minos.common.snapshot package" href="minos.common.snapshot.html" /> 
+    <link rel="next" title="minos.common.meta module" href="minos.common.meta.html" />
+    <link rel="prev" title="minos.common.launchers module" href="minos.common.launchers.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.17
+                0.2.0
               </div>
             
           
@@ -98,8 +98,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="minos.html">minos namespace</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="minos.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="minos.common.html">minos.common package</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="minos.common.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="minos.common.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="minos.common.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="minos.common.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -159,15 +159,13 @@
         
           <li><a href="minos.common.html">minos.common package</a> &raquo;</li>
         
-          <li><a href="minos.common.snapshot.html">minos.common.snapshot package</a> &raquo;</li>
-        
-      <li>minos.common.snapshot.pg package</li>
+      <li>minos.common.locks module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/api/minos.common.snapshot.pg.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/minos.common.locks.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -180,20 +178,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-minos.common.snapshot.pg">
-<span id="minos-common-snapshot-pg-package"></span><h1>minos.common.snapshot.pg package<a class="headerlink" href="#module-minos.common.snapshot.pg" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.snapshot.pg.abc.html">minos.common.snapshot.pg.abc module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.snapshot.pg.api.html">minos.common.snapshot.pg.api module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.snapshot.pg.queries.html">minos.common.snapshot.pg.queries module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.snapshot.pg.readers.html">minos.common.snapshot.pg.readers module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minos.common.snapshot.pg.writers.html">minos.common.snapshot.pg.writers module</a></li>
-</ul>
-</div>
-</div>
+  <div class="section" id="module-minos.common.locks">
+<span id="minos-common-locks-module"></span><h1>minos.common.locks module<a class="headerlink" href="#module-minos.common.locks" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="minos.common.locks.Lock">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minos.common.locks.</span></span><span class="sig-name descname"><span class="pre">Lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/locks.html#Lock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.locks.Lock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">contextlib.AbstractAsyncContextManager</span></code></p>
+<p>“Lock base class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="minos.common.locks.Lock.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/locks.html#Lock.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.locks.Lock.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.locks.Lock.hashed_key">
+<span class="sig-name descname"><span class="pre">hashed_key</span></span><a class="headerlink" href="#minos.common.locks.Lock.hashed_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the hashed key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An integer value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="minos.common.locks.Lock.key">
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="pre">:</span> <span class="pre">collections.abc.Hashable</span></em><a class="headerlink" href="#minos.common.locks.Lock.key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -202,8 +216,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="minos.common.snapshot.pg.abc.html" class="btn btn-neutral float-right" title="minos.common.snapshot.pg.abc module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="minos.common.snapshot.html" class="btn btn-neutral float-left" title="minos.common.snapshot package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="minos.common.meta.html" class="btn btn-neutral float-right" title="minos.common.meta module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="minos.common.launchers.html" class="btn btn-neutral float-left" title="minos.common.launchers module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

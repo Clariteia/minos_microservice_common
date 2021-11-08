@@ -1,7 +1,0 @@
-minos.common.snapshot.memory module
-===================================
-
-.. automodule:: minos.common.snapshot.memory
-   :members:
-   :undoc-members:
-   :show-inheritance:

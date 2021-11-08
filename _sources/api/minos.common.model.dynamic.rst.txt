@@ -14,5 +14,4 @@ Submodules
 
    minos.common.model.dynamic.abc
    minos.common.model.dynamic.bucket
-   minos.common.model.dynamic.diff
    minos.common.model.dynamic.dto

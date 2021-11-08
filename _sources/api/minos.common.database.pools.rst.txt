@@ -1,7 +1,7 @@
-minos.common.repository.abc module
+minos.common.database.pools module
 ==================================
 
-.. automodule:: minos.common.repository.abc
+.. automodule:: minos.common.database.pools
    :members:
    :undoc-members:
    :show-inheritance:

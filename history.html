@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>History &mdash; Minos Microservice Common 0.1.17 documentation</title>
+  <title>History &mdash; Minos Microservice Common 0.2.0 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.17
+                0.2.0
               </div>
             
           
@@ -137,6 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id36">0.1.15 (2021-10-04)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id37">0.1.16 (2021-10-07)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id38">0.1.17 (2021-10-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id39">0.2.0 (2021-11-08)</a></li>
 </ul>
 </li>
 </ul>
@@ -447,6 +448,25 @@
 </li>
 <li><p>Refactor <code class="docutils literal notranslate"><span class="pre">ValueObjectSet</span></code> to be implemented on top of a <code class="docutils literal notranslate"><span class="pre">set</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p></li>
 <li><p>Fix bug related with <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">dict</span></code> in combination with <code class="docutils literal notranslate"><span class="pre">Any</span></code> and the <code class="docutils literal notranslate"><span class="pre">avro</span></code> schemas.</p></li>
+</ul>
+</div>
+<div class="section" id="id39">
+<h2>0.2.0 (2021-11-08)<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Migrate all Aggregate-related stuff to the brand-new <code class="docutils literal notranslate"><span class="pre">minos.aggregate</span></code> package.</p>
+<ul>
+<li><p>Move <code class="docutils literal notranslate"><span class="pre">Aggregate</span></code>, <code class="docutils literal notranslate"><span class="pre">Entity</span></code>, <code class="docutils literal notranslate"><span class="pre">ValueObject</span></code>, etc. model classes and related utility classes (<code class="docutils literal notranslate"><span class="pre">AggregateDiff</span></code>, <code class="docutils literal notranslate"><span class="pre">FieldDiff</span></code>, Action<code class="docutils literal notranslate"><span class="pre">,</span></code>ModelRef`, etc.).</p></li>
+<li><p>Move <code class="docutils literal notranslate"><span class="pre">minos.common.repository</span></code> module.</p></li>
+<li><p>Move <code class="docutils literal notranslate"><span class="pre">minos.common.snapshot</span></code> module.</p></li>
+<li><p>Move <code class="docutils literal notranslate"><span class="pre">minos.common.queries</span></code> module.</p></li>
+</ul>
+</li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">Lock</span></code> class as an abstract class to implement application-level locking in <code class="docutils literal notranslate"><span class="pre">minos</span></code>.</p>
+<ul>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">PostgreSqlLock</span></code> and <code class="docutils literal notranslate"><span class="pre">PostgreSqlLockPool</span></code></p></li>
+</ul>
+</li>
+<li><p>Replace the <code class="docutils literal notranslate"><span class="pre">MinosPool</span></code> instance creation strategy, from “create if possible or get or wait” to “get or create if possible or wait”.</p></li>
 </ul>
 </div>
 </div>

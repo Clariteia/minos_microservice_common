@@ -1,7 +1,0 @@
-minos.common.snapshot.pg.writers module
-=======================================
-
-.. automodule:: minos.common.snapshot.pg.writers
-   :members:
-   :undoc-members:
-   :show-inheritance:
