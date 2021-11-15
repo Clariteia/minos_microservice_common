@@ -12,7 +12,6 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   minos.common.model.declarative
    minos.common.model.dynamic
    minos.common.model.serializers
    minos.common.model.types
@@ -24,4 +23,5 @@ Submodules
    :maxdepth: 4
 
    minos.common.model.abc
+   minos.common.model.declarative
    minos.common.model.fields

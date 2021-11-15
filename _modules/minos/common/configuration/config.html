@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.2.1 documentation</title>
+  <title>minos.common.configuration.config &mdash; Minos Microservice Common 0.3.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.3.0
               </div>
             
           
@@ -189,8 +189,6 @@
 <span class="n">SERVICE</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Service&quot;</span><span class="p">,</span> <span class="s2">&quot;name aggregate injections services&quot;</span><span class="p">)</span>
 <span class="n">STORAGE</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Storage&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">)</span>
 
-<span class="n">COMMANDS</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Commands&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">)</span>
-<span class="n">QUERIES</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Queries&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">)</span>
 <span class="n">SAGA</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Saga&quot;</span><span class="p">,</span> <span class="s2">&quot;storage&quot;</span><span class="p">)</span>
 <span class="n">REST</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Rest&quot;</span><span class="p">,</span> <span class="s2">&quot;host port&quot;</span><span class="p">)</span>
 <span class="n">REPOSITORY</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Repository&quot;</span><span class="p">,</span> <span class="s2">&quot;database user password host port&quot;</span><span class="p">)</span>
@@ -383,21 +381,26 @@
         <span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">commands</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">COMMANDS</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">services</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Get the commands config.</span>
 
-<span class="sd">        :return: A ``COMMAND`` NamedTuple instance.</span>
+<span class="sd">        :return: A list containing the service class names as string values..</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;commands.service&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">COMMANDS</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">service</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;services&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">MinosConfigException</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">()</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">queries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QUERIES</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Get the queries config.</span>
+    <span class="k">def</span> <span class="nf">middleware</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Get the commands config.</span>
 
-<span class="sd">        :return: A ``QUERIES`` NamedTuple instance.</span>
+<span class="sd">        :return: A list containing the service class names as string values..</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">QUERIES</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;queries.service&quot;</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="s2">&quot;middleware&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">MinosConfigException</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">saga</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SAGA</span><span class="p">:</span>

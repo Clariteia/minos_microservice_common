@@ -1,7 +1,0 @@
-minos.common.model.declarative.abc module
-=========================================
-
-.. automodule:: minos.common.model.declarative.abc
-   :members:
-   :undoc-members:
-   :show-inheritance:

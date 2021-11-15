@@ -1,7 +1,0 @@
-minos.common.networks module
-============================
-
-.. automodule:: minos.common.networks
-   :members:
-   :undoc-members:
-   :show-inheritance:

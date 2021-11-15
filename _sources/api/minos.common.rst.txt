@@ -31,8 +31,6 @@ Submodules
    minos.common.launchers
    minos.common.locks
    minos.common.meta
-   minos.common.networks
    minos.common.pools
-   minos.common.saga
    minos.common.setup
    minos.common.uuid

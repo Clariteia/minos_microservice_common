@@ -1,16 +1,7 @@
-minos.common.model.declarative package
-======================================
+minos.common.model.declarative module
+=====================================
 
 .. automodule:: minos.common.model.declarative
    :members:
    :undoc-members:
    :show-inheritance:
-
-Submodules
-----------
-
-.. toctree::
-   :maxdepth: 4
-
-   minos.common.model.declarative.abc
-   minos.common.model.declarative.networks

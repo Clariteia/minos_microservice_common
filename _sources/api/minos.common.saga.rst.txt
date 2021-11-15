@@ -1,7 +1,0 @@
-minos.common.saga module
-========================
-
-.. automodule:: minos.common.saga
-   :members:
-   :undoc-members:
-   :show-inheritance:
