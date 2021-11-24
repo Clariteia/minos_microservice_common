@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.importlib &mdash; Minos Microservice Common 0.3.0 documentation</title>
+  <title>minos.common.importlib &mdash; Minos Microservice Common 0.3.1 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -167,6 +167,7 @@
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
@@ -175,7 +176,7 @@
 
 
 <span class="c1"># noinspection SpellCheckingInspection</span>
-<div class="viewcode-block" id="import_module"><a class="viewcode-back" href="../../../api/minos.common.importlib.html#minos.common.importlib.import_module">[docs]</a><span class="k">def</span> <span class="nf">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<div class="viewcode-block" id="import_module"><a class="viewcode-back" href="../../../api/minos.common.importlib.html#minos.common.importlib.import_module">[docs]</a><span class="k">def</span> <span class="nf">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Import the given module from a package&quot;&quot;&quot;</span>
     <span class="n">parts</span> <span class="o">=</span> <span class="n">module_name</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -193,7 +194,7 @@
     <span class="k">return</span> <span class="n">kallable</span></div>
 
 
-<div class="viewcode-block" id="classname"><a class="viewcode-back" href="../../../api/minos.common.importlib.html#minos.common.importlib.classname">[docs]</a><span class="k">def</span> <span class="nf">classname</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="classname"><a class="viewcode-back" href="../../../api/minos.common.importlib.html#minos.common.importlib.classname">[docs]</a><span class="k">def</span> <span class="nf">classname</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">Callable</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Compute the given class full name.</span>
 
 <span class="sd">    :param cls: Target class.</span>

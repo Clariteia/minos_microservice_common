@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>History &mdash; Minos Microservice Common 0.3.0 documentation</title>
+  <title>History &mdash; Minos Microservice Common 0.3.1 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -140,6 +140,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id39">0.2.0 (2021-11-08)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id40">0.2.1 (2021-11-09)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id41">0.3.0 (2021-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id42">0.3.1 (2021-11-24)</a></li>
 </ul>
 </li>
 </ul>
@@ -484,6 +485,13 @@
 <li><p>Remove <code class="docutils literal notranslate"><span class="pre">Command</span></code>, <code class="docutils literal notranslate"><span class="pre">CommandReply</span></code>, <code class="docutils literal notranslate"><span class="pre">CommandStatus</span></code> and <code class="docutils literal notranslate"><span class="pre">Event</span></code> (moved to <code class="docutils literal notranslate"><span class="pre">minos.networks</span></code>).</p></li>
 <li><p>Remove <code class="docutils literal notranslate"><span class="pre">MinosBroker</span></code> and <code class="docutils literal notranslate"><span class="pre">MinosHandler</span></code> (moved to <code class="docutils literal notranslate"><span class="pre">minos.networks</span></code>).</p></li>
 <li><p>Remove <code class="docutils literal notranslate"><span class="pre">MinosSagaManager</span></code> (moved to <code class="docutils literal notranslate"><span class="pre">minos.saga</span></code>).</p></li>
+</ul>
+</div>
+<div class="section" id="id42">
+<h2>0.3.1 (2021-11-24)<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Fix bug related with <code class="docutils literal notranslate"><span class="pre">enum.Enum</span></code> inherited classes that do not recover the original type after being serialized.</p></li>
+<li><p>Fix bug related with<code class="docutils literal notranslate"><span class="pre">str</span></code> values auto-casting to an iterable of characters.</p></li>
 </ul>
 </div>
 </div>
