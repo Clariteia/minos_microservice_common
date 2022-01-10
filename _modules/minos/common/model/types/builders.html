@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.types.builders &mdash; Minos Microservice Common 0.3.2 documentation</title>
+  <title>minos.common.model.types.builders &mdash; Minos Microservice Common 0.3.3 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.3.3
               </div>
             
           
@@ -166,9 +166,11 @@
 <span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Iterable</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Any</span><span class="p">,</span>
-    <span class="n">Iterable</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
     <span class="n">Union</span><span class="p">,</span>
     <span class="n">get_args</span><span class="p">,</span>
@@ -186,14 +188,14 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="build_union"><a class="viewcode-back" href="../../../../../api/minos.common.model.types.builders.html#minos.common.model.types.builders.build_union">[docs]</a><span class="k">def</span> <span class="nf">build_union</span><span class="p">(</span><span class="n">options</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
+<div class="viewcode-block" id="build_union"><a class="viewcode-back" href="../../../../../api/minos.common.model.types.builders.html#minos.common.model.types.builders.build_union">[docs]</a><span class="k">def</span> <span class="nf">build_union</span><span class="p">(</span><span class="n">options</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Build the union type base on the given options.</span>
 
 <span class="sd">    :param options: A tuple of types.</span>
 <span class="sd">    :return: The union of types.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">return</span> <span class="n">Union</span><span class="p">[</span><span class="n">options</span><span class="p">]</span></div>
+    <span class="k">return</span> <span class="n">Union</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">options</span><span class="p">)]</span></div>
 
 
 <div class="viewcode-block" id="TypeHintBuilder"><a class="viewcode-back" href="../../../../../api/minos.common.model.types.builders.html#minos.common.model.types.builders.TypeHintBuilder">[docs]</a><span class="k">class</span> <span class="nc">TypeHintBuilder</span><span class="p">:</span>

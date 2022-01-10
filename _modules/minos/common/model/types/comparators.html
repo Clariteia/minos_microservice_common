@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.types.comparators &mdash; Minos Microservice Common 0.3.2 documentation</title>
+  <title>minos.common.model.types.comparators &mdash; Minos Microservice Common 0.3.3 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.3.3
               </div>
             
           
@@ -198,13 +198,13 @@
     <span class="k">return</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">type_</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="nb">type</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="is_model_type"><a class="viewcode-back" href="../../../../../api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_model_type">[docs]</a><span class="k">def</span> <span class="nf">is_model_type</span><span class="p">(</span><span class="n">type_</span><span class="p">:</span> <span class="nb">type</span><span class="p">):</span>
+<div class="viewcode-block" id="is_model_type"><a class="viewcode-back" href="../../../../../api/minos.common.model.types.comparators.html#minos.common.model.types.comparators.is_model_type">[docs]</a><span class="k">def</span> <span class="nf">is_model_type</span><span class="p">(</span><span class="n">value_</span><span class="p">:</span> <span class="nb">type</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Check if the given type is a model instance.&quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">..abc</span> <span class="kn">import</span> <span class="p">(</span>
         <span class="n">Model</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">Model</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value_</span><span class="p">,</span> <span class="n">Model</span><span class="p">)</span></div>
 
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>

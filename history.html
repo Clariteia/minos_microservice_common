@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>History &mdash; Minos Microservice Common 0.3.2 documentation</title>
+  <title>History &mdash; Minos Microservice Common 0.3.3 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.3.3
               </div>
             
           
@@ -142,6 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id41">0.3.0 (2021-11-15)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id42">0.3.1 (2021-11-24)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id43">0.3.2 (2021-11-30)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id44">0.3.3 (2022-01-10)</a></li>
 </ul>
 </li>
 </ul>
@@ -499,6 +500,18 @@
 <h2>0.3.2 (2021-11-30)<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Fix bug related with <code class="docutils literal notranslate"><span class="pre">EntrypointLauncher</span></code>‘s dependency injection and unloaded <code class="docutils literal notranslate"><span class="pre">minos.*</span></code> modules.</p></li>
+</ul>
+</div>
+<div class="section" id="id44">
+<h2>0.3.3 (2022-01-10)<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Big refactor of the <code class="docutils literal notranslate"><span class="pre">minos.common.model.serializers</span></code> module:</p>
+<ul>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">encode_schema</span></code>, <code class="docutils literal notranslate"><span class="pre">decode_schema</span></code>, <code class="docutils literal notranslate"><span class="pre">encode_data</span></code> and <code class="docutils literal notranslate"><span class="pre">decode_data</span></code> callback-like functions to be able to modify the serialization/deserialization logic.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">SchemaEncoder</span></code>, <code class="docutils literal notranslate"><span class="pre">SchemaDecoder</span></code>, <code class="docutils literal notranslate"><span class="pre">DataEncoder</span></code> and <code class="docutils literal notranslate"><span class="pre">DataDecoder</span></code> abstract base classes.</p></li>
+<li><p>Increase serialization/deserialization robustness.</p></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>

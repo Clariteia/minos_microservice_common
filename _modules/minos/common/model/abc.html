@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.model.abc &mdash; Minos Microservice Common 0.3.2 documentation</title>
+  <title>minos.common.model.abc &mdash; Minos Microservice Common 0.3.3 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.3.2
+                0.3.3
               </div>
             
           
@@ -209,8 +209,13 @@
     <span class="n">AvroDataEncoder</span><span class="p">,</span>
     <span class="n">AvroSchemaDecoder</span><span class="p">,</span>
     <span class="n">AvroSchemaEncoder</span><span class="p">,</span>
+    <span class="n">DataDecoder</span><span class="p">,</span>
+    <span class="n">DataEncoder</span><span class="p">,</span>
+    <span class="n">SchemaDecoder</span><span class="p">,</span>
+    <span class="n">SchemaEncoder</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">.types</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">MissingSentinel</span><span class="p">,</span>
     <span class="n">ModelType</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -237,30 +242,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span> <span class="o">=</span> <span class="n">fields</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__eq_reversing</span> <span class="o">=</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="Model.from_avro_str"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.from_avro_str">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_avro_str</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Build a single instance or a sequence of instances from bytes</span>
-
-<span class="sd">        :param raw: A bytes data.</span>
-<span class="sd">        :return: A single instance or a sequence of instances.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">raw</span> <span class="o">=</span> <span class="n">b64decode</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_avro_bytes</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="Model.from_avro_bytes"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.from_avro_bytes">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_avro_bytes</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Build a single instance or a sequence of instances from bytes</span>
-
-<span class="sd">        :param raw: A bytes data.</span>
-<span class="sd">        :return: A single instance or a sequence of instances.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">schema</span> <span class="o">=</span> <span class="n">MinosAvroProtocol</span><span class="o">.</span><span class="n">decode_schema</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">MinosAvroProtocol</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">decoded</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">from_avro</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">d</span> <span class="o">|</span> <span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">decoded</span><span class="p">]</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_avro</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">decoded</span> <span class="o">|</span> <span class="n">kwargs</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="Model.from_typed_dict"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.from_typed_dict">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_typed_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">typed_dict</span><span class="p">:</span> <span class="n">TypedDict</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Build a ``Model`` from a ``TypeDict`` and ``data``.</span>
@@ -283,22 +264,49 @@
 <span class="sd">        :return: A new ``DeclarativeModel`` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
 
+<div class="viewcode-block" id="Model.from_avro_str"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.from_avro_str">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_avro_str</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Build a single instance or a sequence of instances from bytes</span>
+
+<span class="sd">        :param raw: A ``str`` representation of the model.</span>
+<span class="sd">        :return: A single instance or a sequence of instances.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">b64decode</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_avro_bytes</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Model.from_avro_bytes"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.from_avro_bytes">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_avro_bytes</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Build a single instance or a sequence of instances from bytes</span>
+
+<span class="sd">        :param raw: A ``bytes`` representation of the model.</span>
+<span class="sd">        :return: A single instance or a sequence of instances.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">schema</span> <span class="o">=</span> <span class="n">MinosAvroProtocol</span><span class="o">.</span><span class="n">decode_schema</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">MinosAvroProtocol</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">from_avro</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_avro</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Model.from_avro"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.from_avro">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_avro</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">schema</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]],</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">from_avro</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">schema</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Build a new instance from the ``avro`` schema and data.</span>
 
 <span class="sd">        :param schema: The avro schema of the model.</span>
 <span class="sd">        :param data: The avro data of the model.</span>
 <span class="sd">        :return: A new ``DynamicModel`` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">schema</span> <span class="o">=</span> <span class="n">schema</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">model_type</span> <span class="o">=</span> <span class="n">AvroSchemaDecoder</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">AvroDataDecoder</span><span class="p">(</span><span class="n">model_type</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+        <span class="n">schema_decoder</span> <span class="o">=</span> <span class="n">AvroSchemaDecoder</span><span class="p">()</span>
+        <span class="n">type_</span> <span class="o">=</span> <span class="n">schema_decoder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
+
+        <span class="n">data_decoder</span> <span class="o">=</span> <span class="n">AvroDataDecoder</span><span class="p">()</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="n">data_decoder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">type_</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">instance</span></div>
 
 <div class="viewcode-block" id="Model.to_avro_str"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.to_avro_str">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">to_avro_str</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">models</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create a bytes representation of the given object instances.</span>
+        <span class="sd">&quot;&quot;&quot;Build the avro string representation of the given object instances.</span>
 
 <span class="sd">        :param models: A sequence of minos models.</span>
 <span class="sd">        :return: A bytes object.</span>
@@ -307,7 +315,7 @@
 
 <div class="viewcode-block" id="Model.to_avro_bytes"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.to_avro_bytes">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">to_avro_bytes</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">models</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create a bytes representation of the given object instances.</span>
+        <span class="sd">&quot;&quot;&quot;Create a ``bytes`` representation of the given object instances.</span>
 
 <span class="sd">        :param models: A sequence of minos models.</span>
 <span class="sd">        :return: A bytes object.</span>
@@ -407,7 +415,8 @@
 <span class="sd">        :return: A dictionary object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># noinspection PyTypeChecker</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">AvroSchemaEncoder</span><span class="p">(</span><span class="n">ModelType</span><span class="o">.</span><span class="n">from_model</span><span class="p">(</span><span class="n">self_or_cls</span><span class="p">))</span><span class="o">.</span><span class="n">build</span><span class="p">()]</span>
+        <span class="n">encoder</span> <span class="o">=</span> <span class="n">AvroSchemaEncoder</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">encoder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">self_or_cls</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">avro_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
@@ -415,7 +424,8 @@
 
 <span class="sd">        :return: A dictionary object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">AvroDataEncoder</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">encoder</span> <span class="o">=</span> <span class="n">AvroDataEncoder</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">encoder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">avro_str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -434,6 +444,54 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># noinspection PyTypeChecker</span>
         <span class="k">return</span> <span class="n">MinosAvroProtocol</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">avro_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">avro_schema</span><span class="p">)</span>
+
+    <span class="c1"># noinspection PyMethodParameters,PyUnusedLocal</span>
+<div class="viewcode-block" id="Model.encode_schema"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.encode_schema">[docs]</a>    <span class="nd">@self_or_classmethod</span>
+    <span class="k">def</span> <span class="nf">encode_schema</span><span class="p">(</span><span class="n">self_or_cls</span><span class="p">,</span> <span class="n">encoder</span><span class="p">:</span> <span class="n">SchemaEncoder</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Encode schema with the given encoder.</span>
+
+<span class="sd">        :param encoder: The encoder instance.</span>
+<span class="sd">        :param target: An optional pre-encoded schema.</span>
+<span class="sd">        :param kwargs: Additional named arguments.</span>
+<span class="sd">        :return: The encoded schema of the instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MissingSentinel</span></div>
+
+    <span class="c1"># noinspection PyUnusedLocal</span>
+<div class="viewcode-block" id="Model.decode_schema"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.decode_schema">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">decode_schema</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">decoder</span><span class="p">:</span> <span class="n">SchemaDecoder</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Decode schema with the given encoder.</span>
+
+<span class="sd">        :param decoder: The decoder instance.</span>
+<span class="sd">        :param target: The schema to be decoded.</span>
+<span class="sd">        :param kwargs: Additional named arguments.</span>
+<span class="sd">        :return: The decoded schema as a type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MissingSentinel</span></div>
+
+    <span class="c1"># noinspection PyMethodMayBeStatic,PyUnusedLocal</span>
+<div class="viewcode-block" id="Model.encode_data"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.encode_data">[docs]</a>    <span class="k">def</span> <span class="nf">encode_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoder</span><span class="p">:</span> <span class="n">DataEncoder</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Encode data with the given encoder.</span>
+
+<span class="sd">        :param encoder: The encoder instance.</span>
+<span class="sd">        :param target: An optional pre-encoded data.</span>
+<span class="sd">        :param kwargs: Additional named arguments.</span>
+<span class="sd">        :return: The encoded data of the instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MissingSentinel</span></div>
+
+    <span class="c1"># noinspection PyUnusedLocal</span>
+<div class="viewcode-block" id="Model.decode_data"><a class="viewcode-back" href="../../../../api/minos.common.model.abc.html#minos.common.model.abc.Model.decode_data">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">decode_data</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">decoder</span><span class="p">:</span> <span class="n">DataDecoder</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">type_</span><span class="p">:</span> <span class="n">ModelType</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Decode data with the given decoder.</span>
+
+<span class="sd">        :param decoder: The decoder instance.</span>
+<span class="sd">        :param target: The data to be decoded.</span>
+<span class="sd">        :param type_: The data type.</span>
+<span class="sd">        :param kwargs: Additional named arguments.</span>
+<span class="sd">        :return: A decoded instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MissingSentinel</span></div>
 
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
