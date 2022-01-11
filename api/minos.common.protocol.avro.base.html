@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.protocol.avro.base module &mdash; Minos Microservice Common 0.3.3 documentation</title>
+  <title>minos.common.protocol.avro.base module &mdash; Minos Microservice Common 0.3.4 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.3.3
+                0.3.4
               </div>
             
           
@@ -191,24 +191,21 @@
 <p>Minos Avro Protocol class.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.protocol.avro.base.MinosAvroProtocol.decode">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/protocol/avro/base.html#MinosAvroProtocol.decode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.protocol.avro.base.MinosAvroProtocol.decode" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/protocol/avro/base.html#MinosAvroProtocol.decode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.protocol.avro.base.MinosAvroProtocol.decode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decode the given bytes of data into a single dictionary or a sequence of dictionaries.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – A bytes object.</p></li>
-<li><p><strong>flatten</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> tries to return the values as flat as possible.</p></li>
 <li><p><strong>args</strong> – Additional positional arguments.</p></li>
-<li><p><strong>kwargs</strong> – Additional named arguments.</p></li>
+<li><p><strong>batch_mode</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> the data is processed as a list of models, otherwise the data is processed as a</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>]]]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A dictionary or a list of dictionaries.</p>
-</dd>
 </dl>
+<p>single model.
+:param kwargs: Additional named arguments.
+:rtype: <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>
+:return: A dictionary or a list of dictionaries.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -234,7 +231,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="minos.common.protocol.avro.base.MinosAvroProtocol.encode">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/protocol/avro/base.html#MinosAvroProtocol.encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.protocol.avro.base.MinosAvroProtocol.encode" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/minos/common/protocol/avro/base.html#MinosAvroProtocol.encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#minos.common.protocol.avro.base.MinosAvroProtocol.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encoder in avro for database Values
 all the headers are converted in fields with double underscore name
 the body is a set fields coming from the data type.</p>
@@ -244,16 +241,14 @@ the body is a set fields coming from the data type.</p>
 <li><p><strong>value</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>) – The data to be stored.</p></li>
 <li><p><strong>schema</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Any</span></code>) – The schema relative to the data.</p></li>
 <li><p><strong>args</strong> – Additional positional arguments.</p></li>
-<li><p><strong>kwargs</strong> – Additional named arguments.</p></li>
+<li><p><strong>batch_mode</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> the data is processed as a list of models, otherwise the data is processed as a</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A bytes object.</p>
-</dd>
 </dl>
+<p>single model.
+:param kwargs: Additional named arguments.
+:rtype: <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>
+:return: A bytes object.</p>
 </dd></dl>
 
 </dd></dl>

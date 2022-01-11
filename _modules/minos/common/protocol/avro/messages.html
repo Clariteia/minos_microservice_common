@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>minos.common.protocol.avro.messages &mdash; Minos Microservice Common 0.3.3 documentation</title>
+  <title>minos.common.protocol.avro.messages &mdash; Minos Microservice Common 0.3.4 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.3.3
+                0.3.4
               </div>
             
           
@@ -202,7 +202,7 @@
 <span class="sd">        :return: A dictionary or a list of dictionaries.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data_return</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;headers&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">()}</span>
-        <span class="k">for</span> <span class="n">schema_dict</span> <span class="ow">in</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">schema_dict</span> <span class="ow">in</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">batch_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Avro: get the request/response in dict format&quot;</span><span class="p">)</span>
             <span class="n">data_return</span><span class="p">[</span><span class="s2">&quot;headers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">schema_dict</span><span class="p">[</span><span class="s2">&quot;headers&quot;</span><span class="p">]</span>
             <span class="c1"># check wich type is body</span>
